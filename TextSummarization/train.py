@@ -9,7 +9,8 @@ from datamodule import SummarizationDataModule
 def main():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--train_data_path', type=str, default=os.path.join(os.environ.get('SM_CHANEL_TRAINING'), 'train_10k.csv'))
+    
+    parser.add_argument('--train_data_path', type=str, default=os.path.join(os.environ.get('SM_CHANNEL_TRAINING'), 'train_10k.csv'))
     parser.add_argument('--val_data_path', type=str, default=os.path.join(os.environ.get('SM_CHANNEL_VALIDATION'), 'val.csv'))
     parser.add_argument('--model_name', type=str, default='facebook/bart-base')
     parser.add_argument('--batch_size', type=int, default=1)
