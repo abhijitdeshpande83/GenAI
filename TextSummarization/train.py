@@ -18,7 +18,7 @@ def main():
     parser.add_argument('--summary_length', type=int, default=128)
     parser.add_argument('--lr', type=float, default=2e-5)
     parser.add_argument('--epochs', type=int, default=1)
-    parser.add_argument('--save_dir', type=str)
+    parser.add_argument('--save_dir', type=str, default=os.environ.get('SM_MODEL_DIR'))
 
     args = parser.parse_args()
 
