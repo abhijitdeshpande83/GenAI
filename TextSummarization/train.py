@@ -18,6 +18,7 @@ def main():
     parser.add_argument('--summary_length', type=int, default=128)
     parser.add_argument('--lr', type=float, default=2e-5)
     parser.add_argument('--epochs', type=int, default=1)
+    parser.add_argument('--save_dir', type=str)
 
     args = parser.parse_args()
 
@@ -37,7 +38,7 @@ def main():
         accelerator="auto",
         devices=1,
         precision=16,
-        callbacks=[pl.callbacks.ModelCheckpoint(dirpath=os.environ.get('SM_MODEL_DIR'))],
+        callbacks=[pl.callbacks.ModelCheckpoint(dirpath=args.save_dir)],
         logger=pl.loggers.TensorBoardLogger(save_dir=os.environ.get('SM_OUTPUT_DIR'))
     )
 
