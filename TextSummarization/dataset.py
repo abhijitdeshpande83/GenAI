@@ -32,8 +32,5 @@ class SummarizationDataset(Dataset):
         return {
             "input_ids": tokenized_inputs["input_ids"].squeeze(0),
             "attention_mask":tokenized_inputs["attention_mask"].squeeze(0),
-            "labels": tokenized_labels["input_ids"].squeeze(0)
+            "labels": tokenized_labels["input_ids"]
         }
-
-
-
