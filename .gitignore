@@ -1,0 +1,10 @@
+.env
+.DS_Store
+._*
+
+# IntelliQA Project
+
+/IntelliQA/venv-intelliqa
+/IntelliQA/chroma_db
+/IntelliQA/data/
+/IntelliQA/__pycache__
