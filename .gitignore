@@ -8,3 +8,7 @@
 /IntelliQA/chroma_db
 /IntelliQA/data/
 /IntelliQA/__pycache__
+
+
+# SupportIQ Project
+/SupportIQ/venv/
