@@ -1,16 +1,25 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from peft import PeftModel, PeftConfig
 import torch
+import glob, os
+
+def get_latest_model(model_dir):
+    #get latest model
+    checkpoint_path = glob.glob(os.path.join(model_dir, "checkpoint*"))
+    
+    return sorted(checkpoint_path, key=lambda x: int(x.split('-')[-1]))[-1]
+    
 
 def model_fn(model_dir):
 
+    checkpoint_path = get_latest_model(model_dir)
     #load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_dir)
+    tokenizer = AutoTokenizer.from_pretrained(checkpoint_path)
 
     #load base model & wrap with peft
-    peft_config = PeftConfig.from_pretrained(model_dir)
+    peft_config = PeftConfig.from_pretrained(checkpoint_path)
     base_model = AutoModelForSeq2SeqLM.from_pretrained(peft_config.base_model_name_or_path)
-    model = PeftModel.from_pretrained(base_model, model_dir)
+    model = PeftModel.from_pretrained(base_model, checkpoint_path)
     model.eval()
 
     return {'model': model,'tokenizer': tokenizer}
