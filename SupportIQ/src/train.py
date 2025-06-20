@@ -41,7 +41,9 @@ def main():
                     bias=arg.bias,
                     task_type=TaskType.SEQ_2_SEQ_LM,
                 )
-    peft_model = get_peft_model(model,lora_config) #wrapping LoRA-config model
+    
+    #wrapping LoRA-config model
+    peft_model = get_peft_model(model,lora_config) 
     
     
     training_args = TrainingArguments(
