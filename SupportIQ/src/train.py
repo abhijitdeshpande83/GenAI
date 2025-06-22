@@ -75,13 +75,13 @@ def main():
             )
     
     #Early stopping
-    trainer.add_callback(EarlyStoppingCallback(early_stopping_patience=3))
+    trainer.add_callback(EarlyStoppingCallback(early_stopping_patience=5))
 
     #Train the model
     trainer.train()
 
     #merge LoRA weights with base model and save
-    merged_model = peft_model.merge_and_upload()
+    merged_model = peft_model.merge_and_unload()
     merged_model.save_pretrained(arg.output_dir)
     tokenizer.save_pretrained(arg.output_dir)
 
