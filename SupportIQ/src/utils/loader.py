@@ -13,17 +13,17 @@ def load_data(path='data/data_full.json'):
 
     data['train'].extend(data['oos_train'])
     data['val'].extend(data['oos_val'])
-    data['test'].extend(data['oos_test'])
+    # data['test'].extend(data['oos_test'])                     exluding test data
 
     train_data = Dataset.from_list([format_data(x) for x in data['train']])
     val_data = Dataset.from_list([format_data(x) for x in data['val']])
-    test_data = Dataset.from_list([format_data(x) for x in data['test']])
+    # test_data = Dataset.from_list([format_data(x) for x in data['test']])
 
-    return train_data, val_data, test_data
+    return train_data, val_data
 
 
 def tokenize_data(path,tokenizer):
-    train_data, val_data, test_data = load_data(path)
+    train_data, val_data = load_data(path)
 
     def tokenize(data):
         return tokenizer(
@@ -34,6 +34,4 @@ def tokenize_data(path,tokenizer):
             max_length=256
         )
     
-    return train_data.map(tokenize), \
-            val_data.map(tokenize), \
-            test_data.map(tokenize)
+    return train_data.map(tokenize), val_data.map(tokenize)

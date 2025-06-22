@@ -1,4 +1,4 @@
-from transformers import (AutoModelForSeq2SeqLM, AutoTokenizer, Trainer, TrainingArguments)
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Trainer, TrainingArguments, EarlyStoppingCallback
 from peft import LoraConfig, get_peft_model, TaskType
 import torch
 import argparse 
@@ -30,7 +30,7 @@ def main():
     model = AutoModelForSeq2SeqLM.from_pretrained(model_id)
 
     #load tokinzed data
-    train_data, val_data, test_data = tokenize_data(arg.data_path, tokenizer)
+    train_data, val_data = tokenize_data(arg.data_path, tokenizer)
 
     #setup training args
     lora_config = LoraConfig(
@@ -52,7 +52,15 @@ def main():
                 num_train_epochs=arg.epochs,
                 weight_decay=arg.wd,
                 logging_steps=arg.logging_steps,
-                label_names=["labels"],
+                evaluation_strategy="steps",
+                eval_steps=arg.logging_steps,
+                save_strategy="steps",
+                save_steps=arg.logging_steps,
+                per_device_train_batch_size=arg.batch_size,
+                per_device_eval_batch_size=arg.batch_size,
+                load_best_model_at_end=True,
+                metric_for_best_model="eval_loss",
+                greater_is_better=False
                 )
     
     #define trainer
@@ -63,8 +71,17 @@ def main():
             eval_dataset=val_data,
             tokenizer=tokenizer,
             )
+    
+    #Early stopping
+    trainer.add_callback(EarlyStoppingCallback(early_stopping_patience=3))
 
+    #Train the model
     trainer.train()
+
+    #merge LoRA weights with base model and save
+    merged_model = peft_model.merge_and_upload()
+    merged_model.save_pretrained(arg.output_dir)
+    tokenizer.save_pretrained(arg.output_dir)
 
 if __name__=='__main__':
     main()
