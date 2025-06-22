@@ -12,16 +12,15 @@ def get_latest_model(model_dir):
 
 def model_fn(model_dir):
 
-    checkpoint_path = model_dir
     #load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(checkpoint_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_dir)
 
     #load base model & wrap with peft
     # peft_config = PeftConfig.from_pretrained(checkpoint_path)
     # base_model = AutoModelForSeq2SeqLM.from_pretrained(peft_config.base_model_name_or_path)
     # model = PeftModel.from_pretrained(base_model, checkpoint_path)
-    model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint_path)
-    tokenizer = AutoTokenizer.from_pretrained(checkpoint_path)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
+    tokenizer = AutoTokenizer.from_pretrained(model_dir)
     model.eval()
 
     return {'model': model,'tokenizer': tokenizer}

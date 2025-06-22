@@ -23,6 +23,7 @@ debugpy==1.8.14
 decorator==5.2.1
 dill==0.4.0
 docker==7.1.0
+dotenv==0.9.9
 executing==2.2.0
 fastapi==0.115.13
 filelock==3.18.0
@@ -86,6 +87,7 @@ pydantic_core==2.33.2
 Pygments==2.19.1
 pyparsing==3.2.3
 python-dateutil==2.9.0.post0
+python-dotenv==1.1.0
 pytz==2025.2
 PyYAML==6.0.2
 pyzmq==26.4.0

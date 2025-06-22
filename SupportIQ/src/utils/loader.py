@@ -31,7 +31,7 @@ def tokenize_data(path,tokenizer):
             text_target=data['output'],
             padding='max_length',
             truncation=True,
-            max_length=256
+            max_length=32
         )
     
     return train_data.map(tokenize), val_data.map(tokenize)

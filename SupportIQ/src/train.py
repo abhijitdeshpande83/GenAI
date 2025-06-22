@@ -21,6 +21,8 @@ def main():
     parser.add_argument('--wd', type=float, default=0.01)
     parser.add_argument('--logging_steps', type=int, default=1)
     parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--save_steps', type=int, default=500)
+    parser.add_argument('--eval_steps', type=int, default=100)
 
     arg = parser.parse_args()
     
@@ -53,9 +55,9 @@ def main():
                 weight_decay=arg.wd,
                 logging_steps=arg.logging_steps,
                 evaluation_strategy="steps",
-                eval_steps=arg.logging_steps,
+                eval_steps=arg.eval_steps,
                 save_strategy="steps",
-                save_steps=arg.logging_steps,
+                save_steps=arg.save_steps,
                 per_device_train_batch_size=arg.batch_size,
                 per_device_eval_batch_size=arg.batch_size,
                 load_best_model_at_end=True,
