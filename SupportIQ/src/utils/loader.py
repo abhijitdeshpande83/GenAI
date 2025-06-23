@@ -13,7 +13,7 @@ def load_data(path='data/data_full.json'):
 
     data['train'].extend(data['oos_train'])
     data['val'].extend(data['oos_val'])
-    # data['test'].extend(data['oos_test'])                     exluding test data
+    # data['test'].extend(data['oos_test'])     #exluding test data
 
     train_data = Dataset.from_list([format_data(x) for x in data['train']])
     val_data = Dataset.from_list([format_data(x) for x in data['val']])

@@ -23,6 +23,8 @@ def main():
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--save_steps', type=int, default=500)
     parser.add_argument('--eval_steps', type=int, default=100)
+    parser.add_argument('--early_stopping', type=int, default=3)
+    parser.add_argument('--target_module', type=lambda s:s.split(','), default=['q','v'])
 
     arg = parser.parse_args()
     
@@ -38,7 +40,7 @@ def main():
     lora_config = LoraConfig(
                     r=arg.rank,
                     lora_alpha=arg.alpha,
-                    target_modules=["q", "v"],  # for flan-t5
+                    target_modules=arg.target_module,  # for flan-t5
                     lora_dropout=arg.dropout,
                     bias=arg.bias,
                     task_type=TaskType.SEQ_2_SEQ_LM,
@@ -75,7 +77,7 @@ def main():
             )
     
     #Early stopping
-    trainer.add_callback(EarlyStoppingCallback(early_stopping_patience=5))
+    trainer.add_callback(EarlyStoppingCallback(early_stopping_patience=arg.early_stopping))
 
     #Train the model
     trainer.train()
