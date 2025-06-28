@@ -12,3 +12,5 @@
 
 # SupportIQ Project
 /SupportIQ/venv/
+/SupportIQ/output/final_merged_model/model.safetensors
+/SupportIQ/output/final_merged_model/model.tar.gz
