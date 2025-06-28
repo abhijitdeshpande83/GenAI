@@ -1,0 +1,10 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
+TextSummarization/*.csv filter=lfs diff=lfs merge=lfs -text
+TextSummarization/train_20k.csv filter=lfs diff=lfs merge=lfs -text
+TextSummarization/val_df.csv filter=lfs diff=lfs merge=lfs -text
+TextSummarization/test_df.csv filter=lfs diff=lfs merge=lfs -text
+TextSummarization/train_df.csv filter=lfs diff=lfs merge=lfs -text
+TextSummarization/train_10k.csv filter=lfs diff=lfs merge=lfs -text
+part_* filter=lfs diff=lfs merge=lfs -text
+*.safetensors filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
