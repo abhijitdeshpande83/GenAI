@@ -25,8 +25,8 @@ def model_fn(model_dir):
 
     return {'model': model,'tokenizer': tokenizer, 'device':device}
 
-def predict_fn(data, model_obj):
-    input_text = data.get('input', None)
+def predict_fn(input_text, model_obj):
+    # input_text = data.get('input', None)
     if input_text is None:
         return ValueError("Inpute text is required under key 'input'")
     tokenizer = model_obj['tokenizer']
@@ -41,6 +41,6 @@ def predict_fn(data, model_obj):
     
     return {'generated_text': decoded}
 
-def predict(data, model_dir):
+def predict(input_text, model_dir):
     model_obj = model_fn(model_dir)
-    return predict_fn(data, model_obj)
+    return predict_fn(input_text, model_obj)
