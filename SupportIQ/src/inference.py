@@ -2,31 +2,34 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from peft import PeftModel, PeftConfig
 import torch
 import glob, os
+import boto3
 
-def get_latest_model(model_dir):
-    #get latest model
-    checkpoint_path = glob.glob(os.path.join(model_dir, "checkpoint*"))
-    
-    return sorted(checkpoint_path, key=lambda x: int(x.split('-')[-1]))[-1]
-    
+def model_fn(s3_bucket, s3_prefix):
 
-def model_fn(model_dir):
+    local_dir = "/tmp/model"
 
-    #load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_dir)
+    if not os.path.exists(local_dir):
+        os.makedirs(local_dir)
+        s3 = boto3.client('s3')
+        objects = s3.list_objects_v2(Bucket=s3_bucket, Prefix=s3_prefix)
+        
+        for obj in objects.get("Contents", []):
+            key = obj['key']
+            if key.endswith("/"):
+                continue
+            file_name = os.path.basename(key)
+            local_path = os.path.join(local_dir, file_name)
+            s3.download_file(s3_bucket, key, local_path)
 
-    #load base model & wrap with peft
-    # peft_config = PeftConfig.from_pretrained(checkpoint_path)
-    # base_model = AutoModelForSeq2SeqLM.from_pretrained(peft_config.base_model_name_or_path)
-    # model = PeftModel.from_pretrained(base_model, checkpoint_path)
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
+    tokenizer = AutoTokenizer.from_pretrained(local_dir)                    #load tokenizer
+    model = AutoModelForSeq2SeqLM.from_pretrained(local_dir)                #load model
     device = torch.device("cude" if torch.cuda.is_available() else "cpu")
     model.eval()
 
     return {'model': model,'tokenizer': tokenizer, 'device':device}
 
 def predict_fn(input_text, model_obj):
-    # input_text = data.get('input', None)
+
     if input_text is None:
         return ValueError("Inpute text is required under key 'input'")
     tokenizer = model_obj['tokenizer']
@@ -41,6 +44,6 @@ def predict_fn(input_text, model_obj):
     
     return {'generated_text': decoded}
 
-def predict(input_text, model_dir):
-    model_obj = model_fn(model_dir)
+def predict(input_text, s3_bucket, s3_prefix):
+    model_obj = model_fn(s3_bucket, s3_prefix)
     return predict_fn(input_text, model_obj)
