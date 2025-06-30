@@ -14,7 +14,7 @@ def intent_classify(request):
     if request.method == "POST":
         try:
             data=json.loads(request.body.decode('utf-8'))
-            prompt = data.get("input")
+            prompt = data.get("input", None)
             model_uri = 's3://sagemaker-us-east-1-720332985926/huggingface-pytorch-training-2025-06-28-15-47-21-142/output/model.tar.gz'
 
             response = predict(prompt, model_uri)
@@ -24,3 +24,6 @@ def intent_classify(request):
             return JsonResponse ({'error': str(e)}, status=500)
     return JsonResponse({'error': 'Only POST method is allowed'}, status=405)
         
+
+def health(request):
+    return JsonResponse({'status': 'ok'}, status=200)
