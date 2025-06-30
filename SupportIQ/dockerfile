@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copy only required files
+COPY requirements.txt /app/
+COPY supportiq_intent_api/ /app/supportiq_intent_api/
+COPY src/ /app/src/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install -r requirements.txt
+
+# Expose the port Django will run on
+EXPOSE 8000
+
+#Start the server
+CMD ["python", "supportiq_intent_api/manage.py", "runserver", "0.0.0.0:8000"]
