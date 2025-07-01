@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 from peft import PeftModel, PeftConfig
 import torch
 import glob, os
@@ -10,20 +10,22 @@ def model_fn(s3_bucket, s3_prefix):
 
     if not os.path.exists(local_dir):
         os.makedirs(local_dir)
-        s3 = boto3.client('s3')
-        objects = s3.list_objects_v2(Bucket=s3_bucket, Prefix=s3_prefix)
-        
-        for obj in objects.get("Contents", []):
-            key = obj['key']
-            if key.endswith("/"):
-                continue
-            file_name = os.path.basename(key)
-            local_path = os.path.join(local_dir, file_name)
-            s3.download_file(s3_bucket, key, local_path)
+    
+    s3 = boto3.client('s3')
+    objects = s3.list_objects_v2(Bucket=s3_bucket, Prefix=s3_prefix)
+    
+    for obj in objects.get("Contents", []):
+        key = obj['Key']
+        if key.endswith("/"):
+            continue
+        file_name = os.path.basename(key)
+        local_path = os.path.join(local_dir, file_name)
+        s3.download_file(s3_bucket, key, local_path)
 
-    tokenizer = AutoTokenizer.from_pretrained(local_dir)                    #load tokenizer
-    model = AutoModelForSeq2SeqLM.from_pretrained(local_dir)                #load model
-    device = torch.device("cude" if torch.cuda.is_available() else "cpu")
+    tokenizer = T5Tokenizer.from_pretrained(local_dir)                           #load tokenizer
+    model = T5ForConditionalGeneration.from_pretrained(local_dir)                #load model
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
     model.eval()
 
     return {'model': model,'tokenizer': tokenizer, 'device':device}
@@ -31,7 +33,7 @@ def model_fn(s3_bucket, s3_prefix):
 def predict_fn(input_text, model_obj):
 
     if input_text is None:
-        return ValueError("Inpute text is required under key 'input'")
+        raise ValueError("Inpute text is required under key 'input'")
     tokenizer = model_obj['tokenizer']
     model = model_obj['model']
     device = model_obj['device']

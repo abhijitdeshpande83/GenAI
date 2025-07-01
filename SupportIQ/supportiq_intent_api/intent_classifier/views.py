@@ -15,9 +15,12 @@ def intent_classify(request):
         try:
             data=json.loads(request.body.decode('utf-8'))
             prompt = data.get("input", None)
-            model_uri = 's3://sagemaker-us-east-1-720332985926/huggingface-pytorch-training-2025-06-28-15-47-21-142/output/model.tar.gz'
+            s3_bucket, s3_prefix = 'gen-ai-repository', 'finetuning/model/'
 
-            response = predict(prompt, model_uri)
+            if not isinstance(prompt, str):
+                return JsonResponse({'error':"It is not a string"}, status=400)
+            
+            response = predict(prompt, s3_bucket, s3_prefix)
             return JsonResponse(response)
         
         except Exception as e:
