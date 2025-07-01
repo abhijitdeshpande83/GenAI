@@ -1,0 +1,19 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+#Juoiter notebooks
+*.ipynd
+
+#Local data
+data/
+output/
+
+# Virtual env
+venv/
+
+# Git
+.git/
+.gitignore
