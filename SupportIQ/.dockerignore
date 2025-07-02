@@ -9,7 +9,7 @@ __pycache__/
 
 #Local data
 data/
-output/
+# output/
 
 # Virtual env
 venv/

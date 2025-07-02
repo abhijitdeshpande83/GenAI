@@ -1,7 +1,7 @@
 from src.inference import predict
 import json
 
-s3_bucket, s3_prefix = 'gen-ai-repository', 'finetuning/model/'
+# s3_bucket, s3_prefix = 'gen-ai-repository', 'finetuning/model/'
 
 def lambda_function(event, context):
 
@@ -12,7 +12,7 @@ def lambda_function(event, context):
         if input_text is None:
             raise ValueError("Input text is missing")
         
-        result = predict(input_text, s3_bucket, s3_prefix)
+        result = predict(input_text)
 
         return {
             "statusCode":200,

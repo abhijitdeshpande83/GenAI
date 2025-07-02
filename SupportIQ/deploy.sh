@@ -9,7 +9,7 @@ IMG_TAG=${1}
 find . -type f -name '._*' -delete
 
 #Build Docker Image
-docker buildx build --platform linux/arm64 -f lambda.dockerfile -t $DOCKER_REPO_NAME:$IMG_TAG --push .
+docker buildx build --platform linux/arm64 -t $DOCKER_REPO_NAME:$IMG_TAG --push .
 
 #Pull image locally
 docker pull $DOCKER_REPO_NAME:$IMG_TAG

@@ -2,17 +2,20 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy only required files
+#Copy required files
 COPY requirements.txt /app/
-COPY supportiq_intent_api/ /app/supportiq_intent_api/
-COPY src/ /app/src/
+COPY src/__init__.py /app/src/
+COPY src/inference.py /app/src/
+COPY src/lambda_func.py /app/src/
+COPY output/model/finetuned_model/ /app/model/
 
-# Install Python dependencies
-RUN pip install --no-cache-dir --upgrade pip
+#Install dependencies
+RUN pip install awslambdaric
 RUN pip install -r requirements.txt
 
-# Expose the port Django will run on
-EXPOSE 8000
+#Make script readable and execuatble
+RUN chmod -R a+rX /app
 
-#Start the server
-CMD ["python", "supportiq_intent_api/manage.py", "runserver", "0.0.0.0:8000"]
+#Set lambda function 
+ENTRYPOINT ["/usr/local/bin/python", "-m", "awslambdaric"]
+CMD ["src.lambda_func.lambda_function"]
