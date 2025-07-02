@@ -4,12 +4,17 @@ WORKDIR /app
 
 #Copy required files
 COPY requirements.txt /app/
-COPY src/inference.py /app/src
-COPY src/lambda_func.py /app/src
+COPY src/__init__.py /app/src/
+COPY src/inference.py /app/src/
+COPY src/lambda_func.py /app/src/
 
 #Install dependencies
 RUN pip install awslambdaric
 RUN pip install -r requirements.txt
 
+#Make script readable and execuatble
+RUN chmod -R a+rX /app
+
 #Set lambda function 
-CMD ["awslambdaric","lambda_func.lamda_function"]
+ENTRYPOINT ["/usr/local/bin/python", "-m", "awslambdaric"]
+CMD ["src.lambda_func.lambda_function"]

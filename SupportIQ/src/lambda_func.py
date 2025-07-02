@@ -1,9 +1,9 @@
-from inference import predict
+from src.inference import predict
 import json
 
 s3_bucket, s3_prefix = 'gen-ai-repository', 'finetuning/model/'
 
-def lamda_function(event, context):
+def lambda_function(event, context):
 
     try:
         body = json.loads(event['body']) if 'body' in event else event
