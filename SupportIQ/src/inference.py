@@ -4,23 +4,23 @@ import torch
 import glob, os
 import boto3
 
-def model_fn(s3_bucket, s3_prefix):
+def model_fn():
 
-    local_dir = "/tmp/model"
+    local_dir = "/app/model/"
 
     if not os.path.exists(local_dir):
         os.makedirs(local_dir)
     
-    s3 = boto3.client('s3')
-    objects = s3.list_objects_v2(Bucket=s3_bucket, Prefix=s3_prefix)
+    # s3 = boto3.client('s3')
+    # objects = s3.list_objects_v2(Bucket=s3_bucket, Prefix=s3_prefix)
     
-    for obj in objects.get("Contents", []):
-        key = obj['Key']
-        if key.endswith("/"):
-            continue
-        file_name = os.path.basename(key)
-        local_path = os.path.join(local_dir, file_name)
-        s3.download_file(s3_bucket, key, local_path)
+    # for obj in objects.get("Contents", []):
+    #     key = obj['Key']
+    #     if key.endswith("/"):
+    #         continue
+    #     file_name = os.path.basename(key)
+    #     local_path = os.path.join(local_dir, file_name)
+    #     s3.download_file(s3_bucket, key, local_path)
 
     tokenizer = T5Tokenizer.from_pretrained(local_dir)                           #load tokenizer
     model = T5ForConditionalGeneration.from_pretrained(local_dir)                #load model
@@ -46,6 +46,6 @@ def predict_fn(input_text, model_obj):
     
     return {'generated_text': decoded}
 
-def predict(input_text, s3_bucket, s3_prefix):
-    model_obj = model_fn(s3_bucket, s3_prefix)
+def predict(input_text):
+    model_obj = model_fn()
     return predict_fn(input_text, model_obj)
