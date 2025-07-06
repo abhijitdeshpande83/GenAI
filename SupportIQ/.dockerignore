@@ -4,10 +4,10 @@ __pycache__/
 *.pyo
 *.pyd
 
-#Juoiter notebooks
+# Juoiter notebooks
 *.ipynd
 
-#Local data
+# Local data
 data/
 # output/
 
@@ -17,3 +17,15 @@ venv/
 # Git
 .git/
 .gitignore
+
+# Ignore other models
+output/flan-t5-lora.tar.gz
+output/*.jsonl
+output/runs/
+output/final_merged_model/
+output/model/finetuned_model/  
+output/model/model.tar.gz
+output/model/runs/
+output/model/roberta-finetuned-model/checkpoint*
+output/model/roberta-finetuned-model/runs/
+output/model/roberta-finetuned-model/model.tar.gz

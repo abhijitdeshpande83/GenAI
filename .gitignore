@@ -14,3 +14,12 @@
 /SupportIQ/venv/
 /SupportIQ/output/final_merged_model/model.safetensors
 /SupportIQ/output/final_merged_model/model.tar.gz
+/SupportIQ/output/flan-t5-lora.tar.gz
+/SupportIQ/output/runs/
+/SupportIQ/output/final_merged_model/
+/SupportIQ/output/model/finetuned_model/
+/SupportIQ/output/model/model.tar.gz
+/SupportIQ/output/model/runs/
+/SupportIQ/output/model/roberta-finetuned-model/checkpoint*
+/SupportIQ/output/model/roberta-finetuned-model/runs/
+/SupportIQ/output/model/roberta-finetuned-model/model.tar.gz

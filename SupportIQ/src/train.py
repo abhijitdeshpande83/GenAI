@@ -1,4 +1,6 @@
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Trainer, TrainingArguments, EarlyStoppingCallback
+from transformers import (AutoModelForSequenceClassification,
+                        AutoModelForSeq2SeqLM, AutoModelForCausalLM, AutoTokenizer, 
+                        Trainer, TrainingArguments, EarlyStoppingCallback)
 from peft import LoraConfig, get_peft_model, TaskType
 import torch
 import argparse 
@@ -10,7 +12,8 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--data_path', type=str, default=os.path.join(os.environ.get("SM_CHANNEL_TRAINING"),'data_full.json'))
-    parser.add_argument('--model_id', type=str, default='google/flan-t5-base')
+    parser.add_argument('--model_id', type=str, default='roberta-base')
+    parser.add_argument('--task_type', type=str, default='seq2seq', choices=['seq2seq','classification','causal'])
     parser.add_argument('--rank', type=int, default=8)
     parser.add_argument('--alpha', type=int, default=16)
     parser.add_argument('--dropout', type=float, default=0.05)
@@ -25,17 +28,39 @@ def main():
     parser.add_argument('--eval_steps', type=int, default=100)
     parser.add_argument('--early_stopping', type=int, default=3)
     parser.add_argument('--target_module', type=lambda s:s.split(','), default=['q','v'])
+    parser.add_argument('--max_length', type=int, default=128)
 
     arg = parser.parse_args()
     
-    #load model & tokeninzer
-    model_id = arg.model_id
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_id)
-
+    tokenizer = AutoTokenizer.from_pretrained(arg.model_id)
     #load tokinzed data
-    train_data, val_data = tokenize_data(arg.data_path, tokenizer)
+    train_data, val_data, label2id, id2label = tokenize_data(arg.data_path, tokenizer, \
+                                                             task_type=arg.task_type, max_length=arg.max_length)
+    
+    #load model & tokeninzer
+    if arg.task_type=='seq2seq':
+        model = AutoModelForSeq2SeqLM.from_pretrained(arg.model_id)
+    elif arg.task_type=='classification':
+        num_labels = len(label2id)
+        model = AutoModelForSequenceClassification.from_pretrained(arg.model_id,
+                                                                   num_labels=num_labels,
+                                                                   label2id=label2id,
+                                                                   id2label=id2label
+                                                                   )
+        model.config.label2id = label2id
+        model.config.id2label = id2label
 
+    elif arg.task_type=='causal':
+        model = AutoModelForCausalLM.from_pretrained(arg.model_id)
+    else:
+        raise ValueError(f"Unsupported task_type: {arg.task_type}")
+    
+
+    lora_task_type = {
+        'classification': TaskType.SEQ_CLS,
+        'seq2seq': TaskType.SEQ_2_SEQ_LM,
+        'causal': TaskType.CAUSAL_LM
+    }    
     #setup training args
     lora_config = LoraConfig(
                     r=arg.rank,
@@ -43,7 +68,7 @@ def main():
                     target_modules=arg.target_module,  # for flan-t5
                     lora_dropout=arg.dropout,
                     bias=arg.bias,
-                    task_type=TaskType.SEQ_2_SEQ_LM,
+                    task_type=lora_task_type[arg.task_type],
                 )
     
     #wrapping LoRA-config model

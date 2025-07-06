@@ -7,7 +7,7 @@ COPY requirements.txt /app/
 COPY src/__init__.py /app/src/
 COPY src/inference.py /app/src/
 COPY src/lambda_func.py /app/src/
-COPY output/model/finetuned_model/ /app/model/
+COPY output/model/roberta-finetuned-model/final_model/ /app/model/
 
 #Install dependencies
 RUN pip install awslambdaric
