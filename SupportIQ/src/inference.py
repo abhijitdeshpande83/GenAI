@@ -1,7 +1,6 @@
-from transformers import T5Tokenizer, T5ForConditionalGeneration
-from peft import PeftModel, PeftConfig
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
-import glob, os
+import os
 import boto3
 
 def model_fn():
@@ -22,30 +21,46 @@ def model_fn():
     #     local_path = os.path.join(local_dir, file_name)
     #     s3.download_file(s3_bucket, key, local_path)
 
-    tokenizer = T5Tokenizer.from_pretrained(local_dir)                           #load tokenizer
-    model = T5ForConditionalGeneration.from_pretrained(local_dir)                #load model
+    tokenizer = AutoTokenizer.from_pretrained(local_dir)                          #load tokenizer
+    
+    model = AutoModelForSequenceClassification.from_pretrained(local_dir)         #load model
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
     model.eval()
 
     return {'model': model,'tokenizer': tokenizer, 'device':device}
 
+
 def predict_fn(input_text, model_obj):
 
     if input_text is None:
         raise ValueError("Inpute text is required under key 'input'")
+    
     tokenizer = model_obj['tokenizer']
     model = model_obj['model']
     device = model_obj['device']
 
-    inputs = tokenizer(input_text, return_tensors='pt',padding=True, truncation=True).to(device)
+    if isinstance(input_text,list):
+        inputs = tokenizer(input_text, return_tensors='pt',padding=True, truncation=True).to(device)
+    else:
+        inputs = tokenizer([input_text], return_tensors='pt',padding=True, truncation=True).to(device)
+
     with torch.no_grad():
-        outputs =model.generate(**inputs, max_new_tokens=20)
+        logits = model(**inputs).logits
+        predicted_ids = logits.argmax(dim=-1)
+        probs = torch.nn.functional.softmax(logits, dim=-1)
     
-    decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    
-    return {'generated_text': decoded}
+    results = []
+    for i, pred in enumerate(predicted_ids):
+        class_label = model.config.id2label[pred.item()]
+        score = probs[i, pred].item()
+        results.append({"label": class_label, "score": score})
+
+    return results if isinstance(input_text,list) else results[0]
 
 def predict(input_text):
     model_obj = model_fn()
     return predict_fn(input_text, model_obj)
+
+
+
