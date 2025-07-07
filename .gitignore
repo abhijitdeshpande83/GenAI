@@ -23,3 +23,7 @@
 /SupportIQ/output/model/roberta-finetuned-model/checkpoint*
 /SupportIQ/output/model/roberta-finetuned-model/runs/
 /SupportIQ/output/model/roberta-finetuned-model/model.tar.gz
+<<<<<<< HEAD
+=======
+/SupportIQ/output/model/roberta-finetuned-model/final_model/model.safetensors
+>>>>>>> a0d0068 (Changed model from Seq2Seq(flan-t5-base) to SequenceClassifiction(roberta-large) to get accurate results for required intent classification problem)
