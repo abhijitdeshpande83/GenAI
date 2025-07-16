@@ -1,0 +1,152 @@
+{
+  "home": [
+    "oil_change_when",
+    "oil_change_how",
+    "alarm",
+    "smart_home",
+    "tire_pressure",
+    "timer",
+    "tire_change"
+  ],
+  "finance": [
+    "credit_score",
+    "min_payment",
+    "pay_bill",
+    "bill_due",
+    "w2",
+    "taxes",
+    "payday",
+    "rewards_balance",
+    "transactions",
+    "apr",
+    "pto_balance",
+    "transfer",
+    "credit_limit",
+    "improve_credit_score",
+    "bill_balance",
+    "credit_limit_change",
+    "balance",
+    "direct_deposit"
+  ],
+  "travel": [
+    "lost_luggage",
+    "car_rental",
+    "travel_suggestion",
+    "flight_status",
+    "book_hotel",
+    "travel_notification",
+    "travel_alert",
+    "uber",
+    "book_flight"
+  ],
+  "food": [
+    "ingredients_list",
+    "cook_time",
+    "travel_suggestion",
+    "ingredient_substitution",
+    "recipe",
+    "calories",
+    "meal_suggestion",
+    "restaurant_suggestion"
+  ],
+  "system": [
+    "greeting",
+    "thank_you",
+    "shopping_list",
+    "next_holiday",
+    "pin_change",
+    "next_song",
+    "play_music",
+    "change_language",
+    "shopping_list_update",
+    "repeat"
+  ],
+  "qa": [
+    "how_busy",
+    "oil_change_how",
+    "pto_request_status",
+    "what_song",
+    "weather",
+    "translate",
+    "pto_used",
+    "pto_balance",
+    "spelling",
+    "what_is_your_name",
+    "meaning_of_life",
+    "who_made_you",
+    "what_are_your_hobbies",
+    "how_old_are_you",
+    "what_can_i_ask_you",
+    "pto_request",
+    "nutrition_info",
+    "definition",
+    "who_do_you_work_for",
+    "are_you_a_bot"
+  ],
+  "fun": [
+    "tell_joke",
+    "what_song",
+    "roll_dice",
+    "flip_coin",
+    "fun_fact"
+  ],
+  "account": [
+    "card_declined",
+    "account_blocked",
+    "report_fraud",
+    "reset_settings",
+    "user_name",
+    "new_card",
+    "shopping_list",
+    "pin_change",
+    "freeze_account",
+    "shopping_list_update",
+    "report_lost_card",
+    "damaged_card",
+    "replacement_card_duration",
+    "change_user_name"
+  ],
+  "location": [
+    "find_phone",
+    "traffic",
+    "directions",
+    "share_location"
+  ],
+  "booking": [
+    "restaurant_reservation",
+    "cancel",
+    "cancel_reservation",
+    "book_hotel",
+    "accept_reservations",
+    "book_flight",
+    "confirm_reservation"
+  ],
+  "order": [
+    "order",
+    "order_status",
+    "order_checks",
+    "shopping_list_update"
+  ],
+  "status": [
+    "pto_request_status",
+    "order_status",
+    "flight_status",
+    "application_status"
+  ],
+  "insurance": [
+    "insurance_change",
+    "rollover_401k",
+    "insurance"
+  ],
+  "reminder": [
+    "schedule_meeting",
+    "calendar_update",
+    "todo_list",
+    "calendar",
+    "todo_list_update",
+    "meeting_schedule",
+    "reminder",
+    "reminder_update",
+    "schedule_maintenance"
+  ]
+}
