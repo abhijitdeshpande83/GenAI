@@ -1,0 +1,152 @@
+{
+  "bank": [
+    "rewards_balance",
+    "payday",
+    "credit_limit_change",
+    "min_payment",
+    "direct_deposit",
+    "credit_score",
+    "pto_balance",
+    "transactions",
+    "balance",
+    "pay_bill",
+    "taxes",
+    "w2",
+    "bill_balance",
+    "credit_limit",
+    "bill_due",
+    "apr",
+    "improve_credit_score",
+    "transfer"
+  ],
+  "qa": [
+    "what_is_your_name",
+    "pto_request_status",
+    "definition",
+    "pto_request",
+    "spelling",
+    "what_can_i_ask_you",
+    "pto_balance",
+    "nutrition_info",
+    "who_made_you",
+    "are_you_a_bot",
+    "weather",
+    "how_old_are_you",
+    "who_do_you_work_for",
+    "how_busy",
+    "oil_change_how",
+    "pto_used",
+    "translate",
+    "what_song",
+    "what_are_your_hobbies",
+    "meaning_of_life"
+  ],
+  "location": [
+    "traffic",
+    "directions",
+    "share_location",
+    "find_phone"
+  ],
+  "status": [
+    "pto_request_status",
+    "flight_status",
+    "order_status",
+    "application_status"
+  ],
+  "home": [
+    "tire_pressure",
+    "alarm",
+    "tire_change",
+    "oil_change_when",
+    "oil_change_how",
+    "timer",
+    "smart_home"
+  ],
+  "booking": [
+    "cancel",
+    "accept_reservations",
+    "restaurant_reservation",
+    "book_flight",
+    "book_hotel",
+    "confirm_reservation",
+    "cancel_reservation"
+  ],
+  "insurance": [
+    "insurance",
+    "insurance_change",
+    "rollover_401k"
+  ],
+  "reminder": [
+    "meeting_schedule",
+    "calendar_update",
+    "reminder_update",
+    "todo_list",
+    "schedule_meeting",
+    "calendar",
+    "schedule_maintenance",
+    "reminder",
+    "todo_list_update"
+  ],
+  "account": [
+    "freeze_account",
+    "report_fraud",
+    "user_name",
+    "account_blocked",
+    "new_card",
+    "damaged_card",
+    "shopping_list",
+    "reset_settings",
+    "pin_change",
+    "report_lost_card",
+    "shopping_list_update",
+    "replacement_card_duration",
+    "change_user_name",
+    "card_declined"
+  ],
+  "system": [
+    "play_music",
+    "shopping_list",
+    "repeat",
+    "next_holiday",
+    "next_song",
+    "thank_you",
+    "greeting",
+    "change_language",
+    "pin_change",
+    "shopping_list_update"
+  ],
+  "fun": [
+    "fun_fact",
+    "tell_joke",
+    "flip_coin",
+    "roll_dice",
+    "what_song"
+  ],
+  "travel": [
+    "book_flight",
+    "travel_notification",
+    "book_hotel",
+    "lost_luggage",
+    "flight_status",
+    "travel_alert",
+    "car_rental",
+    "uber",
+    "travel_suggestion"
+  ],
+  "order": [
+    "order",
+    "order_status",
+    "shopping_list_update",
+    "order_checks"
+  ],
+  "food": [
+    "meal_suggestion",
+    "ingredient_substitution",
+    "calories",
+    "ingredients_list",
+    "restaurant_suggestion",
+    "recipe",
+    "cook_time",
+    "travel_suggestion"
+  ]
+}
