@@ -55,7 +55,6 @@ def main():
     else:
         raise ValueError(f"Unsupported task_type: {arg.task_type}")
     
-
     lora_task_type = {
         'classification': TaskType.SEQ_CLS,
         'seq2seq': TaskType.SEQ_2_SEQ_LM,

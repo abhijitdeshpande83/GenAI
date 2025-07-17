@@ -28,7 +28,9 @@ def load_data(path='data/data_full.json', task_type='classification'):
     return train_data, val_data
 
 def tokenize_data(path,tokenizer,task_type,max_length):
-    train_data, val_data = load_data(path,task_type)
+    if task_type=='classification': train_data, val_data = load_data(path,task_type)
+    train_dataset, val_dataset = load_dataset(path)      #for seq2seq
+    
     if task_type=='classification':
         labels = sorted(set(train_data['label']))
         label2id = {label:i for i,label in enumerate(labels)}
@@ -63,11 +65,28 @@ def tokenize_data(path,tokenizer,task_type,max_length):
         return tokenized_train_data, tokenized_val_data, label2id, id2label
     
     elif task_type=='seq2seq':
-        tokenized_train_data = train_data.map(tokenize_for_seq2seq)
-        tokenized_val_data = val_data.map(tokenize_for_seq2seq)
+        tokenized_train_data = train_dataset.map(tokenize_for_seq2seq)
+        tokenized_val_data = train_dataset.map(tokenize_for_seq2seq)
         tokenized_train_data.set_format(type="torch")
         tokenized_val_data.set_format(type="torch")
         return tokenized_train_data, tokenized_val_data, None, None
     
     else:
         raise ValueError("task_type must be either classification or seq2seq")
+
+
+def load_dataset(path):
+    
+    def load(path):
+        with open(path) as f:
+            data = json.load(f)
+            return data
+
+    train_data = load(path+'/train.json')
+    val_data = load(path+'/val.json')
+    
+    train_dataset = Dataset.from_list(train_data)
+    val_dataset = Dataset.from_list(val_data)
+    
+    return train_dataset, val_dataset
+ 
