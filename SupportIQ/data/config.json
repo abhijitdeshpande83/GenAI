@@ -1,152 +1,161 @@
 {
-  "bank": [
-    "rewards_balance",
-    "payday",
-    "credit_limit_change",
-    "min_payment",
-    "direct_deposit",
-    "credit_score",
-    "pto_balance",
-    "transactions",
-    "balance",
-    "pay_bill",
-    "taxes",
-    "w2",
-    "bill_balance",
-    "credit_limit",
-    "bill_due",
-    "apr",
-    "improve_credit_score",
-    "transfer"
-  ],
-  "qa": [
-    "what_is_your_name",
-    "pto_request_status",
-    "definition",
-    "pto_request",
-    "spelling",
-    "what_can_i_ask_you",
-    "pto_balance",
-    "nutrition_info",
-    "who_made_you",
-    "are_you_a_bot",
-    "weather",
-    "how_old_are_you",
-    "who_do_you_work_for",
-    "how_busy",
-    "oil_change_how",
-    "pto_used",
-    "translate",
-    "what_song",
-    "what_are_your_hobbies",
-    "meaning_of_life"
-  ],
-  "location": [
-    "traffic",
-    "directions",
-    "share_location",
-    "find_phone"
-  ],
-  "status": [
-    "pto_request_status",
-    "flight_status",
-    "order_status",
-    "application_status"
+  "music": [
+    "play_music",
+    "next_song"
   ],
   "home": [
-    "tire_pressure",
-    "alarm",
-    "tire_change",
-    "oil_change_when",
+    "smart_home",
     "oil_change_how",
-    "timer",
-    "smart_home"
+    "tire_pressure",
+    "tire_change",
+    "oil_change_when"
   ],
-  "booking": [
-    "cancel",
-    "accept_reservations",
-    "restaurant_reservation",
-    "book_flight",
-    "book_hotel",
-    "confirm_reservation",
-    "cancel_reservation"
-  ],
-  "insurance": [
-    "insurance",
-    "insurance_change",
-    "rollover_401k"
-  ],
-  "reminder": [
-    "meeting_schedule",
-    "calendar_update",
+  "calendar": [
     "reminder_update",
-    "todo_list",
-    "schedule_meeting",
-    "calendar",
-    "schedule_maintenance",
     "reminder",
-    "todo_list_update"
+    "calendar",
+    "calendar_update",
+    "todo_list",
+    "todo_list_update",
+    "schedule_maintenance",
+    "schedule_meeting",
+    "meeting_schedule"
   ],
   "account": [
     "freeze_account",
-    "report_fraud",
     "user_name",
-    "account_blocked",
-    "new_card",
-    "damaged_card",
     "shopping_list",
-    "reset_settings",
     "pin_change",
-    "report_lost_card",
-    "shopping_list_update",
-    "replacement_card_duration",
+    "reset_settings",
     "change_user_name",
-    "card_declined"
+    "shopping_list_update",
+    "card_declined",
+    "report_fraud",
+    "account_blocked",
+    "report_lost_card",
+    "replacement_card_duration",
+    "damaged_card",
+    "new_card"
+  ],
+  "insurance": [
+    "rollover_401k",
+    "insurance_change",
+    "insurance"
   ],
   "system": [
-    "play_music",
     "shopping_list",
+    "pin_change",
     "repeat",
-    "next_holiday",
-    "next_song",
     "thank_you",
     "greeting",
-    "change_language",
-    "pin_change",
-    "shopping_list_update"
+    "shopping_list_update",
+    "change_language"
+  ],
+  "bank": [
+    "balance",
+    "credit_limit",
+    "credit_score",
+    "w2",
+    "pto_balance",
+    "taxes",
+    "credit_limit_change",
+    "improve_credit_score",
+    "pay_bill",
+    "payday",
+    "min_payment",
+    "direct_deposit",
+    "apr",
+    "bill_due",
+    "transfer",
+    "transactions",
+    "rewards_balance",
+    "bill_balance"
+  ],
+  "qa": [
+    "what_can_i_ask_you",
+    "nutrition_info",
+    "what_is_your_name",
+    "oil_change_how",
+    "definition",
+    "pto_used",
+    "are_you_a_bot",
+    "meaning_of_life",
+    "what_song",
+    "pto_balance",
+    "pto_request_status",
+    "translate",
+    "pto_request",
+    "who_made_you",
+    "how_busy",
+    "weather",
+    "how_old_are_you",
+    "who_do_you_work_for",
+    "what_are_your_hobbies",
+    "spelling"
+  ],
+  "alarm": [
+    "timer",
+    "alarm"
   ],
   "fun": [
-    "fun_fact",
-    "tell_joke",
-    "flip_coin",
     "roll_dice",
-    "what_song"
+    "what_song",
+    "flip_coin",
+    "fun_fact",
+    "tell_joke"
   ],
-  "travel": [
-    "book_flight",
-    "travel_notification",
-    "book_hotel",
-    "lost_luggage",
-    "flight_status",
-    "travel_alert",
-    "car_rental",
-    "uber",
-    "travel_suggestion"
-  ],
-  "order": [
-    "order",
-    "order_status",
-    "shopping_list_update",
-    "order_checks"
+  "location": [
+    "directions",
+    "find_phone",
+    "traffic",
+    "share_location"
   ],
   "food": [
-    "meal_suggestion",
-    "ingredient_substitution",
-    "calories",
     "ingredients_list",
+    "travel_suggestion",
     "restaurant_suggestion",
+    "ingredient_substitution",
+    "meal_suggestion",
     "recipe",
     "cook_time",
-    "travel_suggestion"
+    "calories"
+  ],
+  "travel": [
+    "travel_suggestion",
+    "travel_alert",
+    "travel_notification"
+  ],
+  "booking": [
+    "restaurant_reservation",
+    "accept_reservations",
+    "cancel_reservation",
+    "confirm_reservation",
+    "book_hotel",
+    "book_flight",
+    "cancel"
+  ],
+  "hotel": [
+    "lost_luggage",
+    "book_hotel"
+  ],
+  "order": [
+    "shopping_list_update",
+    "order_status",
+    "order",
+    "order_checks"
+  ],
+  "status": [
+    "application_status",
+    "pto_request_status",
+    "flight_status",
+    "order_status"
+  ],
+  "rental_car": [
+    "car_rental",
+    "uber"
+  ],
+  "flight": [
+    "flight_status",
+    "book_flight"
   ]
 }
