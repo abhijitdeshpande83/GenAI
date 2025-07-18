@@ -48,9 +48,9 @@ def predict_fn(input_text, model_obj):
     with torch.no_grad():
         outputs = model.generate(**inputs, max_length=64,
                                 early_stopping=True)    
-        predicted_ids = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        predicted_ids = [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
     
-    return predicted_ids
+    return predicted_ids if isinstance(input_text,list) else predicted_ids[0]
 
 def predict(input_text):
     model_obj = model_fn()
