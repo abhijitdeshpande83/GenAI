@@ -11,7 +11,7 @@ def main():
     
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--data_path', type=str, default=os.path.join(os.environ.get("SM_CHANNEL_TRAINING"),'data_full.json'))
+    parser.add_argument('--data_path', type=str, default= os.environ.get("SM_CHANNEL_TRAINING"))
     parser.add_argument('--model_id', type=str, default='roberta-base')
     parser.add_argument('--task_type', type=str, default='seq2seq', choices=['seq2seq','classification','causal'])
     parser.add_argument('--rank', type=int, default=8)
