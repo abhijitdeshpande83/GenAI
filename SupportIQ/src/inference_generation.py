@@ -46,7 +46,7 @@ def predict_fn(input_text, model_obj):
         inputs = tokenizer([input_text], return_tensors='pt',padding=True, truncation=True).to(device)
 
     with torch.no_grad():
-        outputs = model.generate(**inputs, max_length=128,
+        outputs = model.generate(**inputs, max_length=64,
                                 early_stopping=True)    
         predicted_ids = tokenizer.decode(outputs[0], skip_special_tokens=True)
     
