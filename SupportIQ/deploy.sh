@@ -2,15 +2,16 @@
 
 #Variables
 ECR_URI="720332985926.dkr.ecr.us-east-1.amazonaws.com"
-REPO_NAME="intent-classifier-api"
-DOCKER_REPO_NAME="abhijitdeshpande83/intent-classifier-api"
-IMG_TAG=${1}
+REPO_NAME=${1}
+DOCKER_REPO_NAME=${3}
+IMG_TAG=${4}
+DOCKER_FILE_NAME=${2}
 
 #Clear ._ files 
 find . -type f -name '._*' -delete
 
 #Build Docker Image
-docker buildx build --platform linux/arm64 -t $DOCKER_REPO_NAME:$IMG_TAG --push .
+docker buildx build --platform linux/arm64 -f $DOCKER_FILE_NAME -t $DOCKER_REPO_NAME:$IMG_TAG --push .
 
 #Pull image locally
 docker pull $DOCKER_REPO_NAME:$IMG_TAG

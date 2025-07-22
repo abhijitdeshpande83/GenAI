@@ -1,4 +1,4 @@
-from src.inference_classification import predict
+from src.inference_generation import predict
 import json
 
 # s3_bucket, s3_prefix = 'gen-ai-repository', 'finetuning/model/'
