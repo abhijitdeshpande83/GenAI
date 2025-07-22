@@ -21,7 +21,7 @@ def model_fn():
     #     local_path = os.path.join(local_dir, file_name)
     #     s3.download_file(s3_bucket, key, local_path)
 
-    tokenizer = AutoTokenizer.from_pretrained(local_dir)                          #load tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(local_dir)             #load tokenizer
     
     model = AutoModelForSeq2SeqLM.from_pretrained(local_dir)         #load model
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

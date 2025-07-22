@@ -29,3 +29,6 @@ output/model/runs/
 output/model/roberta-finetuned-model/checkpoint*
 output/model/roberta-finetuned-model/runs/
 output/model/roberta-finetuned-model/model.tar.gz
+output/model/flan-t5-finetuned/checkpoint*
+output/model/flan-t5-lora.tar.gz
+output/model/flan-t5-finetuned/runs/
