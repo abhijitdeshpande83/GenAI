@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import os
-import boto3
+import json 
 
 def model_fn():
 
@@ -60,7 +60,12 @@ def predict_fn(input_text, model_obj):
 
 def predict(input_text):
     model_obj = model_fn()
-    return predict_fn(input_text, model_obj)
+
+    with open('/app/label_mapping.json') as f:
+        label_mapper = json.load(f)
+        
+    return label_mapper.get(predict_fn(input_text, model_obj), "Unknown")
+
 
 
 

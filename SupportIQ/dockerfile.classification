@@ -8,6 +8,7 @@ COPY src/__init__.py /app/src/
 COPY src/inference_classification.py /app/src/
 COPY src/lambda_func.py /app/src/
 COPY output/model/roberta-finetuned-model/final_model/ /app/model/
+COPY data/label_mapping.json /app/label_mapping.json
 
 #Install dependencies
 RUN pip install awslambdaric
