@@ -9,6 +9,7 @@ __pycache__/
 
 # Local data
 data/
+!data/label_mapping.json
 # output/
 
 # Virtual env

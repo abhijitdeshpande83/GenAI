@@ -2,7 +2,7 @@
 
 #Variables
 ECR_URI="720332985926.dkr.ecr.us-east-1.amazonaws.com"
-REPO_NAME=${1}
+ECR_REPO_NAME=${1}
 DOCKER_REPO_NAME=${3}
 IMG_TAG=${4}
 DOCKER_FILE_NAME=${2}
@@ -17,13 +17,13 @@ docker buildx build --platform linux/arm64 -f $DOCKER_FILE_NAME -t $DOCKER_REPO_
 docker pull $DOCKER_REPO_NAME:$IMG_TAG
 
 #Tag image for ECR
-docker tag $DOCKER_REPO_NAME:$IMG_TAG $ECR_URI/$REPO_NAME:$IMG_TAG
+docker tag $DOCKER_REPO_NAME:$IMG_TAG $ECR_URI/$ECR_REPO_NAME:$IMG_TAG
 
 #Login to AWS
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_URI
 
 #Push image to ECR
-docker push $ECR_URI/$REPO_NAME:$IMG_TAG
+docker push $ECR_URI/$ECR_REPO_NAME:$IMG_TAG
 
 #Display message
 echo "Image pushed to ECR"
