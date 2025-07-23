@@ -1,6 +1,6 @@
 {
   "car_rental": [
-    "rental_car"
+    "rentalcar"
   ],
   "schedule_maintenance": [
     "calendar"
@@ -63,7 +63,7 @@
     "food"
   ],
   "uber": [
-    "rental_car"
+    "rentalcar"
   ],
   "oil_change_when": [
     "home"
@@ -183,7 +183,7 @@
     "calendar"
   ],
   "change_language": [
-    "system"
+    "service"
   ],
   "replacement_card_duration": [
     "account"
@@ -204,7 +204,7 @@
     "hotel"
   ],
   "thank_you": [
-    "system"
+    "service"
   ],
   "flip_coin": [
     "fun"
@@ -222,7 +222,7 @@
     "account"
   ],
   "weather": [
-    "qa"
+    "weather"
   ],
   "definition": [
     "qa"
@@ -264,7 +264,7 @@
     "qa"
   ],
   "greeting": [
-    "system"
+    "service"
   ],
   "shopping_list_update": [
     "order"
@@ -285,12 +285,24 @@
     "calendar"
   ],
   "repeat": [
-    "system"
+    "service"
   ],
   "meaning_of_life": [
     "qa"
   ],
   "pto_balance": [
     "bank"
+  ],
+  "exclude_labels": [
+    "location",
+    "insurance",
+    "account",
+    "food",
+    "fun",
+    "qa",
+    "status",
+    "cancel",
+    "order",
+    "alarm"
   ]
 }

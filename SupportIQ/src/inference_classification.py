@@ -10,6 +10,9 @@ def model_fn():
     if not os.path.exists(local_dir):
         os.makedirs(local_dir)
     
+    with open('/app/label_mapping.json') as f:
+        label_mapper = json.load(f)
+    
     # s3 = boto3.client('s3')
     # objects = s3.list_objects_v2(Bucket=s3_bucket, Prefix=s3_prefix)
     
@@ -28,7 +31,7 @@ def model_fn():
     model.to(device)
     model.eval()
 
-    return {'model': model,'tokenizer': tokenizer, 'device':device}
+    return {'model': model,'tokenizer': tokenizer, 'device':device, 'label_mapper':label_mapper}
 
 
 def predict_fn(input_text, model_obj):
@@ -39,6 +42,7 @@ def predict_fn(input_text, model_obj):
     tokenizer = model_obj['tokenizer']
     model = model_obj['model']
     device = model_obj['device']
+    label_mapper = model_obj['label_mapper']
 
     if isinstance(input_text,list):
         inputs = tokenizer(input_text, return_tensors='pt',padding=True, truncation=True).to(device)
@@ -53,6 +57,7 @@ def predict_fn(input_text, model_obj):
     results = []
     for i, pred in enumerate(predicted_ids):
         class_label = model.config.id2label[pred.item()]
+        class_label = label_mapper[class_label]
         score = probs[i, pred].item()
         results.append({"label": class_label, "score": score})
 
@@ -61,10 +66,8 @@ def predict_fn(input_text, model_obj):
 def predict(input_text):
     model_obj = model_fn()
 
-    with open('/app/label_mapping.json') as f:
-        label_mapper = json.load(f)
-        
-    return label_mapper.get(predict_fn(input_text, model_obj), "Unknown")
+    return predict_fn(input_text, model_obj)
+
 
 
 
