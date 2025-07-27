@@ -3,9 +3,9 @@
 #Variables
 ECR_URI="720332985926.dkr.ecr.us-east-1.amazonaws.com"
 ECR_REPO_NAME=${1}
+DOCKER_FILE_NAME=${2}
 DOCKER_REPO_NAME=${3}
 IMG_TAG=${4}
-DOCKER_FILE_NAME=${2}
 
 #Clear ._ files 
 find . -type f -name '._*' -delete

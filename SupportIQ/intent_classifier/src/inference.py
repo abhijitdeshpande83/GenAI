@@ -58,7 +58,7 @@ def predict_fn(input_text, model_obj):
     for i, pred in enumerate(predicted_ids):
         class_label = model.config.id2label[pred.item()]
         class_label = label_mapper[class_label]
-        score = probs[i, pred].item()
+        score = probs[i, pred].item()*100
         results.append({"label": class_label, "score": score})
 
     return results if isinstance(input_text,list) else results[0]
