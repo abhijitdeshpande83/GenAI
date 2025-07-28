@@ -1,296 +1,112 @@
 {
-  "car_rental": [
-    "rental_car"
-  ],
-  "schedule_maintenance": [
-    "calendar"
-  ],
-  "meeting_schedule": [
-    "calendar"
-  ],
-  "oil_change_how": [
-    "home"
-  ],
-  "user_name": [
-    "account"
-  ],
-  "transactions": [
-    "bank"
-  ],
-  "apr": [
-    "bank"
-  ],
-  "share_location": [
-    "location"
-  ],
-  "w2": [
-    "bank"
-  ],
-  "insurance": [
-    "insurance"
-  ],
-  "fun_fact": [
-    "fun"
-  ],
-  "find_phone": [
-    "location"
-  ],
-  "report_lost_card": [
-    "account"
-  ],
-  "new_card": [
-    "account"
-  ],
-  "travel_notification": [
-    "travel"
-  ],
-  "taxes": [
-    "bank"
-  ],
-  "alarm": [
-    "alarm"
-  ],
-  "freeze_account": [
-    "account"
-  ],
-  "reminder_update": [
-    "calendar"
-  ],
-  "insurance_change": [
-    "insurance"
-  ],
-  "cook_time": [
-    "food"
-  ],
-  "uber": [
-    "rental_car"
-  ],
-  "oil_change_when": [
-    "home"
-  ],
-  "recipe": [
-    "food"
-  ],
-  "confirm_reservation": [
-    "status"
-  ],
-  "cancel": [
+  "meaning_of_life": "qa",
+  "book_flight": "flight",
+  "next_song": "music",
+  "meeting_schedule": "calendar",
+  "rollover_401k": "insurance",
+  "rewards_balance": "bank",
+  "book_hotel": "hotel",
+  "car_rental": "rentalcar",
+  "calories": "food",
+  "meal_suggestion": "food",
+  "travel_alert": "travel",
+  "flight_status": "status",
+  "tire_change": "home",
+  "restaurant_reviews": "restaurant",
+  "alarm": "alarm",
+  "flip_coin": "fun",
+  "ingredient_substitution": "food",
+  "are_you_a_bot": "qa",
+  "uber": "rentalcar",
+  "payday": "bank",
+  "credit_limit": "bank",
+  "restaurant_suggestion": "restaurant",
+  "transfer": "bank",
+  "bill_due": "bank",
+  "restaurant_reservation": "restaurant",
+  "change_user_name": "account",
+  "travel_notification": "travel",
+  "damaged_card": "account",
+  "tire_pressure": "home",
+  "thank_you": "service",
+  "card_declined": "account",
+  "improve_credit_score": "bank",
+  "weather": "weather",
+  "pay_bill": "bank",
+  "order_checks": "order",
+  "travel_suggestion": "travel",
+  "schedule_meeting": "calendar",
+  "transactions": "bank",
+  "shopping_list_update": "order",
+  "cook_time": "food",
+  "share_location": "location",
+  "todo_list": "calendar",
+  "taxes": "bank",
+  "pin_change": "account",
+  "roll_dice": "fun",
+  "recipe": "food",
+  "change_language": "service",
+  "traffic": "location",
+  "who_made_you": "qa",
+  "repeat": "service",
+  "apr": "bank",
+  "tell_joke": "fun",
+  "who_do_you_work_for": "qa",
+  "credit_limit_change": "bank",
+  "account_blocked": "account",
+  "cancel": "cancel",
+  "calendar_update": "calendar",
+  "ingredients_list": "food",
+  "translate": "qa",
+  "pto_balance": "bank",
+  "oil_change_when": "home",
+  "schedule_maintenance": "calendar",
+  "user_name": "account",
+  "oil_change_how": "home",
+  "insurance": "insurance",
+  "credit_score": "bank",
+  "fun_fact": "fun",
+  "reminder_update": "calendar",
+  "directions": "location",
+  "w2": "bank",
+  "insurance_change": "insurance",
+  "spelling": "qa",
+  "bill_balance": "bank",
+  "report_lost_card": "account",
+  "lost_luggage": "hotel",
+  "report_fraud": "account",
+  "direct_deposit": "bank",
+  "confirm_reservation": "status",
+  "min_payment": "bank",
+  "order_status": "order",
+  "reset_settings": "account",
+  "new_card": "account",
+  "play_music": "music",
+  "calendar": "calendar",
+  "nutrition_info": "qa",
+  "reminder": "calendar",
+  "cancel_reservation": "cancel",
+  "what_song": "qa",
+  "freeze_account": "account",
+  "replacement_card_duration": "account",
+  "find_phone": "location",
+  "greeting": "service",
+  "balance": "bank",
+  "order": "order",
+  "timer": "alarm",
+  "todo_list_update": "calendar",
+  "definition": "qa",
+  "smart_home": "home",
+  "exclude_labels": [
+    "status",
+    "fun",
+    "insurance",
+    "order",
+    "food",
+    "location",
+    "alarm",
+    "qa",
+    "account",
     "cancel"
-  ],
-  "calendar_update": [
-    "calendar"
-  ],
-  "directions": [
-    "location"
-  ],
-  "ingredient_substitution": [
-    "food"
-  ],
-  "pay_bill": [
-    "bank"
-  ],
-  "calendar": [
-    "calendar"
-  ],
-  "are_you_a_bot": [
-    "qa"
-  ],
-  "tire_pressure": [
-    "home"
-  ],
-  "traffic": [
-    "location"
-  ],
-  "tire_change": [
-    "home"
-  ],
-  "account_blocked": [
-    "account"
-  ],
-  "order_status": [
-    "order"
-  ],
-  "restaurant_reviews": [
-    "restaurant"
-  ],
-  "travel_alert": [
-    "travel"
-  ],
-  "spelling": [
-    "qa"
-  ],
-  "rollover_401k": [
-    "insurance"
-  ],
-  "calories": [
-    "food"
-  ],
-  "restaurant_suggestion": [
-    "restaurant"
-  ],
-  "damaged_card": [
-    "account"
-  ],
-  "credit_limit_change": [
-    "bank"
-  ],
-  "todo_list": [
-    "calendar"
-  ],
-  "play_music": [
-    "music"
-  ],
-  "roll_dice": [
-    "fun"
-  ],
-  "travel_suggestion": [
-    "travel"
-  ],
-  "improve_credit_score": [
-    "bank"
-  ],
-  "payday": [
-    "bank"
-  ],
-  "flight_status": [
-    "status"
-  ],
-  "book_flight": [
-    "flight"
-  ],
-  "pin_change": [
-    "account"
-  ],
-  "report_fraud": [
-    "account"
-  ],
-  "bill_balance": [
-    "bank"
-  ],
-  "nutrition_info": [
-    "qa"
-  ],
-  "meal_suggestion": [
-    "food"
-  ],
-  "order": [
-    "order"
-  ],
-  "credit_score": [
-    "bank"
-  ],
-  "reminder": [
-    "calendar"
-  ],
-  "change_language": [
-    "system"
-  ],
-  "replacement_card_duration": [
-    "account"
-  ],
-  "tell_joke": [
-    "fun"
-  ],
-  "min_payment": [
-    "bank"
-  ],
-  "change_user_name": [
-    "account"
-  ],
-  "direct_deposit": [
-    "bank"
-  ],
-  "book_hotel": [
-    "hotel"
-  ],
-  "thank_you": [
-    "system"
-  ],
-  "flip_coin": [
-    "fun"
-  ],
-  "bill_due": [
-    "bank"
-  ],
-  "credit_limit": [
-    "bank"
-  ],
-  "lost_luggage": [
-    "hotel"
-  ],
-  "reset_settings": [
-    "account"
-  ],
-  "weather": [
-    "qa"
-  ],
-  "definition": [
-    "qa"
-  ],
-  "todo_list_update": [
-    "calendar"
-  ],
-  "card_declined": [
-    "account"
-  ],
-  "transfer": [
-    "bank"
-  ],
-  "restaurant_reservation": [
-    "restaurant"
-  ],
-  "rewards_balance": [
-    "bank"
-  ],
-  "timer": [
-    "alarm"
-  ],
-  "cancel_reservation": [
-    "cancel"
-  ],
-  "order_checks": [
-    "order"
-  ],
-  "ingredients_list": [
-    "food"
-  ],
-  "next_song": [
-    "music"
-  ],
-  "who_made_you": [
-    "qa"
-  ],
-  "translate": [
-    "qa"
-  ],
-  "greeting": [
-    "system"
-  ],
-  "shopping_list_update": [
-    "order"
-  ],
-  "what_song": [
-    "qa"
-  ],
-  "balance": [
-    "bank"
-  ],
-  "who_do_you_work_for": [
-    "qa"
-  ],
-  "smart_home": [
-    "home"
-  ],
-  "schedule_meeting": [
-    "calendar"
-  ],
-  "repeat": [
-    "system"
-  ],
-  "meaning_of_life": [
-    "qa"
-  ],
-  "pto_balance": [
-    "bank"
   ]
 }
