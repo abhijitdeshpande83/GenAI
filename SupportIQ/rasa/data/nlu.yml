@@ -89,3 +89,36 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: bank
+  examples: |
+    - what's the most i can charge on my card
+    - how much do i have available on my visa card
+    - what is my visa credit limit
+    - tell me my credit limit
+    - what's the limit on my discover card
+    - how much is my maximum to spend on credit cards
+    - what is my state bank of india card credit limit
+    - how high is my credit limit
+    - my visa has what limit
+    - look up how high my visa limit is
+    - i would like help moving money between accounts
+    - can you assist me in moving money from one account to another
+    - i would like help moving money from one account to another
+    - i would like assistance moving money from one account to another
+    - i need to make a transfer of my money
+    - can i move some money between my two accounts
+    - i would like to distribute some money between my accounts
+    - i would like to transfer $100 from my checking to saving account
+    - transfer seventeen dollars from rbs to woodforest account, please
+    - transfer $100 from my checking to saving account
+    - how long until my paycheck shows up
+    - what was the date when i last go paid
+    - what's the date on my last pay stub
+    - when is my paycheck arriving
+    - what day is payday
+    - how can i raise my credit score
+    - how is it possible to get a better credit score
+    - how can i up my credit score
+    - my credit score stinks but i don't know how to improve it
+    - give me some ideas for boosting my credit score

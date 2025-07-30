@@ -1,0 +1,617 @@
+version: '3.1'
+intent:
+  - event
+  - bus
+  - media
+  - movie
+  - rentalcar
+  - ridesharing
+  - weather
+  - flight
+  - home
+  - calendar
+  - music
+  - bank
+  - restaurant
+  - travel
+  - service
+  - hotel
+responses:
+  utter_event:
+  - text: Do you prefer any specific type? You could say music, sports, or something else. Is there any specific city I ought to look in?
+  - text: I discovered 10 events you may enjoy. The event is Buddy Guy, which will begin at 7:30 pm today at Sony Hall.
+  - text: The activity is located at 235 West 46th Street and is a Blues activitiy.
+  - text: There is a Crooked Colours event starting at 6:30 pm today at Rough Trade NYC.
+  - text: How many tickets do you wish to get?
+  - text: 'Please verify the following information: you have 3 tickets booked for the Crooked Colours event on today at New York.'
+  - text: Your booking is confirmed; have fun at the event! The event is at 64 North 9th Street, Brooklyn.
+  - text: Could I assist you with something else?
+  - text: Have a pleasant afternoon.
+  - text: What city do you want to go to? What kind of events? Music, sports or something else?
+  - text: The Falcons Vs Buccaneers is at 7:30 pm next Monday at the Mercedes-Benz Stadium.
+  - text: The Falcons Vs Jaguars are playing at the Mercedes-Benz Stadium at 6 pm on March 9th.
+  - text: Would you like to order tickets?
+  - text: 'To verify: You want 4 tickets to the Falcons Vs Jaguars game in Atlanta on March 9th.'
+  - text: Your tickets are confirmed. Enjoy the game.
+  - text: Is there anything else I can do for you?
+  - text: Have a wonderful day.
+  - text: Do you want me to find a specific category of events?
+  - text: What city should i search in the events?
+  - text: I got 1 event which is Todd Rundgren at Napa Valley Performing Arts Center and will be held today at 6:30 pm.
+  - text: It is a pop event and will take place in 100 California Drive.
+  - text: How many tickets would you like me to reserve?
+  - text: 'Please confirm the details: You want me to reserve 4 tickets for Todd Rundgren at Yountville for today.'
+  - text: Your reservation is booked and confirmed.Have fun.
+  - text: I am glad, I could help. Thank you.
+  - text: What do you have in mind? Music? Sports?
+  - text: Well, there's the Blue Jays Vs Astros at 6:30 pm, March 13th at the Rogers Centre.
+  - text: Well, today we have the Blue Jays Vs Braves at Rogers Centre. First pitch is 8 pm.
+  - text: 1 Blue Jays Way.
+  - text: Should I pick you up some tickets?
+  - text: How many?
+  - text: Ok. 1 seat for the Blue Jays Vs Braves today in Toronto. Please confirm.
+  - text: And you have a ticket. Enjoy.
+  - text: You want me to get you anything else?
+  - text: Then enjoy the ballgame.
+  utter_bus:
+  - text: It would be my pleasure to help you. Where will you be departing from?
+  - text: There are 9 buses available for you. I've found a buss that departs at 6:50 am and has 1 transfer. The cost will be $66.
+  - text: There is another bus which departs at 7 am and has 1 transfer. This ticket costs $67.
+  - text: Would you like to purchase tickets for this bus?
+  - text: Thank you for inquiring, and enjoy your day.
+  - text: Where are you leaving from?
+  - text: When do you plan to leave?
+  - text: I found 10 buses for you. There is a bus that departs at 8:20 am and will cost $24. It has 0 transfers.
+  - text: The origin station will be Santa Fe Depot. The destination station is Downtown Station.
+  - text: Do you want to buy tickets for this bus?
+  - text: Is there anything else I can help you with?
+  - text: Have a great day.
+  - text: What is your present location?
+  - text: What is your destination City?
+  - text: The departure time of bus is 7:40 am and it has 0 transfers with ticket price $28.
+  - text: Yes, what about a bus leaves at 7:50 am with 0 transfers under ticket cost $28?
+  - text: Have a good day.
+  - text: What is the departure location and time?
+  - text: I found 10 buses. The first departs at 7 am, has 0 transfers and is $50.
+  - text: The destination is Union Station and it departs from Salesforce Transit Center.
+  - text: I found 9 buses for you. The first depart at 7:40 am and cost $41. The bus has 0 transfers.
+  - text: One departs at 8:40 am and costs $41. It has 0 transfers.
+  - text: Would you like to purchase tickets now?
+  - text: Have a wonderful day!
+  - text: Sure! Where do you plan to go?
+  - text: Noted. And where will you be leaving from?
+  - text: There is a direct bus with 0 transfers, departing at 7:50 am and this will cost you $43.
+  - text: No problem, have a great day!
+  - text: sure. can i know your departcher place.
+  - text: Thanks. When are you planning to travel.
+  - text: what will be your destination city.
+  - text: I have found a bus for you. The bus departs at 2:10 pm and it will cost you $36. This bus has 0 transfers.
+  - text: There are 8 options available as per your information provided. I also have best option for you. The bus will depart at 10:10 am and it will cost you $23. This bus has 0 transfers.
+  - text: Thanks. should i proceed with booking for this bus.
+  - text: Do u want some more information. how can i help you
+  - text: thanks. have a great day
+  utter_media:
+  - text: What type of movie do you like to watch ? whether you need subtitles?
+  - text: Ok check and review the details . Play Body Double with subtitles.
+  - text: Playing the movie , enjoy and relax yourself
+  - text: whether is there any other information you need to find?
+  - text: take care have a great day
+  - text: Which movie do you want to watch?
+  - text: Do you want to play Dr. Strangelove without subtitles?
+  - text: Do you want to play The Upside without subtitles?
+  - text: Started playing the movie. Please enjoy the movie.
+  - text: Can I help with anything else?
+  - text: Have a great day!
+  - text: So you want to watch the Mustang without subtitles?
+  - text: I started playing it.
+  - text: It is directed by Laure de Clermont-Tonnerre.
+  - text: Have a great day.
+  - text: 'Do you want to play How to Train Your Dragon: The Hidden World without subtitles? I need to confirm this.'
+  - text: The movie is directed by Dean Deblois. It is an Animation movie released in 2019.
+  - text: Good bye.
+  - text: What kind of movie i need to search and play?
+  - text: 'Please check the details: Play Gloria Bell without subtitles.'
+  - text: It is directed by Sebastian Lelio and i started playing the movie
+  - text: Whether i need to help for anything else?
+  - text: Take care Have a great day
+  - text: Do you have a particular movie in mind?
+  - text: So you are absolutely sure you want to watch JT LeRoy.
+  - text: I started the movie for you.
+  - text: Enjoy the movie!
+  - text: What would you like to watch?
+  - text: 'You want to watch the movie: Ash is Purest White without subtitles'
+  - text: Your movie is playing.
+  - text: Enjoy your movie!
+  - text: What movie would you like to see?
+  - text: 'Please confirm: Play The Upside, without subtitles.'
+  - text: I will start playing it. It's a Comedy directed by Neil Burger.
+  - text: Is there anything else I can help with?
+  - text: Enjoy your day!
+  utter_movie:
+  - text: Where are you located?
+  - text: 'I found 7 movies which are Breakthrough, How to Train Your Dragon: The Hidden World of Little. Do you want to know the other options?'
+  - text: How about Shazam! or The Curse of La Llorona?
+  - text: What date would you like to go?
+  - text: I found 1 showing on March 5th at 10:30 pm at CineLux Almaden Cinema.
+  - text: Have a good day!
+  - text: Please give me your location.
+  - text: I have found The Curse of La Llorona, is that a movie you are interested in?
+  - text: Can I help you purchase tickets?
+  - text: What day are you interested in going to see the movie?
+  - text: I have found 1 showtime for that day at 9:30 pm at the Veranda LUXE Cinema & IMAX, will that work for you?
+  - text: The address for Veranda LUXE Cinema is 2035 Diamond Boulevard.
+  - text: Tickets are $22 per person.
+  - text: Enjoy your day!
+  - text: Sure. What city?
+  - text: Ok. Perhaps Dumbo, Hellboy, Or Hotel Mumbai?
+  - text: Ok, would you like to buy tickets?
+  - text: Anything else I can do?
+  - text: What day?
+  - text: It plays just at 5 pm at the AMC Mercado 20
+  - text: $7 per person for that show
+  - text: Anything else I can do?
+  - text: Take care please
+  - text: Where are you at?
+  - text: Hellboy is playing. How does that sound?
+  - text: Do you want to purchase tickets now?
+  - text: There is 1 show at 5:30 pm in CineLux Tennant Station Stadium 11.
+  - text: Have a great day!
+  - text: Ok, Captain Marvel and Little are playing. Would you like to see either of those 2 movies?
+  - text: Which day you would like to see the movie?
+  - text: Ok, there is 1 movie showing on that date at 3:30 pm at Boulevard 14 Cinema.
+  - text: Have a nice day.
+  - text: Where are you currently located at?
+  - text: I have found 5 movies showing in that area. Would you like to watch Hackers, High Life or Sunset?
+  - text: Sure, how about The Best of Enemies or Wild Nights with Emily?
+  - text: Would you like to make a ticket reservation for that movie?
+  - text: Sure, no problems. Can I further assist you?
+  - text: Yes, there is currently 1 showtime for this movie at 9:30 pm in Rialto Cinemas.
+  - text: Could I further assist you in anything else?
+  - text: No issues, have a great day ahead.
+  utter_rentalcar:
+  - text: Sure. What time will you pick it up? What date will you return the car?
+  - text: Where will you be picking it up? What day?
+  - text: I have 6 cars for you. There's a standard car, an Altima, available at Port Authority Station next Monday
+  - text: Would you like to book a reservation?
+  - text: Is there anything else I can do?
+  - text: Have a good day
+  - text: On which day would you like to return the car?
+  - text: I have 5 cars available. A nice Accord, Standard is available for pickup at Grand Central Station next Wednesday.
+  - text: A Standard Camry is available at JFK International Airport on next Wednesday.
+  - text: Would you like to make a reservation?
+  - text: Glad I could help, have a great day!
+  - text: How long will you need the car?
+  - text: At what location will you be picking it up?
+  - text: At what time will you need to pick it up?
+  - text: I found a Standard Accord at Sky Harbor International Airport ready for pickup on March 9th.
+  - text: Would you like to reserve it?
+  - text: So, you'll be picking up a Standard car from Sky Harbor International Airport on March 9th, at 4:30 pm, and dropping it off on March 14th?
+  - text: I've successfully reserved your car. It's going to cost you $165.
+  - text: Are there any other matters you need help with?
+  - text: Always a pleasure. Enjoy your day.
+  - text: What time?
+  - text: What day would you like it?
+  - text: Can I have a pick up location?
+  - text: There are 4 standard cars. How about an Accord at the SMF International Airport next Monday?
+  - text: $102
+  - text: There's a standard altima available located at Port Authority Station next monday.
+  - text: $84
+  - text: Would you like to reserve this car?
+  - text: 'Great, please confirm the car booking details: A standard car will be picked up from Port Authority Station next Monday at 6 pm until next Thursday.'
+  - text: The car is now reserved
+  - text: Is there something else I can help with?
+  - text: Have a wonderful day
+  - text: What's your preferred pick-up location, and for how many days would you like to rent the car?
+  - text: What time would you like to get it?
+  - text: I've found 9 cars that might interest you. How about the Standard Camry available for pickup from Toronto Pearson International Airport, next Tuesday?
+  - text: The total cost of your reservation is $35.
+  - text: Okay. The search has yielded 8 cars that might interest you. What do you think about the Compact Cooper available for pickup from Toronto Pearson International Airport, next Monday?
+  - text: The total cost of your reservation is $54.
+  - text: What do you think about the Standard Cruze available for pickup from Toronto Pearson International Airport, next Monday?
+  - text: Would you like to reserve this car?
+  - text: Will there be anything else?
+  - text: Have a wonderful day.
+  utter_ridesharing:
+  - text: Please tell the number of passengers ?
+  - text: To which place ride should go to?
+  - text: 'Please review the following details: Destination place is 3090 Olsen drive for 1 people and ride type is shared'
+  - text: Reservation is done and the cab is on its way. The ride last about 19 minutes and its costs i $13.43
+  - text: Whether any other help needed?
+  - text: Take care have a good day
+  - text: Are you looking for a ride share or a normal cab? How many people will be riding in the cab?
+  - text: 'Please confirm the following: you want a ride share for 1 person going to Skates On the Bay.'
+  - text: Your ride has been booked and is coming now.
+  - text: Is there anything else I can help you with?
+  - text: Enjoy the rest of your day.
+  - text: Where do you want to go? How many people are coming with you?
+  - text: So you want a cab for 3 people to 168 South Murphy Avenue?
+  - text: Your ride is booked and the cab is coming and the ride will be around 12 minutes long.
+  - text: Do you need anything other than that?
+  - text: Have a good day!
+  - text: Where to and would you like a shared ride?
+  - text: To confirm then you want a shared ride, cab for 4 to Mariscos El Patron.
+  - text: Your cab is booked and will be with you shortly. The journey should be around 13 minutes.
+  - text: Can I assist you with anything else?
+  - text: Have a lovely day.
+  - text: Where would you like the ride to and how many?
+  - text: Do you want a shared ride?
+  - text: Please confirm address of 3515 20th Street A for 1 with shared ride.
+  - text: Your ride is confirmed and on the way.
+  - text: Is there anything else I can help you with?
+  - text: Thank you and enjoy your trip.
+  - text: Would you like to ride share? How many people will the cab be for?
+  - text: Where will you be heading?
+  - text: Can you confirm that your cab will be for 1 person and you want to ride share to 1118 East Pike Street?
+  - text: Okay, your ride has been confirmed and is on its way. Your ride should be about 9 minutes.
+  - text: It will cost you $14.50.
+  - text: Can I help you with anything else?
+  - text: Have a pleasant day.
+  utter_weather:
+  - text: What city are you checking the weather for?
+  - text: The average temperature is 80 degrees with a 1 percent chance of rain.
+  - text: What kind of food would you like to eat? Indian, Italian, etc.?
+  - text: I found 1 restaurant. Bud's Pub & Grill in Dixon.
+  - text: The address is 100 South 1st Street.
+  - text: There is no live music. The phone number is 707-678-4745
+  - text: Do you want to reserve a table?
+  - text: What time is the reservation for?
+  - text: "Please confirm: A table for 2 at Bud's Pub & Grill in Dixon on March 1st at 11:30 am."
+  - text: Your reservation has been made. The prices are moderate.
+  - text: Anything else I can help with?
+  - text: Have a great day.
+  - text: The temperature in Sonoma is 85 degree with 6 percent chance of rain
+  - text: it will be 21 percent humidity
+  - text: Schellville grill is a good barbecue restaurant in sonoma
+  - text: sorry i was unable to find any other restaurants. is there anything else i can do for you
+  - text: i found 1 himalayan restaurants in sonoma called taste of the himalayas
+  - text: what time would you like to go there
+  - text: please confirm your reservation for 2 people at taste of the himalayas in sonoma on march 1st at 12:45 pm
+  - text: please confirm your reservation for 3 people on march 8th
+  - text: Please confirm your booking for 3 people at taste of the himalayas on march 8th at 12:30 pm. They do dont have live music and their phone number is 707-996-1161
+  - text: have a nice day
+  - text: Which city should I check it for?
+  - text: The temperature is expected to be 91 degrees with a 13 percent chance of rain.
+  - text: Humidity is expected to be around 40 percent and wind speed is at 2 miles per hour.
+  - text: The temperature is expected to be 88 degrees with a 27 percent chance of rain.
+  - text: Any food specifications?
+  - text: Bazille in Palo Alto is a great place
+  - text: How about bird dog in Palo Alto
+  - text: No, Live music isn't available.
+  - text: Booking a table for 1 at bird dog in Palo Alto on March 13th at 1 pm.
+  - text: They are moderate in prices and are located at 420 ramona street. Your booking is confirmed.
+  - text: Do you need my help with something else?
+  - text: Pleasure is mine. Have a great time there.
+  utter_flight:
+  - text: Sure. Where are you going to and where will you be flying from?
+  - text: Do you have any departure dates in mind?
+  - text: There is a Delta Airlines flight that leaves at 5:35 pm, has 1 stop and is priced at $364.
+  - text: Do you want me to buy tickets for you?
+  - text: Can I assist you with anything else?
+  - text: Have a great day!
+  - text: When and where are you leaving from to which place?
+  - text: Found 3 flights. An outbound flight in Air Canada Airlines which leaves at 4:45 pm with 1 stop and the ticket cost will be $263.
+  - text: Yes, found 1 outbound flight in Delta Airlines which leaves at 2:50 am with 1 stop and the price is $309.
+  - text: Have a happy journey.
+  - text: Where are you leaving from?
+  - text: Where are you planning to visit?
+  - text: There is an American Airlines flight that leaves at 10:55 am, has 0 stops and costs $96.
+  - text: Have a wonderful day.
+  - text: Do you have the date when you plan to leave? What place are you planning to visit? Which will be your departure location?
+  - text: I see that there is an American Airlines flight. The departing flight will be at 12:05 pm with 1 stop. The ticket will cost $208.
+  - text: Have a good day.
+  - text: Can you give embarkation time and place with destination?
+  - text: I think American airlines leaving at 5:05 am will be suitable for you. It has 0 stops and fare is $182.
+  - text: Alaska airlines leaving at 4:20 pm with 0 stops will be comfortable then. The ticket fare is $168
+  - text: Delta airlines leaving at 1:40 pm with 0 stops is available. its fare is $180
+  - text: Have a great day sir.
+  - text: What day do you want to depart, where will you depart from and where do you want to go?
+  - text: I have located 2 flights for you. One is a Delta Airlines flight that leaves at 5:50 pm and it has 1 stop. It costs $295.
+  - text: I have 1 flight that will work for you. It is on United Airlines, departing at 10:05 pm, with 1 stop. The price is $324 for the ticket.
+  - text: The flight leaves from Kingsford Smith International Airport. I'm sorry but the ticket is not refundable.
+  - text: Have a great day.
+  - text: Which city are you departing from? And where are you intending to go?
+  - text: Delta Airlines do have a flight. It leaves at 7:50 am and has just 1 stop. The ticket price is $334.
+  - text: Do you want to go ahead and purchase?
+  - text: Have a great day.
+  - text: What is your planned destination, and your planned site of departure?
+  - text: I found an American Airlines flight, which the outbound flight for leaves at 4:45 pm, has 0 stops, and a ticket for which costs $100.
+  - text: Would you like to purchase a ticket for it?
+  - text: Enjoy the rest of your day.
+  utter_home:
+  - text: How many bedrooms do you need?
+  - text: I found 10 nice apartments. One very good property is the Alborada Apartments on 1001 Beethoven Common. It has 3 bedrooms, 2 baths and the rent is $3,900 per month.
+  - text: The phone number is 510-797-1800. Yes, they do allow pets.
+  - text: Another very good apartment is Amber Court located at 34050 Westchester Terrace. It has 3 bedrooms, 2 baths, and the rent is $3,500 per month.
+  - text: Would you like to schedule a visit?
+  - text: I am scheduling you a visit to Amber Court for next Monday, is that correct?
+  - text: Apartment visit confirmed.
+  - text: Can I assist you with anything else?
+  - text: Have a good day.
+  - text: Which type of apartment you need?, with how many rooms?
+  - text: Apartment should be in which area?
+  - text: Found results for 10 apartments. 888 Golden Saratoga-Cupertino Apartment homes located at 1546 Maurice Lane. This apartment has 3 bed rooms with attached bath rooms. The rent is 4450 dollars per month
+  - text: No, the apartment is not furnished and pets are not allowed there.
+  - text: Aegena at 1290 San Tomas Aquino Road is a good one and this apartment has 3 bed rooms with baths and the rent is 4900 dollars per month.
+  - text: Found results for 9. Anton La Moraga Apartments at 5822 Charlotte Drive with 3 bed rooms and baths and the rent is 4850 per month.
+  - text: Can I schedule a visit to there?
+  - text: When do you want?
+  - text: Please confirm the schedule as a Visit to Anton La Moraga Apartments on next Wednesday.
+  - text: Yes, confirmed, pets are allowed. Contact number is 408-226-5822. Your schedule is confirmed.
+  - text: Have a good day
+  - text: I can help with that but I need some additional information. How many bedrooms do you want and what area should I search in?
+  - text: My search located 4 nice apartments meeting these requirements. Baycliff Apartments is a great 2 bed and 2 bath apartment located at 2300 Lancaster Drive renting for 4000 dollars per month.
+  - text: I found another great 2 bed and 2 bath apartment at Bella Vista At Hilltop located at 3400 Richmond Parkway renting for 3950 dollars per month.
+  - text: The phone number is 510-662-6726. It's not furnished.
+  - text: To confirm, you'd like to schedule a tour at Bella Vista At Hilltop next Wednesday.
+  - text: I've scheduled an apartment tour for you.
+  - text: Happy to help. Have a great day.
+  - text: In which area?
+  - text: There are 10 apartments, one of these is 888 Golden Saratoga-Cupertino Apartment Homes, located at 1546 Maurice Lane. It has 1 bed rooms and 1 baths. The rent per month is $1,600
+  - text: 'At 947 Branham Lane # C there is Almaden Garden Apartments: it has 1 bed rooms and 1 baths and it costs $1,850 per month'
+  - text: Yes, animals are allowed.
+  - text: No, it is not furnished.
+  - text: 'I book a visit to Almaden Garden Apartments on March 9th: do you confirm?'
+  - text: 'I book a visit to Almaden Garden Apartments next Friday: do you confirm?'
+  - text: Phone number is 408-265-4808. Your visit to the apartment has been booked.
+  - text: Have a nice day
+  utter_calendar:
+  - text: It is a pleasure for me, Which date i need to check?
+  - text: The event will start at 10 am and the event is Dentist appointment.
+  - text: The event will start at 10:30 pm and you need to go for a Movie show.
+  - text: On March 13th, you have an emply slot starting at 8 pm and slot ends at 10:30 pm
+  - text: Take care Have a great day
+  - text: You have a stylist appointment at Philgood Cuts at 3:30 pm.
+  - text: You have a Westside Gunn concert for 7:30 pm.
+  - text: Is there anything else I can assist you with?
+  - text: You have time available next Wednesday between 9:30 pm and midnight.
+  - text: Enjoy your day.
+  - text: Please tell me which date you want to know.
+  - text: There are 3 events scheduled for you. The first one is Doctor appointment at 11 am.
+  - text: You have a Baseball game at 5 pm.
+  - text: You are free from 8 am to 4 pm.
+  - text: Thanks for being patient and please have a wonderful day.
+  - text: On that day, you will be watching a 10:30 pm showing of a movie at The New Parkway Theater.
+  - text: On March 10th, you have free time spanning from 8 am to 1:30 pm.
+  - text: Do I need to help you any further?
+  - text: Enjoy your day.
+  - text: What date were you inquiring about?
+  - text: You have a Dentist appointment with Bautista Maximilian at 4 pm.
+  - text: Next Monday there is an empty slot from 8 am to 2:30 pm.
+  - text: Anything else I can do for you?
+  - text: Have a great day.
+  - text: What date I should look for?
+  - text: There is a Soccer game event at 5 pm.
+  - text: You are available at 2:30 pm till 5 pm on March 9th.
+  - text: I am glad I could help. Have a nice day.
+  - text: Okay, you have an event at 7 pm, it's a movie show.
+  - text: Yes, you have a reservation for 6 people at Rocker Oysterfeller's for 11:30 am.
+  - text: Yes, there are 2 scheduled events. There is a Joe Hisaishi concert that starts at 7:30 pm.
+  - text: There is an empty slot from 8 am to 7:30 pm.
+  - text: Is there anything else I can help you with?
+  - text: Okay, have a nice day.
+  utter_music:
+  - text: I managed to find 1 song for you by Major Lazer. The song is called Light It Up from the album Essentials. What do you think?
+  - text: The song is Moombahton.
+  - text: Should I play the song?
+  - text: I will be playing Light It Up on the TV. Is that correct?
+  - text: Hope you enjoy the song.
+  - text: Enjoy your day.
+  - text: How about Dark Necessities by Red Hot Chili Peppers from the album The Getaway?
+  - text: The song is from 2016.
+  - text: Would you like to hear the song?
+  - text: So you'd like to play Dark Necessities on Kitchen speaker?
+  - text: The song has begun.
+  - text: It is Pop.
+  - text: Have a nice day.
+  - text: I have 4 suggestions. How about Ivy by Frank Ocean in the album Blonde?
+  - text: I have 3 suggestions. How about Nights by Frank Ocean in the album Blonde?
+  - text: Should I play the song?
+  - text: So I should play Nights on the TV?
+  - text: The song has begun. Enjoy.
+  - text: Can I help you with anything else?
+  - text: Have a nice day.
+  - text: Do you want to listen to Adorn by Miguel from the album Kaleidoscope Dream.
+  - text: No, it's from the year 2012.
+  - text: There is African Beauty by Diamond Platnumz from the album A Boy From Tandale.
+  - text: The song is from 2018.
+  - text: African Beauty to play on the TV?
+  - text: African Beauty playing on the Kitchen speaker.
+  - text: Enjoy your song African Beauty.
+  - text: Is there anything else you need?
+  - text: Have a good day.
+  - text: Sure, How does Before I leave by Jah Cure off the album World Cry sound?
+  - text: 'Great, please confirm: play Before I Leave on TV. Is this correct?'
+  - text: Ok, Music is confirmed
+  - text: This is from 2010. This is a Reggae song.
+  - text: your welcome. Have a great day
+  utter_bank:
+  - text: In checking or savings?
+  - text: Your checking account has $5,118.77.
+  - text: To whom?
+  - text: And what amount would you like to transfer?
+  - text: "Please confirm: Transfer $1,630 from your checking account to Amir's checking account."
+  - text: Your transfer is complete.
+  - text: Your checking account has $3,488.77.
+  - text: Have a nice day.
+  - text: You have $24,344.68 in your checking account.
+  - text: You have $6,175.85 in your savings account.
+  - text: How much amount would you like to transfer?
+  - text: Whom do you want to send the money to?
+  - text: "Please confirm: You want me to transfer $1,180 from savings account to Maria 's checking account."
+  - text: Your fund has been transferred successfully.
+  - text: You have $4,995.85 in your savings account.
+  - text: I am glad I could help. Have a nice day.
+  - text: Which account should I use?
+  - text: Your checking account balance is $11,119.11
+  - text: How much would you like to transfer?
+  - text: Transfer $980 bucks from your checking account to Amir's checking account. Please confirm this.
+  - text: The transfer was successful.
+  - text: Your checking account balance is $10,139.11
+  - text: Anything else I can help?
+  - text: Have a good day.
+  - text: I found more than one account. Which one should I use?
+  - text: Your savings account has a balance of $15,382.30.
+  - text: Your checking account has a balance of $5,783.31.
+  - text: "I need additional information: Please say the name of person you'd like the money sent to, and the amount to be transferred."
+  - text: "Let me see if I got everything correctly: Transfer $1,740 from my checking account to Abhinav's savings account."
+  - text: Your transfer has been successful.
+  - text: Your checking account balance is $4,043.31.
+  - text: Would you like to transfer funds from this account?
+  - text: Is there anything else I can help you with?
+  - text: Have a nice day.
+  utter_restaurant:
+  - text: Do you have a specific which you want the eating place to be located at?
+  - text: Is there a specific cuisine type you enjoy, such as Mexican, Italian or something else?
+  - text: I see that at 71 Saint Peter there is a good restaurant which is in San Jose.
+  - text: If you want to go to this restaurant you can find it at 71 North San Pedro Street.
+  - text: If you want to phone them you can at 408-971-8523.
+  - text: How would you like Bazille restaurant which is situated in San Jose.
+  - text: I see that 7 restaurants suit to what you requested. Bird Dog seems as a good restaurant and is located in Palo Alto.
+  - text: For which time do you want the booking to be?
+  - text: Can you please confirm that you want to book a table for 2 at 11:30 am at the Bird Dog restaurant in Palo Alto for today.
+  - text: Your booking has been made without errors, but unfortunately they do not have live music.
+  - text: The restaurant is located at 420 Ramona Street. Unfortunately they do not serve alcohol at the restaurant.
+  - text: Have a good time!
+  - text: Sure, I will help you, What type of food are you looking for? Which city should i search in?
+  - text: I found a good restaurant in Milpitas, The restaurant name is Anjappar Chettinad Restaurant
+  - text: Price range is moderate, The address is Milpitas Square
+  - text: I found another restaurant for you, Aria Dining & Banquets Fine Indian Cuisine Restaurant at Milpitas
+  - text: I found 2 Restaurants, Olive garden Italian Restaurant at Milpitas
+  - text: shall i reserve a table here for you?
+  - text: please tell me what time is the reservation for?
+  - text: 'Please confirm the following details: Booking a table at Olive Garden Italian Restaurant at Milpitas on March 11th reservation time is 1:30 pm, The reservation is for 2 people'
+  - text: 'Please confirm the following details: the reservation time is 12 pm, The reservation is for 1 people'
+  - text: Congrats, your reservation is confirmed
+  - text: Sorry, They don't have live music, The restaurant address is 1350 Great Mall Drive
+  - text: Shall i help you with anything else?
+  - text: You are welcome, have a great day
+  - text: In which city are you looking for the restaurant and do you have any preferred cuisine?
+  - text: Of the 4 Ethiopian restaurants in Berkeley, Addis Restaurant is a good one.
+  - text: I'm sorry. They do not have live music.
+  - text: At what time will you be arriving at the restaurant?
+  - text: Please confirm that you want to reserve a table for 2 at the Addis Restaurant in Berkeley for tomorrow at 5:15 pm.
+  - text: Sorry the reservation was not successful. Is there anything else I can assist you with?
+  - text: Okay.Please confirm that you want to reserve a table for 2 at the Addis Restaurant in Berkeley for tomorrow at 5:30 pm.
+  - text: Your table has been reserved.
+  - text: Have a great day!
+  utter_travel:
+  - text: Where would you like me to look?
+  - text: What about the historical landmark Alcatraz?
+  - text: Fort Funston is a Park in that area.
+  - text: What about Dogman, Ramen Shop, or Red Joan?
+  - text: What about Supa Modo, The Innocent of The Mustang?
+  - text: Would you like to go ahead and purchase tickets?
+  - text: Can I assist you with anything else?
+  - text: What kind of movies would you like to see?
+  - text: I found 1, how about The Curse of La Llorona?
+  - text: 'Please confirm: play The Curse of La Llorona without subtitles.'
+  - text: Started the movie. It's director is Michael Chaves.
+  - text: Is there anything else I can help with?
+  - text: Enjoy!
+  - text: Where would you like to look?
+  - text: Alcatraz is an historical landmark you may like.
+  - text: WOuld you enjoy Ash Is Purest WHite, Captain Marvel, or Citizen Kane?
+  - text: Can I do anything else for you?
+  - text: I found 1, Blackmail - Cinemix Par Chloe.
+  - text: You want Blackmail - Cinemix Par Chloe without subtitles, correct?
+  - text: I could not play the film. Can I do anything else for you.
+  - text: Okay enjoy your day.
+  - text: What city are you looking in?
+  - text: I found 10 attractions for you. How about the Historical Landmark Alcatraz?
+  - text: What about Ash is Purest White, Captain Marvel or Citizen Kane?
+  - text: Do you want to purchase tickets?
+  - text: Is there anything else I can help you with?
+  - text: What type of movies do you like?
+  - text: I found 1 movie for you, it is The Curse of La Llorona.
+  - text: Okay, you want to play The Curse of La Llorona without subtitles, right?
+  - text: I have started playing the movie. The movie is directed by Michael Chaves.
+  - text: Have a great day.
+  - text: Which city will you be going to?
+  - text: There are 10 ideas for you, what about the historical landmark Alcatraz.
+  - text: There is Ash Is Purest White on or Captain Marvel or Citizen Kane?
+  - text: What do you think about Dogman, Dumbo or Family?
+  - text: Would you like me to buy tickets for you?
+  - text: What genre will I search for?
+  - text: There is 1 called The Curse of La Llorona.
+  - text: To confirm then you want The Curse of La Llorona without subtitles.
+  - text: Movie has now started.
+  - text: Have a good one and enjoy the movie.
+  utter_service:
+  - text: What city should I go to look for it?
+  - text: There are 6 salons in Concord. Breds Barbershop looks to be the best option so far.
+  - text: Their rating is 3.7.
+  - text: Their number is 925-446-4144 and their address is 4330 Clayton Road suite j.
+  - text: There is another in Concord called Empire Barbershop.
+  - text: First Class Barber Shop is another nice salon. It it also located in Concord.
+  - text: What date will your appointment be?
+  - text: Please confirm that the name of the place is First Class Barber Shop, the appointment is at 6:30 pm, and the appointment will take place on March 13th.
+  - text: Your appointment is confirmed and ready.
+  - text: Have a good day!
+  - text: What city would you like the salon to be in?
+  - text: "I've found 10 possible options for you: 1512 Barber Shop on 1532 20th St in San Francisco might be suitable."
+  - text: 1512 Barber Shop is a unisex salon with a 4.8 rating.
+  - text: Would you like to book an appointment?
+  - text: What are the details for you appointment? What time and date would you like to book it for?
+  - text: "To review: You'd like to book an appointment at 3:30 pm, next Thursday, at 1512 Barber Shop."
+  - text: "To review: You'd like to book an appointment at 3 pm, next Thursday, at 1512 Barber Shop - does that sound right?"
+  - text: "To review: You'd like to book an appointment at 3:30 pm, at 1512 Barber shop, on March 14th."
+  - text: Your appointment has been booked.
+  - text: Have a great day.
+  - text: The best salon in vacaville is primo's Barbershop.
+  - text: Please let me know the date and time on which the appointment to be made?
+  - text: Please check and confirm the details. salon name is Primo's barbershop, time of appointment is 12 pm and day after tomorrow is appointment date.
+  - text: Appointment on the date is confirmed. the phone number of salon is 707-689-5136 and its rating is 4.5.
+  - text: great day
+  - text: Where are you trying to get your hair done?
+  - text: How about 17 Jewels Salon in Oakland, I hear it's nice
+  - text: What about this other Oakland salon called Benny Adem Grooming Parlor
+  - text: You can reach them at 510-227-4268 and they're at 408 14th Street
+  - text: Bibo Salon in Oakland has great reviews
+  - text: Shall I book an appointment for you then?
+  - text: What time then?
+  - text: Confirming your 12:30 pm Bibo Salon appointment today
+  - text: Ok glad I was able to book it
+  - text: Can't wait to see your new hair!
+  utter_hotel:
+  - text: What is check in date, where and what hotel?
+  - text: How long is your stay?
+  - text: Confirm check in is next Monday 4th of March and I want a room at Comfort Inn Kings Cross in London, UK for 3 days for 1.
+  - text: Your room is confirmed and it does not have wifi.
+  - text: The hotel is 3 star.
+  - text: Is there anything else I can do?
+  - text: Have a great day.
+  - text: In which city would you like me to make the reservation? Please let me know whether you have a preferred hotel, and the length of your stay.
+  - text: 'Let me see if I got everything correctly: You would like to check in to 1 room tomorrow, for 3 days, at the Sanctuary Hotel New York, in New York.'
+  - text: Your Reservation has been made. The hotel has wifi, and you can reach them at +1 212-234-7000.
+  - text: Have a nice day.
+  - text: Sure, I can help you. Is there a particular hotel you're interested in?
+  - text: Okay, which city should I look in? How long will you be staying?
+  - text: Okay, let's confirm the details. You need 1 room for 4 days, checking in tomorrow at The Chamberlain Hotel located in London. Is this correct?
+  - text: Okay, let's confirm the details. You'll be staying at The Chamberlain Hotel for 2 days. Is that correct?
+  - text: I've made your reservation. The room is $200 per night and the phone number for the hotel is +44 20 7680 1500.
+  - text: Is there anything else I can do for you?
+  - text: Have a great day!
+  - text: Which hotel?
+  - text: Which city?
+  - text: How many days?
+  - text: Please confirm 3 rooms for 1 day in Ibis New Delhi Aerocity in Delhi with check in of next Tuesday.
+  - text: Please confirm 2 rooms in Ibis New Delhi Aerocity.
+  - text: Please confirm 3 days with check in next Tuesday.
+  - text: I've made your reservation for $138 per night.
+  - text: Have a nice day.
+  - text: Of course. What city do you have in mind? How many days will you be staying?
+  - text: Any particular hotel in mind?
+  - text: 'Please confirm the details for your stay in London: 1 room at the Hanover Hotel Victoria for 3 days, arriving next Tuesday.'
+  - text: I've confirmed that reservation. It's a 3 star hotel with no wifi.
+  - text: Always here to assist you
+  - text: What city would you like and have a preference at which hotel?
+  - text: Tell me the check in date please
+  - text: How many days do you want to stay there?
+  - text: In London 2 rooms for 3 days with the check in date today at hotel Hanover Hotel Victoria is that ok?
+  - text: Your booking was successful.
+  - text: Can I help you with something else?
+  - text: Have a great day!
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
