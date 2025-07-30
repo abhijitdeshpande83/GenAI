@@ -25,3 +25,4 @@
 /SupportIQ/output/model/roberta-finetuned-model/runs/
 /SupportIQ/output/model/roberta-finetuned-model/model.tar.gz
 /SupportIQ/output/model/roberta-finetuned-model/final_model/model.safetensors
+/SupportIQ/rasa/model/
