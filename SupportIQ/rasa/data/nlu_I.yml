@@ -1,9 +1,429 @@
 version: '3.1'
 nlu:
+- intent: calendar
+  examples: |
+    - I totally forgot my schedule and appointments of my calendar. Will you find events on my calendar?
+    - Actually it is on [March 5th](event_date).
+    - Ok Fine.It is a very useful information. Do i have any other events scheduled? Will you find on [March 13th](event_date)?
+    - Ok that's great and i need to know whether i am available on that day. Please find also that?
+    - Ok that's great and i need to thank you for your wonderful work.
+    - What is my calendar like for [Monday next week](event_date).
+    - Do I have anything scheduled for [Wednesday next week](event_date).
+    - That would be fine.
+    - When do I have some free time.
+    - That would be ok. That would be all.
+    - I am not sure when is my friend's birthday so I am going to check the calendar.
+    - My friend's birthday is on [the 9th](event_date).
+    - Let me look on [March 14th](event_date) to see if I have any other events scheduled.
+    - Great. When is my free time then?
+    - Great. Thanks so much.
+    - I want to check my calendar on the [10th of March](event_date).
+    - Great! I'm looking forward to that movie. What spare time do I have that day?
+    - That's good to know.
+    - You do not need to help me further. Thanks for reminding me of what I'm doing that day.
+    - I want to see the events on my calendar.
+    - I want to know about the [4th of this month](event_date).
+    - Thank you. When am I available?
+    - That sounds great.
+    - No, that's it. Thanks.
+    - Can you check events on my calendar?
+    - Look for the [9th of this month](event_date).
+    - Okay, That sounds perfect. Find me when I am available.
+    - Okay, That sounds great. That will be all.
+    - I'd like to check the events I have scheduled on [next Wednesday](event_date).
+    - Great, are there any other events scheduled?
+    - Is there anything else scheduled for the [9th of this month](event_date)?
+    - That's good, when am I available?
+    - Okay great.
+    - No, thank you.
+- intent: hotel
+  examples: |
+    - I want a hotel reservation for one room.
+    - Check in is [4th of March](check_in_date) and I want a room at [Comfort Inn Kings Cross](hotel_name) in [London, UK](destination).
+    - The stay is for [three](number_of_days) days.
+    - I accept, is there wifi?
+    - The the hotel a four star?
+    - Thank you for the help.
+    - No thanks that is all.
+    - I'll be out of town for the weekend. I'd like help making a hotel reservation for [Saturday this week](check_in_date).
+    - I would like a room for [three](number_of_days) days at the [Sanctuary Hotel](hotel_name) in [New York City](destination).
+    - Yes, sounds good. Please get me its phone number, and find out if they have wifi.
+    - Thanks a lot. That will be all for now.
+    - I'm traveling on business soon and I'll need a hotel reservation. I'll be checking in [2nd of March](check_in_date) and will need one room.
+    - Yes, I'd like to stay at [The Chamberlain Hotel](hotel_name).
+    - I'll be staying in [London, UK](destination) and I need the room for [four](number_of_days) days.
+    - On second thought, I'll only need the room for [2](number_of_days) days.
+    - Yes, that sounds great. Can you give me the hotel's phone number and how much it costs per night?
+    - Okay, thanks.
+    - No, that's all. Thanks for your help.
+    - Will you reserve three rooms in a hotel with check in of [next Tuesday](check_in_date)?
+    - [Ibis New Delhi Aerocity](hotel_name).
+    - [Delhi](destination).
+    - [1](number_of_days) day.
+    - No, make that 2 rooms.
+    - No, [three](number_of_days) days.
+    - Yes, that's fine. How much per night?
+    - Thanks, that's all.
+    - Can you book me a hotel room?
+    - I'm going to [London, England](destination) for [3](number_of_days) days.
+    - I need 1 room at the [Hanover Hotel Victoria](hotel_name). I'll arrive on the [5th of March](check_in_date)
+    - Yes please. Can I get the hotel's rating? Do they have any wifi?
+    - Thanks. I've got it.
+    - I need a hotel reservation for 2 rooms.
+    - Yes in [London, England](destination) at [Hanover Hotel Victoria](hotel_name).
+    - In [the 1st](check_in_date) will be the check in date.
+    - I want for [three](number_of_days) days.
+    - Yes is good
+    - Thank you !
+    - No.Thank you for your help.
+- intent: home
+  examples: |
+    - I need to find a 2 bathroom apartment in [Fremont](area).
+    - I need 3 bedrooms.
+    - What's the phone number? Do they allow pets?
+    - Can you continue searching?
+    - That sounds nice.
+    - Yes, how about for the [4th of this month](visit_date)?
+    - Yes, that is correct.
+    - Thanks.
+    - No, thank you.
+    - I need information about an apartment.
+    - I need 3 bed rooms apartment.
+    - In [San jose](area).
+    - Is the apartment is fully furnished. Is there any restrictions for pets there?
+    - Please get me details about some other apartments
+    - I need furnished apartment, can you find something like that?
+    - Yes, that sounds good.
+    - Yes, fix it.
+    - on [the 6th](visit_date)
+    - Yes, thats good, please also confirm about pets allowed or not and get me contact details.
+    - Thanks, that's all done
+    - I am looking for a two bathroom apartment.
+    - I'm looking for a two bedroom apartment in [Richmond](area) that allows pets.
+    - Great. Could you search for some other apartments?
+    - Do you have a phone number for the property and is it furnished?
+    - Sounds great. I'd like to schedule a tour on [Wednesday next week](visit_date).
+    - Yes, sounds good.
+    - Thanks for your help, that's all I needed.
+    - I need an apartment with one bed rooms
+    - I'd like to find it in [San Jose](area)
+    - Could you show me more results?
+    - Are animals allowed?
+    - Is the apartment already furnished?
+    - Ok, It's perfect! I would like to see the apartment on the [9th of this month](visit_date)
+    - No, I prefer on [8th of March](visit_date).
+    - Yes, It's perfect. Can you find the phone number?
+    - Thank you, It's all.
+- intent: travel
+  examples: |
+    - Can you find attractions for me?
+    - Look in [SFO](location).
+    - That's okay. Are there any other attractions around there? What about a park without an entry fee?
+    - Cool. I'd like to see a [Drama](genre) movie around there as well.
+    - Can you look for other movies?
+    - [Innocent](movie_name) sounds great.
+    - No, not right now.
+    - I'd like to watch a movie streaming online.
+    - What about a [scary](genre) movie?
+    - [The Curse of La Llorona](title) sounds great, go ahead and play now.
+    - Yes, thanks. Can you tell me the director?
+    - Thank you.
+    - No, thank you.
+    - I need to find some attractions.
+    - I need to find something in [SF](location).
+    - Great, I also need to find a movie in the area.
+    - [Captain Marvel](movie_name) would be great.
+    - I want to watch a [violent](genre) movie online. Something directed by [Alfred Hitchcock](directed_by).
+    - Please play [Blackmail - Cinemix Par Chloe](title).
+    - Yes that is correct.
+    - No thanks, that's all I need.
+    - I'm looking for some attractions to visit.
+    - I want to look in [SF](location).
+    - Okay, that sounds good. I also want to watch a movie there.
+    - [Ash is Purest White](movie_name) is perfect!
+    - No, not right now.
+    - I want to watch a movie online.
+    - A [horror](genre) movie would be great.
+    - The [Curse of La Llorona](title) sounds great, I'd like to watch it now.
+    - Yes, that is right. Who is the movie directed by?
+    - Thank you, that is all I needed.
+    - I fancy getting out and visiting somewhere new?
+    - something in [SF](location).
+    - that sounds good, I would like to watch a movie there too.
+    - Any other options?
+    - [Dumbo](movie_name) is excellent.
+    - No not right now but I do feel like watching a movie online.
+    - I love [scary](genre) movies.
+    - [The Curse of La Llorona](title) is an excellent choice, put it on now please.
+    - yes that is right
+    - Thanks for everything.
+- intent: ridesharing
+  examples: |
+    - Because of my busy schedule i miss my train will you help me to call a cab? I prefer Shared ride
+    - It is for 1 people
+    - Ride need to go to [3090 Olsen Drive](destination)
+    - wow, that's good .Please tell about its cost? How long is the ride?
+    - Thanks a lot
+    - No, thanks It's a great pleasure for your help
+    - Can you call me a cab? I'm going to [Skates on The Bay](destination).
+    - It is for just 1 person. I don't mind a ride share.
+    - That is correct.
+    - Thanks for the help.
+    - No, that is all, thanks.
+    - Can you call me a cab? I'm ok with a shared ride too.
+    - I need to get to [168 South Murphy Avenue](destination). It's for 3 people.
+    - Yeah, that works. How long will it take for me to get there?
+    - Thanks!
+    - No. Thanks alot for your help, though.
+    - I want a taxi cab for four.
+    - [Mariscos El Patron](destination) and a shared ride is fine.
+    - Yes that's it. How long will the journey take?
+    - Thanks for your help.
+    - No thanks for everything.
+    - Please call a cab for me.
+    - For 1 to the [Museum of London](destination).
+    - I would like to go to [3515 20th Street A](destination) and share ride is fine.
+    - Yes I confirm.
+    - Thank you for your help.
+    - No thank you.
+    - Would you help me find a cab company please?
+    - Only 1 person and I'm okay with sharing a ride.
+    - I have to go to [1118 East Pike Street](destination).
+    - Yes, that sounds good, how long will the ride be?
+    - How much will the cost of the ride be?
+    - Thank you very much.
+    - No, thank you for everything.
+- intent: movie
+  examples: |
+    - Can you show me some movie listings?
+    - I am in [San Jose](location). Also I want to see a 3D movie.
+    - Yes, please find me some other movies. I want to see something at [CineLux Almaden](theater_name).
+    - What times do you have available for [Curse of La Llorona](movie_name)? I've been wanting to see that!
+    - [March 5th](show_date).
+    - That will work! That is all I need.
+    - Can you help me find a movie to watch?
+    - I like [Horror](genre) movies and would also like to see a movie in [Concord](location). Can you search for one there?
+    - That sounds great, [The Curse of La Llorona](movie_name) it is!
+    - No, I am not ready to buy tickets but I would like to know the available times for the movie.
+    - I am thinking of going on [March 2nd](show_date) and I would like to see it at [Veranda LUXE Cinema](theater_name).
+    - Can you please give me the address for the theater?
+    - Can you also please tell me the price of the ticket?
+    - Ok, that will work. That's all I need.
+    - Find me a movie
+    - Make it movies in [Santa Clara](location)
+    - Yeah. I want to see [Dumbo](movie_name)
+    - Not right now thanks.
+    - What time does it show?
+    - I'll see it [this Saturday](show_date)
+    - And how much does it cost?
+    - Great
+    - No. Thanks so much
+    - A friend and I want to see an imax show at [CineLux Tennant Station](theater_name). What movies are out?
+    - What [fantasy](genre) movies are being shown in [Morgan Hill](location)?
+    - [Hellboy](movie_name) would be the perfect movie!
+    - No, not right now. What times is it playing on [March 2nd](show_date)?
+    - That's perfect. I don't need any more help.
+    - I'mm interested in seeing an imax movie in [Petaluma](location).
+    - I would like to see [Little](movie_name). What time is it playing?
+    - I plan on seeing it on the [2nd of March](show_date).
+    - That is great. I don't need anything further.
+    - Hey, I would like to watch a movie.
+    - I am currently at [Sebastopol](location), could you find for movies currently showing in this area?
+    - Not really, could help search for other movies?
+    - [Wild Nights with Emily](movie_name) is perfect!
+    - No, I am just inquiring. I would not like to purchase the tickets now.
+    - What are the show times available for this movie? Would it be possible on the [March 5th](show_date) for a 3d version of this movie?
+    - That sounds great!
+    - No, that will be all. Thank you very much!
+- intent: restaurant
+  examples: |
+    - I am feeling hungry so I would like to find a place to eat.
+    - I would like for it to be in [San Jose](city).
+    - I usually like eating the [American](cuisine) type of food.
+    - Can you give me the address of this restaurant.
+    - Can you give me the phone number that I can contact them with?
+    - Is there some other restaurant which you can suggest?
+    - Do you have another restaurant matching my needs? For example a restaurant which is economical and is located in [Palo Alto](city).
+    - Alright, that seems good. I would like to make a booking at this restaurant.
+    - I will be eating there at [11:30 am](time) so make it for then.
+    - That suits me well. Can you tell me if they feature live music?
+    - Will I be able to find liquor there? Can you give me the address of their location?
+    - I appreciate it very much. That would be all.
+    - Hi i need a help, i am very hungry, I am looking for a restaurant
+    - Some [Punjabi](cuisine) kind of foods in [milpitas](city)
+    - Ok, What is the address? How pricey are they?
+    - Ok, Find me another restaurant?
+    - No, suggest me another Restaurant, Some [Take-out](cuisine) type of food will be perfect
+    - Yes, it seems good for me
+    - Yes, I want it on [the 11th](date)
+    - at [afternoon 1:30](time)
+    - No, time change to [twelve in the afternoon](time) for one people
+    - Yes
+    - What is the Restaurant address, Do they have live music, I love it
+    - Thank you very much for your help
+    - No, Thanks
+    - Help me find a good restaurant.
+    - Find me [Ethiopian](cuisine) cuisine in [Berkeley](city).
+    - Do they have live music?
+    - That's okay. I'd like to reserve a table for [the 4th](date).
+    - Reserve the table for the [2nd of this month](date) at [17:15](time).
+    - That's right. Do they serve alcohol? And how expensive is the place?
+    - Can you check if a table is available at [17:30](time)?
+    - That's correct.
+    - Thank you. That's all I need for now.
+- intent: media
+  examples: |
+    - Now only i put my sons to sleep and i have lot of time to relax . will you find a movie for me to watch?
+    - I need to watch [Body Double](title) with subtitles.
+    - Ok that's great and thanks for you help
+    - Cool buddy thanks
+    - No Thanks, It's a great work you have done .
+    - I want to watch a movie.
+    - I would love to watch [Dr. Strangelove](title).
+    - No, I changed my mind, I want to watch [Upside](title).
+    - Yes, that would be amazing.
+    - Thank you very much.
+    - No. That would be all, thank you.
+    - I want to watch the movie [The Mustang](title).
+    - Yes, that sounds good.
+    - Who is it directed by?
+    - Thanks. Now I'm good.
+    - I want to watch [How to Train Your Dragon: The Hidden World](title) now if possible.
+    - Yes I want to watch it without subtitles. What kind of movie is it? Who's the director?
+    - Thank you for now.
+    - My friend told me that he will come but no information about his arrive so i have plenty of time so i thought of watching a movie. Will you find a movie now?
+    - [Gloria Bell](title)
+    - Ok ,That's great. I need to know its director? who is he?
+    - Thanks for your kind help
+    - No , Thanks . It is a great job and i will call you later for some other help.
+    - I would really like to watch a movie.
+    - I really would love watching [JT LeRoy](title).
+    - That's right.
+    - Awesome. Thanks for the help.
+    - I would like to watch a movie.
+    - I would like to watch the movie [Ash Is Purest White](title).
+    - Yes, that is correct.
+    - Thank you, that will be all.
+    - I want to see a movie now.
+    - I want to see [Upside](title).
+    - Yes, that's right. Who is the director? What kind of movie is it?
+    - Thank you.
+    - No thank you.
+- intent: bus
+  examples: |
+    - I am planning on leaving to see family in [Sacramento](to_location) on [March 14th](leaving_date). Will assist me in finding a bus to ride?
+    - I'm leaving from my hometown of [Long Beach](from_location).
+    - What other bus times are available?
+    - That would work.
+    - I'm not looking to purchase tickets now but just wanted to inquire. I am done now.
+    - Can you find a bus for me? I want to go to [Long Beach, CA](to_location).
+    - I am leaving from [SD](from_location).
+    - I am planning to leave on [Tuesday next week](leaving_date).
+    - What is the departing and destination bus stations?
+    - That sounds good.
+    - No. I don't want to buy tickets right now.
+    - No. Thanks a lot for your help.
+    - I want to go on a trip on [2nd of this month](leaving_date), please help me to find a bus.
+    - I am from [LAX](from_location).
+    - I like to visit [SD](to_location).
+    - get me another available bus detail.
+    - That is convenient to me. Thanks, that's all
+    - Can you find me a bus to [LAX](to_location)?
+    - The [1st of March](leaving_date) from [San Francisco](from_location).
+    - Which stations does the bus depart from and arrive to?
+    - Are there any others available for 4 people?
+    - Any others?
+    - That is perfect.
+    - Nope, that is all I need.
+    - Could you help me search for a bus which is departing on [Monday next week](leaving_date)?
+    - I would like to visit [Long Beach, CA](to_location).
+    - I will be leaving from [San Francisco](from_location).
+    - That sounds great, and that's all the help I need.
+    - I want to book a bus ticket. Can you help me find a Bus service
+    - i want to book bus from [Las Vegas](from_location)
+    - I am planning to leave [Next monday](leaving_date).
+    - i will be going to [Anaheim, CA](to_location). please book for 1 person.
+    - Thanks for this information. IS there any other bus available. I want to book for 2 persons. and i want bus in [San Diego](from_location)
+    - Thats really good.
+    - No . i don't want to buy tickets right now
+    - NO. Thanks so much for your help
+- intent: weather
+  examples: |
+    - I want to check the weather for [March 7th](date).
+    - I want to check in [Dixon](city).
+    - Okay. I want to find a restaurant, as well.
+    - I want to go somewhere that serves alcohol. [Asado](cuisine) sounds good.
+    - What is the address?
+    - Is there live music? What is the phone number?
+    - Sounds good, thanks.
+    - Yes I want to make a reservation.
+    - I want to make it for [half past 11 in the morning](time).
+    - Yes, sounds good. Is it pricey?
+    - Thanks so much.
+    - No, that's all.
+    - Please check the weather for me in [sonoma](city) on [9th of this month](date)
+    - how humid would it be
+    - ok, please find me a barbecue restaurant
+    - any other restaurants?
+    - can you search again for some [himalayan](cuisine) food that also serve alcohol which are affordable
+    - ok perfect, please make a reservation for me
+    - please make it [quarter to 1 in the afternoon](time)
+    - please make it three people on [next friday](date)
+    - yes thats correct, can you give me their number and do they have live music
+    - no, forget it. thank you
+    - What does the weather on [March 14th](date) look like?
+    - Search in [Mill Valley](city)
+    - What about humidity and wind?
+    - How about the weather in [Palo Alto](city) on [next Tuesday](date)?
+    - Okay, I also want to search for a restaurant there.
+    - I am craving some [burger](cuisine).
+    - Suggest me something else
+    - Is there live music there?
+    - Okay. make a reservation for 1 person on [13th of march](date) [1 pm](time).
+    - Okay, what is their price range and address?
+    - Thank you so much!
+    - No, that would be all. Thanks again.
+- intent: flight
+  examples: |
+    - Can you find me one-way Economy class flight tickets on Delta Airlines?
+    - I'll be travelling from [Paris, France](origin_city) to [Philadelphia](destination_city).
+    - I'll be departing on [March 10th](departure_date).
+    - That sounds like a good flight to me.
+    - No. Hold on. Not now.
+    - No. Thank you for the information.
+    - I need to travel in Economy class in a one-way flight? Can you find the one for me?
+    - I have planned to visit [Seattle, WA](destination_city) from [Vancouver](origin_city) on [9th of March](departure_date).
+    - Can you search for a flight in Delta Airlines?
+    - this will perfectly suit to me. thanks, that's all.
+    - Can you find me some one-way flights leaving [this Sunday](departure_date)?
+    - From [Las Vegas](origin_city).
+    - I am traveling to [San Francisco](destination_city).
+    - That sounds good, That's all I need.
+    - I have a trip which will be happening soon. Would it be possible for you to help me with finding an one way flight?
+    - I will be departing on [the 13th](departure_date) from [Mexico City](origin_city) and I will be traveling to [Philly](destination_city).
+    - That flight seems as a good choice to me. That would be all.
+    - I want an urgent flight. can your look for one-way flights?
+    - Surely, I am leaving to [Sydney, NSW](destination_city) on [13th of this month](departure_date) from [LAX](origin_city).
+    - No I wish to leave from [Chi-town](destination_city) and search for a flight for 4 people.
+    - ok. any other flights available.
+    - That sounds fine for me.
+    - I need a one-way flight, can you locate one for me?
+    - I am going to [SFO](destination_city) and will be leaving [March 10th](departure_date). I will depart from [Sydney, Australia](origin_city).
+    - Are there other flights I can get? I am going to [Seattle](destination_city) and have 3 people in my group.
+    - What is the departure airport of the flight and is the ticket refundable?
+    - That flight sounds fine. That's all I needed.
+    - I'm taking a trip soon and want a one way flight. Departure date is [the 12th](departure_date) and would like to go on Delta Airlines.
+    - I will depart from [Atlanta, GA](origin_city), and heading to [Delhi](destination_city).
+    - That sounds great.
+    - No thank you. That's all I need for now.
+    - I need some help regarding an upcoming trip that starts on the [5th of March](departure_date). Can you find a one-way flight for me?
+    - I am going on a trip from [Philadelphia](origin_city) to [New York City](destination_city). It'd be ideal if I travel in Premium Economy.
+    - Sounds fine with me.
+    - I don't have any interest in buying a ticket. That's all the help I need from you.
 - intent: event
   examples: |
     - Could you assist me in looking for interesting activities?
-    - I'd like something on March 1st. I'm searching for activities around NY, and I enjoy music events.
+    - I'd like something on [March 1st](date). I'm searching for activities around [NY](city_of_event), and I enjoy music events.
     - Tell me more about this activity. Wheat is the location of the event?
     - That's great. But could you look for another event for me?
     - That's wonderful. I'd like to book tickets to the activity.
@@ -12,24 +432,24 @@ nlu:
     - Thank you for your assistance.
     - Nope. Thank you for your assistance.
     - Are there any interesting events?
-    - Somewhere around ATL. I like Games.
+    - Somewhere around [ATL](city_of_event). I like Games.
     - That sounds okay, but what else is there?
     - That one sound perfect.
     - Yes, I'd like to get 4 tickets.
     - Yes, that's right.
     - Thanks so much.
     - No, that's all I need.
-    - Can you find some interesting event on 1st of this month?
+    - Can you find some interesting event on [1st of this month](date)?
     - Find me some Concert events.
-    - Search events around Yountville.
+    - Search events around [Yountville](city_of_event).
     - Can you find me the address of the venue?
     - Okay, Reserve tickets for the event.
     - Reserve 4 tickets for me.
     - Yes, that sounds great.
     - That will be all. Thank you!
-    - Anything interesting happening in Toronto, Canada?
+    - Anything interesting happening in [Toronto, Canada](city_of_event)?
     - Check out some Sports.
-    - How about a Baseball game on the 1st of March.
+    - How about a [Baseball](subcategory) game on the [1st of March](date).
     - Where is the stadium?
     - Cool. I'm down with that.
     - Yeah, please do.
@@ -37,374 +457,29 @@ nlu:
     - Confirmed.
     - Nice. Thanks a lot.
     - No. I'm all set.
-- intent: bus
-  examples: |
-    - I am planning on leaving to see family in Sacramento on March 14th. Will assist me in finding a bus to ride?
-    - I'm leaving from my hometown of Long Beach.
-    - What other bus times are available?
-    - That would work.
-    - I'm not looking to purchase tickets now but just wanted to inquire. I am done now.
-    - Can you find a bus for me? I want to go to Long Beach, CA.
-    - I am leaving from SD.
-    - I am planning to leave on Tuesday next week.
-    - What is the departing and destination bus stations?
-    - That sounds good.
-    - No. I don't want to buy tickets right now.
-    - No. Thanks a lot for your help.
-    - I want to go on a trip on 2nd of this month, please help me to find a bus.
-    - I am from LAX.
-    - I like to visit SD.
-    - get me another available bus detail.
-    - That is convenient to me. Thanks, that's all
-    - Can you find me a bus to LAX?
-    - The 1st of March from San Francisco.
-    - Which stations does the bus depart from and arrive to?
-    - Are there any others available for 4 people?
-    - Any others?
-    - That is perfect.
-    - Nope, that is all I need.
-    - Could you help me search for a bus which is departing on Monday next week?
-    - I would like to visit Long Beach, CA.
-    - I will be leaving from San Francisco.
-    - That sounds great, and that's all the help I need.
-    - I want to book a bus ticket. Can you help me find a Bus service
-    - i want to book bus from Las Vegas
-    - I am planning to leave Next monday.
-    - i will be going to Anaheim, CA. please book for 1 person.
-    - Thanks for this information. IS there any other bus available. I want to book for 2 persons. and i want bus in San Diego
-    - Thats really good.
-    - No . i don't want to buy tickets right now
-    - NO. Thanks so much for your help
-- intent: media
-  examples: |
-    - Now only i put my sons to sleep and i have lot of time to relax . will you find a movie for me to watch?
-    - I need to watch Body Double with subtitles.
-    - Ok that's great and thanks for you help
-    - Cool buddy thanks
-    - No Thanks, It's a great work you have done .
-    - I want to watch a movie.
-    - I would love to watch Dr. Strangelove.
-    - No, I changed my mind, I want to watch Upside.
-    - Yes, that would be amazing.
-    - Thank you very much.
-    - No. That would be all, thank you.
-    - I want to watch the movie The Mustang.
-    - Yes, that sounds good.
-    - Who is it directed by?
-    - Thanks. Now I'm good.
-    - I want to watch How to Train Your Dragon: The Hidden World now if possible.
-    - Yes I want to watch it without subtitles. What kind of movie is it? Who's the director?
-    - Thank you for now.
-    - My friend told me that he will come but no information about his arrive so i have plenty of time so i thought of watching a movie. Will you find a movie now?
-    - Gloria Bell
-    - Ok ,That's great. I need to know its director? who is he?
-    - Thanks for your kind help
-    - No , Thanks . It is a great job and i will call you later for some other help.
-    - I would really like to watch a movie.
-    - I really would love watching JT LeRoy.
-    - That's right.
-    - Awesome. Thanks for the help.
-    - I would like to watch a movie.
-    - I would like to watch the movie Ash Is Purest White.
-    - Yes, that is correct.
-    - Thank you, that will be all.
-    - I want to see a movie now.
-    - I want to see Upside.
-    - Yes, that's right. Who is the director? What kind of movie is it?
-    - Thank you.
-    - No thank you.
-- intent: movie
-  examples: |
-    - Can you show me some movie listings?
-    - I am in San Jose. Also I want to see a 3D movie.
-    - Yes, please find me some other movies. I want to see something at CineLux Almaden.
-    - What times do you have available for Curse of La Llorona? I've been wanting to see that!
-    - March 5th.
-    - That will work! That is all I need.
-    - Can you help me find a movie to watch?
-    - I like Horror movies and would also like to see a movie in Concord. Can you search for one there?
-    - That sounds great, The Curse of La Llorona it is!
-    - No, I am not ready to buy tickets but I would like to know the available times for the movie.
-    - I am thinking of going on March 2nd and I would like to see it at Veranda LUXE Cinema.
-    - Can you please give me the address for the theater?
-    - Can you also please tell me the price of the ticket?
-    - Ok, that will work. That's all I need.
-    - Find me a movie
-    - Make it movies in Santa Clara
-    - Yeah. I want to see Dumbo
-    - Not right now thanks.
-    - What time does it show?
-    - I'll see it this Saturday
-    - And how much does it cost?
-    - Great
-    - No. Thanks so much
-    - A friend and I want to see an imax show at CineLux Tennant Station. What movies are out?
-    - What fantasy movies are being shown in Morgan Hill?
-    - Hellboy would be the perfect movie!
-    - No, not right now. What times is it playing on March 2nd?
-    - That's perfect. I don't need any more help.
-    - I'mm interested in seeing an imax movie in Petaluma.
-    - I would like to see Little. What time is it playing?
-    - I plan on seeing it on the 2nd of March.
-    - That is great. I don't need anything further.
-    - Hey, I would like to watch a movie.
-    - I am currently at Sebastopol, could you find for movies currently showing in this area?
-    - Not really, could help search for other movies?
-    - Wild Nights with Emily is perfect!
-    - No, I am just inquiring. I would not like to purchase the tickets now.
-    - What are the show times available for this movie? Would it be possible on the March 5th for a 3d version of this movie?
-    - That sounds great!
-    - No, that will be all. Thank you very much!
-- intent: rentalcar
-  examples: |
-    - Book me a rental car.
-    - I'll pick it up around 10:30 in the morning, keeping it until next Thursday
-    - I'll pick it up in New York on March 4th
-    - Sounds good
-    - No not now
-    - No thanks so much
-    - I want to find a rental car for March 6th, pick up in New York.
-    - I need a pickup time around 18:30 and I will need the car until the 7th.
-    - Can you find anything else?
-    - That would be perfect.
-    - No, I don't want to reserve it yet. That's all I need.
-    - My usual car is being repaired right now. I'm in need of a rental car for the interim.
-    - I'll be needing it from March 9th to March 14th.
-    - I'd like to pick it up from Phoenix.
-    - I'll have to pick it up around 4:30 pm.
-    - Sounds great to me.
-    - Yes, I want to rent this Accord.
-    - That's all correct. What will it cost me?
-    - Thanks for the help.
-    - No, that's all. Thanks for helping.
-    - I need a car for next Thursday
-    - 6 in the evening please.
-    - the 5th of March
-    - Yes, from Sacramento, Ca on the 4th of March
-    - How much?
-    - What else is there, I'd like arrange for it to be picked up in New York.
-    - How much?
-    - Perfect.
-    - Yes please do.
-    - Sweet, thanks.
-    - Awesome, thanks
-    - Nope, thanks.
-    - I have an out-of-town business meeting and would prefer to drive. Please find me a rental car.
-    - I'd like to pick it up from Toronto, Canada, and keep it until the 6th of this month.
-    - I'll be needing the car from the 5th of March around morning 11. Any type will do.
-    - How much will everything cost?
-    - Sorry, there's been a last-minute change of plans and I have to leave on March 4th. Do you have anything else available then?
-    - How much will everything cost?
-    - Can I help you with anything else?
-    - Sounds perfect.
-    - No, not at the moment.
-    - No, you've been very helpful.
-- intent: ridesharing
-  examples: |
-    - Because of my busy schedule i miss my train will you help me to call a cab? I prefer Shared ride
-    - It is for 1 people
-    - Ride need to go to 3090 Olsen Drive
-    - wow, that's good .Please tell about its cost? How long is the ride?
-    - Thanks a lot
-    - No, thanks It's a great pleasure for your help
-    - Can you call me a cab? I'm going to Skates on The Bay.
-    - It is for just 1 person. I don't mind a ride share.
-    - That is correct.
-    - Thanks for the help.
-    - No, that is all, thanks.
-    - Can you call me a cab? I'm ok with a shared ride too.
-    - I need to get to 168 South Murphy Avenue. It's for 3 people.
-    - Yeah, that works. How long will it take for me to get there?
-    - Thanks!
-    - No. Thanks alot for your help, though.
-    - I want a taxi cab for four.
-    - Mariscos El Patron and a shared ride is fine.
-    - Yes that's it. How long will the journey take?
-    - Thanks for your help.
-    - No thanks for everything.
-    - Please call a cab for me.
-    - For 1 to the Museum of London.
-    - I would like to go to 3515 20th Street A and share ride is fine.
-    - Yes I confirm.
-    - Thank you for your help.
-    - No thank you.
-    - Would you help me find a cab company please?
-    - Only 1 person and I'm okay with sharing a ride.
-    - I have to go to 1118 East Pike Street.
-    - Yes, that sounds good, how long will the ride be?
-    - How much will the cost of the ride be?
-    - Thank you very much.
-    - No, thank you for everything.
-- intent: weather
-  examples: |
-    - I want to check the weather for March 7th.
-    - I want to check in Dixon.
-    - Okay. I want to find a restaurant, as well.
-    - I want to go somewhere that serves alcohol. Asado sounds good.
-    - What is the address?
-    - Is there live music? What is the phone number?
-    - Sounds good, thanks.
-    - Yes I want to make a reservation.
-    - I want to make it for half past 11 in the morning.
-    - Yes, sounds good. Is it pricey?
-    - Thanks so much.
-    - No, that's all.
-    - Please check the weather for me in sonoma on 9th of this month
-    - how humid would it be
-    - ok, please find me a barbecue restaurant
-    - any other restaurants?
-    - can you search again for some himalayan food that also serve alcohol which are affordable
-    - ok perfect, please make a reservation for me
-    - please make it quarter to 1 in the afternoon
-    - please make it three people on next friday
-    - yes thats correct, can you give me their number and do they have live music
-    - no, forget it. thank you
-    - What does the weather on March 14th look like?
-    - Search in Mill Valley
-    - What about humidity and wind?
-    - How about the weather in Palo Alto on next Tuesday?
-    - Okay, I also want to search for a restaurant there.
-    - I am craving some burger.
-    - Suggest me something else
-    - Is there live music there?
-    - Okay. make a reservation for 1 person on 13th of march 1 pm.
-    - Okay, what is their price range and address?
-    - Thank you so much!
-    - No, that would be all. Thanks again.
-- intent: flight
-  examples: |
-    - Can you find me one-way Economy class flight tickets on Delta Airlines?
-    - I'll be travelling from Paris, France to Philadelphia.
-    - I'll be departing on March 10th.
-    - That sounds like a good flight to me.
-    - No. Hold on. Not now.
-    - No. Thank you for the information.
-    - I need to travel in Economy class in a one-way flight? Can you find the one for me?
-    - I have planned to visit Seattle, WA from Vancouver on 9th of March.
-    - Can you search for a flight in Delta Airlines?
-    - this will perfectly suit to me. thanks, that's all.
-    - Can you find me some one-way flights leaving this Sunday?
-    - From Las Vegas.
-    - I am traveling to San Francisco.
-    - That sounds good, That's all I need.
-    - I have a trip which will be happening soon. Would it be possible for you to help me with finding an one way flight?
-    - I will be departing on the 13th from Mexico City and I will be traveling to Philly.
-    - That flight seems as a good choice to me. That would be all.
-    - I want an urgent flight. can your look for one-way flights?
-    - Surely, I am leaving to Sydney, NSW on 13th of this month from LAX.
-    - No I wish to leave from Chi-town and search for a flight for 4 people.
-    - ok. any other flights available.
-    - That sounds fine for me.
-    - I need a one-way flight, can you locate one for me?
-    - I am going to SFO and will be leaving March 10th. I will depart from Sydney, Australia.
-    - Are there other flights I can get? I am going to Seattle and have 3 people in my group.
-    - What is the departure airport of the flight and is the ticket refundable?
-    - That flight sounds fine. That's all I needed.
-    - I'm taking a trip soon and want a one way flight. Departure date is the 12th and would like to go on Delta Airlines.
-    - I will depart from Atlanta, GA, and heading to Delhi.
-    - That sounds great.
-    - No thank you. That's all I need for now.
-    - I need some help regarding an upcoming trip that starts on the 5th of March. Can you find a one-way flight for me?
-    - I am going on a trip from Philadelphia to New York City. It'd be ideal if I travel in Premium Economy.
-    - Sounds fine with me.
-    - I don't have any interest in buying a ticket. That's all the help I need from you.
-- intent: home
-  examples: |
-    - I need to find a 2 bathroom apartment in Fremont.
-    - I need 3 bedrooms.
-    - What's the phone number? Do they allow pets?
-    - Can you continue searching?
-    - That sounds nice.
-    - Yes, how about for the 4th of this month?
-    - Yes, that is correct.
-    - Thanks.
-    - No, thank you.
-    - I need information about an apartment.
-    - I need 3 bed rooms apartment.
-    - In San jose.
-    - Is the apartment is fully furnished. Is there any restrictions for pets there?
-    - Please get me details about some other apartments
-    - I need furnished apartment, can you find something like that?
-    - Yes, that sounds good.
-    - Yes, fix it.
-    - on the 6th
-    - Yes, thats good, please also confirm about pets allowed or not and get me contact details.
-    - Thanks, that's all done
-    - I am looking for a two bathroom apartment.
-    - I'm looking for a two bedroom apartment in Richmond that allows pets.
-    - Great. Could you search for some other apartments?
-    - Do you have a phone number for the property and is it furnished?
-    - Sounds great. I'd like to schedule a tour on Wednesday next week.
-    - Yes, sounds good.
-    - Thanks for your help, that's all I needed.
-    - I need an apartment with one bed rooms
-    - I'd like to find it in San Jose
-    - Could you show me more results?
-    - Are animals allowed?
-    - Is the apartment already furnished?
-    - Ok, It's perfect! I would like to see the apartment on the 9th of this month
-    - No, I prefer on 8th of March.
-    - Yes, It's perfect. Can you find the phone number?
-    - Thank you, It's all.
-- intent: calendar
-  examples: |
-    - I totally forgot my schedule and appointments of my calendar. Will you find events on my calendar?
-    - Actually it is on March 5th.
-    - Ok Fine.It is a very useful information. Do i have any other events scheduled? Will you find on March 13th?
-    - Ok that's great and i need to know whether i am available on that day. Please find also that?
-    - Ok that's great and i need to thank you for your wonderful work.
-    - What is my calendar like for Monday next week.
-    - Do I have anything scheduled for Wednesday next week.
-    - That would be fine.
-    - When do I have some free time.
-    - That would be ok. That would be all.
-    - I am not sure when is my friend's birthday so I am going to check the calendar.
-    - My friend's birthday is on the 9th.
-    - Let me look on March 14th to see if I have any other events scheduled.
-    - Great. When is my free time then?
-    - Great. Thanks so much.
-    - I want to check my calendar on the 10th of March.
-    - Great! I'm looking forward to that movie. What spare time do I have that day?
-    - That's good to know.
-    - You do not need to help me further. Thanks for reminding me of what I'm doing that day.
-    - I want to see the events on my calendar.
-    - I want to know about the 4th of this month.
-    - Thank you. When am I available?
-    - That sounds great.
-    - No, that's it. Thanks.
-    - Can you check events on my calendar?
-    - Look for the 9th of this month.
-    - Okay, That sounds perfect. Find me when I am available.
-    - Okay, That sounds great. That will be all.
-    - I'd like to check the events I have scheduled on next Wednesday.
-    - Great, are there any other events scheduled?
-    - Is there anything else scheduled for the 9th of this month?
-    - That's good, when am I available?
-    - Okay great.
-    - No, thank you.
 - intent: music
   examples: |
-    - I need to find a song for a party. I'd like a song by Major Lazer from '15.
+    - I need to find a song for a party. I'd like a song by [Major Lazer](artist) from '15.
     - What kind of song is it?
     - Yes that's great.
     - Yes please.
     - Yes that's perfect.
     - Thanks! That's all I needed.
-    - I'd like to hear a song. I like songs in the album The Getaway.
+    - I'd like to hear a song. I like songs in the album [The Getaway](album).
     - Is that from nine years ago?
     - Ah, alright, that's the one.
     - Yes please, play it on the kitchen speaker.
     - Yes, please do.
     - What genre is it?
     - Thank you, that's all I needed.
-    - Can you recommend me a song? I like songs by Frank Ocean.
-    - Do you have other suggestions? I enjoy Pop songs.
+    - Can you recommend me a song? I like songs by [Frank Ocean](artist).
+    - Do you have other suggestions? I enjoy [Pop](genre) songs.
     - Yes, that sounds good.
     - Yes, please do.
     - Yes, please do.
     - Thanks!
     - No, thank you, that will be all.
-    - Can you play a Pop song?
+    - Can you play a [Pop](genre) song?
     - Is Adorn a song from 2016?
     - Do you have another song?
     - Is it from one years back?
@@ -423,23 +498,23 @@ nlu:
     - What's my balance?
     - In checking.
     - Ok, I want to transfer some money.
-    - To Amir.
-    - Send $1,630.
+    - To [Amir](recipient_account_name).
+    - Send [$1,630](amount).
     - Confirmed.
     - Thanks, what's my balance?
     - Ok, bye.
     - Can you check my balance of checking account?
     - Can you check my balance of another savings account?
     - Okay. Can you help me making a transfer?
-    - I would like to transfer a balance of $1,180.
-    - I would like to send the money to Maria.
+    - I would like to transfer a balance of [$1,180](amount).
+    - I would like to send the money to [Maria](recipient_account_name).
     - Yes. That is correct.
     - I would like to know my balance.
     - Okay. Thank you for your help.
     - I would like to check my balance
     - I would love to know about my checking account.
     - I would like to make a transfer
-    - Transfer 980 bucks to Amir
+    - Transfer [980 bucks](amount) to [Amir](recipient_account_name)
     - Yes
     - Thank you. I would love to check my balance.
     - Okay.
@@ -448,165 +523,90 @@ nlu:
     - My savings account please.
     - Please tell me the balance in my checking account as well.
     - Okay. Please make a transfer to their savings account.
-    - Please transfer 1,740 dollars to Abhinav.
+    - Please transfer [1,740 dollars](amount) to [Abhinav](recipient_account_name).
     - That is correct.
     - I need help checking my balance.
     - All right.
     - No, I'd want to transfer any money.
     - No, thank very much. You've been very helpful.
-- intent: restaurant
-  examples: |
-    - I am feeling hungry so I would like to find a place to eat.
-    - I would like for it to be in San Jose.
-    - I usually like eating the American type of food.
-    - Can you give me the address of this restaurant.
-    - Can you give me the phone number that I can contact them with?
-    - Is there some other restaurant which you can suggest?
-    - Do you have another restaurant matching my needs? For example a restaurant which is economical and is located in Palo Alto.
-    - Alright, that seems good. I would like to make a booking at this restaurant.
-    - I will be eating there at 11:30 am so make it for then.
-    - That suits me well. Can you tell me if they feature live music?
-    - Will I be able to find liquor there? Can you give me the address of their location?
-    - I appreciate it very much. That would be all.
-    - Hi i need a help, i am very hungry, I am looking for a restaurant
-    - Some Punjabi kind of foods in milpitas
-    - Ok, What is the address? How pricey are they?
-    - Ok, Find me another restaurant?
-    - No, suggest me another Restaurant, Some Take-out type of food will be perfect
-    - Yes, it seems good for me
-    - Yes, I want it on the 11th
-    - at afternoon 1:30
-    - No, time change to twelve in the afternoon for one people
-    - Yes
-    - What is the Restaurant address, Do they have live music, I love it
-    - Thank you very much for your help
-    - No, Thanks
-    - Help me find a good restaurant.
-    - Find me Ethiopian cuisine in Berkeley.
-    - Do they have live music?
-    - That's okay. I'd like to reserve a table for the 4th.
-    - Reserve the table for the 2nd of this month at 17:15.
-    - That's right. Do they serve alcohol? And how expensive is the place?
-    - Can you check if a table is available at 17:30?
-    - That's correct.
-    - Thank you. That's all I need for now.
-- intent: travel
-  examples: |
-    - Can you find attractions for me?
-    - Look in SFO.
-    - That's okay. Are there any other attractions around there? What about a park without an entry fee?
-    - Cool. I'd like to see a Drama movie around there as well.
-    - Can you look for other movies?
-    - Innocent sounds great.
-    - No, not right now.
-    - I'd like to watch a movie streaming online.
-    - What about a scary movie?
-    - The Curse of La Llorona sounds great, go ahead and play now.
-    - Yes, thanks. Can you tell me the director?
-    - Thank you.
-    - No, thank you.
-    - I need to find some attractions.
-    - I need to find something in SF.
-    - Great, I also need to find a movie in the area.
-    - Captain Marvel would be great.
-    - I want to watch a violent movie online. Something directed by Alfred Hitchcock.
-    - Please play Blackmail - Cinemix Par Chloe.
-    - Yes that is correct.
-    - No thanks, that's all I need.
-    - I'm looking for some attractions to visit.
-    - I want to look in SF.
-    - Okay, that sounds good. I also want to watch a movie there.
-    - Ash is Purest White is perfect!
-    - No, not right now.
-    - I want to watch a movie online.
-    - A horror movie would be great.
-    - The Curse of La Llorona sounds great, I'd like to watch it now.
-    - Yes, that is right. Who is the movie directed by?
-    - Thank you, that is all I needed.
-    - I fancy getting out and visiting somewhere new?
-    - something in SF.
-    - that sounds good, I would like to watch a movie there too.
-    - Any other options?
-    - Dumbo is excellent.
-    - No not right now but I do feel like watching a movie online.
-    - I love scary movies.
-    - The Curse of La Llorona is an excellent choice, put it on now please.
-    - yes that is right
-    - Thanks for everything.
 - intent: service
   examples: |
     - I want to find a salon that is unisex.
-    - A salon in Concord sounds like a good idea.
+    - A salon in [Concord](city) sounds like a good idea.
     - What is the store's average rating?
     - What is their contact number and address?
     - Could you find me a different one?
     - Another one please.
-    - That place sounds good. I'll make an appointment for that place at 18:30.
-    - I will visit the place on March 13th.
+    - That place sounds good. I'll make an appointment for that place at [18:30](appointment_time).
+    - I will visit the place on [March 13th](appointment_date).
     - I confirm.
     - Thank you very much. That is all I need for today.
     - I'm looking for a hair salon, can you help me with that?
-    - I'd like a place in San Francisco.
+    - I'd like a place in [San Francisco](city).
     - What are the reviews - how is it rated, is it unisex?
     - That sounds good, yeah.
     - Yes, please.
-    - I think I'd like an appointment at 3:30 in the afternoon on the 7th of this month.
-    - Actually, can you change the appointment to 3 pm instead? I'm going out that night and I'd like a little more time to get home and change.
-    - You know what, actually let's change the date too - I'm looking at my calendar and I don't think next Thursday will work. Change it to the 14th of this month, please.
+    - I think I'd like an appointment at [3:30 in the afternoon](appointment_time) on the [7th of this month](appointment_date).
+    - Actually, can you change the appointment to [3 pm](appointment_time) instead? I'm going out that night and I'd like a little more time to get home and change.
+    - You know what, actually let's change the date too - I'm looking at my calendar and I don't think next Thursday will work. Change it to the [14th of this month](appointment_date), please.
     - That sounds good, yeah.
     - That'll be all I need today, thank you.
-    - Can you find me a unisex salon in Vacaville
+    - Can you find me a unisex salon in [Vacaville](city)
     - good.Please book an appointment at a salon.
-    - Please book on 3rd of march at 12:00
+    - Please book on [3rd of march](appointment_date) at [12:00](appointment_time)
     - yes correct. what is the rating and contact number of salon?
     - Thanks for your help.
     - I wanna change my hair style, help me find a salon
-    - Let's find a place in Oakland
+    - Let's find a place in [Oakland](city)
     - Umm...Doesn't sound like something I'd like, find me something else
     - What's their contact info and address?
     - Actually find me something else
     - Yes that' perfect
-    - Yeah I want it done ASAP, maybe later today if possible?
-    - afternoon 12:30 would be great
+    - Yeah I want it done ASAP, maybe [later today](appointment_date) if possible?
+    - [afternoon 12:30](appointment_time) would be great
     - Yes that's correct
     - Thanks that's it for now
-- intent: hotel
+- intent: rentalcar
   examples: |
-    - I want a hotel reservation for one room.
-    - Check in is 4th of March and I want a room at Comfort Inn Kings Cross in London, UK.
-    - The stay is for three days.
-    - I accept, is there wifi?
-    - The the hotel a four star?
-    - Thank you for the help.
-    - No thanks that is all.
-    - I'll be out of town for the weekend. I'd like help making a hotel reservation for Saturday this week.
-    - I would like a room for three days at the Sanctuary Hotel in New York City.
-    - Yes, sounds good. Please get me its phone number, and find out if they have wifi.
-    - Thanks a lot. That will be all for now.
-    - I'm traveling on business soon and I'll need a hotel reservation. I'll be checking in 2nd of March and will need one room.
-    - Yes, I'd like to stay at The Chamberlain Hotel.
-    - I'll be staying in London, UK and I need the room for four days.
-    - On second thought, I'll only need the room for 2 days.
-    - Yes, that sounds great. Can you give me the hotel's phone number and how much it costs per night?
-    - Okay, thanks.
-    - No, that's all. Thanks for your help.
-    - Will you reserve three rooms in a hotel with check in of next Tuesday?
-    - Ibis New Delhi Aerocity.
-    - Delhi.
-    - 1 day.
-    - No, make that 2 rooms.
-    - No, three days.
-    - Yes, that's fine. How much per night?
-    - Thanks, that's all.
-    - Can you book me a hotel room?
-    - I'm going to London, England for 3 days.
-    - I need 1 room at the Hanover Hotel Victoria. I'll arrive on the 5th of March
-    - Yes please. Can I get the hotel's rating? Do they have any wifi?
-    - Thanks. I've got it.
-    - I need a hotel reservation for 2 rooms.
-    - Yes in London, England at Hanover Hotel Victoria.
-    - In the 1st will be the check in date.
-    - I want for three days.
-    - Yes is good
-    - Thank you !
-    - No.Thank you for your help.
+    - Book me a rental car.
+    - I'll pick it up around [10:30 in the morning](pickup_time), keeping it until [next Thursday](dropoff_date)
+    - I'll pick it up in [New York](pickup_city) on [March 4th](pickup_date)
+    - Sounds good
+    - No not now
+    - No thanks so much
+    - I want to find a rental car for [March 6th](pickup_date), pick up in [New York](pickup_city).
+    - I need a pickup time around [18:30](pickup_time) and I will need the car until [the 7th](dropoff_date).
+    - Can you find anything else?
+    - That would be perfect.
+    - No, I don't want to reserve it yet. That's all I need.
+    - My usual car is being repaired right now. I'm in need of a rental car for the interim.
+    - I'll be needing it from [March 9th](pickup_date) to [March 14th](dropoff_date).
+    - I'd like to pick it up from [Phoenix](pickup_city).
+    - I'll have to pick it up around [4:30 pm](pickup_time).
+    - Sounds great to me.
+    - Yes, I want to rent this Accord.
+    - That's all correct. What will it cost me?
+    - Thanks for the help.
+    - No, that's all. Thanks for helping.
+    - I need a car for [next Thursday](dropoff_date)
+    - [6 in the evening](pickup_time) please.
+    - the [5th of March](pickup_date)
+    - Yes, from [Sacramento, Ca](pickup_city) on the [4th of March](pickup_date)
+    - How much?
+    - What else is there, I'd like arrange for it to be picked up in [New York](pickup_city).
+    - How much?
+    - Perfect.
+    - Yes please do.
+    - Sweet, thanks.
+    - Awesome, thanks
+    - Nope, thanks.
+    - I have an out-of-town business meeting and would prefer to drive. Please find me a rental car.
+    - I'd like to pick it up from [Toronto, Canada](pickup_city), and keep it until the [6th of this month](dropoff_date).
+    - I'll be needing the car from the [5th of March](pickup_date) around [morning 11](pickup_time). Any type will do.
+    - How much will everything cost?
+    - Sorry, there's been a last-minute change of plans and I have to leave on [March 4th](pickup_date). Do you have anything else available then?
+    - How much will everything cost?
+    - Can I help you with anything else?
+    - Sounds perfect.
+    - No, not at the moment.
+    - No, you've been very helpful.
