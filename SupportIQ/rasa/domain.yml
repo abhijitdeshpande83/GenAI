@@ -1,70 +1,1052 @@
-version: "3.1"
-
+version: '3.1'
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - media
+  - rentalcar
   - bank
-
+  - bus
+  - service
+  - home
+  - ridesharing
+  - weather
+  - flight
+  - music
+  - restaurant
+  - hotel
+  - calendar
+  - movie
+  - event
+  - travel
+slots:
+  directed_by:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: directed_by
+  phone_number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: phone_number
+  available_start_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: available_start_time
+  ride_fare:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ride_fare
+  subcategory:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: subcategory
+  amount:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: amount
+  city:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: city
+  origin_airport:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: origin_airport
+  song_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: song_name
+  humidity:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: humidity
+  price_per_night:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: price_per_night
+  location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: location
+  restaurant_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: restaurant_name
+  theater_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: theater_name
+  departure_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: departure_date
+  cuisine:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: cuisine
+  pickup_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: pickup_date
+  visit_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: visit_date
+  origin_city:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: origin_city
+  attraction_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: attraction_name
+  temperature:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: temperature
+  to_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: to_location
+  stylist_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: stylist_name
+  outbound_departure_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: outbound_departure_time
+  average_rating:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: average_rating
+  total_price:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: total_price
+  to_station:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: to_station
+  balance:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: balance
+  destination_city:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: destination_city
+  number_of_days:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: number_of_days
+  show_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: show_date
+  destination:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: destination
+  event_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_time
+  title:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: title
+  approximate_ride_duration:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: approximate_ride_duration
+  available_end_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: available_end_time
+  event_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_location
+  genre:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: genre
+  dropoff_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: dropoff_date
+  from_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: from_location
+  date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: date
+  car_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: car_name
+  hotel_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: hotel_name
+  from_station:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: from_station
+  pickup_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: pickup_location
+  leaving_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: leaving_date
+  property_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: property_name
+  address_of_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: address_of_location
+  movie_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: movie_name
+  leaving_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: leaving_time
+  fare:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: fare
+  city_of_event:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: city_of_event
+  pickup_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: pickup_time
+  appointment_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: appointment_date
+  address:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: address
+  album:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: album
+  pickup_city:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: pickup_city
+  street_address:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: street_address
+  show_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: show_time
+  artist:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: artist
+  event_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_name
+  precipitation:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: precipitation
+  check_in_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: check_in_date
+  price:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: price
+  recipient_account_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: recipient_account_name
+  area:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: area
+  time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time
+  wind:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: wind
+  event_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_date
+  appointment_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: appointment_time
+  rent:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: rent
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-  - text: "Hi! How can I help you today?"
-  - text: "Hello! How's your day going?"
-
-  utter_good:
-  - text: "That's great! How can I assist you further?"
-  - text: "Great! What can I do for you today?"
-  - text: "Awesome! How can I help you today?"
-
-  utter_bad:
-  - text: "I'm sorry to hear that. Is there anything I can do to help?"
-  - text: "I understand. Let me know if you need any assistance."
-  - text: "No problem. Is there anything specific you'd like to talk about?"
-
-  utter_mood_great:
-  - text: "That's great! How can I assist you further?"
-  - text: "Great! What can I do for you today?"
-  - text: "Awesome! How can I help you today?"
-
-  utter_mood_unhappy:
-  - text: "I'm sorry to hear that. Is there anything I can do to help?"
-  - text: "I understand. Let me know if you need any assistance."
-  - text: "No problem. Is there anything specific you'd like to talk about?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
+    - text: "Hey! How are you?"
+    - text: "Hi! How can I help you today?"
+    - text: "Hello! How's your day going?"
   utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+    - text: "Bye"
+  utter_media:
+    - text: What type of movie do you like to watch ? whether you need subtitles?
+    - text: Ok check and review the details . Play {title} with subtitles.
+    - text: Playing the movie , enjoy and relax yourself
+    - text: whether is there any other information you need to find?
+    - text: take care have a great day
+    - text: Which movie do you want to watch?
+    - text: Do you want to play {title} without subtitles?
+    - text: Do you want to play {title} without subtitles?
+    - text: Started playing the movie. Please enjoy the movie.
+    - text: Can I help with anything else?
+    - text: Have a great day!
+    - text: So you want to watch {title} without subtitles?
+    - text: I started playing it.
+    - text: It is directed by {directed_by}.
+    - text: Have a great day.
+    - text: Do you want to play {title} without subtitles? I need to confirm this.
+    - text: The movie is directed by {directed_by}. It is an {genre} movie released in 2019.
+    - text: Good bye.
+    - text: What kind of movie i need to search and play?
+    - text: 'Please check the details: Play {title} without subtitles.'
+    - text: It is directed by {directed_by} and i started playing the movie
+    - text: Whether i need to help for anything else?
+    - text: Take care Have a great day
+    - text: Do you have a particular movie in mind?
+    - text: So you are absolutely sure you want to watch {title}.
+    - text: I started the movie for you.
+    - text: Enjoy the movie!
+    - text: What would you like to watch?
+    - text: 'You want to watch the movie: {title} without subtitles'
+    - text: Your movie is playing.
+    - text: Enjoy your movie!
+    - text: What movie would you like to see?
+    - text: 'Please confirm: Play {title}, without subtitles.'
+    - text: I will start playing it. It's a {genre} directed by {directed_by}.
+    - text: Is there anything else I can help with?
+    - text: Enjoy your day!
+  utter_rentalcar:
+    - text: Sure. What time will you pick it up? What date will you return the car?
+    - text: Where will you be picking it up? What day?
+    - text: I have 6 cars for you. There's a standard car, an {car_name}, available at {pickup_location} {pickup_date}
+    - text: Would you like to book a reservation?
+    - text: Is there anything else I can do?
+    - text: Have a good day
+    - text: On which day would you like to return the car?
+    - text: I have 5 cars available. A nice {car_name}, Standard is available for pickup at {pickup_location} {pickup_date}.
+    - text: A Standard {car_name} is available at {pickup_location} on {pickup_date}.
+    - text: Would you like to make a reservation?
+    - text: Glad I could help, have a great day!
+    - text: How long will you need the car?
+    - text: At what location will you be picking it up?
+    - text: At what time will you need to pick it up?
+    - text: I found a Standard {car_name} at {pickup_location} ready for pickup on {pickup_date}.
+    - text: Would you like to reserve it?
+    - text: So, you'll be picking up a Standard car from {pickup_location} on {pickup_date}, at {pickup_time}, and dropping it off on {dropoff_date}?
+    - text: I've successfully reserved your car. It's going to cost you {total_price}.
+    - text: Are there any other matters you need help with?
+    - text: Always a pleasure. Enjoy your day.
+    - text: What time?
+    - text: What day would you like it?
+    - text: Can I have a pick up location?
+    - text: There are 4 standard cars. How about an {car_name} at the {pickup_location} {pickup_date}?
+    - text: '{total_price}'
+    - text: There's a standard {car_name} available located at {pickup_location} {pickup_date}.
+    - text: '{total_price}'
+    - text: Would you like to reserve this car?
+    - text: 'Great, please confirm the car booking details: A standard car will be picked up from {pickup_location} {pickup_date} at {pickup_time} until {dropoff_date}.'
+    - text: The car is now reserved
+    - text: Is there something else I can help with?
+    - text: Have a wonderful day
+    - text: What's your preferred pick-up location, and for how many days would you like to rent the car?
+    - text: What time would you like to get it?
+    - text: I've found 9 cars that might interest you. How about the Standard {car_name} available for pickup from {pickup_location}, {pickup_date}?
+    - text: The total cost of your reservation is {total_price}.
+    - text: Okay. The search has yielded 8 cars that might interest you. What do you think about the Compact {car_name} available for pickup from {pickup_location}, {pickup_date}?
+    - text: The total cost of your reservation is {total_price}.
+    - text: What do you think about the Standard {car_name} available for pickup from {pickup_location}, {pickup_date}?
+    - text: Would you like to reserve this car?
+    - text: Will there be anything else?
+    - text: Have a wonderful day.
   utter_bank:
-  - text: "Sure! What can I help you with today?"
-  - text: "And what amount would you like to transfer?"
-  - text: "To whom?"
-  - text: "Please confirm: Transfer $1,630 from your checking account to Amir's checking account."
-  - text: "Your transfer is complete."
-  - text: "Your checking account has $3,488.77."
-  - text: "How much amount would you like to transfer?"
-  - text: "Whom do you want to send the money to?"
-  - text: "Your fund has been transferred successfully."
-  - text: "Which account should I use?"
-  - text: "he transfer was successful"
-  - text: "I found more than one account. Which one should I use?"
+    - text: In checking or savings?
+    - text: Your checking account has {balance}.
+    - text: To whom?
+    - text: And what amount would you like to transfer?
+    - text: "Please confirm: Transfer {amount} from your checking account to {recipient_account_name}'s checking account."
+    - text: Your transfer is complete.
+    - text: Your checking account has {balance}.
+    - text: Have a nice day.
+    - text: You have {balance} in your checking account.
+    - text: You have {balance} in your savings account.
+    - text: How much amount would you like to transfer?
+    - text: Whom do you want to send the money to?
+    - text: "Please confirm: You want me to transfer {amount} from savings account to {recipient_account_name} 's checking account."
+    - text: Your fund has been transferred successfully.
+    - text: You have {balance} in your savings account.
+    - text: I am glad I could help. Have a nice day.
+    - text: Which account should I use?
+    - text: Your checking account balance is {balance}
+    - text: How much would you like to transfer?
+    - text: Transfer {amount} bucks from your checking account to {recipient_account_name}'s checking account. Please confirm this.
+    - text: The transfer was successful.
+    - text: Your checking account balance is {balance}
+    - text: Anything else I can help?
+    - text: Have a good day.
+    - text: I found more than one account. Which one should I use?
+    - text: Your savings account has a balance of {balance}.
+    - text: Your checking account has a balance of {balance}.
+    - text: "I need additional information: Please say the name of person you'd like the money sent to, and the amount to be transferred."
+    - text: "Let me see if I got everything correctly: Transfer {amount} from my checking account to {recipient_account_name}'s savings account."
+    - text: Your transfer has been successful.
+    - text: Your checking account balance is {balance}.
+    - text: Would you like to transfer funds from this account?
+    - text: Is there anything else I can help you with?
+    - text: Have a nice day.
+  utter_bus:
+    - text: It would be my pleasure to help you. Where will you be departing from?
+    - text: There are 9 buses available for you. I've found a buss that departs at {leaving_time} and has 1 transfer. The cost will be {fare}.
+    - text: There is another bus which departs at {leaving_time} and has 1 transfer. This ticket costs {fare}.
+    - text: Would you like to purchase tickets for this bus?
+    - text: Thank you for inquiring, and enjoy your day.
+    - text: Where are you leaving from?
+    - text: When do you plan to leave?
+    - text: I found 10 buses for you. There is a bus that departs at {leaving_time} and will cost {fare}. It has 0 transfers.
+    - text: The origin station will be {from_station}. The destination station is {to_station}.
+    - text: Do you want to buy tickets for this bus?
+    - text: Is there anything else I can help you with?
+    - text: Have a great day.
+    - text: What is your present location?
+    - text: What is your destination City?
+    - text: The departure time of bus is {leaving_time} and it has 0 transfers with ticket price {fare}.
+    - text: Yes, what about a bus leaves at {leaving_time} with 0 transfers under ticket cost {fare}?
+    - text: Have a good day.
+    - text: What is the departure location and time?
+    - text: I found 10 buses. The first departs at {leaving_time}, has 0 transfers and is {fare}.
+    - text: The destination is {to_station} and it departs from {from_station}.
+    - text: I found 9 buses for you. The first depart at {leaving_time} and cost {fare}. The bus has 0 transfers.
+    - text: One departs at {leaving_time} and costs {fare}. It has 0 transfers.
+    - text: Would you like to purchase tickets now?
+    - text: Have a wonderful day!
+    - text: Sure! Where do you plan to go?
+    - text: Noted. And where will you be leaving from?
+    - text: There is a direct bus with 0 transfers, departing at {leaving_time} and this will cost you {fare}.
+    - text: No problem, have a great day!
+    - text: sure. can i know your departcher place.
+    - text: Thanks. When are you planning to travel.
+    - text: what will be your destination city.
+    - text: I have found a bus for you. The bus departs at {leaving_time} and it will cost you {fare}. This bus has 0 transfers.
+    - text: There are 8 options available as per your information provided. I also have best option for you. The bus will depart at {leaving_time} and it will cost you {fare}. This bus has 0 transfers.
+    - text: Thanks. should i proceed with booking for this bus.
+    - text: Do u want some more information. how can i help you
+    - text: thanks. have a great day
+  utter_service:
+    - text: What city should I go to look for it?
+    - text: There are 6 salons in {city}. {stylist_name} looks to be the best option so far.
+    - text: Their rating is {average_rating}.
+    - text: Their number is {phone_number} and their address is {street_address}.
+    - text: There is another in {city} called {stylist_name}.
+    - text: '{stylist_name} is another nice salon. It it also located in {city}.'
+    - text: What date will your appointment be?
+    - text: Please confirm that the name of the place is {stylist_name}, the appointment is at {appointment_time}, and the appointment will take place on {appointment_date}.
+    - text: Your appointment is confirmed and ready.
+    - text: Have a good day!
+    - text: What city would you like the salon to be in?
+    - text: "I've found 10 possible options for you: {stylist_name} on 1532 20th St in {city} might be suitable."
+    - text: 1512 Barber Shop is a unisex salon with a {average_rating} rating.
+    - text: Would you like to book an appointment?
+    - text: What are the details for you appointment? What time and date would you like to book it for?
+    - text: "To review: You'd like to book an appointment at {appointment_time}, {appointment_date}, at {stylist_name}."
+    - text: "To review: You'd like to book an appointment at {appointment_time}, {appointment_date}, at 1512 Barber Shop - does that sound right?"
+    - text: "To review: You'd like to book an appointment at 3:30 pm, at {stylist_name}, on {appointment_date}."
+    - text: Your appointment has been booked.
+    - text: Have a great day.
+    - text: The best salon in {city} is {stylist_name}.
+    - text: Please let me know the date and time on which the appointment to be made?
+    - text: Please check and confirm the details. salon name is {stylist_name}, time of appointment is {appointment_time} and {appointment_date} is appointment date.
+    - text: Appointment on the date is confirmed. the phone number of salon is {phone_number} and its rating is {average_rating}.
+    - text: great day
+    - text: Where are you trying to get your hair done?
+    - text: How about {stylist_name} in {city}, I hear it's nice
+    - text: What about this other {city} salon called {stylist_name}
+    - text: You can reach them at {phone_number} and they're at {street_address}
+    - text: '{stylist_name} in {city} has great reviews'
+    - text: Shall I book an appointment for you then?
+    - text: What time then?
+    - text: Confirming your {appointment_time} {stylist_name} appointment {appointment_date}
+    - text: Ok glad I was able to book it
+    - text: Can't wait to see your new hair!
+  utter_home:
+    - text: How many bedrooms do you need?
+    - text: I found 10 nice apartments. One very good property is the {property_name} on {address}. It has 3 bedrooms, 2 baths and the rent is {rent} per month.
+    - text: The phone number is {phone_number}. Yes, they do allow pets.
+    - text: Another very good apartment is {property_name} located at {address}. It has 3 bedrooms, 2 baths, and the rent is {rent} per month.
+    - text: Would you like to schedule a visit?
+    - text: I am scheduling you a visit to {property_name} for {visit_date}, is that correct?
+    - text: Apartment visit confirmed.
+    - text: Can I assist you with anything else?
+    - text: Have a good day.
+    - text: Which type of apartment you need?, with how many rooms?
+    - text: Apartment should be in which area?
+    - text: Found results for 10 apartments. {property_name} located at {address}. This apartment has 3 bed rooms with attached bath rooms. The rent is {rent} dollars per month
+    - text: No, the apartment is not furnished and pets are not allowed there.
+    - text: '{property_name} at {address} is a good one and this apartment has 3 bed rooms with baths and the rent is {rent} dollars per month.'
+    - text: Found results for 9. {property_name} at {address} with 3 bed rooms and baths and the rent is {rent} per month.
+    - text: Can I schedule a visit to there?
+    - text: When do you want?
+    - text: Please confirm the schedule as a Visit to {property_name} on {visit_date}.
+    - text: Yes, confirmed, pets are allowed. Contact number is {phone_number}. Your schedule is confirmed.
+    - text: Have a good day
+    - text: I can help with that but I need some additional information. How many bedrooms do you want and what area should I search in?
+    - text: My search located 4 nice apartments meeting these requirements. {property_name} is a great 2 bed and 2 bath apartment located at {address} renting for {rent} dollars per month.
+    - text: I found another great 2 bed and 2 bath apartment at {property_name} located at {address} renting for {rent} dollars per month.
+    - text: The phone number is {phone_number}. It's not furnished.
+    - text: To confirm, you'd like to schedule a tour at {property_name} {visit_date}.
+    - text: I've scheduled an apartment tour for you.
+    - text: Happy to help. Have a great day.
+    - text: In which area?
+    - text: There are 10 apartments, one of these is {property_name}, located at {address}. It has 1 bed rooms and 1 baths. The rent per month is {rent}
+    - text: 'At {address} there is {property_name}: it has 1 bed rooms and 1 baths and it costs {rent} per month'
+    - text: Yes, animals are allowed.
+    - text: No, it is not furnished.
+    - text: 'I book a visit to {property_name} on {visit_date}: do you confirm?'
+    - text: 'I book a visit to {property_name} {visit_date}: do you confirm?'
+    - text: Phone number is {phone_number}. Your visit to the apartment has been booked.
+    - text: Have a nice day
+  utter_ridesharing:
+    - text: Please tell the number of passengers ?
+    - text: To which place ride should go to?
+    - text: 'Please review the following details: Destination place is {destination} for 1 people and ride type is shared'
+    - text: Reservation is done and the cab is on its way. The ride last about {approximate_ride_duration} minutes and its costs i {ride_fare}
+    - text: Whether any other help needed?
+    - text: Take care have a good day
+    - text: Are you looking for a ride share or a normal cab? How many people will be riding in the cab?
+    - text: 'Please confirm the following: you want a ride share for 1 person going to {destination}.'
+    - text: Your ride has been booked and is coming now.
+    - text: Is there anything else I can help you with?
+    - text: Enjoy the rest of your day.
+    - text: Where do you want to go? How many people are coming with you?
+    - text: So you want a cab for 3 people to {destination}?
+    - text: Your ride is booked and the cab is coming and the ride will be around {approximate_ride_duration} minutes long.
+    - text: Do you need anything other than that?
+    - text: Have a good day!
+    - text: Where to and would you like a shared ride?
+    - text: To confirm then you want a shared ride, cab for 4 to {destination}.
+    - text: Your cab is booked and will be with you shortly. The journey should be around {approximate_ride_duration} minutes.
+    - text: Can I assist you with anything else?
+    - text: Have a lovely day.
+    - text: Where would you like the ride to and how many?
+    - text: Do you want a shared ride?
+    - text: Please confirm address of {destination} for 1 with shared ride.
+    - text: Your ride is confirmed and on the way.
+    - text: Is there anything else I can help you with?
+    - text: Thank you and enjoy your trip.
+    - text: Would you like to ride share? How many people will the cab be for?
+    - text: Where will you be heading?
+    - text: Can you confirm that your cab will be for 1 person and you want to ride share to {destination}?
+    - text: Okay, your ride has been confirmed and is on its way. Your ride should be about {approximate_ride_duration} minutes.
+    - text: It will cost you {ride_fare}.
+    - text: Can I help you with anything else?
+    - text: Have a pleasant day.
+  utter_weather:
+    - text: What city are you checking the weather for?
+    - text: The average temperature is {temperature} degrees with a {precipitation} percent chance of rain.
+    - text: What kind of food would you like to eat? {cuisine}, Italian, etc.?
+    - text: I found 1 restaurant. {restaurant_name} in {city}.
+    - text: The address is {street_address}.
+    - text: There is no live music. The phone number is {phone_number}
+    - text: Do you want to reserve a table?
+    - text: What time is the reservation for?
+    - text: 'Please confirm: A table for 2 at {restaurant_name} in {city} on {date} at {time}.'
+    - text: Your reservation has been made. The prices are moderate.
+    - text: Anything else I can help with?
+    - text: Have a great day.
+    - text: The temperature in Sonoma is {temperature} degree with {precipitation} percent chance of rain
+    - text: it will be {humidity} percent humidity
+    - text: '{restaurant_name} is a good barbecue restaurant in {city}'
+    - text: sorry i was unable to find any other restaurants. is there anything else i can do for you
+    - text: i found 1 himalayan restaurants in {city} called {restaurant_name}
+    - text: what time would you like to go there
+    - text: please confirm your reservation for 2 people at {restaurant_name} in {city} on {date} at {time}
+    - text: please confirm your reservation for 3 people on {date}
+    - text: Please confirm your booking for 3 people at {restaurant_name} on {date} at {time}. They do dont have live music and their phone number is {phone_number}
+    - text: have a nice day
+    - text: Which city should I check it for?
+    - text: The temperature is expected to be {temperature} degrees with a {precipitation} percent chance of rain.
+    - text: Humidity is expected to be around {humidity} percent and wind speed is at {wind} miles per hour.
+    - text: The temperature is expected to be {temperature} degrees with a {precipitation} percent chance of rain.
+    - text: Any food specifications?
+    - text: '{restaurant_name} in {city} is a great place'
+    - text: How about {restaurant_name} in {city}
+    - text: No, Live music isn't available.
+    - text: Booking a table for 1 at {restaurant_name} in {city} on {date} at {time}.
+    - text: They are moderate in prices and are located at {street_address}. Your booking is confirmed.
+    - text: Do you need my help with something else?
+    - text: Pleasure is mine. Have a great time there.
+  utter_flight:
+    - text: Sure. Where are you going to and where will you be flying from?
+    - text: Do you have any departure dates in mind?
+    - text: There is a Delta Airlines flight that leaves at {outbound_departure_time}, has 1 stop and is priced at {price}.
+    - text: Do you want me to buy tickets for you?
+    - text: Can I assist you with anything else?
+    - text: Have a great day!
+    - text: When and where are you leaving from to which place?
+    - text: Found 3 flights. An outbound flight in Air Canada Airlines which leaves at {outbound_departure_time} with 1 stop and the ticket cost will be {price}.
+    - text: Yes, found 1 outbound flight in Delta Airlines which leaves at {outbound_departure_time} with 1 stop and the price is {price}.
+    - text: Have a happy journey.
+    - text: Where are you leaving from?
+    - text: Where are you planning to visit?
+    - text: There is an American Airlines flight that leaves at {outbound_departure_time}, has 0 stops and costs {price}.
+    - text: Have a wonderful day.
+    - text: Do you have the date when you plan to leave? What place are you planning to visit? Which will be your departure location?
+    - text: I see that there is an American Airlines flight. The departing flight will be at {outbound_departure_time} with 1 stop. The ticket will cost {price}.
+    - text: Have a good day.
+    - text: Can you give embarkation time and place with destination?
+    - text: I think American airlines leaving at {outbound_departure_time} will be suitable for you. It has 0 stops and fare is {price}.
+    - text: Alaska airlines leaving at {outbound_departure_time} with 0 stops will be comfortable then. The ticket fare is {price}
+    - text: Delta airlines leaving at {outbound_departure_time} with 0 stops is available. its fare is {price}
+    - text: Have a great day sir.
+    - text: What day do you want to depart, where will you depart from and where do you want to go?
+    - text: I have located 2 flights for you. One is a Delta Airlines flight that leaves at {outbound_departure_time} and it has 1 stop. It costs {price}.
+    - text: I have 1 flight that will work for you. It is on United Airlines, departing at {outbound_departure_time}, with 1 stop. The price is {price} for the ticket.
+    - text: The flight leaves from {origin_airport}. I'm sorry but the ticket is not refundable.
+    - text: Have a great day.
+    - text: Which city are you departing from? And where are you intending to go?
+    - text: Delta Airlines do have a flight. It leaves at {outbound_departure_time} and has just 1 stop. The ticket price is {price}.
+    - text: Do you want to go ahead and purchase?
+    - text: Have a great day.
+    - text: What is your planned destination, and your planned site of departure?
+    - text: I found an American Airlines flight, which the outbound flight for leaves at {outbound_departure_time}, has 0 stops, and a ticket for which costs {price}.
+    - text: Would you like to purchase a ticket for it?
+    - text: Enjoy the rest of your day.
+  utter_music:
+    - text: I managed to find 1 song for you by {artist}. The song is called {song_name} from the album {album}. What do you think?
+    - text: The song is {genre}.
+    - text: Should I play the song?
+    - text: I will be playing {song_name} on the TV. Is that correct?
+    - text: Hope you enjoy the song.
+    - text: Enjoy your day.
+    - text: How about {song_name} by {artist} from the album {album}?
+    - text: The song is from 2016.
+    - text: Would you like to hear the song?
+    - text: So you'd like to play {song_name} on Kitchen speaker?
+    - text: The song has begun.
+    - text: It is {genre}.
+    - text: Have a nice day.
+    - text: I have 4 suggestions. How about {song_name} by {artist} in the album {album}?
+    - text: I have 3 suggestions. How about {song_name} by {artist} in the album {album}?
+    - text: Should I play the song?
+    - text: So I should play {song_name} on the TV?
+    - text: The song has begun. Enjoy.
+    - text: Can I help you with anything else?
+    - text: Have a nice day.
+    - text: Do you want to listen to {song_name} by {artist} from the album {album}.
+    - text: No, it's from the year 2012.
+    - text: There is {song_name} by {artist} from the album {album}.
+    - text: The song is from 2018.
+    - text: '{song_name} to play on the TV?'
+    - text: '{song_name} playing on the Kitchen speaker.'
+    - text: Enjoy your song African Beauty.
+    - text: Is there anything else you need?
+    - text: Have a good day.
+    - text: Sure, How does {song_name} by {artist} off the album {album} sound?
+    - text: 'Great, please confirm: play {song_name} on TV. Is this correct?'
+    - text: Ok, Music is confirmed
+    - text: This is from 2010. This is a {genre} song.
+    - text: your welcome. Have a great day
+  utter_restaurant:
+    - text: Do you have a specific which you want the eating place to be located at?
+    - text: Is there a specific cuisine type you enjoy, such as {cuisine}, Italian or something else?
+    - text: I see that at {restaurant_name} there is a good restaurant which is in {city}.
+    - text: If you want to go to this restaurant you can find it at {street_address}.
+    - text: If you want to phone them you can at {phone_number}.
+    - text: How would you like {restaurant_name} restaurant which is situated in {city}.
+    - text: I see that 7 restaurants suit to what you requested. {restaurant_name} seems as a good restaurant and is located in {city}.
+    - text: For which time do you want the booking to be?
+    - text: Can you please confirm that you want to book a table for 2 at {time} at the {restaurant_name} restaurant in {city} for {date}.
+    - text: Your booking has been made without errors, but unfortunately they do not have live music.
+    - text: The restaurant is located at {street_address}. Unfortunately they do not serve alcohol at the restaurant.
+    - text: Have a good time!
+    - text: Sure, I will help you, What type of food are you looking for? Which city should i search in?
+    - text: I found a good restaurant in {city}, The restaurant name is {restaurant_name}
+    - text: Price range is moderate, The address is {street_address}
+    - text: I found another restaurant for you, {restaurant_name} Restaurant at {city}
+    - text: I found 2 Restaurants, {restaurant_name} at {city}
+    - text: shall i reserve a table here for you?
+    - text: please tell me what time is the reservation for?
+    - text: 'Please confirm the following details: Booking a table at {restaurant_name} at {city} on {date} reservation time is {time}, The reservation is for 2 people'
+    - text: 'Please confirm the following details: the reservation time is {time}, The reservation is for 1 people'
+    - text: Congrats, your reservation is confirmed
+    - text: Sorry, They don't have live music, The restaurant address is {street_address}
+    - text: Shall i help you with anything else?
+    - text: You are welcome, have a great day
+    - text: In which city are you looking for the restaurant and do you have any preferred cuisine?
+    - text: Of the 4 Ethiopian restaurants in {city}, {restaurant_name} is a good one.
+    - text: I'm sorry. They do not have live music.
+    - text: At what time will you be arriving at the restaurant?
+    - text: Please confirm that you want to reserve a table for 2 at the {restaurant_name} in {city} for {date} at {time}.
+    - text: Sorry the reservation was not successful. Is there anything else I can assist you with?
+    - text: Okay.Please confirm that you want to reserve a table for 2 at the {restaurant_name} in {city} for {date} at {time}.
+    - text: Your table has been reserved.
+    - text: Have a great day!
+  utter_hotel:
+    - text: What is check in date, where and what hotel?
+    - text: How long is your stay?
+    - text: Confirm check in is {check_in_date} 4th of March and I want a room at {hotel_name} in {destination}, UK for {number_of_days} days for 1.
+    - text: Your room is confirmed and it does not have wifi.
+    - text: The hotel is 3 star.
+    - text: Is there anything else I can do?
+    - text: Have a great day.
+    - text: In which city would you like me to make the reservation? Please let me know whether you have a preferred hotel, and the length of your stay.
+    - text: 'Let me see if I got everything correctly: You would like to check in to 1 room {check_in_date}, for {number_of_days} days, at the {hotel_name}, in {destination}.'
+    - text: Your Reservation has been made. The hotel has wifi, and you can reach them at {phone_number}.
+    - text: Have a nice day.
+    - text: Sure, I can help you. Is there a particular hotel you're interested in?
+    - text: Okay, which city should I look in? How long will you be staying?
+    - text: Okay, let's confirm the details. You need 1 room for {number_of_days} days, checking in {check_in_date} at {hotel_name} located in {destination}. Is this correct?
+    - text: Okay, let's confirm the details. You'll be staying at {hotel_name} for {number_of_days} days. Is that correct?
+    - text: I've made your reservation. The room is {price_per_night} per night and the phone number for the hotel is {phone_number}.
+    - text: Is there anything else I can do for you?
+    - text: Have a great day!
+    - text: Which hotel?
+    - text: Which city?
+    - text: How many days?
+    - text: Please confirm 3 rooms for {number_of_days} day in {hotel_name} in {destination} with check in of {check_in_date}.
+    - text: Please confirm 2 rooms in {hotel_name}.
+    - text: Please confirm {number_of_days} days with check in {check_in_date}.
+    - text: I've made your reservation for {price_per_night} per night.
+    - text: Have a nice day.
+    - text: Of course. What city do you have in mind? How many days will you be staying?
+    - text: Any particular hotel in mind?
+    - text: 'Please confirm the details for your stay in {destination}: 1 room at the {hotel_name} for {number_of_days} days, arriving {check_in_date}.'
+    - text: I've confirmed that reservation. It's a 3 star hotel with no wifi.
+    - text: Always here to assist you
+    - text: What city would you like and have a preference at which hotel?
+    - text: Tell me the check in date please
+    - text: How many days do you want to stay there?
+    - text: In {destination} 2 rooms for {number_of_days} days with the check in date {check_in_date} at hotel {hotel_name} is that ok?
+    - text: Your booking was successful.
+    - text: Can I help you with something else?
+    - text: Have a great day!
+  utter_calendar:
+    - text: It is a pleasure for me, Which date i need to check?
+    - text: The event will start at {event_time} and the event is {event_name}.
+    - text: The event will start at {event_time} and you need to go for a {event_name}.
+    - text: On {event_date}, you have an emply slot starting at {available_start_time} and slot ends at {available_end_time}
+    - text: Take care Have a great day
+    - text: You have a {event_name} at {event_time}.
+    - text: You have a {event_name} for {event_time}.
+    - text: Is there anything else I can assist you with?
+    - text: You have time available {event_date} between {available_start_time} and {available_end_time}.
+    - text: Enjoy your day.
+    - text: Please tell me which date you want to know.
+    - text: There are 3 events scheduled for you. The first one is {event_name} at {event_time}.
+    - text: You have a {event_name} at {event_time}.
+    - text: You are free from {available_start_time} to {available_end_time}.
+    - text: Thanks for being patient and please have a wonderful day.
+    - text: On that day, you will be watching a {event_time} showing of a {event_name}.
+    - text: On {event_date}, you have free time spanning from {available_start_time} to {available_end_time}.
+    - text: Do I need to help you any further?
+    - text: Enjoy your day.
+    - text: What date were you inquiring about?
+    - text: You have a {event_name} at {event_time}.
+    - text: '{event_date} there is an empty slot from {available_start_time} to {available_end_time}.'
+    - text: Anything else I can do for you?
+    - text: Have a great day.
+    - text: What date I should look for?
+    - text: There is a {event_name} event at {event_time}.
+    - text: You are available at {available_start_time} till {available_end_time} on {event_date}.
+    - text: I am glad I could help. Have a nice day.
+    - text: Okay, you have an event at {event_time}, it's a {event_name}.
+    - text: Yes, you have a {event_name} for {event_time}.
+    - text: Yes, there are 2 scheduled events. There is a {event_name} that starts at {event_time}.
+    - text: There is an empty slot from {available_start_time} to {available_end_time}.
+    - text: Is there anything else I can help you with?
+    - text: Okay, have a nice day.
+  utter_movie:
+    - text: Where are you located?
+    - text: I found 7 movies which are {movie_name}, {movie_name} of Little. Do you want to know the other options?
+    - text: How about {movie_name} or The Curse of La Llorona?
+    - text: What date would you like to go?
+    - text: I found 1 showing on March 5th at {show_time} at {theater_name}.
+    - text: Have a good day!
+    - text: Please give me your location.
+    - text: I have found {movie_name}, is that a movie you are interested in?
+    - text: Can I help you purchase tickets?
+    - text: What day are you interested in going to see the movie?
+    - text: I have found 1 showtime for that day at {show_time} at the {theater_name}, will that work for you?
+    - text: The address for Veranda LUXE Cinema is {street_address}.
+    - text: Tickets are {price} per person.
+    - text: Enjoy your day!
+    - text: Sure. What city?
+    - text: Ok. Perhaps {movie_name}, Hellboy, Or Hotel Mumbai?
+    - text: Ok, would you like to buy tickets?
+    - text: Anything else I can do?
+    - text: What day?
+    - text: It plays just at {show_time} at the {theater_name}
+    - text: '{price} per person for that show'
+    - text: Anything else I can do?
+    - text: Take care please
+    - text: Where are you at?
+    - text: '{movie_name} is playing. How does that sound?'
+    - text: Do you want to purchase tickets now?
+    - text: There is 1 show at {show_time} in {theater_name}.
+    - text: Have a great day!
+    - text: Ok, {movie_name} and {movie_name} are playing. Would you like to see either of those 2 movies?
+    - text: Which day you would like to see the movie?
+    - text: Ok, there is 1 movie showing on that date at {show_time} at {theater_name}.
+    - text: Have a nice day.
+    - text: Where are you currently located at?
+    - text: I have found 5 movies showing in that area. Would you like to watch {movie_name}, {movie_name} or Sunset?
+    - text: Sure, how about {movie_name} or Wild Nights with Emily?
+    - text: Would you like to make a ticket reservation for that movie?
+    - text: Sure, no problems. Can I further assist you?
+    - text: Yes, there is currently 1 showtime for this movie at {show_time} in {theater_name}.
+    - text: Could I further assist you in anything else?
+    - text: No issues, have a great day ahead.
+  utter_event:
+    - text: Do you prefer any specific type? You could say music, sports, or something else. Is there any specific city I ought to look in?
+    - text: I discovered 10 events you may enjoy. The event is {event_name}, which will begin at {time} {date} at {event_location}.
+    - text: The activity is located at {address_of_location} and is a {subcategory} activitiy.
+    - text: There is a {event_name} event starting at {time} {date} at {event_location}.
+    - text: How many tickets do you wish to get?
+    - text: 'Please verify the following information: you have 3 tickets booked for the {event_name} event on {date} at {city_of_event}.'
+    - text: Your booking is confirmed; have fun at the event! The event is at {address_of_location}.
+    - text: Could I assist you with something else?
+    - text: Have a pleasant afternoon.
+    - text: What city do you want to go to? What kind of events? Music, sports or something else?
+    - text: The {event_name} is at {time} {date} at the {event_location}.
+    - text: The {event_name} are playing at the {event_location} at {time} on {date}.
+    - text: Would you like to order tickets?
+    - text: 'To verify: You want 4 tickets to the {event_name} game in {city_of_event} on {date}.'
+    - text: Your tickets are confirmed. Enjoy the game.
+    - text: Is there anything else I can do for you?
+    - text: Have a wonderful day.
+    - text: Do you want me to find a specific category of events?
+    - text: What city should i search in the events?
+    - text: I got 1 event which is {event_name} at {event_location} and will be held {date} at {time}.
+    - text: It is a {subcategory} event and will take place in {address_of_location}.
+    - text: How many tickets would you like me to reserve?
+    - text: 'Please confirm the details: You want me to reserve 4 tickets for {event_name} at {city_of_event} for {date}.'
+    - text: Your reservation is booked and confirmed.Have fun.
+    - text: I am glad, I could help. Thank you.
+    - text: What do you have in mind? Music? Sports?
+    - text: Well, there's the {event_name} at {time}, {date} at the {event_location}.
+    - text: Well, {date} we have the {event_name} at {event_location}. First pitch is {time}.
+    - text: '{address_of_location}.'
+    - text: Should I pick you up some tickets?
+    - text: How many?
+    - text: Ok. 1 seat for the {event_name} {date} in {city_of_event}. Please confirm.
+    - text: And you have a ticket. Enjoy.
+    - text: You want me to get you anything else?
+    - text: Then enjoy the ballgame.
+  utter_travel:
+    - text: Where would you like me to look?
+    - text: What about the historical landmark {attraction_name}?
+    - text: '{attraction_name} is a Park in that area.'
+    - text: What about {movie_name}, Ramen Shop, or Red Joan?
+    - text: What about {movie_name}, The Innocent of The Mustang?
+    - text: Would you like to go ahead and purchase tickets?
+    - text: Can I assist you with anything else?
+    - text: What kind of movies would you like to see?
+    - text: I found 1, how about {title}?
+    - text: 'Please confirm: play {title} without subtitles.'
+    - text: Started the movie. It's director is {directed_by}.
+    - text: Is there anything else I can help with?
+    - text: Enjoy!
+    - text: Where would you like to look?
+    - text: '{attraction_name} is an historical landmark you may like.'
+    - text: WOuld you enjoy {movie_name}, Captain Marvel, or Citizen Kane?
+    - text: Can I do anything else for you?
+    - text: I found 1, {title}.
+    - text: You want {title} without subtitles, correct?
+    - text: I could not play the film. Can I do anything else for you.
+    - text: Okay enjoy your day.
+    - text: What city are you looking in?
+    - text: I found 10 attractions for you. How about the Historical Landmark {attraction_name}?
+    - text: What about {movie_name}, Captain Marvel or Citizen Kane?
+    - text: Do you want to purchase tickets?
+    - text: Is there anything else I can help you with?
+    - text: What type of movies do you like?
+    - text: I found 1 movie for you, it is {title}.
+    - text: Okay, you want to play {title} without subtitles, right?
+    - text: I have started playing the movie. The movie is directed by {directed_by}.
+    - text: Have a great day.
+    - text: Which city will you be going to?
+    - text: There are 10 ideas for you, what about the historical landmark {attraction_name}.
+    - text: There is {movie_name} on or Captain Marvel or Citizen Kane?
+    - text: What do you think about {movie_name}, Dumbo or Family?
+    - text: Would you like me to buy tickets for you?
+    - text: What genre will I search for?
+    - text: There is 1 called {title}.
+    - text: To confirm then you want {title} without subtitles.
+    - text: Movie has now started.
+    - text: Have a good one and enjoy the movie.
+entities:
+  - directed_by
+  - phone_number
+  - available_start_time
+  - ride_fare
+  - subcategory
+  - amount
+  - city
+  - origin_airport
+  - song_name
+  - humidity
+  - price_per_night
+  - location
+  - restaurant_name
+  - theater_name
+  - departure_date
+  - cuisine
+  - pickup_date
+  - visit_date
+  - origin_city
+  - attraction_name
+  - temperature
+  - to_location
+  - stylist_name
+  - outbound_departure_time
+  - average_rating
+  - total_price
+  - to_station
+  - balance
+  - destination_city
+  - number_of_days
+  - show_date
+  - destination
+  - event_time
+  - title
+  - approximate_ride_duration
+  - available_end_time
+  - event_location
+  - genre
+  - dropoff_date
+  - from_location
+  - date
+  - car_name
+  - hotel_name
+  - from_station
+  - pickup_location
+  - leaving_date
+  - property_name
+  - address_of_location
+  - movie_name
+  - leaving_time
+  - fare
+  - city_of_event
+  - pickup_time
+  - appointment_date
+  - address
+  - album
+  - pickup_city
+  - street_address
+  - show_time
+  - artist
+  - event_name
+  - precipitation
+  - check_in_date
+  - price
+  - recipient_account_name
+  - area
+  - time
+  - wind
+  - event_date
+  - appointment_time
+  - rent
 
 session_config:
   session_expiration_time: 60
