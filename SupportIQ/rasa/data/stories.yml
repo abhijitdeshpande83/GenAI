@@ -1,30 +1,98 @@
-version: "3.1"
-
+version: '3.1'
 stories:
-
-- story: happy path
+- story: media path
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
+  - intent: media
+  - action: utter_media
+- story: rentalcar path
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
+  - intent: rentalcar
+  - action: utter_rentalcar
+- story: bank path
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: bank
+  - action: utter_bank
+- story: bus path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bus
+  - action: utter_bus
+- story: service path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: service
+  - action: utter_service
+- story: home path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: home
+  - action: utter_home
+- story: ridesharing path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ridesharing
+  - action: utter_ridesharing
+- story: weather path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: weather
+  - action: utter_weather
+- story: flight path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: flight
+  - action: utter_flight
+- story: music path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: music
+  - action: utter_music
+- story: restaurant path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant
+  - action: utter_restaurant
+- story: hotel path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hotel
+  - action: utter_hotel
+- story: calendar path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: calendar
+  - action: utter_calendar
+- story: movie path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: movie
+  - action: utter_movie
+- story: event path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: event
+  - action: utter_event
+- story: travel path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: travel
+  - action: utter_travel

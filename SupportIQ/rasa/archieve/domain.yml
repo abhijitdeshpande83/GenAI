@@ -1,0 +1,71 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - bank
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hi! How can I help you today?"
+  - text: "Hello! How's your day going?"
+
+  utter_good:
+  - text: "That's great! How can I assist you further?"
+  - text: "Great! What can I do for you today?"
+  - text: "Awesome! How can I help you today?"
+
+  utter_bad:
+  - text: "I'm sorry to hear that. Is there anything I can do to help?"
+  - text: "I understand. Let me know if you need any assistance."
+  - text: "No problem. Is there anything specific you'd like to talk about?"
+
+  utter_mood_great:
+  - text: "That's great! How can I assist you further?"
+  - text: "Great! What can I do for you today?"
+  - text: "Awesome! How can I help you today?"
+
+  utter_mood_unhappy:
+  - text: "I'm sorry to hear that. Is there anything I can do to help?"
+  - text: "I understand. Let me know if you need any assistance."
+  - text: "No problem. Is there anything specific you'd like to talk about?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_bank:
+  - text: "Sure! What can I help you with today?"
+  - text: "And what amount would you like to transfer?"
+  - text: "To whom?"
+  - text: "Please confirm: Transfer $1,630 from your checking account to Amir's checking account."
+  - text: "Your transfer is complete."
+  - text: "Your checking account has $3,488.77."
+  - text: "How much amount would you like to transfer?"
+  - text: "Whom do you want to send the money to?"
+  - text: "Your fund has been transferred successfully."
+  - text: "Which account should I use?"
+  - text: "he transfer was successful"
+  - text: "I found more than one account. Which one should I use?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
