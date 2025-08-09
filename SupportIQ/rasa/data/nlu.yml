@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 nlu:
 - intent: greet
   examples: |
@@ -15,7 +15,14 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - Yes
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - are you a boy?
 - intent: goodbye
   examples: |
     - cu
@@ -28,7 +35,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: movie
   examples: |
     - Can you show me some movie listings?
@@ -163,7 +169,8 @@ nlu:
     - Book a [9:45 PM](show_time) seat at [Landmark Sunshine](theater_name).
     - Do they show [animated](genre) movies at [Alamo Slaughter](theater_name)?
     - Ticket for [Gladiator](movie_name) in [Round Rock](location) at [noon](show_time).
-
+    - I want to book a movie
+    - [Avengers](movie_name)
 - intent: inform
   examples: |
     - [New York](location)
@@ -350,3 +357,6 @@ nlu:
     - [21:00](show_time)
     - [just before 6](show_time)
     - [a little after 3 pm](show_time)
+    - [Missouri](location)
+    - [yesterday](show_date)
+   

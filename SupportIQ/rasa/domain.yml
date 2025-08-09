@@ -1,145 +1,142 @@
 version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - movie
-  - inform
-
+- bot_challenge
+- goodbye
+- greet
+- inform
+- movie
 slots:
   street_address:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: street_address
+    - type: from_entity
+      entity: street_address
   show_time:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: show_time
+    - type: from_entity
+      entity: show_time
   show_date:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: show_date
+    - type: from_entity
+      entity: show_date
   movie_name:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: movie_name
+    - type: from_entity
+      entity: movie_name
   location:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: location
+    - type: from_entity
+      entity: location
   price:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: price
+    - type: from_entity
+      entity: price
   theater_name:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: theater_name
+    - type: from_entity
+      entity: theater_name
   genre:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: genre
-
+    - type: from_entity
+      entity: genre
 responses:
   utter_greet:
-    - text: "Hey! How are you?"
-    - text: "Hi! How can I help you today?"
-    - text: "Hello! How's your day going?"
-    - text: "Good day! How can I assist you?"
-
+  - text: Hey! How are you?
+  - text: Hi! How can I help you today?
+  - text: Hello! How's your day going?
+  - text: Good day! How can I assist you?
   utter_ask_location:
-    - text: "Where are you located?"
-    - text: "Please give me your location."
-    - text: "Where are you currently located at?"
-    - text: "Sure. What city?"
-    - text: "Where are you at?"
-  
+  - text: Where are you located?
+  - text: Please give me your location.
+  - text: Where are you currently located at?
+  - text: Sure. What city?
+  - text: Where are you at?
   utter_ask_movie_name:
-    - text: "What movie would you like to see?"
-    - text: "What movie are you interested in seeing?"
-    - text: "Which movie would you like to see?"
-    - text: "What movie?"
-    - text: "What movie are you looking for?"
-
+  - text: What movie would you like to see?
+  - text: What movie are you interested in seeing?
+  - text: Which movie would you like to see?
+  - text: What movie?
+  - text: What movie are you looking for?
   utter_ask_genre:
-    - text: "What genre of movie would you like to see?"
-    - text: "What genre of movie are you interested in seeing?"
-    - text: "Which genre of movie would you like to see?"
-    - text: "What genre of movie?"
-    - text: "What genre of movie are you looking for?"
-
+  - text: What genre of movie would you like to see?
+  - text: What genre of movie are you interested in seeing?
+  - text: Which genre of movie would you like to see?
+  - text: What genre of movie?
+  - text: What genre of movie are you looking for?
   utter_ask_show_date:
-    - text: "What day would you like to go?"
-    - text: "What day are you interested in going to see the movie?"
-    - text: "Which day would you like to see the movie?"
-    - text: "What day?"
-  
+  - text: What day would you like to go?
+  - text: What day are you interested in going to see the movie?
+  - text: Which day would you like to see the movie?
+  - text: What day?
   utter_ask_show_time:
-  - text: "What time would you like to watch the movie?"
-  - text: "When do you prefer the show to start?"
-  - text: "Please tell me your preferred showtime."
-
+  - text: What time would you like to watch the movie?
+  - text: When do you prefer the show to start?
+  - text: Please tell me your preferred showtime.
   utter_ticket_price:
-    - text: "Tickets are {price} per person."
-    - text: "{price} per person for that show"
-
+  - text: Tickets are {price} per person.
+  - text: '{price} per person for that show'
   utter_offer_ticket_purchase:
-    - text: "Can I help you purchase tickets?"
-    - text: "Do you want to purchase tickets now?"
-    - text: "Would you like to make a ticket reservation for that movie?"
-    - text: "Ok, would you like to buy tickets?"
-
+  - text: Can I help you purchase tickets?
+  - text: Do you want to purchase tickets now?
+  - text: Would you like to make a ticket reservation for that movie?
+  - text: Ok, would you like to buy tickets?
   utter_address:
-    - text: "The address for Veranda LUXE Cinema is {street_address}."
-
+  - text: The address for Veranda LUXE Cinema is {street_address}.
   utter_goodbye:
-    - text: "Have a good day!"
-    - text: "Take care please."
-    - text: "Enjoy your day!"
-    - text: "Have a nice day."
-    - text: "No issues, have a great day ahead."
-    - text: "Have a great day!"
-
+  - text: Have a good day!
+  - text: Take care please.
+  - text: Enjoy your day!
+  - text: Have a nice day.
+  - text: No issues, have a great day ahead.
+  - text: Have a great day!
   utter_anything_else:
-    - text: "Anything else I can do?"
-    - text: "Sure, no problems. Can I further assist you?"
-    - text: "Could I further assist you in anything else?"
-
+  - text: Anything else I can do?
+  - text: Sure, no problems. Can I further assist you?
+  - text: Could I further assist you in anything else?
   utter_submit:
-    - text: "Great! Booking '{movie_name}' on {show_date} at {show_time} in {location}."
-
+  - text: Great! Booking '{movie_name}' on {show_date} at {show_time} in {location}.
+  utter_bot_challenge:
+  - text: I'm Cinemora, your personal cinema concierge, developed by Abhijit.
+  - text: Hello! Cinemora here, your smart movie booking assistant, created by Abhijit.
+  - text: You're chatting with Cinemora, powered by AnalyticNerds.com.
+  - text: Cinemora at your service, brought to you by AnalyticNerds.com.
+  - text: I'm Cinemora, developed by Abhijit and powered by AnalyticNerds.com.
+  - text: Cinemora, your movie booking assistant, developed by Abhijit, powered by AnalyticNerds.com.
+  - text: Hi! I'm Cinemora, created by Abhijit from AnalyticNerds.com.
 entities:
-  - street_address
-  - show_time
-  - show_date
-  - movie_name
-  - location
-  - price
-  - theater_name
-  - genre 
-
+- show_time
+- movie_name
+- show_date
+- location
+- street_address
+- price
+- theater_name
+- genre
 forms:
   movie_booking_form:
     required_slots:
-      - movie_name
-      - location
-      - show_date
-      - show_time
+    - movie_name
+    - location
+    - show_date
+    - show_time
+
+actions:
+  - validate_movie_booking_form
 
 session_config:
   session_expiration_time: 60

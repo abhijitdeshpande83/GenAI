@@ -1,42 +1,43 @@
-version: '3.1'
-stories:
-- story: movie happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: movie
-  - action: movie_booking_form
-  - active_loop: movie_booking_form
-  - slot_was_set:
-    - requested_slot: movie_name
-  - intent: inform
-    entities:
-      - movie_name: "The Matrix"
-  - slot_was_set:
-      - movie_name: "The Matrix"
-  - slot_was_set:
-      - requested_slot: location
-  - intent: inform
-    entities:
-      - location: "Austin"
-  - slot_was_set:
-      - location: "Austin"
-  - slot_was_set:
-      - requested_slot: show_date
-  - intent: inform
-    entities:
-      - show_date: "8-5-2025"
-  - slot_was_set: 
-      - show_date: "8-5-2025"
-  - slot_was_set:
-      - requested_slot: show_time
-  - intent: inform
-    entities:
-      - show_time: "9:20 pm"
-  - slot_was_set:
-      - show_time: "9:20 pm"
-  - active_loop: null
-  - action: utter_submit
-  - action: utter_anything_else
+# version: '3.1'
+# stories:
+# - story: movie happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: movie
+#   - action: movie_booking_form
+#   - active_loop: movie_booking_form
+#   - slot_was_set:
+#     - requested_slot: movie_name
+#   - intent: inform
+#     entities:
+#       - movie_name: "The Matrix"
+#   - slot_was_set:
+#       - movie_name: "The Matrix"
+#   - slot_was_set:
+#       - requested_slot: location
+#   - intent: inform
+#     entities:
+#       - location: "Austin"
+#   - slot_was_set:
+#       - location: "Austin"
+#   - slot_was_set:
+#       - requested_slot: show_date
+#   - intent: inform
+#     entities:
+#       - show_date: "8-5-2025"
+#   - slot_was_set: 
+#       - show_date: "8-5-2025"
+#   - slot_was_set:
+#       - requested_slot: show_time
+#   - intent: inform
+#     entities:
+#       - show_time: "8:15 pm"
+#   - slot_was_set:
+#       - show_time: "8:15 pm"
+#   - slot_was_set:
+#       - requested_slot: null
+#   - active_loop: null
+#   - action: utter_submit
+#   - action: utter_anything_else
 
-    
