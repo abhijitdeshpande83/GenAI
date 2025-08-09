@@ -3,7 +3,7 @@ intents:
   - greet
   - goodbye
   - movie
-  - inform_location
+  - inform
 
 slots:
   street_address:

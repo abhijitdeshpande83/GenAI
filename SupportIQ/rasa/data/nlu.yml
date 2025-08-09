@@ -15,6 +15,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+
 - intent: goodbye
   examples: |
     - cu
@@ -27,6 +28,7 @@ nlu:
     - see you around
     - bye bye
     - see you later
+
 - intent: movie
   examples: |
     - Can you show me some movie listings?
@@ -50,18 +52,16 @@ nlu:
     - What [fantasy](genre) movies are being shown in [Morgan Hill](location)?
     - [Hellboy](movie_name) would be the perfect movie!
     - No, not right now. What times is it playing on [March 2nd](show_date)?
-    - That's perfect. I don't need any more help.
     - I'mm interested in seeing an imax movie in [Petaluma](location).
     - I would like to see [Little](movie_name). What time is it playing?
     - I plan on seeing it on the [2nd of March](show_date).
     - That is great. I don't need anything further.
     - Hey, I would like to watch a movie.
     - I am currently at [Sebastopol](location), could you find for movies currently showing in this area?
-    - Not really, could help search for other movies?
+    - Could help search for other movies?
     - [Wild Nights with Emily](movie_name) is perfect!
     - No, I am just inquiring. I would not like to purchase the tickets now.
     - What are the show times available for this movie? Would it be possible on the [March 5th](show_date) for a 3d version of this movie?
-    - That sounds great!
     - No, that will be all. Thank you very much!
     - Book tickets for [Inception](movie_name) at [8:00 PM](show_time) on [Saturday](show_date)
     - What are the showtimes for [Titanic](movie_name) at [Regal LA Live](theater_name)?
@@ -163,7 +163,8 @@ nlu:
     - Book a [9:45 PM](show_time) seat at [Landmark Sunshine](theater_name).
     - Do they show [animated](genre) movies at [Alamo Slaughter](theater_name)?
     - Ticket for [Gladiator](movie_name) in [Round Rock](location) at [noon](show_time).
-- intent: inform_location
+
+- intent: inform
   examples: |
     - [New York](location)
     - I am in [Chicago](location)
@@ -237,3 +238,115 @@ nlu:
     - [Tucson](location)
     - [Jersey City](location)
     - [Providence](location)
+    - [today](show_date)
+    - [tomorrow](show_date)
+    - [yesterday](show_date)
+    - the day after [tomorrow](show_date)
+    - the day before [yesterday](show_date)
+    - [tonight](show_date)
+    - [this Friday](show_date)
+    - [next Sunday](show_date)
+    - [next week](show_date)
+    - [next weekend](show_date)
+    - [this weekend](show_date)
+    - in [two days](show_date)
+    - in [a week](show_date)
+    - on [March 12](show_date)
+    - on [Mar 12th](show_date)
+    - on [12th March](show_date)
+    - [March 12, 2025](show_date)
+    - [12 March 2025](show_date)
+    - [Aug 5](show_date)
+    - [August 5, 2025](show_date)
+    - [08/05/2025](show_date)
+    - [08/5](show_date)
+    - [8-5-2025](show_date)
+    - [2025-08-05](show_date)
+    - [09-07-2025](show_date)
+    - [September 7th](show_date)
+    - [7 September](show_date)
+    - on the [14th](show_date)
+    - [14th of this month](show_date)
+    - [14th of next month](show_date)
+    - [this Monday](show_date)
+    - [next Tuesday](show_date)
+    - [2nd of May](show_date)
+    - [3rd March](show_date)
+    - [04/01](show_date)
+    - [04/01/25](show_date)
+    - [01-Apr-2025](show_date)
+    - [1st April 2025](show_date)
+    - [April 1st](show_date)
+    - on [5 May](show_date)
+    - [May 5](show_date)
+    - [this coming Thursday](show_date)
+    - [a week from now](show_date)
+    - [next Wednesday night](show_date)
+    - the [10th](show_date)
+    - [two weeks from now](show_date)
+    - [five days from now](show_date)
+    - on [18th](show_date)
+    - [day after tomorrow evening](show_date)
+    - [Sunday, August 10th](show_date)
+    - [7 pm](show_time)
+    - [07:00 pm](show_time)
+    - [7:00 PM](show_time)
+    - [19:00](show_time)
+    - [7 in the evening](show_time)
+    - around [7](show_time)
+    - [7:30 pm](show_time)
+    - [8:15 pm](show_time)
+    - [20:15](show_time)
+    - [8 PM](show_time)
+    - [08:00 PM](show_time)
+    - [8 at night](show_time)
+    - [6:45 pm](show_time)
+    - [18:45](show_time)
+    - [10 am](show_time)
+    - [10:00 AM](show_time)
+    - [10 in the morning](show_time)
+    - [9 am](show_time)
+    - [09:00](show_time)
+    - [noon](show_time)
+    - [12:00 pm](show_time)
+    - [midnight](show_time)
+    - [12 am](show_time)
+    - [00:00](show_time)
+    - [1:15 am](show_time)
+    - [01:15](show_time)
+    - [3 in the afternoon](show_time)
+    - [3:00 pm](show_time)
+    - [15:00](show_time)
+    - [5:45 pm](show_time)
+    - [17:45](show_time)
+    - [half past 6](show_time)
+    - [quarter to 8](show_time)
+    - [around 9:30](show_time)
+    - [between 6 and 7](show_time)
+    - [just after 4 pm](show_time)
+    - [as early as 5:30](show_time)
+    - [before 8 pm](show_time)
+    - [after 6](show_time)
+    - [latest by 9 pm](show_time)
+    - [early morning](show_time)
+    - [late night](show_time)
+    - [evening show](show_time)
+    - [morning show](show_time)
+    - [night show](show_time)
+    - [first show](show_time)
+    - [second show](show_time)
+    - [matinee show](show_time)
+    - [late evening show](show_time)
+    - [prime time](show_time)
+    - [opening show](show_time)
+    - [closing show](show_time)
+    - [anytime after 7](show_time)
+    - [sometime in the afternoon](show_time)
+    - [whenever available after 5 pm](show_time)
+    - [8:00 sharp](show_time)
+    - [a show around 10:30](show_time)
+    - [10:30 sharp](show_time)
+    - [4:20 pm](show_time)
+    - [21:00](show_time)
+    - [just before 6](show_time)
+    - [a little after 3 pm](show_time)
