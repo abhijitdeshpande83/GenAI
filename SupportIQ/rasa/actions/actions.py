@@ -9,10 +9,17 @@
 
 from typing import Any, Text, Dict, List
 import time
+import os
 from datetime import datetime, timedelta
 from dateutil import parser
+from smtplib import SMTP
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import dotenv
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
+
+dotenv.load_dotenv()
 #
 #
 class ValidateMovieBookingForm(FormValidationAction):
@@ -49,7 +56,7 @@ class ValidateMovieBookingForm(FormValidationAction):
             dispatcher.utter_message(text="Date should not be in the past.")
             return {"show_date": None}
 
-        return {"show_date": input_date.strftime("%m/%d")}
+        return {"show_date": input_date.strftime("%m/%d/%y")}
     
     def validate_show_time(self, slot_value: Any,
                            dispatcher: CollectingDispatcher,
@@ -75,4 +82,58 @@ class ValidateMovieBookingForm(FormValidationAction):
             dispatcher.utter_message(text=f"That time is earlier than the current time {now.strftime('%H:%M')}. Please choose a later time.")
             return {"show_time": None}
         return {"show_time":parse_time.strftime("%H:%M")}
+
+class ActionSendEmail(Action):
+
+    def name(self) -> Text:
+        return "action_send_email"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text,Any]) -> List[Dict[Text,Any]]:
+
+        SMTP_SERVER = "smtp.gmail.com"
+        SMTP_PORT = 587 
+        order_number = int(time.time())
         
+        movie_name = tracker.get_slot("movie_name")
+        show_date = tracker.get_slot("show_date")
+        show_time = tracker.get_slot("show_time")
+        usr_email = tracker.get_slot("user_email")
+        
+        from_addr = os.getenv("EMAIL_HOST_USER")
+        password = os.getenv("EMAIL_HOST_PASSWORD")
+
+        with open("booking_confirmation.html", "r") as f:
+            body_template = f.read()
+
+        body_template = body_template.format(
+            order_number=order_number,
+            movie_name=movie_name,
+            show_date=show_date,
+            show_time=show_time,
+        )
+        
+        subject = f"Your Premier Movieplex Order Number {order_number} from {show_date}"
+
+        msg = MIMEMultipart("alternative")
+        msg["From"] = from_addr
+        msg["To"] = usr_email
+        msg['Subject'] = subject
+
+        part = MIMEText(body_template, "html")
+        msg.attach(part)
+
+        # msg = f"Subject: {subject}\n\n{body_template}"
+
+        try:
+            with SMTP(SMTP_SERVER, SMTP_PORT) as server:
+                server.starttls()
+                server.login(from_addr, password)
+                server.sendmail(from_addr, usr_email, msg.as_string())
+            dispatcher.utter_message(text=f"Your booking for '{movie_name}' on {show_date} at {show_time} "\
+                    f"is confirmed! A confirmation email has also been sent to {usr_email}. Enjoy the movie!")
+        except Exception as e:
+            print(e)
+            dispatcher.utter_message(text=f"Sorry, there was an error booking your movie ticket. "
+                        f"Please try again later.")

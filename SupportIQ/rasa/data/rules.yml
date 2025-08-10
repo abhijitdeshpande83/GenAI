@@ -29,7 +29,7 @@ rules:
   steps:
   - action: movie_booking_form
   - active_loop: null
-  - action: utter_submit
+  - action: action_send_email
 
 - rule: Handle interruption
   condition: 
