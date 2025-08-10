@@ -37,7 +37,7 @@ class ValidateMovieBookingForm(FormValidationAction):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        input_date = slot_value
+        input_date = tracker.get_slot("show_date")
         now = datetime.today().date()
 
         if input_date.isalpha():
@@ -50,3 +50,29 @@ class ValidateMovieBookingForm(FormValidationAction):
             return {"show_date": None}
 
         return {"show_date": input_date.strftime("%m/%d")}
+    
+    def validate_show_time(self, slot_value: Any,
+                           dispatcher: CollectingDispatcher,
+                           tracker: Tracker,
+                           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        input_time = str(tracker.get_slot("show_time").replace(" ",""))
+        now = datetime.now().time()
+
+        time_format = {
+            "%I:%M%p",          # 12hrs with mons 10:15 pm/am
+            "%I%p",             # 12hrs no mins 10 pm/am
+            "%H:%M",            # 24hrs with mins
+            "%H"                # 24hrs no mins
+        }
+
+        for format in time_format:
+            try:
+                parse_time = datetime.strptime(input_time, format).time()
+            except ValueError:
+                continue
+        if parse_time <= now:
+            dispatcher.utter_message(text=f"That time is earlier than the current time {now.strftime('%H:%M')}. Please choose a later time.")
+            return {"show_time": None}
+        return {"show_time":parse_time.strftime("%H:%M")}
+        
