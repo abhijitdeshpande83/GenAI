@@ -6,12 +6,6 @@ intents:
 - inform
 - movie
 slots:
-  street_address:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: street_address
   show_time:
     type: text
     influence_conversation: true
@@ -36,12 +30,6 @@ slots:
     mappings:
     - type: from_entity
       entity: location
-  price:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: price
   theater_name:
     type: text
     influence_conversation: true
@@ -54,6 +42,13 @@ slots:
     mappings:
     - type: from_entity
       entity: genre
+  user_email:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: user_email
+
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -87,16 +82,17 @@ responses:
   - text: What time would you like to watch the movie?
   - text: When do you prefer the show to start?
   - text: Please tell me your preferred showtime.
-  utter_ticket_price:
-  - text: Tickets are {price} per person.
-  - text: '{price} per person for that show'
+  utter_ask_user_email:
+  - text: Please provide your email address.
+  - text: What's your email address?
+  - text: Could you please provide your email address?
+  - text: What's your email?
+  - text: Please enter your email address.
   utter_offer_ticket_purchase:
   - text: Can I help you purchase tickets?
   - text: Do you want to purchase tickets now?
   - text: Would you like to make a ticket reservation for that movie?
   - text: Ok, would you like to buy tickets?
-  utter_address:
-  - text: The address for Veranda LUXE Cinema is {street_address}.
   utter_goodbye:
   - text: Have a good day!
   - text: Take care please.
@@ -119,14 +115,13 @@ responses:
   - text: Cinemora, your movie booking assistant, developed by Abhijit, powered by AnalyticNerds.com.
   - text: Hi! I'm Cinemora, created by Abhijit from AnalyticNerds.com.
 entities:
-- show_time
 - movie_name
 - show_date
+- show_time
 - location
-- street_address
-- price
 - theater_name
 - genre
+- user_email
 forms:
   movie_booking_form:
     required_slots:
@@ -134,9 +129,11 @@ forms:
     - location
     - show_date
     - show_time
+    - user_email
 
 actions:
   - validate_movie_booking_form
+  - action_send_email
 
 session_config:
   session_expiration_time: 60

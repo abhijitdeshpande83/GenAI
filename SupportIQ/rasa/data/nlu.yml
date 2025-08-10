@@ -48,7 +48,6 @@ nlu:
     - No, I am not ready to buy tickets but I would like to know the available times for the movie.
     - I am thinking of going on [March 2nd](show_date) and I would like to see it at [Veranda LUXE Cinema](theater_name).
     - Can you please give me the address for the theater?
-    - Can you also please tell me the price of the ticket?
     - Find me a movie
     - Make it movies in [Santa Clara](location)
     - Yeah. I want to see [Dumbo](movie_name)
@@ -78,7 +77,7 @@ nlu:
     - Get me tickets for [The Matrix](movie_name) at [ArcLight Hollywood](theater_name)
     - Buy tickets for [Frozen](movie_name) on [Friday](show_date) at [6:30 PM](show_time)
     - Is [Avengers](movie_name) playing in [Phoenix](location)?
-    - What's the price for [Barbie](movie_name) at [AMC Times Square](theater_name)?
+    - I want to watch [Barbie](movie_name) at [AMC Times Square](theater_name)?
     - Where is [Alamo Drafthouse](theater_name) located?
     - I want to see [Oppenheimer](movie_name) on [July 18](show_date)
     - What [sci-fi](genre) films are showing this [weekend](show_date)?
@@ -86,7 +85,6 @@ nlu:
     - I'd like to watch [Mission Impossible](movie_name) on [Monday](show_date)
     - Find theaters showing [The Batman](movie_name)
     - Get me a [horror](genre) movie at [7:30 PM](show_time)
-    - What's the nearest theater to [100 Main St](street_address)?
     - What is the address of [Cinemark Legacy](theater_name)?
     - Is [The Lion King](movie_name) available on [Christmas Eve](show_date)?
     - Book [The Godfather](movie_name) for [10:00 PM](show_time) on [Sunday](show_date)
@@ -105,7 +103,6 @@ nlu:
     - Find [musical](genre) movies playing on [August 20](show_date)
     - How much is a ticket to [Avatar](movie_name)?
     - Is [Toy Story](movie_name) available in [San Jose](location)?
-    - I want to see a movie at [321 Sunset Blvd](street_address)
     - Book a [fantasy](genre) at [Landmark Sunshine](theater_name) at [5 PM](show_time)
     - Any movies at [AMC River East 21](theater_name) on [Sunday](show_date)?
     - Tickets for [Everything Everywhere All at Once](movie_name) please
@@ -113,7 +110,7 @@ nlu:
     - Find [kids](genre) movies in [Seattle](location)
     - I want to see [Finding Nemo](movie_name) at [9:00 AM](show_time)
     - Buy [Frozen II](movie_name) tickets at [AMC Metreon 16](theater_name)
-    - Show me prices for [Top Gun](movie_name) in [Dallas](location)
+    - Show me [Top Gun](movie_name) in [Dallas](location)
     - Get me a movie at [AMC Cherry Hill](theater_name) around [5:45 PM](show_time)
     - Show me [Pixar](genre) films in [Boston](location)
     - Can I watch [Soul](movie_name) on [December 25](show_date)?
@@ -126,11 +123,9 @@ nlu:
     - I want to go to [Cinemark West Plano](theater_name) tomorrow evening.
     - Any sci-fi movies at [AMC Empire 25](theater_name)?
     - Find [comedy](genre) films playing this [weekend](show_date).
-    - Show me tickets under [$15](price).
     - What's the address of [Alamo Drafthouse South Lamar](theater_name)?
     - Where is [Regal LA Live](theater_name) located?
     - Book a seat for [Thor: Ragnarok](movie_name) on [Aug 10](show_date) at [9:00 PM](show_time).
-    - I'm near [6th Street, Austin](street_address), where can I watch [Avatar](movie_name)?
     - Looking for a [thriller](genre) movie in [Dallas](location).
     - Are there any [romantic](genre) shows in [San Antonio](location)?
     - Which theater is showing [Interstellar](movie_name) at [10:15 AM](show_time)?
@@ -138,39 +133,34 @@ nlu:
     - Find me [action](genre) movies this [Friday](show_date).
     - I'd like to go to a show in [Los Angeles](location) on [August 15](show_date).
     - Get me a ticket for [The Godfather](movie_name) for [evening](show_time).
-    - Any shows before [$10](price)?
     - Where is [Rave Cinemas](theater_name) located in [Houston](location)?
     - I want to see a [drama](genre) at [Regal Round Rock](theater_name).
-    - I'm at [123 Pine Street, Austin](street_address) show nearby theaters.
     - Is [Parasite](movie_name) still playing?
     - Show [Pixar](genre) films suitable for kids.
-    - Reserve [two tickets](price) for [The Lion King](movie_name) at [8 PM](show_time).
+    - Reserve two tickets for [The Lion King](movie_name) at [8 PM](show_time).
     - Are there shows at [Regal Arbor](theater_name) this [weekend](show_date)?
     - Book [Avengers: Endgame](movie_name) in [Plano](location).
     - Are there seats for [Spirited Away](movie_name) this [Tuesday](show_date)?
     - Find horror movies at [Galaxy Theatres](theater_name).
     - What time is [Toy Story 4](movie_name) playing at [AMC Barton Creek](theater_name)?
-    - List tickets cheaper than [$8](price).
     - Any [anime](genre) movies running today?
     - Find the [nearest](location) theater showing [Frozen II](movie_name).
     - Book at [10 PM](show_time) on [August 20](show_date) for [John Wick](movie_name).
-    - I'm at [400 University Ave](street_address), any movies playing nearby?
     - Where's [IMAX Rivercenter](theater_name)? I need the address.
     - Are there afternoon shows of [Inside Out](movie_name)?
     - Any [fantasy](genre) titles screening now?
-    - Get me a [cheap](price) seat for [The Flash](movie_name).
+    - Get me a seat for [The Flash](movie_name).
     - Which theater has [Spider-Man: No Way Home](movie_name)?
     - [Inception](movie_name) at [10 PM](show_time) in [Houston](location), please.
     - I need [family](genre) movie suggestions.
     - Can I watch [Moana](movie_name) at [Regal Westgate](theater_name)?
     - Locate showings of [Tenet](movie_name) this [Friday night](show_date).
-    - I'm at [700 Congress Ave](street_address), anything nearby?
     - I want a [matinee](show_time) ticket for [Coco](movie_name).
     - Book a [9:45 PM](show_time) seat at [Landmark Sunshine](theater_name).
     - Do they show [animated](genre) movies at [Alamo Slaughter](theater_name)?
     - Ticket for [Gladiator](movie_name) in [Round Rock](location) at [noon](show_time).
     - I want to book a movie
-    - [Avengers](movie_name)
+
 - intent: inform
   examples: |
     - [New York](location)
@@ -359,4 +349,51 @@ nlu:
     - [a little after 3 pm](show_time)
     - [Missouri](location)
     - [yesterday](show_date)
-   
+    - my email is [john.doe@gmail.com](user_email)
+    - it's [jane_smith123@outlook.com](user_email)
+    - contact me at [michael.brown@yahoo.com](user_email)
+    - send info to [anna.williams@live.com](user_email)
+    - you can reach me at [user_name123@gmail.com](user_email)
+    - my email is [firstname.lastname@company.co.uk](user_email)
+    - it's [support.team@my-domain.org](user_email)
+    - email me at [hello123@hotmail.com](user_email)
+    - please send details to [contact_us@service.net](user_email)
+    - the email is [user+test@gmail.com](user_email)
+    - [user.name@subdomain.example.com](user_email)
+    - reach me at [firstname_lastname123@outlook.co.uk](user_email)
+    - [dylan@gmail.com](user_email)
+    - [jessie@outlook.com](user_email)
+    - [user.name@yahoo.com](user_email)
+    - I want to watch the movie at [7am](show_time)
+    - Book the show for [12pm](show_time)
+    - Can I get tickets for [9:30am](show_time)?
+    - Showtimes available at [7pm](show_time)
+    - I prefer the [10:15am](show_time) screening
+    - Let's go for the [3:00pm](show_time) show
+    - What about a [11am](show_time) slot?
+    - I want a ticket for [12noon](show_time)
+    - [8pm](show_time) would be perfect
+    - Is there a show at [6:45pm](show_time)?
+    - Please book for [10am](show_time)
+    - Can I get a seat for [11:30am](show_time)?
+    - Reserve a spot for [12:00pm](show_time)
+    - [1pm](show_time) works for me
+    - I want the [9am](show_time) show
+    - Are there any shows around [5pm](show_time)?
+    - Show at [7am](show_time) please
+    - Is [7am](show_time) available?
+    - My email is [user1@example.com](user_email)
+    - Contact me at [contact@domain.net](user_email)
+    - Please send details to [info@service.org](user_email)
+    - Reach out at [john.doe@university.edu](user_email)
+    - Email me at [admin@govagency.gov](user_email)
+    - Send the info to [support@startup.io](user_email)
+    - Here is my email [sales@company.co.uk](user_email)
+    - You can email [jane_doe@business.us](user_email)
+    - My email address is [hello@website.info](user_email)
+    - Contact via [billing@enterprise.biz](user_email)
+    - Reach me at [firstname.lastname@ngo.org](user_email)
+    - Send requests to [service.team@tech.io](user_email)
+    - Email me at [customer_support@store.com](user_email)
+    - My personal email is [me1234@provider.net](user_email)
+    - Use [contact_us@nonprofit.org](user_email) for inquiries
