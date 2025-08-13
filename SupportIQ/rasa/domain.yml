@@ -24,12 +24,12 @@ slots:
     mappings:
     - type: from_entity
       entity: movie_name
-  location:
+  zipcode:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
-      entity: location
+      entity: zipcode
   theater_name:
     type: text
     influence_conversation: true
@@ -55,12 +55,12 @@ responses:
   - text: Hi! How can I help you today?
   - text: Hello! How's your day going?
   - text: Good day! How can I assist you?
-  utter_ask_location:
-  - text: Where are you located?
-  - text: Please give me your location.
-  - text: Where are you currently located at?
-  - text: Sure. What city?
-  - text: Where are you at?
+  utter_ask_zipcode:
+  - text: "Could you please provide your zipcode?"
+  - text: "May I know your zipcode to find nearby theaters?"
+  - text: "What's your current zipcode?"
+  - text: "Please share your zipcode so I can check theaters nearby."
+  - text: "Can you tell me your zipcode?"
   utter_ask_movie_name:
   - text: What movie would you like to see?
   - text: What movie are you interested in seeing?
@@ -105,7 +105,7 @@ responses:
   - text: Sure, no problems. Can I further assist you?
   - text: Could I further assist you in anything else?
   utter_submit:
-  - text: Great! Booking '{movie_name}' on {show_date} at {show_time} in {location}.
+  - text: Great! Booking '{movie_name}' on {show_date} at {show_time} in {zipcode}.
   utter_bot_challenge:
   - text: I'm Cinemora, your personal cinema concierge, developed by Abhijit.
   - text: Hello! Cinemora here, your smart movie booking assistant, created by Abhijit.
@@ -118,7 +118,7 @@ entities:
 - movie_name
 - show_date
 - show_time
-- location
+- zipcode
 - theater_name
 - genre
 - user_email
@@ -126,7 +126,7 @@ forms:
   movie_booking_form:
     required_slots:
     - movie_name
-    - location
+    - zipcode
     - show_date
     - show_time
     - user_email

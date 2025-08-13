@@ -16,6 +16,7 @@ from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import dotenv
+import requests
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 
@@ -27,6 +28,22 @@ class ValidateMovieBookingForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_movie_booking_form"
     
+    def validate_zipcode(self, slot_value:Any,
+                         dispatcher: CollectingDispatcher, 
+                         tracker:Tracker, 
+                         domain:Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        zipcode = slot_value
+        zip_api_base = os.getenv("ZIPCODE_API_BASE")
+        zip_url = f"{zip_api_base}/{zipcode}"
+
+        if zipcode.isdigit() and len(zipcode) == 5:
+            if requests.get(zip_url).status_code == 200:
+                return {"zipcode": zipcode}
+    
+        dispatcher.utter_message(text="Please enter a valid zipcode")
+        return {"zipcode": None}
+
     def convert_date(self, input_date):
 
         now = datetime.today().date()
@@ -44,7 +61,7 @@ class ValidateMovieBookingForm(FormValidationAction):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        input_date = tracker.get_slot("show_date")
+        input_date = slot_value
         now = datetime.today().date()
 
         if input_date.isalpha():
@@ -63,8 +80,9 @@ class ValidateMovieBookingForm(FormValidationAction):
                            tracker: Tracker,
                            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        input_time = str(tracker.get_slot("show_time").replace(" ",""))
+        input_time = str(slot_value.replace(" ",""))
         now = datetime.now().time()
+        parse_time = None
 
         time_format = {
             "%I:%M%p",          # 12hrs with mons 10:15 pm/am
@@ -72,12 +90,15 @@ class ValidateMovieBookingForm(FormValidationAction):
             "%H:%M",            # 24hrs with mins
             "%H"                # 24hrs no mins
         }
-
+        
         for format in time_format:
             try:
                 parse_time = datetime.strptime(input_time, format).time()
             except ValueError:
                 continue
+        if parse_time is None:
+            dispatcher.utter_message(text="Please enter a valid time")
+            return {"show_time": None}
         if parse_time <= now:
             dispatcher.utter_message(text=f"That time is earlier than the current time {now.strftime('%H:%M')}. Please choose a later time.")
             return {"show_time": None}
