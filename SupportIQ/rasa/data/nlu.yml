@@ -1,5 +1,9 @@
 version: "3.1"
 nlu:
+- regex: zipcode
+  examples: |
+    - \b\d{5}\b
+
 - intent: greet
   examples: |
     - hey
@@ -38,86 +42,103 @@ nlu:
 - intent: movie
   examples: |
     - Can you show me some movie listings?
-    - I am in [San Jose](location). Also I want to see a 3D movie.
     - Yes, please find me some other movies. I want to see something at [CineLux Almaden](theater_name).
     - What times do you have available for [Curse of La Llorona](movie_name)? I've been wanting to see that!
     - [March 5th](show_date).
     - Can you help me find a movie to watch?
-    - I like [Horror](genre) movies and would also like to see a movie in [Concord](location). Can you search for one there?
+    - I like [Horror](genre) movies and would also like to see a movie in [19104](zipcode). Can you search for one there?
     - That sounds great, [The Curse of La Llorona](movie_name) it is!
     - No, I am not ready to buy tickets but I would like to know the available times for the movie.
     - I am thinking of going on [March 2nd](show_date) and I would like to see it at [Veranda LUXE Cinema](theater_name).
     - Can you please give me the address for the theater?
     - Find me a movie
-    - Make it movies in [Santa Clara](location)
-    - Yeah. I want to see [Dumbo](movie_name)
+    - Search for theaters in [44114](zipcode)
+    - Are there movie halls near [20001](zipcode)?
+    - Nearby theaters at [53202](zipcode)
+    - Which cinemas are in [37203](zipcode)?
+    - Can you check theaters near [27601](zipcode)?
+    - I want theaters near [30309](zipcode)
+    - Give me cinemas close to [94103](zipcode)
+    - Movie theaters in [43215](zipcode)
+    - Where are the theaters around [63103](zipcode)?
     - What time does it show?
-    - I'll see it [this Saturday](show_date)
+    - I'll see it [oct 8](show_date)
     - A friend and I want to see an imax show at [CineLux Tennant Station](theater_name). What movies are out?
-    - What [fantasy](genre) movies are being shown in [Morgan Hill](location)?
+    - What [fantasy](genre) movies are being shown in [33602](zipcode)?
     - [Hellboy](movie_name) would be the perfect movie!
     - No, not right now. What times is it playing on [March 2nd](show_date)?
-    - I'mm interested in seeing an imax movie in [Petaluma](location).
+    - I'mm interested in seeing an imax movie in [55415](zipcode).
     - I would like to see [Little](movie_name). What time is it playing?
-    - I plan on seeing it on the [2nd of March](show_date).
+    - I plan on seeing it on the [2nd of Oct](show_date).
     - That is great. I don't need anything further.
     - Hey, I would like to watch a movie.
-    - I am currently at [Sebastopol](location), could you find for movies currently showing in this area?
+    - Find me theaters near [60601](zipcode)
+    - What theaters are available near [95814](zipcode)?
+    - Theaters in [45402](zipcode)
+    - Any theaters in [97205](zipcode)?
+    - Search theaters for [33139](zipcode)
+    - Yeah. I want to see [Dumbo](movie_name)
+    - I am currently at [00501](zipcode), could you find for movies currently showing in this area?
     - Could help search for other movies?
     - [Wild Nights with Emily](movie_name) is perfect!
+    - Locate theaters in [98101](zipcode)
     - No, I am just inquiring. I would not like to purchase the tickets now.
     - What are the show times available for this movie? Would it be possible on the [March 5th](show_date) for a 3d version of this movie?
     - No, that will be all. Thank you very much!
-    - Book tickets for [Inception](movie_name) at [8:00 PM](show_time) on [Saturday](show_date)
+    - Book tickets for [Inception](movie_name) at [8:00 PM](show_time) on [10/05](show_date)
     - What are the showtimes for [Titanic](movie_name) at [Regal LA Live](theater_name)?
-    - Is [Interstellar](movie_name) playing in [Dallas](location) this [Friday](show_date)?
+    - Is [Interstellar](movie_name) playing in [85003](zipcode) this [09/25](show_date)?
     - Find a [comedy](genre) at [AMC Empire 25](theater_name) on [August 10th](show_date)
-    - Are there any [action](genre) movies at [7:00 PM](show_time) in [Chicago](location)?
-    - Show me [drama](genre) movies in [New York](location)
+    - Are there any [action](genre) movies at [7:00 PM](show_time) in [70112](zipcode)?
+    - Show me [drama](genre) movies in [New York](zipcode)
     - Get me tickets for [The Matrix](movie_name) at [ArcLight Hollywood](theater_name)
-    - Buy tickets for [Frozen](movie_name) on [Friday](show_date) at [6:30 PM](show_time)
-    - Is [Avengers](movie_name) playing in [Phoenix](location)?
+    - Buy tickets for [Frozen](movie_name) on [Sep 17th](show_date) at [6:30 PM](show_time)
+    - Is [Avengers](movie_name) playing in [48201](zipcode)?
     - I want to watch [Barbie](movie_name) at [AMC Times Square](theater_name)?
     - Where is [Alamo Drafthouse](theater_name) located?
+    - Look for theaters near [75201](zipcode)
+    - Where are the cinemas in [64108](zipcode)?
+    - Find cinemas close to [21202](zipcode)
+    - Please check for theaters in [19103](zipcode)
     - I want to see [Oppenheimer](movie_name) on [July 18](show_date)
-    - What [sci-fi](genre) films are showing this [weekend](show_date)?
-    - Find a movie in [Austin](location) at [9:00 PM](show_time)
-    - I'd like to watch [Mission Impossible](movie_name) on [Monday](show_date)
+    - What [sci-fi](genre) films are showing this [may 15](show_date)?
+    - Find a movie in [33125](zipcode) at [9:00 PM](show_time)
+    - I'd like to watch [Mission Impossible](movie_name) on [12/13](show_date)
     - Find theaters showing [The Batman](movie_name)
     - Get me a [horror](genre) movie at [7:30 PM](show_time)
     - What is the address of [Cinemark Legacy](theater_name)?
-    - Is [The Lion King](movie_name) available on [Christmas Eve](show_date)?
-    - Book [The Godfather](movie_name) for [10:00 PM](show_time) on [Sunday](show_date)
+    - Is [The Lion King](movie_name) available on [11/26](show_date)?
+    - Book [The Godfather](movie_name) for [10:00 PM](show_time) on [Dec 25](show_date)
     - [AMC Magic Johnson Harlem 9](theater_name) has [Spider-Man](movie_name) at [3:00 PM](show_time)?
-    - How much are tickets for [Encanto](movie_name) on [Tuesday](show_date)?
-    - Find a [romantic](genre) movie on [Valentine's Day](show_date)
+    - How much are tickets for [Encanto](movie_name) on [Feb 24](show_date)?
+    - Find a [romantic](genre) movie on [june 19](show_date)
     - Is [Barbie](movie_name) playing at [Regal Sunset](theater_name)?
-    - I want to see a [thriller](genre) on [Friday night](show_date)
-    - Get me a ticket for [Inside Out](movie_name) in [Denver](location)
+    - I want to see a [thriller](genre) on [Nov 9](show_date)
+    - Get me a ticket for [Inside Out](movie_name) in [97209](zipcode)
     - Book two seats for [Tenet](movie_name) at [7:45 PM](show_time)
-    - Buy a ticket for [The Marvels](movie_name) at [AMC Lenox](theater_name) in [Atlanta](location)
-    - Book [The Flash](movie_name) in [Miami](location) on [Saturday](show_date)
-    - Any [family](genre) shows this [weekend](show_date)?
-    - Schedule a [romance](genre) film in [Portland](location) at [6:15 PM](show_time)
-    - What's showing in [San Diego](location) tonight?
+    - Buy a ticket for [The Marvels](movie_name) at [AMC Lenox](theater_name) in [15213](zipcode)
+    - Book [The Flash](movie_name) in [80202](zipcode) on [Saturday](show_date)
+    - Any [family](genre) shows this [03/05](show_date)?
+    - Schedule a [romance](genre) film in [30318](zipcode) at [6:15 PM](show_time)
+    - What's showing in [90012](zipcode) tonight?
     - Find [musical](genre) movies playing on [August 20](show_date)
     - How much is a ticket to [Avatar](movie_name)?
-    - Is [Toy Story](movie_name) available in [San Jose](location)?
+    - Is [Toy Story](movie_name) available in [20002](zipcode)?
     - Book a [fantasy](genre) at [Landmark Sunshine](theater_name) at [5 PM](show_time)
-    - Any movies at [AMC River East 21](theater_name) on [Sunday](show_date)?
+    - Any movies at [AMC River East 21](theater_name) on [06/06](show_date)?
     - Tickets for [Everything Everywhere All at Once](movie_name) please
-    - How much for [Joker](movie_name) in [Philadelphia](location)?
-    - Find [kids](genre) movies in [Seattle](location)
+    - How much for [Joker](movie_name) in [07030](zipcode)?
+    - Find [kids](genre) movies in [80203](zipcode)
     - I want to see [Finding Nemo](movie_name) at [9:00 AM](show_time)
     - Buy [Frozen II](movie_name) tickets at [AMC Metreon 16](theater_name)
-    - Show me [Top Gun](movie_name) in [Dallas](location)
+    - Show me [Top Gun](movie_name) in [63110](zipcode)
     - Get me a movie at [AMC Cherry Hill](theater_name) around [5:45 PM](show_time)
-    - Show me [Pixar](genre) films in [Boston](location)
+    - Show me [Pixar](genre) films in [44107](zipcode)
     - Can I watch [Soul](movie_name) on [December 25](show_date)?
-    - Movie [Guardians of the Galaxy](movie_name) in [Las Vegas](location)?
+    - Movie [Guardians of the Galaxy](movie_name) in [29401](zipcode)?
     - I want to book tickets for [Minions](movie_name) at [10:00 AM](show_time)
     - Schedule [No Time to Die](movie_name) on [Labor Day](show_date)
-    - Is [The Matrix](movie_name) showing at [7:30 PM](show_time) in [Austin](location)?
+    - Is [The Matrix](movie_name) showing at [7:30 PM](show_time) in [33101](zipcode)?
     - What genre is [Dune](movie_name)?
     - Book a ticket for [Oppenheimer](movie_name) this [Saturday](show_date).
     - I want to go to [Cinemark West Plano](theater_name) tomorrow evening.
@@ -126,128 +147,97 @@ nlu:
     - What's the address of [Alamo Drafthouse South Lamar](theater_name)?
     - Where is [Regal LA Live](theater_name) located?
     - Book a seat for [Thor: Ragnarok](movie_name) on [Aug 10](show_date) at [9:00 PM](show_time).
-    - Looking for a [thriller](genre) movie in [Dallas](location).
-    - Are there any [romantic](genre) shows in [San Antonio](location)?
+    - Looking for a [thriller](genre) movie in [94016](zipcode).
+    - Are there any [romantic](genre) shows in [11201](zipcode)?
     - Which theater is showing [Interstellar](movie_name) at [10:15 AM](show_time)?
     - Reserve a spot at [Palladium IMAX](theater_name) for [Batman Begins](movie_name).
     - Find me [action](genre) movies this [Friday](show_date).
-    - I'd like to go to a show in [Los Angeles](location) on [August 15](show_date).
+    - I'd like to go to a show in [12207](zipcode) on [August 15](show_date).
     - Get me a ticket for [The Godfather](movie_name) for [evening](show_time).
-    - Where is [Rave Cinemas](theater_name) located in [Houston](location)?
+    - Where is [Rave Cinemas](theater_name) located in [11101](zipcode)?
     - I want to see a [drama](genre) at [Regal Round Rock](theater_name).
     - Is [Parasite](movie_name) still playing?
     - Show [Pixar](genre) films suitable for kids.
     - Reserve two tickets for [The Lion King](movie_name) at [8 PM](show_time).
     - Are there shows at [Regal Arbor](theater_name) this [weekend](show_date)?
-    - Book [Avengers: Endgame](movie_name) in [Plano](location).
     - Are there seats for [Spirited Away](movie_name) this [Tuesday](show_date)?
     - Find horror movies at [Galaxy Theatres](theater_name).
     - What time is [Toy Story 4](movie_name) playing at [AMC Barton Creek](theater_name)?
     - Any [anime](genre) movies running today?
-    - Find the [nearest](location) theater showing [Frozen II](movie_name).
+    - Find the [08002](zipcode) theater showing [Frozen II](movie_name).
     - Book at [10 PM](show_time) on [August 20](show_date) for [John Wick](movie_name).
     - Where's [IMAX Rivercenter](theater_name)? I need the address.
     - Are there afternoon shows of [Inside Out](movie_name)?
     - Any [fantasy](genre) titles screening now?
     - Get me a seat for [The Flash](movie_name).
     - Which theater has [Spider-Man: No Way Home](movie_name)?
-    - [Inception](movie_name) at [10 PM](show_time) in [Houston](location), please.
+    - [Inception](movie_name) at [10 PM](show_time) in [08540](zipcode), please.
     - I need [family](genre) movie suggestions.
     - Can I watch [Moana](movie_name) at [Regal Westgate](theater_name)?
     - Locate showings of [Tenet](movie_name) this [Friday night](show_date).
-    - I want a [matinee](show_time) ticket for [Coco](movie_name).
+    - I want a [17](show_time) ticket for [Coco](movie_name).
     - Book a [9:45 PM](show_time) seat at [Landmark Sunshine](theater_name).
     - Do they show [animated](genre) movies at [Alamo Slaughter](theater_name)?
-    - Ticket for [Gladiator](movie_name) in [Round Rock](location) at [noon](show_time).
+    - Ticket for [Gladiator](movie_name) in [07410](zipcode) at [12](show_time).
+    - Book [Avengers: Endgame](movie_name) in [20009](zipcode).
+    - Book [Inception](movie_name) in [10001](zipcode).
+    - Book [The Lion King](movie_name) in [94105](zipcode).
+    - Book [Jurassic Park](movie_name) in [60601](zipcode).
+    - Book [Frozen II](movie_name) in [30303](zipcode).
+    - Book [Black Panther](movie_name) in [98101](zipcode).
+    - Book [Interstellar](movie_name) in [73301](zipcode).
+    - Book [Avatar](movie_name) in [20001](zipcode).
+    - Book [The Dark Knight](movie_name) in [33101](zipcode).
+    - Book [Toy Story 4](movie_name) in [75201](zipcode).
     - I want to book a movie
 
 - intent: inform
   examples: |
-    - [New York](location)
-    - I am in [Chicago](location)
-    - [Los Angeles](location)
-    - Currently at [Austin](location)
-    - [San Francisco](location)
-    - [Dallas](location)
-    - My location is [Seattle](location)
-    - [Miami](location)
-    - I'm in [Denver](location)
-    - Based in [Phoenix](location)
-    - [Atlanta](location)
-    - [Boston](location)
-    - [Las Vegas](location)
-    - I live in [Philadelphia](location)
-    - [San Diego](location)
-    - [Houston](location)
-    - [Orlando](location)
-    - [Portland](location)
-    - [San Jose](location)
-    - [Minneapolis](location)
-    - [Tampa](location)
-    - [Charlotte](location)
-    - [Detroit](location)
-    - [Salt Lake City](location)
-    - [Pittsburgh](location)
-    - [Cleveland](location)
-    - [Columbus](location)
-    - [Indianapolis](location)
-    - [Nashville](location)
-    - [Milwaukee](location)
-    - [Kansas City](location)
-    - [Cincinnati](location)
-    - I'm currently in [Sacramento](location)
-    - [Raleigh](location)
-    - [Richmond](location)
-    - [St. Louis](location)
-    - [Albuquerque](location)
-    - [Omaha](location)
-    - [Boulder](location)
-    - [Buffalo](location)
-    - [Des Moines](location)
-    - [Little Rock](location)
-    - [Boise](location)
-    - [Madison](location)
-    - [Fresno](location)
-    - [Tulsa](location)
-    - [Birmingham](location)
-    - [New Orleans](location)
-    - [Anchorage](location)
-    - [Honolulu](location)
-    - [Spokane](location)
-    - [Knoxville](location)
-    - [Reno](location)
-    - [Lexington](location)
-    - [Greensboro](location)
-    - [Wichita](location)
-    - [Lubbock](location)
-    - [Chattanooga](location)
-    - [Toledo](location)
-    - [Baton Rouge](location)
-    - [Sioux Falls](location)
-    - [Dover](location)
-    - [Cheyenne](location)
-    - [Montgomery](location)
-    - [Springfield](location)
-    - [Augusta](location)
-    - [Fort Worth](location)
-    - [El Paso](location)
-    - [Mesa](location)
-    - [Tucson](location)
-    - [Jersey City](location)
-    - [Providence](location)
+    - My zip is [90210](zipcode)
+    - The postal code is [63114](zipcode)
+    - [02139](zipcode)
+    - It's [30301](zipcode)
+    - The zip code is [33109](zipcode)
+    - [85001](zipcode)
+    - I live in [10001](zipcode)
+    - It's [60614](zipcode) where I am
+    - [94105](zipcode)
+    - My postal code: [77005](zipcode)
+    - I'm at [46202](zipcode)
+    - Zip [98109](zipcode)
+    - The code is [55401](zipcode)
+    - I stay at [27513](zipcode)
+    - [44114](zipcode) is my zip
+    - Here's the postal code: [20001](zipcode)
+    - My zip happens to be [75201](zipcode)
+    - [64108](zipcode)
+    - I am in [21202](zipcode)
+    - The postal zip is [19103](zipcode)
+    - I'm from [98101](zipcode)
+    - Code: [37203](zipcode)
+    - Zipcode is [27601](zipcode)
+    - My area code is [30309](zipcode)
+    - I'm based in [94103](zipcode)
+    - This is the code: [43215](zipcode)
+    - [63103](zipcode)
+    - My code: [60601](zipcode)
+    - [95814](zipcode) is where I am
+    - I live near [45402](zipcode)
+    - My postal: [97205](zipcode)
+    - [33139](zipcode) is the zip    
     - [today](show_date)
     - [tomorrow](show_date)
     - [yesterday](show_date)
     - the day after [tomorrow](show_date)
     - the day before [yesterday](show_date)
     - [tonight](show_date)
-    - [this Friday](show_date)
-    - [next Sunday](show_date)
-    - [next week](show_date)
-    - [next weekend](show_date)
-    - [this weekend](show_date)
-    - in [two days](show_date)
-    - in [a week](show_date)
+    - [july 10](show_date)
+    - [July 4](show_date)
+    - [5th Oct](show_date)
+    - [Jan 23](show_date)
+    - [April 4](show_date)
+    - on [May 5](show_date)
+    - [tonight](show_date)
     - on [March 12](show_date)
     - on [Mar 12th](show_date)
     - on [12th March](show_date)
@@ -304,50 +294,40 @@ nlu:
     - [10 in the morning](show_time)
     - [9 am](show_time)
     - [09:00](show_time)
-    - [noon](show_time)
+    - [6pm](show_time)
     - [12:00 pm](show_time)
     - [midnight](show_time)
-    - [12 am](show_time)
+    - [12am](show_time)
     - [00:00](show_time)
     - [1:15 am](show_time)
     - [01:15](show_time)
     - [3 in the afternoon](show_time)
     - [3:00 pm](show_time)
     - [15:00](show_time)
-    - [5:45 pm](show_time)
+    - [5:45pm](show_time)
     - [17:45](show_time)
-    - [half past 6](show_time)
-    - [quarter to 8](show_time)
-    - [around 9:30](show_time)
-    - [between 6 and 7](show_time)
-    - [just after 4 pm](show_time)
-    - [as early as 5:30](show_time)
-    - [before 8 pm](show_time)
-    - [after 6](show_time)
-    - [latest by 9 pm](show_time)
-    - [early morning](show_time)
-    - [late night](show_time)
-    - [evening show](show_time)
-    - [morning show](show_time)
-    - [night show](show_time)
-    - [first show](show_time)
-    - [second show](show_time)
-    - [matinee show](show_time)
-    - [late evening show](show_time)
-    - [prime time](show_time)
-    - [opening show](show_time)
-    - [closing show](show_time)
-    - [anytime after 7](show_time)
-    - [sometime in the afternoon](show_time)
-    - [whenever available after 5 pm](show_time)
-    - [8:00 sharp](show_time)
-    - [a show around 10:30](show_time)
-    - [10:30 sharp](show_time)
+    - [11pm](show_time)
+    - [8:20](show_time)
+    - [9:30pm](show_time)
+    - [2pm](show_time)
+    - [4 pm](show_time)
+    - [10:30](show_time)
+    - [8 pm](show_time)
+    - [6 pm](show_time)
+    - [9 pm](show_time)
+    - [20:20](show_time)
+    - [11 pm](show_time)
+    - [10:10pm](show_time)
+    - [11:10 pm](show_time)
+    - [7:30pm](show_time)
+    - [2:45 pm](show_time)
+    - [17](show_time)
+    - [8:00](show_time)
+    - [10:30am](show_time)
+    - [10:30 am](show_time)
     - [4:20 pm](show_time)
     - [21:00](show_time)
-    - [just before 6](show_time)
-    - [a little after 3 pm](show_time)
-    - [Missouri](location)
+    - [3 pm](show_time)
     - [yesterday](show_date)
     - my email is [john.doe@gmail.com](user_email)
     - it's [jane_smith123@outlook.com](user_email)
