@@ -30,6 +30,7 @@ rules:
   - action: movie_booking_form
   - active_loop: null
   - action: action_send_email
+  - action: utter_anything_else
 
 - rule: Handle interruption
   condition: 

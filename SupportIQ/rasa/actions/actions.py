@@ -16,31 +16,105 @@ from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import dotenv
+from fuzzywuzzy import process
 import requests
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet, FollowupAction, ActiveLoop
 
 dotenv.load_dotenv()
 #
 #
 class ValidateMovieBookingForm(FormValidationAction):
 
+    def __init__(self):
+        super().__init__()
+        self.cache_response = {}
+
     def name(self) -> Text:
         return "validate_movie_booking_form"
+
+    def fetch_movies(self,zipcode:Any):
+
+        api_key = os.getenv("MOVIE_API_KEY")
+        url = os.getenv("MOVIE_BASE_URL")
+        start_date = datetime.today().date()
+        headers = {"Content-Type":"application/json"}
+
+        params =  {"startDate":start_date, 
+                   "zip":zipcode, 
+                   "radius":"10", 
+                   "api_key":api_key}
+
+        response = requests.get(url, params=params, headers=headers)
+        movies = response.json()
+        self.cache_response[zipcode] = movies
+        return movies
+
     
+    def search_movie(self,zipcode:Any,dispatcher:CollectingDispatcher):
+
+        movies = self.fetch_movies(zipcode) 
+        
+        if not movies:
+            dispatcher.utter_message(text="No movies found near your area. Please try a different zipcode.")
+            return []
+        
+        search_results = set([movie.get("title") for movie in movies])
+        nearby_movies = '\n'.join((f"-> {movie}" for movie in search_results))
+        dispatcher.utter_message(text=f"Here are movies: \n{nearby_movies}")
+        return []
+    
+    def match_movie_name(self, movie_name, movies, tracker:Tracker):
+
+        movie_list = set([movie.get("title") for movie in movies])
+
+        best_match, score = process.extractOne(movie_name, movie_list)
+        if score > 80:
+            return best_match
+        else:
+            return None
+
+    def validate_movie_name(self, slot_value:Any,
+                        dispatcher:CollectingDispatcher,
+                        tracker:Tracker,
+                        domain: Dict[Text, Any]) -> Dict[Text, Any]:
+                      
+        zipcode = tracker.get_slot("zipcode")
+
+        movies = self.cache_response[zipcode]    
+        if not movies:
+            dispatcher.utter_message(text=f"There are no theaters nearby {zipcode}")
+            return {"movie_name": None}
+            
+        movie_name = self.match_movie_name(slot_value, movies, tracker)
+        
+        if not movie_name:
+            dispatcher.utter_message(text=f"Movie {slot_value} not found")
+            return {"movie_name": None}
+
+        # Find theaters having user given movie name
+        movie_metadata = next((movie for movie in movies if movie.get('title')==movie_name), None)
+        theaters = set([theater.get("theatre").get("name") for theater in movie_metadata.get("showtimes")])
+        nearby_theaters = '\n'.join(f"-> {theater}" for theater in theaters)
+
+        dispatcher.utter_message(text=f"Here are theaters near you for {slot_value}: \n{nearby_theaters}")
+        return {"movie_name": movie_name}
+        
+
     def validate_zipcode(self, slot_value:Any,
                          dispatcher: CollectingDispatcher, 
                          tracker:Tracker, 
-                         domain:Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
+                         domain:Dict[Text, Any]) -> Dict:
+        print(f"validate_zipcode running {slot_value}")
         zipcode = slot_value
         zip_api_base = os.getenv("ZIPCODE_API_BASE")
         zip_url = f"{zip_api_base}/{zipcode}"
 
         if zipcode.isdigit() and len(zipcode) == 5:
             if requests.get(zip_url).status_code == 200:
+                self.search_movie(zipcode,dispatcher)
                 return {"zipcode": zipcode}
-    
         dispatcher.utter_message(text="Please enter a valid zipcode")
         return {"zipcode": None}
 
