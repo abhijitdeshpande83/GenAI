@@ -2,7 +2,7 @@ version: "3.1"
 nlu:
 - regex: zipcode
   examples: |
-    - \b\d{5}\b
+    - \b\d{5}
 
 - intent: greet
   examples: |
