@@ -12,12 +12,18 @@ slots:
     mappings:
     - type: from_entity
       entity: show_time
+      conditions:
+      - active_loop: movie_booking_form
+        requested_slot: show_time      
   show_date:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: show_date
+      conditions:
+      - active_loop: movie_booking_form
+        requested_slot: show_date
   movie_name:
     type: text
     influence_conversation: true
@@ -31,6 +37,9 @@ slots:
       conditions:
       - active_loop: movie_booking_form
         requested_slot: movie_name
+      not_intent: 
+        - bot_challenge
+        - greet
   zipcode:
     type: text
     influence_conversation: true
