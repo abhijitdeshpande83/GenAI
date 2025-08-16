@@ -42,14 +42,14 @@ nlu:
 - intent: movie
   examples: |
     - Can you show me some movie listings?
-    - Yes, please find me some other movies. I want to see something at [CineLux Almaden](theater_name).
+    - Yes, please find me some other movies. I want to see something at [Silverspot Cinema Metsquare](theater_name).
     - What times do you have available for [Curse of La Llorona](movie_name)? I've been wanting to see that!
     - [March 5th](show_date).
     - Can you help me find a movie to watch?
     - I like [Horror](genre) movies and would also like to see a movie in [19104](zipcode). Can you search for one there?
     - That sounds great, [The Curse of La Llorona](movie_name) it is!
     - No, I am not ready to buy tickets but I would like to know the available times for the movie.
-    - I am thinking of going on [March 2nd](show_date) and I would like to see it at [Veranda LUXE Cinema](theater_name).
+    - I am thinking of going on [March 2nd](show_date) and I would like to see it at [AMC Dine-in Theatres Coral Ridge 10](theater_name).
     - Can you please give me the address for the theater?
     - Find me a movie
     - Search for theaters in [44114](zipcode)
@@ -63,7 +63,7 @@ nlu:
     - Where are the theaters around [63103](zipcode)?
     - What time does it show?
     - I'll see it [oct 8](show_date)
-    - A friend and I want to see an imax show at [CineLux Tennant Station](theater_name). What movies are out?
+    - A friend and I want to see an imax show at [Silverspot Cinema](theater_name). What movies are out?
     - What [fantasy](genre) movies are being shown in [33602](zipcode)?
     - [Hellboy](movie_name) would be the perfect movie!
     - No, not right now. What times is it playing on [March 2nd](show_date)?
@@ -86,16 +86,16 @@ nlu:
     - What are the show times available for this movie? Would it be possible on the [March 5th](show_date) for a 3d version of this movie?
     - No, that will be all. Thank you very much!
     - Book tickets for [Inception](movie_name) at [8:00 PM](show_time) on [10/05](show_date)
-    - What are the showtimes for [Titanic](movie_name) at [Regal LA Live](theater_name)?
+    - What are the showtimes for [Titanic](movie_name) at [Flipper's Hollywood Cinema 10](theater_name)?
     - Is [Interstellar](movie_name) playing in [85003](zipcode) this [09/25](show_date)?
-    - Find a [comedy](genre) at [AMC Empire 25](theater_name) on [August 10th](show_date)
+    - Find a [comedy](genre) at [Flagship Cinemas Auburn 10](theater_name) on [August 10th](show_date)
     - Are there any [action](genre) movies at [7:00 PM](show_time) in [70112](zipcode)?
-    - Show me [drama](genre) movies in [New York](zipcode)
-    - Get me tickets for [The Matrix](movie_name) at [ArcLight Hollywood](theater_name)
+    - Show me [drama](genre) movies in [33024](zipcode)
+    - Get me tickets for [The Matrix](movie_name) at [CMX Brickell City Centre](theater_name)
     - Buy tickets for [Frozen](movie_name) on [Sep 17th](show_date) at [6:30 PM](show_time)
     - Is [Avengers](movie_name) playing in [48201](zipcode)?
     - I want to watch [Barbie](movie_name) at [AMC Times Square](theater_name)?
-    - Where is [Alamo Drafthouse](theater_name) located?
+    - Where is [CMX Brickell City Centre](theater_name) located?
     - Look for theaters near [75201](zipcode)
     - Where are the cinemas in [64108](zipcode)?
     - Find cinemas close to [21202](zipcode)
@@ -106,7 +106,7 @@ nlu:
     - I'd like to watch [Mission Impossible](movie_name) on [12/13](show_date)
     - Find theaters showing [The Batman](movie_name)
     - Get me a [horror](genre) movie at [7:30 PM](show_time)
-    - What is the address of [Cinemark Legacy](theater_name)?
+    - What is the address of [Smitty's Cinema Topsham](theater_name)?
     - Is [The Lion King](movie_name) available on [11/26](show_date)?
     - Book [The Godfather](movie_name) for [10:00 PM](show_time) on [Dec 25](show_date)
     - [AMC Magic Johnson Harlem 9](theater_name) has [Spider-Man](movie_name) at [3:00 PM](show_time)?
@@ -116,7 +116,7 @@ nlu:
     - I want to see a [thriller](genre) on [Nov 9](show_date)
     - Get me a ticket for [Inside Out](movie_name) in [97209](zipcode)
     - Book two seats for [Tenet](movie_name) at [7:45 PM](show_time)
-    - Buy a ticket for [The Marvels](movie_name) at [AMC Lenox](theater_name) in [15213](zipcode)
+    - Buy a ticket for [The Marvels](movie_name) at [Regal Georgian Stadium 14](theater_name) in [15213](zipcode)
     - Book [The Flash](movie_name) in [80202](zipcode) on [Saturday](show_date)
     - Any [family](genre) shows this [03/05](show_date)?
     - Schedule a [romance](genre) film in [30318](zipcode) at [6:15 PM](show_time)
@@ -124,15 +124,15 @@ nlu:
     - Find [musical](genre) movies playing on [August 20](show_date)
     - How much is a ticket to [Avatar](movie_name)?
     - Is [Toy Story](movie_name) available in [20002](zipcode)?
-    - Book a [fantasy](genre) at [Landmark Sunshine](theater_name) at [5 PM](show_time)
-    - Any movies at [AMC River East 21](theater_name) on [06/06](show_date)?
+    - Book a [fantasy](genre) at [NCG Peachtree City](theater_name) at [5 PM](show_time)
+    - Any movies at [Cinemark North Hollywood](theater_name) on [06/06](show_date)?
     - Tickets for [Everything Everywhere All at Once](movie_name) please
     - How much for [Joker](movie_name) in [07030](zipcode)?
     - Find [kids](genre) movies in [80203](zipcode)
     - I want to see [Finding Nemo](movie_name) at [9:00 AM](show_time)
     - Buy [Frozen II](movie_name) tickets at [AMC Metreon 16](theater_name)
     - Show me [Top Gun](movie_name) in [63110](zipcode)
-    - Get me a movie at [AMC Cherry Hill](theater_name) around [5:45 PM](show_time)
+    - Get me a movie at [Regal LA Live Stadium 14](theater_name) around [5:45 PM](show_time)
     - Show me [Pixar](genre) films in [44107](zipcode)
     - Can I watch [Soul](movie_name) on [December 25](show_date)?
     - Movie [Guardians of the Galaxy](movie_name) in [29401](zipcode)?
@@ -141,43 +141,87 @@ nlu:
     - Is [The Matrix](movie_name) showing at [7:30 PM](show_time) in [33101](zipcode)?
     - What genre is [Dune](movie_name)?
     - Book a ticket for [Oppenheimer](movie_name) this [Saturday](show_date).
-    - I want to go to [Cinemark West Plano](theater_name) tomorrow evening.
+    - I want to go to [Cinepolis Luxury Cinemas Inglewood IMAX](theater_name) tomorrow evening.
     - Any sci-fi movies at [AMC Empire 25](theater_name)?
     - Find [comedy](genre) films playing this [weekend](show_date).
     - What's the address of [Alamo Drafthouse South Lamar](theater_name)?
-    - Where is [Regal LA Live](theater_name) located?
+    - Where is [AMC Dine-in Theatres Menlo Park 12](theater_name) located?
     - Book a seat for [Thor: Ragnarok](movie_name) on [Aug 10](show_date) at [9:00 PM](show_time).
     - Looking for a [thriller](genre) movie in [94016](zipcode).
     - Are there any [romantic](genre) shows in [11201](zipcode)?
     - Which theater is showing [Interstellar](movie_name) at [10:15 AM](show_time)?
-    - Reserve a spot at [Palladium IMAX](theater_name) for [Batman Begins](movie_name).
+    - Reserve a spot at [AMC Universal CityWalk 19](theater_name) for [Batman Begins](movie_name).
     - Find me [action](genre) movies this [Friday](show_date).
     - I'd like to go to a show in [12207](zipcode) on [August 15](show_date).
     - Get me a ticket for [The Godfather](movie_name) for [evening](show_time).
-    - Where is [Rave Cinemas](theater_name) located in [11101](zipcode)?
+    - Where is [AMC South Bay Galleria 16](theater_name) located in [11101](zipcode)?
     - I want to see a [drama](genre) at [Regal Round Rock](theater_name).
     - Is [Parasite](movie_name) still playing?
     - Show [Pixar](genre) films suitable for kids.
+    - Book me a ticket for [Inception](movie_name) at [AMC Burleson 14](theater_name) on [2025-08-16](show_date) at [19:30](show_time) in [76028](zipcode)
+    - I want to watch [Avatar 2](movie_name) at [Cinemark Waco and XD](theater_name) on [2025-09-05](show_date) around [20:15](show_time)
+    - Reserve 2 seats for [Avengers: Endgame](movie_name) at [AMC The Parks at Arlington 18](theater_name) on [2025-08-20](show_date) at [17:00](show_time), [action](genre)
+    - Can I get tickets for [Barbie](movie_name) at [Studio Movie Grill Arlington](theater_name) on [2025-09-01](show_date) for the [15:30](show_time) show in [76011](zipcode)?      - Please book [Oppenheimer](movie_name) at [AMC Grapevine Mills 24](theater_name) on [2025-08-30](show_date) [20:00](show_time)
+    - I want 3 seats for [Spider-Man: No Way Home](movie_name) at [Cinemark Alliance Town Center and XD](theater_name) in [76177](zipcode) on [2025-08-22](show_date) at [18:45](show_time) [action](genre)
+    - Get me a seat for [Frozen 2](movie_name) at [Movie Tavern Hulen](theater_name) on [2025-08-18](show_date) at [14:15](show_time)
+    - Find a show for [Guardians of the Galaxy Vol. 3](movie_name) at [UA Fossil Creek Stadium 11](theater_name) in [76137](zipcode) on [2025-08-21](show_date) [sci-fi](genre)
+    - Is [Tenet](movie_name) playing at [Ridgmar 13 + Xtreme](theater_name) on [2025-08-25](show_date) around [21:00](show_time)?
+    - I'd like to watch [Joker](movie_name) at [Cinemark Tinseltown Grapevine and XD](theater_name) on [2025-08-19](show_date) at [16:30](show_time), [drama](genre)
+    - Book [Interstellar](movie_name) for [Cinemark Roanoke and XD](theater_name) in [76262](zipcode) at [19:15](show_time) on [2025-08-23](show_date)      - Are there seats for [The Dark Knight](movie_name) at [Premiere Burleson Cinema](theater_name) [2025-08-17](show_date) [20:45](show_time)?
+    - Tickets for [Black Panther: Wakanda Forever](movie_name) at [Moviehouse & Eatery Keller](theater_name) [action](genre) on [2025-08-26](show_date) [17:15](show_time)
+    - Can you get [The Lion King](movie_name) at [Cinemark Mansfield 12 and XD](theater_name) in [76063](zipcode) for [2025-08-29](show_date) at [15:00](show_time)?
+    - Book [Avengers: Infinity War](movie_name) at [Studio Movie Grill Arlington Lincoln Square](theater_name) for [2025-08-28](show_date) [19:45](show_time) [action](genre)
+    - I want [Pulp Fiction](movie_name) at [Grand Prairie Premiere LUX Cine](theater_name) [drama](genre) on [2025-09-02](show_date) [21:15](show_time)
+    - Is [Finding Nemo](movie_name) available at [AMC CLASSIC Lake Worth 14](theater_name) in [76135](zipcode) [2025-08-24](show_date) [13:00](show_time)?
+    - Tickets for [Deadpool 3](movie_name) at [Studio Movie Grill Chisholm Trail Ranch](theater_name) [action](genre) on [2025-08-27](show_date) at [18:30](show_time)      - Schedule [The Matrix](movie_name) at [AMC Palace 9](theater_name) in [76102](zipcode) on [2025-08-31](show_date) [22:00](show_time)
+    - Get me seats for [The Godfather](movie_name) at [Film Alley Terrell 8](theater_name) [drama](genre) on [2025-08-19](show_date) [20:30](show_time)
+    - I'd like to see [Shrek 2](movie_name) at [AMC Clearfork 8](theater_name) on [2025-08-22](show_date) [14:00](show_time) in [76109](zipcode)
+    - Watch [Toy Story 4](movie_name) at [AMC Eastchase 9](theater_name) on [2025-08-20](show_date) [12:15](show_time) [comedy](genre)
+    - Book a comedy show [Minions: The Rise of Gru](movie_name) at [Cinemark Movies 16](theater_name) on [2025-08-23](show_date) [16:00](show_time)
+    - Get me tickets for [Doctor Strange in the Multiverse of Madness](movie_name) at [North East Mall 18 and XD](theater_name) on [2025-08-24](show_date) [20:00](show_time) [action](genre)
+    - Reserve for [Soul](movie_name) at [Cinemark 14](theater_name) in [76115](zipcode) on [2025-08-25](show_date) at [18:00](show_time)
+    - Please get [Lightyear](movie_name) at [AMC Starplex Hulen 10](theater_name) on [2025-08-26](show_date) [15:45](show_time)
+    - I want to book [Frozen](movie_name) at [AMC Irving Mall 14](theater_name) on [2025-08-28](show_date) [13:15](show_time)
+    - Find [Top Gun: Maverick](movie_name) at [Studio Movie Grill Chisholm Trail Ranch](theater_name) [action](genre) for [2025-08-29](show_date) at [21:30](show_time)
+    - Seats for [The Avengers](movie_name) at [Grand Prairie Premiere LUX Cine](theater_name) in [75050](zipcode) on [2025-08-30](show_date) [20:30](show_time)
+    - Schedule [Frozen 2](movie_name) at [Studio Movie Grill Arlington](theater_name) for [2025-09-01](show_date) [14:30](show_time)
+    - I'd like to watch [Incredibles 2](movie_name) at [UA Fossil Creek Stadium 11](theater_name) [comedy](genre) on [2025-09-02](show_date) [17:45](show_time)
+    - Book [Moana](movie_name) at [AMC The Parks at Arlington 18](theater_name) in [76015](zipcode) for [2025-09-03](show_date) [19:00](show_time)
+    - Get tickets for [Ratatouille](movie_name) at [AMC Burleson 14](theater_name) on [2025-09-04](show_date) [15:00](show_time)
+    - Please reserve [Black Widow](movie_name) at [AMC Grapevine Mills 24](theater_name) on [2025-09-05](show_date) [22:15](show_time) [action](genre)
+    - Watch [Finding Dory](movie_name) at [Movie Tavern at West 7th Street](theater_name) [comedy](genre) on [2025-09-06](show_date) [14:45](show_time)
+    - I want [Coco](movie_name) at [Cinemark Alliance Town Center and XD](theater_name) [2025-09-07](show_date) at [13:30](show_time)
+    - Book [Up](movie_name) at [Cinemark Mansfield 12 and XD](theater_name) on [2025-09-08](show_date) [16:45](show_time) in [76063](zipcode)
+    - Please get [Inside Out](movie_name) at [Cinemark Tinseltown Grapevine and XD](theater_name) on [2025-09-09](show_date) [12:45](show_time)
+    - Schedule [Brave](movie_name) at [Cinemark Roanoke and XD](theater_name) [2025-09-10](show_date) [18:15](show_time)
+    - I'd like to book [Turning Red](movie_name) at [Premiere Burleson Cinema](theater_name) [2025-09-11](show_date) at [14:30](show_time) [comedy](genre)
+    - Find [Encanto](movie_name) at [Studio Movie Grill Arlington Lincoln Square](theater_name) on [2025-09-12](show_date) [17:15](show_time)
+    - Seats for [Luca](movie_name) at [AMC CLASSIC Lake Worth 14](theater_name) [2025-09-13](show_date) [20:45](show_time)
+    - Get [Sing 2](movie_name) at [Studio Movie Grill Arlington](theater_name) [2025-09-14](show_date) at [15:45](show_time)
+    - Please reserve [The Good Dinosaur](movie_name) at [Ridgmar 13 + Xtreme](theater_name) on [2025-09-15](show_date) [13:15](show_time)
+    - I want [Onward](movie_name) at [AMC Clearfork 8](theater_name) on [2025-09-16](show_date) [19:15](show_time)
+    - Can you get [Zootopia](movie_name) at [AMC Eastchase 9](theater_name) in [76120](zipcode) [2025-09-17](show_date) [17:00](show_time)?
+    - Book [Raya and the Last Dragon](movie_name) at [Cinemark Movies 16](theater_name) on [2025-09-18](show_date) [16:00](show_time)
     - Reserve two tickets for [The Lion King](movie_name) at [8 PM](show_time).
-    - Are there shows at [Regal Arbor](theater_name) this [weekend](show_date)?
+    - Are there shows at [Bricktown Charleston 10 RPX](theater_name) this [weekend](show_date)?
     - Are there seats for [Spirited Away](movie_name) this [Tuesday](show_date)?
-    - Find horror movies at [Galaxy Theatres](theater_name).
+    - Find horror movies at [Edwards Alhambra Renaissance Stadium 14 & IMAX](theater_name).
     - What time is [Toy Story 4](movie_name) playing at [AMC Barton Creek](theater_name)?
     - Any [anime](genre) movies running today?
     - Find the [08002](zipcode) theater showing [Frozen II](movie_name).
     - Book at [10 PM](show_time) on [August 20](show_date) for [John Wick](movie_name).
-    - Where's [IMAX Rivercenter](theater_name)? I need the address.
+    - Where's [AMC Starplex Brunswick Square 1](theater_name)? I need the address.
     - Are there afternoon shows of [Inside Out](movie_name)?
     - Any [fantasy](genre) titles screening now?
     - Get me a seat for [The Flash](movie_name).
     - Which theater has [Spider-Man: No Way Home](movie_name)?
     - [Inception](movie_name) at [10 PM](show_time) in [08540](zipcode), please.
     - I need [family](genre) movie suggestions.
-    - Can I watch [Moana](movie_name) at [Regal Westgate](theater_name)?
+    - Can I watch [Moana](movie_name) at [AMC Dine-in Theatres Menlo Park 12](theater_name)?
     - Locate showings of [Tenet](movie_name) this [Friday night](show_date).
     - I want a [17](show_time) ticket for [Coco](movie_name).
-    - Book a [9:45 PM](show_time) seat at [Landmark Sunshine](theater_name).
-    - Do they show [animated](genre) movies at [Alamo Slaughter](theater_name)?
+    - Book a [9:45 PM](show_time) seat at [UA La Canada 8](theater_name).
+    - Do they show [animated](genre) movies at [Harkins Cerritos 16](theater_name)?
     - Ticket for [Gladiator](movie_name) in [07410](zipcode) at [12](show_time).
     - Book [Avengers: Endgame](movie_name) in [20009](zipcode).
     - Book [Inception](movie_name) in [10001](zipcode).
@@ -231,6 +275,7 @@ nlu:
     - the day after [tomorrow](show_date)
     - the day before [yesterday](show_date)
     - [tonight](show_date)
+    - [AMC Dakota Square 9](theater_name)
     - [july 10](show_date)
     - [July 4](show_date)
     - [5th Oct](show_date)

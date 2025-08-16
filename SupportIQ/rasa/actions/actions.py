@@ -34,11 +34,10 @@ class ValidateMovieBookingForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_movie_booking_form"
 
-    def fetch_movies(self,zipcode:Any):
+    def fetch_movies(self,zipcode:Any, start_date:Any=None):
 
         api_key = os.getenv("MOVIE_API_KEY")
         url = os.getenv("MOVIE_BASE_URL")
-        start_date = datetime.today().date()
         headers = {"Content-Type":"application/json"}
 
         params =  {"startDate":start_date, 
@@ -48,13 +47,19 @@ class ValidateMovieBookingForm(FormValidationAction):
 
         response = requests.get(url, params=params, headers=headers)
         movies = response.json()
-        self.cache_response[zipcode] = movies
+    
         return movies
 
-    
+    def get_time(self, showtime):
+        return datetime.fromisoformat(showtime).strftime("%H:%M") 
+
     def search_movie(self,zipcode:Any,dispatcher:CollectingDispatcher):
 
-        movies = self.fetch_movies(zipcode) 
+        start_date = datetime.today().date()
+        movies = self.fetch_movies(zipcode,start_date) 
+
+        self.cache_response[zipcode] = movies
+        self.cache_response["start_date"] = start_date
         
         if not movies:
             dispatcher.utter_message(text="No movies found near your area. Please try a different zipcode.")
@@ -65,11 +70,10 @@ class ValidateMovieBookingForm(FormValidationAction):
         dispatcher.utter_message(text=f"Here are movies: \n{nearby_movies}")
         return []
     
-    def match_movie_name(self, movie_name, movies, tracker:Tracker):
+    def find_best_match(self, user_input, valid_values, tracker:Tracker):
 
-        movie_list = set([movie.get("title") for movie in movies])
-
-        best_match, score = process.extractOne(movie_name, movie_list)
+        value_set = set(valid_values)
+        best_match, score = process.extractOne(user_input, value_set)
         if score > 80:
             return best_match
         else:
@@ -86,8 +90,9 @@ class ValidateMovieBookingForm(FormValidationAction):
         if not movies:
             dispatcher.utter_message(text=f"There are no theaters nearby {zipcode}")
             return {"movie_name": None}
-            
-        movie_name = self.match_movie_name(slot_value, movies, tracker)
+        
+        movies_list = [movie.get('title') for movie in movies]
+        movie_name = self.find_best_match(slot_value, movies_list, tracker)
         
         if not movie_name:
             dispatcher.utter_message(text=f"Movie {slot_value} not found")
@@ -97,6 +102,8 @@ class ValidateMovieBookingForm(FormValidationAction):
         movie_metadata = next((movie for movie in movies if movie.get('title')==movie_name), None)
         theaters = set([theater.get("theatre").get("name") for theater in movie_metadata.get("showtimes")])
         nearby_theaters = '\n'.join(f"-> {theater}" for theater in theaters)
+        self.cache_response["movie_metadata"] = [movie_metadata]
+        self.cache_response["theaters"] = theaters
 
         dispatcher.utter_message(text=f"Here are theaters near you for {slot_value}: \n{nearby_theaters}")
         return {"movie_name": movie_name}
@@ -120,7 +127,7 @@ class ValidateMovieBookingForm(FormValidationAction):
 
     def convert_date(self, input_date):
 
-        now = datetime.today().date()
+        now = datetime.today()
         input_date = input_date.strip().lower()
 
         if input_date == "today" or input_date == "now" or input_date == "tonight":
@@ -130,6 +137,24 @@ class ValidateMovieBookingForm(FormValidationAction):
         elif input_date == "yesterday":
             return now - timedelta(days=1)    
 
+    def validate_theater_name(self, slot_value:Any,
+                              dispatcher:CollectingDispatcher,
+                              tracker:Tracker,
+                              domain:Dict[Text, Any]) -> Dict:
+
+        zipcode = tracker.get_slot("zipcode")
+        movie_name = tracker.get_slot("movie_name")
+        
+        movies = self.cache_response[zipcode]
+        movie_metadate = self.cache_response["movie_metadata"]
+        theaters = self.cache_response["theaters"]
+        theater_name = self.find_best_match(slot_value, theaters, tracker)
+
+        if not theater_name:
+            dispatcher.utter_message(text=f"Theater {slot_value} not found")
+            return {"theater_name": None}
+        return {"theater_name": theater_name.strip()}
+              
     def validate_show_date(self, slot_value: Any,
                            dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -141,11 +166,36 @@ class ValidateMovieBookingForm(FormValidationAction):
         if input_date.isalpha():
             input_date = self.convert_date(input_date)
         else:
-            input_date = parser.parse(input_date).date()
+            input_date = parser.parse(input_date)
         
-        if input_date < now:
+        if input_date.date() < now:
             dispatcher.utter_message(text="Date should not be in the past.")
             return {"show_date": None}
+        
+               
+        theater_name = tracker.get_slot('theater_name')
+        movie_name = tracker.get_slot('movie_name')
+        movie_metadata = self.cache_response.get("movie_metadata") 
+      
+        if input_date.date() == now:
+                         
+           showTime = [showtime.get("dateTime") for movie in movie_metadata for showtime in movie.get("showtimes")
+                                    if showtime.get("theatre", {}).get("name")==theater_name]
+           
+           showTime = '\n'.join([self.get_time(showtime) for showtime in showTime])
+
+           dispatcher.utter_message(text=f"Here are the showtimes for {theater_name} on {input_date.strftime('%m/%d/%y')}: \n{showTime}")
+
+        else:
+            movies = self.fetch_movies(tracker.get_slot("zipcode"), input_date.date())
+
+            showTime = [showtime.get("dateTime") for movie in movies if movie.get('title')==movie_name 
+                                    for showtime in movie.get("showtimes")
+                                    if showtime.get("theatre").get("name")==theater_name]
+            
+            showTime = '\n'.join([self.get_time(showtime) for showtime in showTime])
+        
+            dispatcher.utter_message(text=f"Here are the showtimes for {theater_name} on {input_date.strftime('%m/%d/%y')}: \n{showTime}")
 
         return {"show_date": input_date.strftime("%m/%d/%y")}
     
@@ -157,7 +207,9 @@ class ValidateMovieBookingForm(FormValidationAction):
         input_time = str(slot_value.replace(" ",""))
         now = datetime.now().time()
         parse_time = None
-
+        show_date_str = tracker.get_slot("show_date")
+        show_date = datetime.strptime(show_date_str, "%m/%d/%y").date()
+        curr_day = datetime.today().date()
         time_format = {
             "%I:%M%p",          # 12hrs with mons 10:15 pm/am
             "%I%p",             # 12hrs no mins 10 pm/am
@@ -173,9 +225,10 @@ class ValidateMovieBookingForm(FormValidationAction):
         if parse_time is None:
             dispatcher.utter_message(text="Please enter a valid time")
             return {"show_time": None}
-        if parse_time <= now:
+        elif parse_time <= now and show_date==curr_day:
             dispatcher.utter_message(text=f"That time is earlier than the current time {now.strftime('%H:%M')}. Please choose a later time.")
             return {"show_time": None}
+
         return {"show_time":parse_time.strftime("%H:%M")}
 
 class ActionSendEmail(Action):

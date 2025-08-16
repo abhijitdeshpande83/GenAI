@@ -1,10 +1,12 @@
 version: '3.1'
+
 intents:
 - bot_challenge
 - goodbye
 - greet
 - inform
 - movie
+
 slots:
   show_time:
     type: text
@@ -14,7 +16,8 @@ slots:
       entity: show_time
       conditions:
       - active_loop: movie_booking_form
-        requested_slot: show_time      
+        requested_slot: show_time  
+
   show_date:
     type: text
     influence_conversation: true
@@ -24,6 +27,7 @@ slots:
       conditions:
       - active_loop: movie_booking_form
         requested_slot: show_date
+
   movie_name:
     type: text
     influence_conversation: true
@@ -40,18 +44,31 @@ slots:
       not_intent: 
         - bot_challenge
         - greet
+
   zipcode:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: zipcode
+
   theater_name:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: theater_name
+      conditions:
+      - active_loop: movie_booking_form
+        requested_slot: theater_name
+    - type: from_text
+      conditions:
+      - active_loop: movie_booking_form
+        requested_slot: theater_name
+      not_intent: 
+        - bot_challenge
+        - greet
+
   genre:
     type: text
     influence_conversation: false
@@ -67,69 +84,84 @@ slots:
 
 responses:
   utter_greet:
-  - text: Hey! How are you?
-  - text: Hi! How can I help you today?
-  - text: Hello! How's your day going?
-  - text: Good day! How can I assist you?
+    - text: Hey! How are you?
+    - text: Hi! How can I help you today?
+    - text: Hello! How's your day going?
+    - text: Good day! How can I assist you?
+
   utter_ask_zipcode:
-  - text: "Could you please provide your zipcode?"
-  - text: "May I know your zipcode to find nearby theaters?"
-  - text: "What's your current zipcode?"
-  - text: "Please share your zipcode so I can check theaters nearby."
-  - text: "Can you tell me your zipcode?"
+    - text: Could you please provide your zipcode?
+    - text: May I know your zipcode to find nearby theaters?
+    - text: What's your current zipcode?
+    - text: Please share your zipcode so I can check theaters nearby.
+    - text: Can you tell me your zipcode?
+
   utter_ask_movie_name:
-  - text: What movie would you like to see?
-  - text: What movie are you interested in seeing?
-  - text: Which movie would you like to see?
-  - text: What movie?
-  - text: What movie are you looking for?
+    - text: What movie would you like to see?
+    - text: What movie are you interested in seeing?
+    - text: Which movie would you like to see?
+    - text: What movie?
+    - text: What movie are you looking for?
+
   utter_ask_genre:
-  - text: What genre of movie would you like to see?
-  - text: What genre of movie are you interested in seeing?
-  - text: Which genre of movie would you like to see?
-  - text: What genre of movie?
-  - text: What genre of movie are you looking for?
+    - text: What genre of movie would you like to see?
+    - text: What genre of movie are you interested in seeing?
+    - text: Which genre of movie would you like to see?
+    - text: What genre of movie?
+    - text: What genre of movie are you looking for?
+
   utter_ask_show_date:
-  - text: What day would you like to go?
-  - text: What day are you interested in going to see the movie?
-  - text: Which day would you like to see the movie?
-  - text: What day?
+    - text: What day would you like to go?
+    - text: What day are you interested in going to see the movie?
+    - text: Which day would you like to see the movie?
+    - text: What day?
+
   utter_ask_show_time:
-  - text: What time would you like to watch the movie?
-  - text: When do you prefer the show to start?
-  - text: Please tell me your preferred showtime.
+    - text: What time would you like to watch the movie?
+    - text: When do you prefer the show to start?
+    - text: Please tell me your preferred showtime.
+
   utter_ask_user_email:
-  - text: Please provide your email address.
-  - text: What's your email address?
-  - text: Could you please provide your email address?
-  - text: What's your email?
-  - text: Please enter your email address.
-  utter_offer_ticket_purchase:
-  - text: Can I help you purchase tickets?
-  - text: Do you want to purchase tickets now?
-  - text: Would you like to make a ticket reservation for that movie?
-  - text: Ok, would you like to buy tickets?
+    - text: Please provide your email address.
+    - text: What's your email address?
+    - text: Could you please provide your email address?
+    - text: What's your email?
+    - text: Please enter your email address.
+
+  utter_ask_theater_name:
+    - text: "Please choose a theater from the list above."
+    - text: "Which theater would you like to go to?"
+    - text: "Select a theater name from the options I've shared."
+    - text: "Could you pick one theater from that list?"
+    - text: "Let me know which theater you prefer."
+    - text: "From the theaters listed, which one works for you?"
+    - text: "Which one should I book for you?"
+    - text: "Please tell me the theater name you'd like."
+    - text: "Pick one theater so I can proceed with your booking."
+    - text: "Which theater do you want to see the movie in?"
+
   utter_goodbye:
-  - text: Have a good day!
-  - text: Take care please.
-  - text: Enjoy your day!
-  - text: Have a nice day.
-  - text: No issues, have a great day ahead.
-  - text: Have a great day!
+    - text: Have a good day!
+    - text: Take care please.
+    - text: Enjoy your day!
+    - text: Have a nice day.
+    - text: No issues, have a great day ahead.
+    - text: Have a great day!
+
   utter_anything_else:
-  - text: Anything else I can do?
-  - text: Sure, no problems. Can I further assist you?
-  - text: Could I further assist you in anything else?
-  utter_submit:
-  - text: Great! Booking '{movie_name}' on {show_date} at {show_time} in {zipcode}.
+    - text: Anything else I can do?
+    - text: Sure, no problems. Can I further assist you?
+    - text: Could I further assist you in anything else?
+
   utter_bot_challenge:
-  - text: I'm Cinemora, your personal cinema concierge, developed by Abhijit.
-  - text: Hello! Cinemora here, your smart movie booking assistant, created by Abhijit.
-  - text: You're chatting with Cinemora, powered by AnalyticNerds.com.
-  - text: Cinemora at your service, brought to you by AnalyticNerds.com.
-  - text: I'm Cinemora, developed by Abhijit and powered by AnalyticNerds.com.
-  - text: Cinemora, your movie booking assistant, developed by Abhijit, powered by AnalyticNerds.com.
-  - text: Hi! I'm Cinemora, created by Abhijit from AnalyticNerds.com.
+    - text: I'm Cinemora, your personal cinema concierge, developed by Abhijit.
+    - text: Hello! Cinemora here, your smart movie booking assistant, created by Abhijit.
+    - text: You're chatting with Cinemora, powered by AnalyticNerds.com.
+    - text: Cinemora at your service, brought to you by AnalyticNerds.com.
+    - text: I'm Cinemora, developed by Abhijit and powered by AnalyticNerds.com.
+    - text: Cinemora, your movie booking assistant, developed by Abhijit, powered by AnalyticNerds.com.
+    - text: Hi! I'm Cinemora, created by Abhijit from AnalyticNerds.com.
+
 entities:
 - movie_name
 - show_date
@@ -138,11 +170,13 @@ entities:
 - theater_name
 - genre
 - user_email
+
 forms:
   movie_booking_form:
     required_slots:
     - zipcode
     - movie_name
+    - theater_name
     - show_date
     - show_time
     - user_email
