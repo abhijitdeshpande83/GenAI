@@ -1,7 +1,9 @@
 body {
+    background: url("/Volumes/LaCie/Projects_portfolio/NLP/SupportIQ/rasa/cinematography.jpg") no-repeat center center fixed;
+    background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 800px; 
-    background-color: #f5f6fa;
+    /* background-color: #f5f6fa; */
     justify-items: center;
     height: 90vh;
     margin: auto;
@@ -85,6 +87,8 @@ h1 {
 .user { 
     text-align: right; 
     color: blue; 
+    /* background-color: lightblue; */
+    border-radius: 5px;
     margin: 10px; 
     font-style: italic;
 }
