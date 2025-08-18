@@ -20,7 +20,8 @@ from fuzzywuzzy import process
 import requests
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, FollowupAction, ActiveLoop
+from rasa_sdk.events import SlotSet, FollowupAction, ActiveLoop, AllSlotsReset
+
 
 dotenv.load_dotenv()
 #
@@ -285,3 +286,33 @@ class ActionSendEmail(Action):
             print(e)
             dispatcher.utter_message(text=f"Sorry, there was an error booking your movie ticket. "
                         f"Please try again later.")
+
+
+class ActionResetMovieForm(Action):
+
+    def name(self) -> Text:
+        return "action_reset_movie_form"
+    
+    def run(self, dispatcher:CollectingDispatcher,
+            tracker:Tracker,
+            domain: Dict[Text,Any]) -> List[Dict[Text,Any]]:
+
+        dispatcher.utter_message(text="No worries. We can stop here. Let me know if you want to start over.")
+        return [AllSlotsReset(), ActiveLoop(None),
+                FollowupAction("action_listen")]
+
+class ActionSeatBook(Action):
+
+    def name(self) -> Text:
+        return "action_seat_book"
+    
+    def run(self, dispatcher:CollectingDispatcher,
+            tracker:Tracker,
+            domain: Dict[Text,Any]) -> List[Dict[Text,Any]]:
+
+        dispatcher.utter_message(
+            text="Please select seat",
+            image="image: https://www.rateyourseats.com/assets/images/seating_charts/static/dolby-theatre-seating-chart.jpg"
+            )
+
+        return []
