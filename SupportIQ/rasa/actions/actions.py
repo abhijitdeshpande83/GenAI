@@ -229,6 +229,11 @@ class ValidateMovieBookingForm(FormValidationAction):
         elif parse_time <= now and show_date==curr_day:
             dispatcher.utter_message(text=f"That time is earlier than the current time {now.strftime('%H:%M')}. Please choose a later time.")
             return {"show_time": None}
+        
+        dispatcher.utter_message(
+            text="Please select seat",
+            image="https://www.rateyourseats.com/assets/images/seating_charts/static/dolby-theatre-seating-chart.jpg"
+            )
 
         return {"show_time":parse_time.strftime("%H:%M")}
 
@@ -282,11 +287,12 @@ class ActionSendEmail(Action):
                 server.sendmail(from_addr, usr_email, msg.as_string())
             dispatcher.utter_message(text=f"Your booking for '{movie_name}' on {show_date} at {show_time} "\
                     f"is confirmed! A confirmation email has also been sent to {usr_email}. Enjoy the movie!")
+            return  []
         except Exception as e:
             print(e)
             dispatcher.utter_message(text=f"Sorry, there was an error booking your movie ticket. "
                         f"Please try again later.")
-
+            return  []
 
 class ActionResetMovieForm(Action):
 
@@ -310,9 +316,6 @@ class ActionSeatBook(Action):
             tracker:Tracker,
             domain: Dict[Text,Any]) -> List[Dict[Text,Any]]:
 
-        dispatcher.utter_message(
-            text="Please select seat",
-            image="image: https://www.rateyourseats.com/assets/images/seating_charts/static/dolby-theatre-seating-chart.jpg"
-            )
+        seat_number = tracker.get_slot("seat_number")    
 
         return []

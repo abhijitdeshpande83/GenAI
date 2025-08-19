@@ -29,6 +29,7 @@ rules:
   steps:
   - action: movie_booking_form
   - active_loop: null
+  - action: action_seat_book
   - action: action_send_email
   - action: utter_anything_else
 
@@ -40,3 +41,11 @@ rules:
   - action: utter_bot_challenge
   - action: movie_booking_form
   - active_loop: movie_booking_form
+
+- rule: restart form whwnver user cancels form
+  condition:
+    - active_loop: movie_booking_form
+  steps:
+  - intent: cancel
+  - action: action_reset_movie_form
+  

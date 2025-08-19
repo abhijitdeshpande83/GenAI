@@ -422,3 +422,56 @@ nlu:
     - Email me at [customer_support@store.com](user_email)
     - My personal email is [me1234@provider.net](user_email)
     - Use [contact_us@nonprofit.org](user_email) for inquiries
+    - I want seat [A1](seat_number)
+    - Book [A2](seat_number) for me
+    - Please select [A3](seat_number)
+    - Reserve [A4](seat_number)
+    - Can I get [A5](seat_number)?
+    - I'd like [A6](seat_number)
+    - Choose [A7](seat_number)
+    - Give me [A8](seat_number)
+    - I'll take [A9](seat_number)
+    - Select [A10](seat_number)
+    - Book [B1](seat_number)
+    - I want [B6](seat_number)
+    - Reserve [C1](seat_number)
+    - Pick [C2](seat_number)
+    - Select [C3](seat_number)
+    - I'll go with [C4](seat_number)
+    - Can you book [C5](seat_number)?
+    - I want [C6](seat_number)
+    - Save [C7](seat_number) for me
+    - Please take [C8](seat_number)
+    - Book [D1](seat_number)
+    - Select [D2](seat_number)
+    - I want [D3](seat_number)
+    - Can I get [D4](seat_number)?
+    - Reserve [D5](seat_number)
+    - Choose [D6](seat_number)
+    - I'll take [D7](seat_number)
+    - Pick [D8](seat_number)
+    - I want [E1](seat_number)
+    - Book [E2](seat_number)
+    - Select [E3](seat_number)
+    - Reserve [E4](seat_number)
+    - Please choose [E5](seat_number)
+    - Save [E6](seat_number) for me
+    - I'll take [E7](seat_number)
+    - Can I get [E8](seat_number)?
+
+- intent: cancel
+  examples: |
+    - never mind
+    - cancel
+    - stop
+    - that's fine, no need
+    - I changed my mind
+    - forget it
+    - don't continue
+    - I want to stop
+    - please stop
+    - exit
+    - leave it
+    - let's stop here
+    - I don't want to continue
+    - restart
