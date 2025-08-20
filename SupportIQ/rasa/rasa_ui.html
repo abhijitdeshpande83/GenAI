@@ -42,6 +42,9 @@
         if (r.text) {
           chatBox.innerHTML += `<div class="bot">Bot: ${r.text}</div>`;
         }
+        if (r.image) {
+        chatBox.innerHTML += `<div><img src="${r.image}" alt="image" style="width:80%; height:75%;"/></div>`;
+        }
       });
 
       msgInput.value = "";

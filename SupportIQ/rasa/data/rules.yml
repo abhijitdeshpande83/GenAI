@@ -30,7 +30,9 @@ rules:
   - action: movie_booking_form
   - active_loop: null
   - action: action_send_email
+  - action: action_seat_book
   - action: utter_anything_else
+  - action: action_reset_movie_form
 
 - rule: Handle interruption
   condition: 
@@ -40,3 +42,12 @@ rules:
   - action: utter_bot_challenge
   - action: movie_booking_form
   - active_loop: movie_booking_form
+
+- rule: restart form whwnver user cancels form
+  condition:
+    - active_loop: movie_booking_form
+  steps:
+  - intent: cancel
+  - action: action_reset_movie_form
+
+  

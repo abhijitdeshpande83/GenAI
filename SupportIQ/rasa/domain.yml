@@ -6,6 +6,7 @@ intents:
 - greet
 - inform
 - movie
+- cancel
 
 slots:
   show_time:
@@ -44,6 +45,7 @@ slots:
       not_intent: 
         - bot_challenge
         - greet
+        - cancel
 
   zipcode:
     type: text
@@ -68,6 +70,24 @@ slots:
       not_intent: 
         - bot_challenge
         - greet
+        - cancel
+  
+  seat_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: seat_number
+      conditions:
+      - active_loop: movie_booking_form
+        requested_slot: seat_number
+    - type: from_text
+      conditions:
+      - active_loop: movie_booking_form
+        requested_slot: seat_number
+      not_intent: 
+        - bot_challenge
+        - cancel
 
   genre:
     type: text
@@ -129,16 +149,20 @@ responses:
     - text: Please enter your email address.
 
   utter_ask_theater_name:
-    - text: "Please choose a theater from the list above."
-    - text: "Which theater would you like to go to?"
-    - text: "Select a theater name from the options I've shared."
-    - text: "Could you pick one theater from that list?"
-    - text: "Let me know which theater you prefer."
-    - text: "From the theaters listed, which one works for you?"
-    - text: "Which one should I book for you?"
-    - text: "Please tell me the theater name you'd like."
-    - text: "Pick one theater so I can proceed with your booking."
-    - text: "Which theater do you want to see the movie in?"
+    - text: Please choose a theater from the list above.
+    - text: Which theater would you like to go to?
+    - text: Select a theater name from the options I've shared.
+    - text: Could you pick one theater from that list?
+    - text: Let me know which theater you prefer.
+    - text: From the theaters listed, which one works for you?
+    - text: Which one should I book for you?
+    - text: Please tell me the theater name you'd like.
+    - text: Pick one theater so I can proceed with your booking.
+    - text: Which theater do you want to see the movie in?
+
+  utter_seat_book:
+    - text: Please select a seat.
+      image: https://www.rateyourseats.com/assets/images/seating_charts/static/dolby-theatre-seating-chart.jpg
 
   utter_goodbye:
     - text: Have a good day!
@@ -170,6 +194,7 @@ entities:
 - theater_name
 - genre
 - user_email
+- seat_number
 
 forms:
   movie_booking_form:
@@ -179,13 +204,15 @@ forms:
     - theater_name
     - show_date
     - show_time
+    - seat_number
     - user_email
 
 actions:
   - validate_movie_booking_form
   - action_movie_search
   - action_send_email
-
+  - action_reset_movie_form
+  - action_seat_book
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
