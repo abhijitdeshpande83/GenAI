@@ -18,6 +18,7 @@ from email.mime.text import MIMEText
 import dotenv
 from fuzzywuzzy import process
 import requests
+import psycopg2
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction, ActiveLoop, AllSlotsReset
@@ -237,6 +238,39 @@ class ValidateMovieBookingForm(FormValidationAction):
 
         return {"show_time":parse_time.strftime("%H:%M")}
 
+    def validate_seat_number(self, slot_value:Any,
+                             dispatcher:CollectingDispatcher,
+                             tracker:Tracker,
+                             domain:Dict[Text, Any]) -> Dict:
+
+        seat_number = slot_value.capitalize()
+        movie_name = tracker.get_slot("movie_name")
+        show_date = tracker.get_slot("show_date")
+        show_time = tracker.get_slot("show_time")
+        theater_name = tracker.get_slot("theater_name")
+
+        conn = psycopg2.connect(
+            host=os.getenv("DB_HOST"),
+            database=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT")
+        )
+
+        cur = conn.cursor()
+        cur.execute("SELECT seat_number FROM movie_booking WHERE movie_name = %s AND show_date = %s AND show_time = %s AND theater_name = %s",
+                    (movie_name, show_date, show_time, theater_name))
+        booked_seats = cur.fetchall()
+        cur.close()
+        conn.close()
+
+        booked_seats = {seat[0] for seat in booked_seats}
+
+        if seat_number in booked_seats:
+            dispatcher.utter_message(text=f"Seat {seat_number} is already booked. Please choose another seat.")
+            return {"seat_number": None}
+        return {"seat_number": seat_number}
+
 class ActionSendEmail(Action):
 
     def name(self) -> Text:
@@ -253,6 +287,7 @@ class ActionSendEmail(Action):
         movie_name = tracker.get_slot("movie_name")
         show_date = tracker.get_slot("show_date")
         show_time = tracker.get_slot("show_time")
+        seat_number = tracker.get_slot("seat_number")
         usr_email = tracker.get_slot("user_email")
         
         from_addr = os.getenv("EMAIL_HOST_USER")
@@ -266,6 +301,7 @@ class ActionSendEmail(Action):
             movie_name=movie_name,
             show_date=show_date,
             show_time=show_time,
+            seat_number=seat_number
         )
         
         subject = f"Your Premier Movieplex Order Number {order_number} from {show_date}"
@@ -287,7 +323,7 @@ class ActionSendEmail(Action):
                 server.sendmail(from_addr, usr_email, msg.as_string())
             dispatcher.utter_message(text=f"Your booking for '{movie_name}' on {show_date} at {show_time} "\
                     f"is confirmed! A confirmation email has also been sent to {usr_email}. Enjoy the movie!")
-            return  []
+            return  [FollowupAction('action_seat_book')]
         except Exception as e:
             print(e)
             dispatcher.utter_message(text=f"Sorry, there was an error booking your movie ticket. "
@@ -315,7 +351,30 @@ class ActionSeatBook(Action):
     def run(self, dispatcher:CollectingDispatcher,
             tracker:Tracker,
             domain: Dict[Text,Any]) -> List[Dict[Text,Any]]:
+        
+        movie_name = tracker.get_slot("movie_name")
+        theater_name = tracker.get_slot("theater_name")
+        show_date_str = tracker.get_slot("show_date")
+        show_time_str = tracker.get_slot("show_time")
+        seat_number = tracker.get_slot("seat_number")   
+        show_date = datetime.strptime(show_date_str, "%m/%d/%y").date()
+        show_time = datetime.strptime(show_time_str, "%H:%M").time()
 
-        seat_number = tracker.get_slot("seat_number")    
+        db_connct = psycopg2.connect(
+            dbname=os.getenv("DB_NAME"),
+            host=os.getenv("DB_HOST"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT")
+            )
+            
+        cur = db_connct.cursor()
+        query = """INSERT INTO movie_booking (movie_name, theater_name, show_date, show_time, seat_number) 
+        VALUES (%s, %s, %s, %s, %s)"""
+
+        cur.execute(query, (movie_name, theater_name, show_date, show_time, seat_number))
+        db_connct.commit()  
+        cur.close()
+        db_connct.close()
 
         return []

@@ -87,7 +87,6 @@ slots:
         requested_slot: seat_number
       not_intent: 
         - bot_challenge
-        - greet
         - cancel
 
   genre:
