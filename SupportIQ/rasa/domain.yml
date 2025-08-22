@@ -95,6 +95,7 @@ slots:
     mappings:
     - type: from_entity
       entity: genre
+      
   user_email:
     type: text
     influence_conversation: true
@@ -160,7 +161,7 @@ responses:
     - text: Pick one theater so I can proceed with your booking.
     - text: Which theater do you want to see the movie in?
 
-  utter_seat_book:
+  utter_ask_seat_number:
     - text: Please select a seat.
       image: https://www.rateyourseats.com/assets/images/seating_charts/static/dolby-theatre-seating-chart.jpg
 

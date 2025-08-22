@@ -68,8 +68,8 @@ class ValidateMovieBookingForm(FormValidationAction):
             return []
         
         search_results = set([movie.get("title") for movie in movies])
-        nearby_movies = '\n'.join((f"-> {movie}" for movie in search_results))
-        dispatcher.utter_message(text=f"Here are movies: \n{nearby_movies}")
+        nearby_movies = '\n'.join((f"• {movie}<br>" for movie in search_results))
+        dispatcher.utter_message(text=f"Here are movies:<br>{nearby_movies}")
         return []
     
     def find_best_match(self, user_input, valid_values, tracker:Tracker):
@@ -103,11 +103,11 @@ class ValidateMovieBookingForm(FormValidationAction):
         # Find theaters having user given movie name
         movie_metadata = next((movie for movie in movies if movie.get('title')==movie_name), None)
         theaters = set([theater.get("theatre").get("name") for theater in movie_metadata.get("showtimes")])
-        nearby_theaters = '\n'.join(f"-> {theater}" for theater in theaters)
+        nearby_theaters = '\n'.join(f"• {theater}<br>" for theater in theaters)
         self.cache_response["movie_metadata"] = [movie_metadata]
         self.cache_response["theaters"] = theaters
 
-        dispatcher.utter_message(text=f"Here are theaters near you for {slot_value}: \n{nearby_theaters}")
+        dispatcher.utter_message(text=f"Here are theaters near you for {slot_value}: <br>{nearby_theaters}")
         return {"movie_name": movie_name}
         
 
@@ -230,11 +230,6 @@ class ValidateMovieBookingForm(FormValidationAction):
         elif parse_time <= now and show_date==curr_day:
             dispatcher.utter_message(text=f"That time is earlier than the current time {now.strftime('%H:%M')}. Please choose a later time.")
             return {"show_time": None}
-        
-        dispatcher.utter_message(
-            text="Please select seat",
-            image="https://www.rateyourseats.com/assets/images/seating_charts/static/dolby-theatre-seating-chart.jpg"
-            )
 
         return {"show_time":parse_time.strftime("%H:%M")}
 
@@ -284,6 +279,7 @@ class ActionSendEmail(Action):
         SMTP_PORT = 587 
         order_number = int(time.time())
         
+        theater_name = tracker.get_slot("theater_name")
         movie_name = tracker.get_slot("movie_name")
         show_date = tracker.get_slot("show_date")
         show_time = tracker.get_slot("show_time")
@@ -298,6 +294,7 @@ class ActionSendEmail(Action):
 
         body_template = body_template.format(
             order_number=order_number,
+            theater_name=theater_name,
             movie_name=movie_name,
             show_date=show_date,
             show_time=show_time,

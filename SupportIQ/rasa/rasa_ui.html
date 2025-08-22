@@ -37,10 +37,10 @@
         body: JSON.stringify({ sender: "user1", message: message })
       });
       const data = await res.json();
-
+      console.log(data)
       data.forEach(r => {
         if (r.text) {
-          chatBox.innerHTML += `<div class="bot">Bot: ${r.text}</div>`;
+          chatBox.innerHTML += `<div class="bot">Bot: ${r.text}<br></div>`;
         }
         if (r.image) {
         chatBox.innerHTML += `<div><img src="${r.image}" alt="image" style="width:80%; height:75%;"/></div>`;
