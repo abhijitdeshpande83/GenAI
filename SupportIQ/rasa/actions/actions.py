@@ -15,7 +15,7 @@ from dateutil import parser
 from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import dotenv
+from dotenv import load_dotenv
 from fuzzywuzzy import process
 import requests
 import psycopg2
@@ -23,8 +23,7 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction, ActiveLoop, AllSlotsReset
 
-
-dotenv.load_dotenv()
+load_dotenv(dotenv_path='.env.main')
 #
 #
 class ValidateMovieBookingForm(FormValidationAction):

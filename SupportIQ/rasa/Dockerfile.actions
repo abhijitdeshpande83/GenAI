@@ -1,0 +1,17 @@
+#Get image
+FROM rasa/rasa-sdk:3.6.2
+
+WORKDIR /app
+
+# Copy as root
+COPY requirements.txt ./
+COPY actions/ ./actions/
+
+# Install dependencies as root
+USER root
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Switch back to non-root
+USER 1001
+
+CMD ["rasa", "run", "actions"]
