@@ -2,7 +2,7 @@ body {
     background: url("/Volumes/LaCie/Projects_portfolio/NLP/SupportIQ/rasa/cinematography.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    max-width: 800px; 
+    max-width: 900px; 
     /* background-color: #f5f6fa; */
     justify-items: center;
     height: 90vh;
@@ -11,8 +11,8 @@ body {
 
 .chat-container {
     justify-content: center;
-    margin-top: 30px;
-    width: 660px;
+    margin-top: 10vh;
+    width: 760px;
     max-width: 90%;
     box-shadow: 0 10px 25px rgb(0,0,0, 0.5);
     border-radius: 10px;
@@ -51,7 +51,7 @@ h1 {
 
 #msg {
     max-width: 90%;
-    width: 530px;
+    width: 630px;
     padding: 10px 20px;
     border-radius: 15px;
     margin: 20px 0;
@@ -98,4 +98,94 @@ h1 {
     color: green; 
     margin: 10px; 
     font-style: italic;
+}
+
+@media (max-width: 1000px) {
+
+body {   
+    background: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    max-width: 100%; 
+    /* justify-items: center; */
+    height: 90vh;
+    margin: auto;
+    }
+
+.chat-container {
+    justify-content: center;
+    margin-top: 5vh;
+    border-radius: 2rem;
+    width: 90%;
+    height: 85vh;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    height: 8%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#chat { 
+    border: 1px solid #e1e1e1; 
+    border-radius: 3rem;
+    font-size: 2.5rem;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+#msg {
+    max-width: 90%;
+    width: 84%;
+    height: 80%;
+    padding: 10px 20px;
+    border-radius: 2rem;
+    margin: 20px 0;
+    word-wrap: break-word;
+    line-height: 1.1;
+}
+
+.btn-btn-img {
+    background-color: #4cd137;
+    border: none;
+    color: white;
+    padding: 1.5rem 2.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-btn-img:hover {
+        background-color: #44bd32;
+    }
+
+#chat::-webkit-scrollbar {
+    width: 2px;
+    }
+
+
+.user { 
+    text-align: right; 
+    color: blue; 
+    /* background-color: lightblue; */
+    border-radius: 5px;
+    margin: 10px; 
+    font-style: italic;
+}
+
+.bot { 
+    text-align: left; 
+    color: green; 
+    margin: 10px; 
+    font-style: italic;
+}
+
 }
