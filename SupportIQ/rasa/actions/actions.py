@@ -15,7 +15,7 @@ from dateutil import parser
 from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import dotenv
+from dotenv import load_dotenv
 from fuzzywuzzy import process
 import requests
 import psycopg2
@@ -23,8 +23,7 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction, ActiveLoop, AllSlotsReset
 
-
-dotenv.load_dotenv()
+load_dotenv(dotenv_path='.env.main')
 #
 #
 class ValidateMovieBookingForm(FormValidationAction):
@@ -289,8 +288,11 @@ class ActionSendEmail(Action):
         from_addr = os.getenv("EMAIL_HOST_USER")
         password = os.getenv("EMAIL_HOST_PASSWORD")
 
-        with open("booking_confirmation.html", "r") as f:
-            body_template = f.read()
+
+         
+        response = requests.post("http://django:8000/projects/booking_confirmation/")
+        response.raise_for_status()
+        body_template = response.text
 
         body_template = body_template.format(
             order_number=order_number,
@@ -300,7 +302,7 @@ class ActionSendEmail(Action):
             show_time=show_time,
             seat_number=seat_number
         )
-        
+
         subject = f"Your Premier Movieplex Order Number {order_number} from {show_date}"
 
         msg = MIMEMultipart("alternative")

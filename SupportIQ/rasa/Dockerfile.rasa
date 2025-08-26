@@ -1,0 +1,25 @@
+# Use official Rasa image
+FROM rasa/rasa:3.6.21
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy trained models and config files
+# Paths are relative to the build context
+COPY data/ ./data
+COPY config.yml ./
+COPY credentials.yml ./
+COPY domain.yml ./
+COPY endpoints.yml ./
+
+# Ensure models folder exists for saving trained models
+RUN mkdir -p /app/models
+# Switch to root to fix permissions
+USER root
+RUN chmod -R 755 /app
+
+# Expose REST API port
+EXPOSE 5005
+
+# Start Rasa server with API enabled and debug mode
+CMD ["run", "--enable-api", "--cors", "*", "--debug"]
