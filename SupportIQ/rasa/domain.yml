@@ -163,7 +163,7 @@ responses:
 
   utter_ask_seat_number:
     - text: Please select a seat.
-      image: https://www.rateyourseats.com/assets/images/seating_charts/static/dolby-theatre-seating-chart.jpg
+      image: https://analyticnerds.com/static/project_data/movie_seats.png
 
   utter_goodbye:
     - text: Have a good day!

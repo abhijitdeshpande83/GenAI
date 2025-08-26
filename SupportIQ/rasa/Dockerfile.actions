@@ -11,7 +11,8 @@ COPY actions/ ./actions/
 USER root
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Switch back to non-root
-USER 1001
+# Switch to root to fix permissions
+RUN chmod -R 755 /app
 
-CMD ["rasa", "run", "actions"]
+# Run actions server on 5055
+EXPOSE 5055
