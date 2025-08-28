@@ -53,6 +53,9 @@ slots:
     mappings:
     - type: from_entity
       entity: zipcode
+      conditions:
+      - active_loop: movie_booking_form
+        requested_slot: zipcode
 
   theater_name:
     type: text
