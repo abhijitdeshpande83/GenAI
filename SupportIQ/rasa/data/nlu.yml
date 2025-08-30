@@ -153,7 +153,6 @@ nlu:
     - Reserve a spot at [AMC Universal CityWalk 19](theater_name) for [Batman Begins](movie_name).
     - Find me [action](genre) movies this [Friday](show_date).
     - I'd like to go to a show in [12207](zipcode) on [August 15](show_date).
-    - Get me a ticket for [The Godfather](movie_name) for [evening](show_time).
     - Where is [AMC South Bay Galleria 16](theater_name) located in [11101](zipcode)?
     - I want to see a [drama](genre) at [Regal Round Rock](theater_name).
     - Is [Parasite](movie_name) still playing?
@@ -213,6 +212,24 @@ nlu:
     - Where's [AMC Starplex Brunswick Square 1](theater_name)? I need the address.
     - Are there afternoon shows of [Inside Out](movie_name)?
     - Any [fantasy](genre) titles screening now?
+    - Book [Deadpool & Wolverine](movie_name) at [AMC Times Square](theater_name) on [2025-09-10](show_date) around [19](show_time), zipcode [10036](zipcode), email [alex.fox@gmail.com](user_email)
+    - I want to see [Inside Out 2](movie_name) at [Regal LA Live](theater_name) on [2025-09-12](show_date) around [14](show_time), send confirmation to [sophia123@yahoo.com](user_email)
+    - Reserve [seat C8](seat_number) for [Dune: Part Two](movie_name) at [Cinemark San Jose](theater_name) on [2025-09-15](show_date) at [21](show_time), zipcode [95113](zipcode)
+    - Can you book [Oppenheimer](movie_name) at [Alamo Drafthouse Brooklyn](theater_name) on [2025-09-18](show_date) around [9](show_time), genre [drama](genre), seat [H10](seat_number)
+    - I'd like tickets for [The Batman](movie_name) at [Cinemark Austin Southpark](theater_name) on [2025-09-20](show_date) at [18](show_time), zipcode [78704](zipcode), email [robert.kane@mail.com](user_email)
+    - Book me [Spider-Man: No Way Home](movie_name) at [AMC Chicago River East](theater_name) on [2025-09-22](show_date) around [11](show_time), seat [F5](seat_number)
+    - Get seat [22B](seat_number) for [Doctor Strange in the Multiverse of Madness](movie_name) at [Regal Houston MarqE](theater_name) on [2025-09-25](show_date) at [16](show_time), zipcode [77024](zipcode)
+    - Reserve [Black Panther: Wakanda Forever](movie_name) at [Cinemark Dallas XD](theater_name) on [2025-09-28](show_date) around [20](show_time), email [linda92@outlook.com](user_email)
+    - I want 2 tickets for [Guardians of the Galaxy Vol. 3](movie_name) at [AMC Atlanta Phipps](theater_name) on [2025-10-01](show_date) around [12](show_time), genre [action](genre), zipcode [30326](zipcode)
+    - Please book [Wonka](movie_name) at [Cinemark San Francisco](theater_name) on [2025-10-05](show_date) around [10](show_time), confirmation to [mario.v@gmail.com](user_email)
+    - I need a ticket for [The Marvels](movie_name) at [Regal Miami Downtown](theater_name) on [2025-10-08](show_date) around [15](show_time), seat [G7](seat_number), zipcode [33130](zipcode)
+    - Book [Kung Fu Panda 4](movie_name) at [AMC Seattle Pacific Place](theater_name) on [2025-10-12](show_date) at [13](show_time), email [emma.lee@mail.com](user_email)
+    - Get me a ticket for [Shazam! Fury of the Gods](movie_name) at [Cinemark Denver](theater_name) on [2025-10-15](show_date) around [17](show_time), genre [fantasy](genre), seat [B12](seat_number)
+    - Reserve [Frozen 2](movie_name) for my kids at [Regal Orlando](theater_name) on [2025-10-18](show_date) around [9](show_time), zipcode [32801](zipcode)
+    - I want to watch [The Flash](movie_name) at [AMC Boston Common](theater_name) on [2025-10-21](show_date) at [20](show_time), email [mark.jones@xyz.com](user_email)
+    - Please book [Aquaman and the Lost Kingdom](movie_name) at [Cinemark Houston](theater_name) on [2025-10-24](show_date) around [22](show_time), seat [C11](seat_number), zipcode [77002](zipcode)
+    - Book [The Hunger Games: The Ballad of Songbirds & Snakes](movie_name) at [Regal Philadelphia](theater_name) on [2025-10-28](show_date) around [19](show_time), genre [sci-fi](genre), email [susan.park@mail.com](user_email)
+    - I'd like tickets for [Minions: The Rise of Gru](movie_name) at [AMC Phoenix Esplanade](theater_name) on [2025-11-01](show_date) at [14](show_time), zipcode [85016](zipcode), seat [D5](seat_number)
     - Get me a seat for [The Flash](movie_name).
     - Which theater has [Spider-Man: No Way Home](movie_name)?
     - [Inception](movie_name) at [10 PM](show_time) in [08540](zipcode), please.
@@ -225,6 +242,14 @@ nlu:
     - Ticket for [Gladiator](movie_name) in [07410](zipcode) at [12](show_time).
     - Book [Avengers: Endgame](movie_name) in [20009](zipcode).
     - Book [Inception](movie_name) in [10001](zipcode).
+    - I want to watch [Avatar 2](movie_name) at [Cinemark Waco and XD](theater_name) on [2025-09-05](show_date) around [1](show_time), my zipcode is [76706](zipcode)
+    - Book 2 seats for [Inception](movie_name) at [AMC Dallas](theater_name) on [2025-10-12](show_date) at [17](show_time), send confirmation to [john.doe@example.com](user_email)
+    - Reserve [seat 12A](seat_number) for [Titanic](movie_name) at [Regal Houston](theater_name) on [2025-11-01](show_date) around [18](show_time), genre is [romance](genre)
+    - I'd like to book [seat B7](seat_number) for [The Dark Knight](movie_name) at [Alamo Drafthouse](theater_name) on [2025-12-20](show_date) at [9](show_time), zipcode [75001](zipcode)
+    - Please get me a ticket for [Interstellar](movie_name) at [Cinemark Austin](theater_name) on [2026-01-15](show_date) around [21](show_time), email [sarah.lee@gmail.com](user_email)
+    - Book a [comedy](genre) movie, [Deadpool](movie_name), at [Cinemark Plano](theater_name) on [2026-02-07](show_date) at [5](show_time), seat [D10](seat_number)
+    - Reserve [Avengers: Endgame](movie_name) at [AMC New York](theater_name) on [2026-03-02](show_date) around [12](show_time), zipcode [10001](zipcode), confirmation to [mike@abc.org](user_email)
+    - I want tickets for [Frozen 2](movie_name) at [Regal Boston](theater_name) on [2026-04-10](show_date) at [15](show_time), genre is [animation](genre)
     - Book [The Lion King](movie_name) in [94105](zipcode).
     - Book [Jurassic Park](movie_name) in [60601](zipcode).
     - Book [Frozen II](movie_name) in [30303](zipcode).
