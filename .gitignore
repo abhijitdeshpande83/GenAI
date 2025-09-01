@@ -11,8 +11,7 @@
 
 
 # SupportIQ Project
-/SupportIQ/venv/
-/SupportIQ/rasa/venv_rasa
+**/venv*/
 /SupportIQ/output/final_merged_model/model.safetensors
 /SupportIQ/output/final_merged_model/model.tar.gz
 /SupportIQ/output/flan-t5-lora.tar.gz
@@ -26,3 +25,4 @@
 /SupportIQ/output/model/roberta-finetuned-model/model.tar.gz
 /SupportIQ/output/model/roberta-finetuned-model/final_model/model.safetensors
 /SupportIQ/rasa/model/
+
