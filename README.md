@@ -85,7 +85,7 @@ Phases I and II are parts of the same project and were developed sequentially. T
 
 ---
 
-### Phase III: Rasa for Dialogue Management and Slot Filling (In Progress)
+### Phase III: Rasa for Dialogue Management and Slot Filling
 
 **Scope:** Enable structured, multi-turn conversations that collect necessary user inputs (e.g., account number, movie choice) to support transactional workflows like bookings, transfers, and calendar events. This enables triggering backend actions based on the gathered information.
 
@@ -101,7 +101,18 @@ Phases I and II are parts of the same project and were developed sequentially. T
 
 
 **Outcome:**  
-Developed a functional chatbot for movie booking that combines natural language understanding with structured conversation management, setting the stage for expanding to other transactional domains.
+- Successfully **developed and deployed** a movie booking chatbot using Rasa and Docker, combining **natural language understanding** with **structured conversation management**.  
+- Enables users to **search movies by ZIP code**, find nearby theaters, and view **show dates and times** for selected movies and theaters.  
+- Handles **seat selection with strict validation**:  
+  - Users can book **only one seat per theater, show date, and showtime**.  
+  - Only **future shows** are selectable; past or ongoing shows are automatically disallowed.  
+  - Users can select **today or future dates** only, preventing invalid bookings.  
+- Once a booking is confirmed, the system **sends an email** to the user with detailed booking information.  
+- Demonstrates a **robust, production-ready conversational workflow**, validating inputs, enforcing business rules, and providing a seamless transactional experience.
+
+**Future Enhancements:**  
+1. **Multi-Intent Handling:** Extend the chatbot to manage multiple intents in a single conversation. Users could ask about nearby attractions or restaurants **along with movie-related queries**, enabling a richer conversational experience.  
+2. **Interactive Responses (Buttons):** Replace typed responses with **button-based selections** to simplify user input and improve convenience. Currently available in the enterprise Rasa version, this would reduce typing effort and enhance UX.
 
 ---
 
