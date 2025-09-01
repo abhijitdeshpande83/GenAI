@@ -225,7 +225,7 @@ nlu:
     - I need a ticket for [The Marvels](movie_name) at [Regal Miami Downtown](theater_name) on [2025-10-08](show_date) around [15](show_time), seat [G7](seat_number), zipcode [33130](zipcode)
     - Book [Kung Fu Panda 4](movie_name) at [AMC Seattle Pacific Place](theater_name) on [2025-10-12](show_date) at [13](show_time), email [emma.lee@mail.com](user_email)
     - Get me a ticket for [Shazam! Fury of the Gods](movie_name) at [Cinemark Denver](theater_name) on [2025-10-15](show_date) around [17](show_time), genre [fantasy](genre), seat [B12](seat_number)
-    - Reserve [Frozen 2](movie_name) for my kids at [Regal Orlando](theater_name) on [2025-10-18](show_date) around [9](show_time), zipcode [32801](zipcode)
+    - Reserve [Nobody 2](movie_name) for my kids at [Regal Orlando](theater_name) on [2025-10-18](show_date) around [9](show_time), zipcode [32801](zipcode)
     - I want to watch [The Flash](movie_name) at [AMC Boston Common](theater_name) on [2025-10-21](show_date) at [20](show_time), email [mark.jones@xyz.com](user_email)
     - Please book [Aquaman and the Lost Kingdom](movie_name) at [Cinemark Houston](theater_name) on [2025-10-24](show_date) around [22](show_time), seat [C11](seat_number), zipcode [77002](zipcode)
     - Book [The Hunger Games: The Ballad of Songbirds & Snakes](movie_name) at [Regal Philadelphia](theater_name) on [2025-10-28](show_date) around [19](show_time), genre [sci-fi](genre), email [susan.park@mail.com](user_email)
