@@ -93,10 +93,16 @@ Phases I and II are parts of the same project and were developed sequentially. T
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) 
 ![Rasa](https://img.shields.io/badge/Rasa-FF4433?style=for-the-badge&logo=rasa&logoColor=white) 
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=ffffff) 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) 
 ![Gracenote API](https://img.shields.io/badge/Gracenote_API-FF66CC?style=for-the-badge&logo=api&logoColor=ffffff)
 
-[See Detailed Documentation & Diagrams →](rasa/README.md)
+**Highlights:**  
+- Collects user inputs for movie, showtime, theater, and seat selection.  
+- Validates inputs and enforces booking rules.  
+- Sends booking confirmation emails automatically. 
+
+[👉 See Detailed Documentation & Diagrams](SupportIQ/rasa/README.md)
 ---
 
 ### Phase IV: Future Plans: Agentic AI for Dynamic Multi-Agent Orchestration
