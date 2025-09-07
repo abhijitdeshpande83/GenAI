@@ -89,31 +89,14 @@ Phases I and II are parts of the same project and were developed sequentially. T
 
 **Scope:** Enable structured, multi-turn conversations that collect necessary user inputs (e.g., account number, movie choice) to support transactional workflows like bookings, transfers, and calendar events. This enables triggering backend actions based on the gathered information.
 
+## Tech Stack
 
-**Implementation:**  
-- Developed a **Rasa-based chatbot** specifically for the **movie booking** domain to handle complex multi-turn dialogues involving:  
-  - Collecting user details like ZIP code, movie name, show date/time, and seat selection.  
-  - Managing slot filling and form validation to ensure all necessary information is gathered before booking.  
-  - Integrating with mock APIs for theaters, showtimes, and seat availability.  
-  - Sending booking confirmation emails via Python’s `smtplib` using HTML templates.  
-- Shifted focus from a broad multi-domain system to a more focused **single-domain approach** (movie booking) to build a reliable, production-ready product.  
-- Leveraged Rasa’s dialogue management capabilities to handle workflows that were difficult to implement with LLMs alone, due to the need for precise control over conversational state and user input validation.
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) 
+![Rasa](https://img.shields.io/badge/Rasa-FF4433?style=for-the-badge&logo=rasa&logoColor=white) 
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) 
+![Gracenote API](https://img.shields.io/badge/Gracenote_API-FF66CC?style=for-the-badge&logo=api&logoColor=ffffff)
 
-
-**Outcome:**  
-- Successfully **developed and deployed** a movie booking chatbot using Rasa and Docker, combining **natural language understanding** with **structured conversation management**.  
-- Enables users to **search movies by ZIP code**, find nearby theaters, and view **show dates and times** for selected movies and theaters.  
-- Handles **seat selection with strict validation**:  
-  - Users can book **only one seat per theater, show date, and showtime**.  
-  - Only **future shows** are selectable; past or ongoing shows are automatically disallowed.  
-  - Users can select **today or future dates** only, preventing invalid bookings.  
-- Once a booking is confirmed, the system **sends an email** to the user with detailed booking information.  
-- Demonstrates a **robust, production-ready conversational workflow**, validating inputs, enforcing business rules, and providing a seamless transactional experience.
-
-**Future Enhancements:**  
-1. **Multi-Intent Handling:** Extend the chatbot to manage multiple intents in a single conversation. Users could ask about nearby attractions or restaurants **along with movie-related queries**, enabling a richer conversational experience.  
-2. **Interactive Responses (Buttons):** Replace typed responses with **button-based selections** to simplify user input and improve convenience. Currently available in the enterprise Rasa version, this would reduce typing effort and enhance UX.
-
+[See Detailed Documentation & Diagrams →](rasa/README.md)
 ---
 
 ### Phase IV: Future Plans: Agentic AI for Dynamic Multi-Agent Orchestration
