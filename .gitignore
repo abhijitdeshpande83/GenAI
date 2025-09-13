@@ -12,17 +12,17 @@
 
 # SupportIQ Project
 **/venv*/
-/SupportIQ/output/final_merged_model/model.safetensors
-/SupportIQ/output/final_merged_model/model.tar.gz
-/SupportIQ/output/flan-t5-lora.tar.gz
-/SupportIQ/output/runs/
-/SupportIQ/output/final_merged_model/
-/SupportIQ/output/model/finetuned_model/
-/SupportIQ/output/model/model.tar.gz
-/SupportIQ/output/model/runs/
-/SupportIQ/output/model/roberta-finetuned-model/checkpoint*
-/SupportIQ/output/model/roberta-finetuned-model/runs/
-/SupportIQ/output/model/roberta-finetuned-model/model.tar.gz
-/SupportIQ/output/model/roberta-finetuned-model/final_model/model.safetensors
+/SupportIQ/fine-tuning/output/final_merged_model/model.safetensors
+/SupportIQ/fine-tuning/output/final_merged_model/model.tar.gz
+/SupportIQ/fine-tuning/output/flan-t5-lora.tar.gz
+/SupportIQ/fine-tuning/output/runs/
+/SupportIQ/fine-tuning/output/final_merged_model/
+/SupportIQ/fine-tuning/output/model/finetuned_model/
+/SupportIQ/fine-tuning/output/model/model.tar.gz
+/SupportIQ/fine-tuning/output/model/runs/
+/SupportIQ/fine-tuning/output/model/roberta-finetuned-model/checkpoint*
+/SupportIQ/fine-tuning/output/model/roberta-finetuned-model/runs/
+/SupportIQ/fine-tuning/output/model/roberta-finetuned-model/model.tar.gz
+/SupportIQ/fine-tuning/output/model/roberta-finetuned-model/final_model/model.safetensors
 /SupportIQ/rasa/model/
 
