@@ -34,54 +34,40 @@ A Retrieval-Augmented Generation system enabling conversational Q&A over diverse
 - Dockerized modular deployment package  
 - Deployed on AWS for production-grade usage
 
-**Tech Stack**  
+## 🛠 Tech Stack  
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white) ![LangChain](https://img.shields.io/badge/LangChain-00A6FF?style=for-the-badge&logo=langchain&logoColor=white) ![Apache Tika](https://img.shields.io/badge/Apache_Tika-ED8B00?style=for-the-badge&logo=apache&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white" alt="Django" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/LangChain-00A6FF?logo=langchain&logoColor=white" alt="LangChain" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/Apache_Tika-ED8B00?logo=apache&logoColor=white" alt="Apache Tika" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/AWS-232F3E?logo=amazonaws&logoColor=white" alt="AWS" />
+</p>
 
 ---
 
 ## 2. SupportIQ: Conversational AI Platform
 
-**Description**  
-SupportIQ is a Conversational AI platform that assists users with multi-domain queries, automating tasks like bookings, status updates, and transactions. The project has been a learning journey, progressing from Transformer model fine-tuning and deployment to using Rasa for structured dialogue management, with plans to evolve into an agentic AI system. Each phase has contributed to building a scalable, efficient, and user-friendly support chatbot.
+## LLM Fine-Tuning Project Overview
 
-**Tech Stack** 
+This repository includes fine-tuning efforts to build robust conversational AI capabilities, covering:
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white) ![Hugging Face](https://img.shields.io/badge/HuggingFace-FF6F61?style=for-the-badge&logo=huggingface&logoColor=white) ![LangChain](https://img.shields.io/badge/LangChain-00A6FF?style=for-the-badge&logo=langchain&logoColor=white) ![Rasa](https://img.shields.io/badge/Rasa-FF4433?style=for-the-badge&logo=rasa&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+- **Phase I: Intent Classification** - Fine-tuned RoBERTa-large with LoRA to classify ~150 user intents across multiple domains.
+- **Phase II: Response Generation** - Fine-tuned FLAN-T5 to generate natural responses for a subset of core intents and enable user-friendly conversational interactions.
 
----
+## 🛠 Tech Stack  
+<p>
+  <img src="https://img.shields.io/badge/RoBERTa-701516?logo=pytorch&logoColor=white" alt="RoBERTa" />
+  <img src="https://img.shields.io/badge/FLAN--T5-0F0F0F?logo=huggingface&logoColor=white" alt="FLAN-T5" />
+  <img src="https://img.shields.io/badge/SageMaker-FF9900?logo=amazonaws&logoColor=white" alt="SageMaker" />
+  <img src="https://img.shields.io/badge/Lambda-FF9900?logo=awslambda&logoColor=white" alt="Lambda" />
+  <img src="https://img.shields.io/badge/API%20Gateway-FF4F8B?logo=amazonaws&logoColor=white" alt="API Gateway" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" />
+</p>
 
-### Phase I: Intent Classification Foundation
-
-**Scope:** Create a reliable intent classification model capable of understanding a large variety of user intents (~150 raw intents) to support multi-domain conversational AI.
-
-**Implementation:**  
-- Fine-tuned **RoBERTa-large** with **LoRA** for efficient, domain-specific intent classification.  
-- Developed scalable training and deployment pipelines using **AWS SageMaker** and **Hugging Face Trainer**.  
-- Delivered an initial MVP that accurately classified intents across domains.
-
-**Outcome:** A robust intent classifier capable of generalizing across domains, ready to be extended with response generation.
-
----
-
-### Phase II: Natural Language Generation for Core Intents
-
-**Scope:** Generate natural, fluent responses for a subset of core intents to enhance user interaction.
-
-**Implementation:**  
-- Reduced raw intents from 150 to 20 core intents using a label mapping wrapper for simplified response generation.  
-- Fine-tuned and deployed **FLAN-T5** to generate responses for 10 core intents.  
-- Implemented cost-efficient serverless inference with **API Gateway** and **AWS Lambda**.
-
-**Challenges:**  
-- FLAN-T5 generated fluent responses for straightforward queries but lacked the ability to reliably manage structured, multi-turn dialogues that require collecting and validating specific user inputs (slot filling) or handling complex form-like interactions. 
-
-**Outcome:** Enhanced user engagement via natural responses, but highlighted limitations in handling complex transactional conversations.
-
----
-
-### Note: 
-Phases I and II are parts of the same project and were developed sequentially. They were divided into separate phases to improve efficiency in managing and tracking the development process, not because they represent completely separate projects.
+For detailed implementation, training, and deployment notes, see the dedicated [Fine-Tuning Details](SupportIQ/fine-tuning/README.md) file.
 
 ---
 
@@ -89,13 +75,15 @@ Phases I and II are parts of the same project and were developed sequentially. T
 
 **Scope:** Enable structured, multi-turn conversations that collect necessary user inputs (e.g., account number, movie choice) to support transactional workflows like bookings, transfers, and calendar events. This enables triggering backend actions based on the gathered information.
 
-## Tech Stack
+## 🛠 Tech Stack  
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) 
-![Rasa](https://img.shields.io/badge/Rasa-FF4433?style=for-the-badge&logo=rasa&logoColor=white) 
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=ffffff) 
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) 
-![Gracenote API](https://img.shields.io/badge/Gracenote_API-FF66CC?style=for-the-badge&logo=api&logoColor=ffffff)
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/Rasa-FF4433?logo=rasa&logoColor=white" alt="Rasa" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white" alt="Supabase" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker" style="margin-right:6px;" />
+  <img src="https://img.shields.io/badge/Gracenote_API-FF66CC?logo=api&logoColor=white" alt="Gracenote API" />
+</p>
 
 **Highlights:**  
 - Collects user inputs for movie, showtime, theater, and seat selection.  
