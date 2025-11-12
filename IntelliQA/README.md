@@ -1,15 +1,21 @@
 # IntelliQA
 
-**IntelliQA** is a Retrieval-Augmented Generation (RAG) based document question-answering system.
+**IntelliQA** is a Retrieval Augmented Generation (RAG) based document question answering system.
 
-## Overview
-Large language models are powerful but have two well-known limits: they do not know your private documents, and they hallucinate when asked about things outside their training data. RAG solves both. Instead of relying on the model's parametric memory, IntelliQA retrieves the most relevant chunks from your uploaded documents and passes them to the LLM as context.
+## Key Features
+* **Multi-format document ingestion**: Parses documents through a unified extraction layer.
+* **Grounded answers**: Responses are generated only from retrieved context, keeping answers traceable to source documents.
 
-## Project Structure
+## Architecture
+IntelliQA follows a standard two-phase RAG design:
 
-```text
-IntelliQA/
-├── IntelliQA.ipynb         # Main notebook: runs the end-to-end RAG demo
-├── rag_pipeline/           # Core RAG package placeholder
-├── requirements.txt        # Python dependencies
-└── README.md
+### Ingestion Phase
+1. **Document upload**: User points to files.
+2. **Text extraction**: Document content parsing.
+3. **Text chunking**: Text is split into overlapping segments.
+4. **Embedding & Indexing**: Vectors are stored in the vector store.
+
+### Query Phase
+1. **Question input**: User submits a question.
+2. **Similarity search**: Retrieves the top K chunks closest to the question vector.
+3. **Generation**: The LLM produces an answer grounded in the context.
