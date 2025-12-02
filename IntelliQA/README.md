@@ -3,19 +3,24 @@
 **IntelliQA** is a Retrieval Augmented Generation (RAG) based document question answering system.
 
 ## Key Features
-* **Multi-format document ingestion**: Parses documents through a unified extraction layer.
-* **Grounded answers**: Responses are generated only from retrieved context, keeping answers traceable to source documents.
+* **Multi-format document ingestion**: Parses PDF, DOCX, TXT, HTML through a unified extraction layer powered by Apache Tika.
+* **Content deduplication**: Detects and skips duplicate documents and repeated chunks so the vector store stays clean.
+* **Grounded answers**: Responses are generated only from retrieved context.
 
-## Architecture
-IntelliQA follows a standard two-phase RAG design:
+## Design Decisions
+* **Apache Tika over format-specific parsers**: A single extraction layer handles dozens of file types, removing the need to maintain separate parsing logic per format.
+* **Deduplication at ingestion**: Indexing the same content twice inflates the vector store and skews retrieval toward repeated chunks.
 
-### Ingestion Phase
-1. **Document upload**: User points to files.
-2. **Text extraction**: Document content parsing.
-3. **Text chunking**: Text is split into overlapping segments.
-4. **Embedding & Indexing**: Vectors are stored in the vector store.
+## Project Structure
 
-### Query Phase
-1. **Question input**: User submits a question.
-2. **Similarity search**: Retrieves the top K chunks closest to the question vector.
-3. **Generation**: The LLM produces an answer grounded in the context.
+```text
+IntelliQA/
+├── IntelliQA.ipynb         # Main notebook: runs the end-to-end RAG demo
+├── rag_pipeline/           # Core RAG package
+│   ├── __init__.py
+│   ├── query_engine.py     # Query embedding, retrieval, and answer generation
+│   ├── vector_store.py     # Chroma vector store setup and indexing
+│   └── utils.py            # Document parsing and chunking helpers
+├── requirements.txt        # Python dependencies
+├── setup.py                # Package installation config
+└── README.md
