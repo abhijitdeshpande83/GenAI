@@ -79,3 +79,23 @@ IntelliQA/
 ├── requirements.txt        # Python dependencies
 ├── setup.py                # Package installation config
 └── README.md
+
+# Clone the repository
+git clone [https://github.com/abhijitdeshpande83/GenAI.git](https://github.com/abhijitdeshpande83/GenAI.git)
+cd GenAI/IntelliQA
+
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install the rag_pipeline package in editable mode
+pip install -e .
+
+# Set environment variables
+export OPENAI_API_KEY="your-key-here"
+
+# Launch the notebook
+jupyter notebook IntelliQA.ipynb
