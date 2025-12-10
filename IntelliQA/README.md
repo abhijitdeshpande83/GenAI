@@ -99,3 +99,11 @@ export OPENAI_API_KEY="your-key-here"
 
 # Launch the notebook
 jupyter notebook IntelliQA.ipynb
+
+# Build the image
+docker build -t intelliqa -f dockerfile .
+
+# Run the container
+docker run -p 8888:8888 \
+  -e OPENAI_API_KEY="your-key-here" \
+  intelliqa
