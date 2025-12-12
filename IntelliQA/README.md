@@ -215,3 +215,28 @@ docker run -p 8888:8888 \
 * Source citation and highlighting in generated answers.
 * Web-based UI using Streamlit or FastAPI.
 * Hybrid search combining semantic and keyword retrieval.
+
+
+---
+
+## Example Usage
+
+After uploading documents, users can ask questions such as:
+
+* "Summarize the key findings in this report."
+* "What recommendations are mentioned in the document?"
+* "Compare information across the uploaded files."
+* "What risks or limitations are discussed?"
+* "Explain the second section in simple terms."
+
+---
+
+## Why IntelliQA?
+
+* Reduces hallucinations by grounding responses in retrieved documents.
+* Supports multiple document formats through a unified ingestion pipeline.
+* Preserves conversational context for follow-up questions.
+* Eliminates duplicate content to improve retrieval quality.
+* Provides a modular and reusable RAG architecture for experimentation and production use.
+
+---
