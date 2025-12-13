@@ -224,9 +224,7 @@ docker run -p 8888:8888 \
 After uploading documents, users can ask questions such as:
 
 * "Summarize the key findings in this report."
-* "What recommendations are mentioned in the document?"
 * "Compare information across the uploaded files."
-* "What risks or limitations are discussed?"
 * "Explain the second section in simple terms."
 
 ---
