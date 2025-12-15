@@ -161,5 +161,35 @@ docker run -p <host_port>:<container_port> \
 
 IntelliQA is part of a broader Generative AI portfolio that also includes agentic assistants and fine tuned LLM systems. See the other folders in the [GenAI repository](https://github.com/abhijitdeshpande83/GenAI).
 
+---
 
-This project is open source and available under the MIT License.
+## Supported Document Formats
+
+IntelliQA currently supports a variety of document formats through Apache Tika, including:
+
+* PDF (`.pdf`)
+* Microsoft Word (`.docx`)
+* Plain Text (`.txt`)
+* HTML (`.html`)
+* Rich Text Format (`.rtf`)
+
+Additional formats supported by Apache Tika can be integrated with minimal changes.
+
+---
+
+## Design Principles
+
+The project is built around the following principles:
+
+* **Accuracy** – Answers are grounded in retrieved document content.
+* **Modularity** – Core RAG components are separated into reusable modules.
+* **Scalability** – The architecture can be extended to larger document collections.
+* **Maintainability** – Clear package structure and containerized deployment simplify development and operations.
+
+---
+
+## Acknowledgments
+
+This project leverages several open-source technologies, including LangChain, LangGraph, Apache Tika, Chroma, and OpenAI models, to build an end-to-end Retrieval-Augmented Generation workflow.
+
+---
