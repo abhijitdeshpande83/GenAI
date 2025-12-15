@@ -188,8 +188,3 @@ The project is built around the following principles:
 
 ---
 
-## Acknowledgments
-
-This project leverages several open-source technologies, including LangChain, LangGraph, Apache Tika, Chroma, and OpenAI models, to build an end-to-end Retrieval-Augmented Generation workflow.
-
----
