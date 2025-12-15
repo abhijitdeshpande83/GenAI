@@ -1,240 +1,165 @@
 # IntelliQA
 
-**IntelliQA** is a Retrieval-Augmented Generation (RAG) based document question-answering system. Upload documents in multiple formats and ask natural language questions about their content. Answers are grounded in the source documents, with retrieval handling knowledge access and the LLM handling reasoning and response generation.
+**IntelliQA** is a Retrieval Augmented Generation (RAG) based document question answering system. Upload documents in multiple formats, and ask natural language questions against their content. Answers are grounded in the source documents, with retrieval handling the knowledge and the LLM handling the reasoning and phrasing.
 
-The project demonstrates a production-oriented RAG pipeline featuring robust multi-format document ingestion, content deduplication, session-aware conversations, and a containerized, reusable package design.
-
----
+The project is built to demonstrate a production oriented RAG pipeline: robust multi format ingestion, content deduplication, session aware conversations, and a containerized, reusable package design.
 
 ## Overview
 
-Large Language Models (LLMs) are powerful but have two well-known limitations:
-
-1. They do not have access to your private documents by default.
-2. They may hallucinate when answering questions outside their training data.
-
-Retrieval-Augmented Generation (RAG) addresses both challenges. Instead of relying solely on the model's parametric memory, IntelliQA retrieves the most relevant document chunks and provides them as context to the LLM. The model then generates answers based only on the retrieved information, enabling more accurate and traceable responses.
-
----
+Large language models are powerful but have two well known limits: they do not know your private documents, and they hallucinate when asked about things outside their training data. RAG solves both. Instead of relying on the model's parametric memory, IntelliQA retrieves the most relevant chunks from your uploaded documents and passes them to the LLM as context. The model answers only from what was retrieved, and it can cite where the answer came from.
 
 ## Key Features
 
-* **Multi-format document ingestion**: Parses PDF, DOCX, TXT, HTML, and other document formats through a unified extraction layer powered by Apache Tika.
-* **Content deduplication**: Detects and skips duplicate documents and repeated chunks to maintain vector store quality and improve retrieval performance.
-* **Session management**: Preserves conversational context across user sessions, enabling accurate follow-up questions.
-* **Grounded answers**: Generates responses exclusively from retrieved context, reducing hallucinations and improving traceability.
-* **Dockerized deployment**: Fully containerized using Docker for consistent and reproducible environments.
-* **Reusable package design**: Core RAG functionality is encapsulated within the `rag_pipeline` package, separated from the demonstration notebook.
-
----
+* **Multi format document ingestion**: Parses PDF, DOCX, TXT, HTML, and other formats through a unified extraction layer powered by Apache Tika.
+* **Content deduplication**: Detects and skips duplicate documents and repeated chunks so the vector store stays clean and retrieval quality does not degrade.
+* **Session management**: Maintains conversation context per session, so follow up questions ("what about the second point?") resolve correctly against earlier turns.
+* **Grounded answers**: Responses are generated only from retrieved context, reducing hallucination and keeping answers traceable to source documents.
+* **Dockerized**: Fully containerized via the included `dockerfile` for consistent, reproducible environments.
+<!-- If deployed to AWS, add a line here, e.g.: * Cloud deployed: Hosted on AWS <service> -->
+* **Reusable package**: Core RAG logic lives in the `rag_pipeline` package, separated from the demo notebook.
 
 ## Architecture
 
-IntelliQA follows a standard two-phase RAG architecture:
-
-1. **Ingestion Phase** – Processes and indexes uploaded documents.
-2. **Query Phase** – Retrieves relevant content and generates answers.
+IntelliQA follows a standard two phase RAG design: an ingestion phase that indexes documents, and a query phase that answers questions.
 
 ![IntelliQA RAG Flow](./RAG%20Flow.png)
 
 ### Ingestion Phase
 
-1. **Document Upload** – Users upload one or more files.
-2. **Text Extraction** – Apache Tika extracts raw text from documents.
-3. **Deduplication Check** – Existing documents and chunks are identified and skipped.
-4. **Text Chunking** – Content is split into overlapping segments.
-5. **Embedding Generation** – Chunks are converted into dense vector embeddings.
-6. **Indexing** – Embeddings are stored in the vector database for similarity search.
+1. **Document upload**: User uploads one or more files.
+2. **Text extraction**: Apache Tika parses each file and extracts raw text, supporting PDF, DOCX, HTML, TXT, and other formats.
+3. **Deduplication check**: Documents and chunks already present in the index are detected and skipped.
+4. **Text chunking**: Extracted text is split into overlapping segments.
+5. **Embedding**: Each chunk is converted into a dense vector by the embedding model.
+6. **Indexing**: Vectors are stored in the vector store for similarity search.
 
 ### Query Phase
 
-1. **Question Input** – User submits a natural language query.
-2. **Query Embedding** – The question is converted into an embedding vector.
-3. **Similarity Search** – The top-k most relevant chunks are retrieved.
-4. **Prompt Assembly** – Retrieved context and conversation history are combined.
-5. **Answer Generation** – The LLM generates a context-grounded response.
-6. **Response Delivery** – The answer and source context are returned to the user.
-
----
+1. **Question input**: User submits a natural language question.
+2. **Query embedding**: The question is converted into a vector using the same embedding model.
+3. **Similarity search**: The system retrieves the top K chunks whose vectors are closest to the question vector.
+4. **Prompt assembly**: The question, retrieved context, and session history are combined into a single prompt.
+5. **Generation**: The LLM produces an answer grounded in the retrieved context.
+6. **Response**: The answer is returned to the user along with its source context.
 
 ## Tech Stack
 
-| Layer            | Technology                                 |
-| ---------------- | ------------------------------------------ |
-| Language         | Python 3.x                                 |
-| Orchestration    | LangChain / LangGraph                      |
-| Document Parsing | Apache Tika                                |
-| Embeddings       | HuggingFace Embeddings / OpenAI Embeddings |
-| Vector Store     | Chroma (persisted locally in `chroma_db/`) |
-| LLM              | OpenAI GPT Models                          |
-| Core Package     | `rag_pipeline`                             |
-| Interface        | Jupyter Notebook (`IntelliQA.ipynb`)       |
-| Packaging        | `setup.py`                                 |
-| Containerization | Docker                                     |
-
----
+| Layer | Technology |
+|-------|------------|
+| Language | Python 3.x |
+| Orchestration | LangChain |
+| Document parsing | Apache Tika |
+| Embeddings | <!-- e.g., OpenAI text-embedding-3-small, or sentence-transformers all-MiniLM-L6-v2 --> |
+| Vector store | Chroma (persisted locally in `chroma_db/`) |
+| LLM | <!-- e.g., OpenAI GPT-4o-mini, or AWS Bedrock model --> |
+| Core package | `rag_pipeline` (custom RAG modules) |
+| Interface | Jupyter Notebook (`IntelliQA.ipynb`) |
+| Packaging | `setup.py` (pip installable) |
+| Containerization | Docker |
 
 ## How RAG Works in IntelliQA
 
-### 1. Chunking
+1. **Chunking**: Documents are split into overlapping segments so that no single retrieval unit is too large for the model context, while overlap preserves meaning across boundaries.
+2. **Embedding**: Each chunk is converted into a dense vector that captures its semantic meaning.
+3. **Retrieval**: The user question is embedded the same way, then the system finds the top K chunks whose vectors are closest to the question vector.
+4. **Generation**: The retrieved chunks, the question, and the session history are assembled into a single prompt. The LLM answers using only this grounded context.
 
-Documents are split into overlapping segments so that each retrieval unit remains within the model's context window.
-
-### 2. Embedding
-
-Each chunk is transformed into a dense vector representation that captures semantic meaning.
-
-### 3. Retrieval
-
-User queries are embedded using the same embedding model, and the most relevant chunks are retrieved through similarity search.
-
-### 4. Generation
-
-Retrieved chunks, user questions, and conversation history are combined into a prompt for the LLM to generate a grounded answer.
-
----
+This design means the model's answer is bounded by the documents, which is exactly what makes RAG reliable for enterprise document Q&A.
 
 ## Project Structure
 
-```text
+```
 IntelliQA/
-├── IntelliQA.ipynb         # End-to-end RAG demonstration notebook
-├── rag_pipeline/
+├── IntelliQA.ipynb         # Main notebook: runs the end-to-end RAG demo
+├── rag_pipeline/           # Core RAG package
 │   ├── __init__.py
 │   ├── query_engine.py     # Query embedding, retrieval, and answer generation
-│   ├── vector_store.py     # Chroma setup and indexing
-│   └── utils.py            # Parsing, chunking, and deduplication utilities
-├── chroma_db/              # Persistent Chroma vector database
-├── RAG Flow.png            # Architecture diagram
-├── dockerfile              # Docker configuration
-├── requirements.txt        # Project dependencies
-├── setup.py                # Package installation configuration
+│   ├── vector_store.py     # Chroma vector store setup and indexing
+│   └── utils.py            # Document parsing, chunking, and deduplication helpers
+├── chroma_db/              # Persisted Chroma vector store
+├── RAG Flow.png            # Architecture / flow diagram
+├── dockerfile              # Container definition
+├── requirements.txt        # Python dependencies
+├── setup.py                # Package installation config
 └── README.md
 ```
 
----
+> Note: `venv/` and `dist/` appear in the working directory but should not be committed. Add them to `.gitignore` along with `__pycache__/` to keep the repository clean.
 
 ## Getting Started
 
 ### Prerequisites
 
-* Python 3.9+
-* Docker (optional)
-* OpenAI API Key
+* Python 3.x
+* Docker (optional, for containerized runs)
+* An API key for your chosen LLM and embedding provider
 
-### Clone the Repository
+### Run Locally
 
 ```bash
+# Clone the repository
 git clone https://github.com/abhijitdeshpande83/GenAI.git
 cd GenAI/IntelliQA
-```
 
-### Create and Activate a Virtual Environment
-
-```bash
+# Create and activate a virtual environment
 python -m venv venv
-```
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-**Linux/macOS**
-
-```bash
-source venv/bin/activate
-```
-
-**Windows**
-
-```bash
-venv\Scripts\activate
-```
-
-### Install Dependencies
-
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### Install the Package
-
-```bash
+# Install the rag_pipeline package in editable mode
 pip install -e .
-```
 
----
+# Set environment variables
+export OPENAI_API_KEY="your-key-here"   # or your provider's key
 
-## Environment Variables
-
-Set your OpenAI API key before running the application.
-
-**Linux/macOS**
-
-```bash
-export OPENAI_API_KEY="your-api-key"
-```
-
-**Windows (PowerShell)**
-
-```powershell
-$env:OPENAI_API_KEY="your-api-key"
-```
-
----
-
-## Running IntelliQA
-
-Launch the notebook:
-
-```bash
+# Launch the notebook
 jupyter notebook IntelliQA.ipynb
 ```
 
----
+Run the notebook cells in order. The `rag_pipeline` modules handle ingestion, indexing, retrieval, and generation, while the notebook drives the end to end demo.
 
-## Docker Usage
-
-### Build the Docker Image
+### Run with Docker
 
 ```bash
+# Build the image
 docker build -t intelliqa -f dockerfile .
-```
 
-### Run the Container
-
-```bash
-docker run -p 8888:8888 \
-  -e OPENAI_API_KEY="your-api-key" \
+# Run the container
+docker run -p <host_port>:<container_port> \
+  -e OPENAI_API_KEY="your-key-here" \
   intelliqa
 ```
 
----
+## Usage
 
-## Future Enhancements
+1. Open `IntelliQA.ipynb` in Jupyter.
+2. Point the ingestion step at your document files (PDF, DOCX, TXT, HTML, and other formats).
+3. Run the ingestion cells. Apache Tika extracts text, duplicates are skipped, and chunks are embedded into the Chroma store.
+4. Use the query cells to ask natural language questions.
+5. The query engine retrieves the most relevant chunks and returns a grounded answer.
+6. Ask follow up questions in the same session to carry conversation context forward.
 
-* Support for additional vector databases (FAISS, Pinecone, Weaviate).
-* Metadata-based filtering during retrieval.
-* Streaming responses.
-* Source citation and highlighting in generated answers.
-* Web-based UI using Streamlit or FastAPI.
-* Hybrid search combining semantic and keyword retrieval.
+## Design Decisions
+
+* **Apache Tika over format specific parsers**: A single extraction layer handles dozens of file types, which removes the need to maintain separate parsing logic per format.
+* **Deduplication at ingestion**: Indexing the same content twice inflates the vector store and skews retrieval toward repeated chunks. Catching duplicates early keeps results clean.
+* **Session scoped context**: Conversational Q&A only works if the system remembers the thread. Session management makes follow up questions resolve naturally.
+* **Containerization first**: Docker guarantees the same behavior locally and on AWS, which removes "works on my machine" issues during deployment.
+
+## Future Improvements
+
+* Add a reranking step (cross encoder) after retrieval to improve the precision of the top K chunks
+* Return inline citations that link each answer sentence back to its source chunk
+* Add hybrid search (keyword plus vector) for better recall on exact term queries
+* Add evaluation with RAG specific metrics: faithfulness, answer relevance, and context precision
+* Support streaming responses for a faster perceived experience
+* Add user authentication and per user document isolation
+
+## Related Projects
+
+IntelliQA is part of a broader Generative AI portfolio that also includes agentic assistants and fine tuned LLM systems. See the other folders in the [GenAI repository](https://github.com/abhijitdeshpande83/GenAI).
 
 
----
-
-## Example Usage
-
-After uploading documents, users can ask questions such as:
-
-* "Summarize the key findings in this report."
-* "Compare information across the uploaded files."
-* "Explain the second section in simple terms."
-
----
-
-## Why IntelliQA?
-
-* Reduces hallucinations by grounding responses in retrieved documents.
-* Supports multiple document formats through a unified ingestion pipeline.
-* Preserves conversational context for follow-up questions.
-* Eliminates duplicate content to improve retrieval quality.
-* Provides a modular and reusable RAG architecture for experimentation and production use.
-
----
+This project is open source and available under the MIT License.
