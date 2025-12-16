@@ -1,98 +1,134 @@
 # IntelliQA
 
-**IntelliQA** is a Retrieval Augmented Generation (RAG) based document question answering system. Upload documents in multiple formats, and ask natural language questions against their content. Answers are grounded in the source documents, with retrieval handling the knowledge and the LLM handling the reasoning and phrasing.
+> **Ask any document. Get grounded answers.**
+> A Retrieval Augmented Generation (RAG) system that turns your PDFs, Word docs, HTML files, and more into a private, conversational knowledge base.
 
-The project is built to demonstrate a production oriented RAG pipeline: robust multi format ingestion, content deduplication, session aware conversations, and a containerized, reusable package design.
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter"/>
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain"/>
+  <img src="https://img.shields.io/badge/Llama_3.3_70B-0467DF?style=for-the-badge&logo=meta&logoColor=white" alt="Llama 3.3 70B"/>
+  <img src="https://img.shields.io/badge/Groq-F55036?style=for-the-badge&logoColor=white" alt="Groq"/>
+  <img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face"/>
+  <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logoColor=white" alt="ChromaDB"/>
+  <img src="https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white" alt="Apache Tika"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
+  <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white" alt="AWS EC2"/>
+</p>
 
-## Overview
+---
 
-Large language models are powerful but have two well known limits: they do not know your private documents, and they hallucinate when asked about things outside their training data. RAG solves both. Instead of relying on the model's parametric memory, IntelliQA retrieves the most relevant chunks from your uploaded documents and passes them to the LLM as context. The model answers only from what was retrieved, and it can cite where the answer came from.
+## ⚡ TL;DR
 
-## Key Features
+* **What it does**: Upload documents in dozens of formats, ask questions in plain English, get answers grounded in your sources.
+* **Why it's interesting**: Production oriented design with content deduplication, session aware chat, and a persistent vector store.
+* **What powers it**: Llama 3.3 70B served on Groq for low latency inference, with HuggingFace embeddings and a local ChromaDB vector store.
+* **Where it runs**: Containerized with Docker, deployed on AWS EC2.
+* **Status**: Working end to end. Formal RAG evaluation (faithfulness, answer relevance, context precision) is in progress.
 
-* **Multi format document ingestion**: Parses PDF, DOCX, TXT, HTML, and other formats through a unified extraction layer powered by Apache Tika.
-* **Content deduplication**: Detects and skips duplicate documents and repeated chunks so the vector store stays clean and retrieval quality does not degrade.
-* **Session management**: Maintains conversation context per session, so follow up questions ("what about the second point?") resolve correctly against earlier turns.
-* **Grounded answers**: Responses are generated only from retrieved context, reducing hallucination and keeping answers traceable to source documents.
-* **Dockerized**: Fully containerized via the included `dockerfile` for consistent, reproducible environments.
-<!-- If deployed to AWS, add a line here, e.g.: * Cloud deployed: Hosted on AWS <service> -->
-* **Reusable package**: Core RAG logic lives in the `rag_pipeline` package, separated from the demo notebook.
+---
 
-## Architecture
+## 🛠️ Tech Stack
 
-IntelliQA follows a standard two phase RAG design: an ingestion phase that indexes documents, and a query phase that answers questions.
+### Language & Runtime
+<p align="left">
+  <img src="https://img.shields.io/badge/Python_3.x-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Jupyter_Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white"/>
+</p>
+
+### RAG Framework
+<p align="left">
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logoColor=white"/>
+</p>
+
+### LLM & Embeddings
+<p align="left">
+  <img src="https://img.shields.io/badge/Llama_3.3_70B_Versatile-0467DF?style=for-the-badge&logo=meta&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Groq_LPU_Inference-F55036?style=for-the-badge&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black"/>
+  <img src="https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?style=for-the-badge&logoColor=white"/>
+</p>
+
+### Document Processing
+<p align="left">
+  <img src="https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white"/>
+</p>
+
+### Infrastructure
+<p align="left">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"/>
+</p>
+
+---
+
+## 🏗️ Architecture
 
 ![IntelliQA RAG Flow](./RAG%20Flow.png)
 
-### Ingestion Phase
+IntelliQA follows a clean two phase RAG design.
 
-1. **Document upload**: User uploads one or more files.
-2. **Text extraction**: Apache Tika parses each file and extracts raw text, supporting PDF, DOCX, HTML, TXT, and other formats.
-3. **Deduplication check**: Documents and chunks already present in the index are detected and skipped.
-4. **Text chunking**: Extracted text is split into overlapping segments.
-5. **Embedding**: Each chunk is converted into a dense vector by the embedding model.
-6. **Indexing**: Vectors are stored in the vector store for similarity search.
+### 1. Ingestion (run once per document set)
 
-### Query Phase
+1. **Upload** documents in any supported format.
+2. **Parse** with Apache Tika to extract clean text (PDF, DOCX, HTML, TXT, RTF, ODT, and more).
+3. **Deduplicate** so already indexed content is detected and skipped.
+4. **Chunk** the text into overlapping segments to preserve meaning across boundaries.
+5. **Embed** each chunk into a 384 dimensional vector using `sentence-transformers/all-MiniLM-L6-v2`.
+6. **Index** vectors into ChromaDB, persisted locally in `chroma_db/`.
 
-1. **Question input**: User submits a natural language question.
-2. **Query embedding**: The question is converted into a vector using the same embedding model.
-3. **Similarity search**: The system retrieves the top K chunks whose vectors are closest to the question vector.
-4. **Prompt assembly**: The question, retrieved context, and session history are combined into a single prompt.
-5. **Generation**: The LLM produces an answer grounded in the retrieved context.
-6. **Response**: The answer is returned to the user along with its source context.
+### 2. Query (runs per question)
 
-## Tech Stack
+1. **Embed** the user question with the same embedding model used during ingestion.
+2. **Retrieve** the top K nearest chunks from Chroma using cosine similarity.
+3. **Assemble** a prompt combining the question, retrieved context, and session history.
+4. **Generate** the answer with Llama 3.3 70B (via Groq) at `temperature=0` for deterministic, grounded output.
+5. **Return** the answer while preserving session state for follow up questions.
 
-| Layer | Technology |
-|-------|------------|
-| Language | Python 3.x |
-| Orchestration | LangChain |
-| Document parsing | Apache Tika |
-| Embeddings | <!-- e.g., OpenAI text-embedding-3-small, or sentence-transformers all-MiniLM-L6-v2 --> |
-| Vector store | Chroma (persisted locally in `chroma_db/`) |
-| LLM | <!-- e.g., OpenAI GPT-4o-mini, or AWS Bedrock model --> |
-| Core package | `rag_pipeline` (custom RAG modules) |
-| Interface | Jupyter Notebook (`IntelliQA.ipynb`) |
-| Packaging | `setup.py` (pip installable) |
-| Containerization | Docker |
+---
 
-## How RAG Works in IntelliQA
+## ✨ Key Features
 
-1. **Chunking**: Documents are split into overlapping segments so that no single retrieval unit is too large for the model context, while overlap preserves meaning across boundaries.
-2. **Embedding**: Each chunk is converted into a dense vector that captures its semantic meaning.
-3. **Retrieval**: The user question is embedded the same way, then the system finds the top K chunks whose vectors are closest to the question vector.
-4. **Generation**: The retrieved chunks, the question, and the session history are assembled into a single prompt. The LLM answers using only this grounded context.
+* 🗂️ **Multi format ingestion** via Apache Tika: PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more
+* 🔁 **Smart deduplication** to keep the vector store clean and retrieval precise
+* 💬 **Session aware Q&A** so follow up questions like "what about the next point?" resolve correctly
+* 🎯 **Grounded answers only** with `temperature=0` to minimize hallucination
+* ⚡ **Fast inference** via Groq's LPU based serving of Llama 3.3 70B
+* 🆓 **Open weight model** with no LLM vendor lock in
+* 📦 **Reusable package** with core RAG logic in `rag_pipeline/`, decoupled from the demo notebook
+* 🐳 **Containerized** for reproducible local and cloud runs
+* ☁️ **Deployed on AWS EC2**
 
-This design means the model's answer is bounded by the documents, which is exactly what makes RAG reliable for enterprise document Q&A.
+---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 IntelliQA/
-├── IntelliQA.ipynb         # Main notebook: runs the end-to-end RAG demo
+├── IntelliQA.ipynb         # Main notebook: end-to-end RAG demo
 ├── rag_pipeline/           # Core RAG package
 │   ├── __init__.py
-│   ├── query_engine.py     # Query embedding, retrieval, and answer generation
+│   ├── query_engine.py     # Query embedding, retrieval, answer generation
 │   ├── vector_store.py     # Chroma vector store setup and indexing
-│   └── utils.py            # Document parsing, chunking, and deduplication helpers
+│   └── utils.py            # Document parsing, chunking, deduplication
 ├── chroma_db/              # Persisted Chroma vector store
-├── RAG Flow.png            # Architecture / flow diagram
+├── RAG Flow.png            # Architecture diagram
 ├── dockerfile              # Container definition
 ├── requirements.txt        # Python dependencies
 ├── setup.py                # Package installation config
 └── README.md
 ```
 
-> Note: `venv/` and `dist/` appear in the working directory but should not be committed. Add them to `.gitignore` along with `__pycache__/` to keep the repository clean.
+---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
 * Python 3.x
+* A [Groq API key](https://console.groq.com/keys)
 * Docker (optional, for containerized runs)
-* An API key for your chosen LLM and embedding provider
 
 ### Run Locally
 
@@ -101,90 +137,79 @@ IntelliQA/
 git clone https://github.com/abhijitdeshpande83/GenAI.git
 cd GenAI/IntelliQA
 
-# Create and activate a virtual environment
+# Set up environment
 python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+source venv/bin/activate            # On Windows: venv\Scripts\activate
 
-# Install dependencies
+# Install dependencies and the rag_pipeline package
 pip install -r requirements.txt
-
-# Install the rag_pipeline package in editable mode
 pip install -e .
 
-# Set environment variables
-export OPENAI_API_KEY="your-key-here"   # or your provider's key
+# Set the Groq API key
+export GROQ_API_KEY="your-key-here"
 
 # Launch the notebook
 jupyter notebook IntelliQA.ipynb
 ```
 
-Run the notebook cells in order. The `rag_pipeline` modules handle ingestion, indexing, retrieval, and generation, while the notebook drives the end to end demo.
-
 ### Run with Docker
 
 ```bash
-# Build the image
 docker build -t intelliqa -f dockerfile .
 
-# Run the container
-docker run -p <host_port>:<container_port> \
-  -e OPENAI_API_KEY="your-key-here" \
+docker run -p 8888:8888 \
+  -e GROQ_API_KEY="your-key-here" \
   intelliqa
 ```
 
-## Usage
+---
 
-1. Open `IntelliQA.ipynb` in Jupyter.
-2. Point the ingestion step at your document files (PDF, DOCX, TXT, HTML, and other formats).
-3. Run the ingestion cells. Apache Tika extracts text, duplicates are skipped, and chunks are embedded into the Chroma store.
-4. Use the query cells to ask natural language questions.
-5. The query engine retrieves the most relevant chunks and returns a grounded answer.
-6. Ask follow up questions in the same session to carry conversation context forward.
+## 🧠 Design Decisions
 
-## Design Decisions
+The choices a hiring manager is most likely to ask about.
 
-* **Apache Tika over format specific parsers**: A single extraction layer handles dozens of file types, which removes the need to maintain separate parsing logic per format.
-* **Deduplication at ingestion**: Indexing the same content twice inflates the vector store and skews retrieval toward repeated chunks. Catching duplicates early keeps results clean.
-* **Session scoped context**: Conversational Q&A only works if the system remembers the thread. Session management makes follow up questions resolve naturally.
-* **Containerization first**: Docker guarantees the same behavior locally and on AWS, which removes "works on my machine" issues during deployment.
-
-## Future Improvements
-
-* Add a reranking step (cross encoder) after retrieval to improve the precision of the top K chunks
-* Return inline citations that link each answer sentence back to its source chunk
-* Add hybrid search (keyword plus vector) for better recall on exact term queries
-* Add evaluation with RAG specific metrics: faithfulness, answer relevance, and context precision
-* Support streaming responses for a faster perceived experience
-* Add user authentication and per user document isolation
-
-## Related Projects
-
-IntelliQA is part of a broader Generative AI portfolio that also includes agentic assistants and fine tuned LLM systems. See the other folders in the [GenAI repository](https://github.com/abhijitdeshpande83/GenAI).
+| Decision | Why |
+|----------|-----|
+| **Groq + Llama 3.3 70B** | Sub-second inference via LPU serving, with open weight flexibility and no vendor lock in on the LLM |
+| **`temperature=0`** | Deterministic, repeatable answers, which is critical for document Q&A where the same question should return the same response |
+| **all-MiniLM-L6-v2 embeddings** | 384 dimensional vectors, fast on CPU, no API cost, strong quality for general semantic search |
+| **ChromaDB (persisted locally)** | Simple to operate, no separate infrastructure to manage, supports metadata filtering and persistence out of the box |
+| **Apache Tika for parsing** | Single extraction layer across dozens of formats, no need to maintain format specific parsers |
+| **Deduplication at ingestion** | Prevents the vector store from being polluted with repeated content, which would skew similarity scores |
+| **Reusable `rag_pipeline` package** | Core logic decoupled from the notebook, so it can be imported into a future API or web app without rewrites |
 
 ---
 
-## Supported Document Formats
+## 🗺️ Roadmap
 
-IntelliQA currently supports a variety of document formats through Apache Tika, including:
-
-* PDF (`.pdf`)
-* Microsoft Word (`.docx`)
-* Plain Text (`.txt`)
-* HTML (`.html`)
-* Rich Text Format (`.rtf`)
-
-Additional formats supported by Apache Tika can be integrated with minimal changes.
+* [ ] **Evaluation pipeline** (in progress): faithfulness, answer relevance, and context precision via RAGAS or a custom eval set
+* [ ] **Reranking step** with a cross encoder to improve top K precision
+* [ ] **Inline citations** linking each answer sentence back to its source chunk
+* [ ] **Hybrid search**: combine BM25 keyword retrieval with vector search for better recall on exact term queries
+* [ ] **Streaming responses** for faster perceived latency
+* [ ] **Web UI**: replace the notebook entry point with a Streamlit or FastAPI app
+* [ ] **Authentication and per user document isolation**
 
 ---
 
-## Design Principles
+## 🔗 Related Projects
 
-The project is built around the following principles:
-
-* **Accuracy** – Answers are grounded in retrieved document content.
-* **Modularity** – Core RAG components are separated into reusable modules.
-* **Scalability** – The architecture can be extended to larger document collections.
-* **Maintainability** – Clear package structure and containerized deployment simplify development and operations.
+IntelliQA is part of my broader Generative AI portfolio. See the parent [GenAI repository](https://github.com/abhijitdeshpande83/GenAI) for other projects covering agentic workflows, fine tuning, and multi agent systems.
 
 ---
 
+## 👤 About the Author
+
+**Abhijit Deshpande**, Business Systems Analyst (AI/ML Systems) at Charter Communications, actively transitioning into Data Science, ML, and AI Engineering roles. M.S. Industrial Engineering, University of Texas at Arlington (GPA 3.9/4.0).
+
+<p align="left">
+  <a href="https://theanalyticmind.com"><img src="https://img.shields.io/badge/Portfolio-theanalyticmind.com-0A66C2?style=for-the-badge&logo=googlechrome&logoColor=white"/></a>
+  <a href="https://linkedin.com/in/abhijit-deshpande/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="https://github.com/abhijitdeshpande83"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
+</p>
+
+---
+
+## 📄 License
+
+MIT License. See the [LICENSE](./LICENSE) file for details.
