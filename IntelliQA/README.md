@@ -90,15 +90,15 @@ IntelliQA follows a clean two phase RAG design.
 
 ## ✨ Key Features
 
-* 🗂️ **Multi format ingestion** via Apache Tika: PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more
-* 🔁 **Smart deduplication** to keep the vector store clean and retrieval precise
-* 💬 **Session aware Q&A** so follow up questions like "what about the next point?" resolve correctly
-* 🎯 **Grounded answers only** with `temperature=0` to minimize hallucination
-* ⚡ **Fast inference** via Groq's LPU based serving of Llama 3.3 70B
-* 🆓 **Open weight model** with no LLM vendor lock in
-* 📦 **Reusable package** with core RAG logic in `rag_pipeline/`, decoupled from the demo notebook
-* 🐳 **Containerized** for reproducible local and cloud runs
-* ☁️ **Deployed on AWS EC2**
+* **Multi format ingestion** via Apache Tika: PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more
+* **Smart deduplication** to keep the vector store clean and retrieval precise
+* **Session aware Q&A** so follow up questions like "what about the next point?" resolve correctly
+* **Grounded answers only** with `temperature=0` to minimize hallucination
+* **Fast inference** via Groq's LPU based serving of Llama 3.3 70B
+* **Open weight model** with no LLM vendor lock in
+* **Reusable package** with core RAG logic in `rag_pipeline/`, decoupled from the demo notebook
+* **Containerized** for reproducible local and cloud runs
+* **Deployed on AWS EC2**
 
 ---
 
