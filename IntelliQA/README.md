@@ -167,18 +167,6 @@ The choices a hiring manager is most likely to ask about.
 
 ---
 
-## 🗺️ Roadmap
-
-* [ ] **Evaluation pipeline** (in progress): faithfulness, answer relevance, and context precision via RAGAS or a custom eval set
-* [ ] **Reranking step** with a cross encoder to improve top K precision
-* [ ] **Inline citations** linking each answer sentence back to its source chunk
-* [ ] **Hybrid search**: combine BM25 keyword retrieval with vector search for better recall on exact term queries
-* [ ] **Streaming responses** for faster perceived latency
-* [ ] **Web UI**: replace the notebook entry point with a Streamlit or FastAPI app
-* [ ] **Authentication and per user document isolation**
-
----
-
 ## 🔗 Related Projects
 
 IntelliQA is part of my broader Generative AI portfolio. See the parent [GenAI repository](https://github.com/abhijitdeshpande83/GenAI) for other projects covering agentic workflows, fine tuning, and multi agent systems.
