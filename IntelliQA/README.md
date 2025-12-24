@@ -3,19 +3,6 @@
 > **Ask any document. Get grounded answers.**
 > A Retrieval Augmented Generation (RAG) system that turns your PDFs, Word docs, HTML files, and more into a private, conversational knowledge base.
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter"/>
-  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain"/>
-  <img src="https://img.shields.io/badge/Llama_3.3_70B-0467DF?style=for-the-badge&logo=meta&logoColor=white" alt="Llama 3.3 70B"/>
-  <img src="https://img.shields.io/badge/Groq-F55036?style=for-the-badge&logoColor=white" alt="Groq"/>
-  <img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face"/>
-  <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logoColor=white" alt="ChromaDB"/>
-  <img src="https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white" alt="Apache Tika"/>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
-  <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white" alt="AWS EC2"/>
-</p>
-
 ---
 
 ## ⚡ TL;DR
@@ -90,15 +77,15 @@ IntelliQA follows a clean two phase RAG design.
 
 ## ✨ Key Features
 
-* **Multi format ingestion** via Apache Tika: PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more
-* **Smart deduplication** to keep the vector store clean and retrieval precise
-* **Session aware Q&A** so follow up questions like "what about the next point?" resolve correctly
-* **Grounded answers only** with `temperature=0` to minimize hallucination
-* **Fast inference** via Groq's LPU based serving of Llama 3.3 70B
-* **Open weight model** with no LLM vendor lock in
-* **Reusable package** with core RAG logic in `rag_pipeline/`, decoupled from the demo notebook
-* **Containerized** for reproducible local and cloud runs
-* **Deployed on AWS EC2**
+* 🗂️ **Multi format ingestion** via Apache Tika: PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more
+* 🔁 **Smart deduplication** to keep the vector store clean and retrieval precise
+* 💬 **Session aware Q&A** so follow up questions like "what about the next point?" resolve correctly
+* 🎯 **Grounded answers only** with `temperature=0` to minimize hallucination
+* ⚡ **Fast inference** via Groq's LPU based serving of Llama 3.3 70B
+* 🆓 **Open weight model** with no LLM vendor lock in
+* 📦 **Reusable package** with core RAG logic in `rag_pipeline/`, decoupled from the demo notebook
+* 🐳 **Containerized** for reproducible local and cloud runs
+* ☁️ **Deployed on AWS EC2**
 
 ---
 
@@ -197,4 +184,3 @@ The choices a hiring manager is most likely to ask about.
 IntelliQA is part of my broader Generative AI portfolio. See the parent [GenAI repository](https://github.com/abhijitdeshpande83/GenAI) for other projects covering agentic workflows, fine tuning, and multi agent systems.
 
 ---
-
