@@ -166,9 +166,3 @@ The choices a hiring manager is most likely to ask about.
 | **Reusable `rag_pipeline` package** | Core logic decoupled from the notebook, so it can be imported into a future API or web app without rewrites |
 
 ---
-
-## 🔗 Related Projects
-
-IntelliQA is part of my broader Generative AI portfolio. See the parent [GenAI repository](https://github.com/abhijitdeshpande83/GenAI) for other projects covering agentic workflows, fine tuning, and multi agent systems.
-
----
