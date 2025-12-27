@@ -254,24 +254,3 @@ The container exposes Jupyter on port `8888`. Open the printed URL in your brows
 | **Reusable `rag_pipeline` package** | Core logic decoupled from the notebook and shipped as a wheel, so it can be imported into a future API or web app without rewrites |
 
 ---
-
-## 👤 About the Author
-
-**Abhijit Deshpande**
-Business Systems Analyst (AI/ML Systems) at Charter Communications. Actively transitioning into Data Science, ML, and AI Engineering roles. M.S. Industrial Engineering, University of Texas at Arlington (GPA 3.9 / 4.0).
-
-<p align="left">
-  <a href="https://theanalyticmind.com"><img src="https://img.shields.io/badge/Portfolio-theanalyticmind.com-0A66C2?style=for-the-badge&logo=googlechrome&logoColor=white"/></a>
-  <a href="https://linkedin.com/in/abhijit-deshpande/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="https://github.com/abhijitdeshpande83"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
-</p>
-
----
-
-## 📄 License
-
-This project is open source under the **MIT License**. See [LICENSE](./LICENSE) for details.
-
-<p align="center">
-  <sub>Built with ❤️ as part of the <a href="https://github.com/abhijitdeshpande83/GenAI">GenAI portfolio</a>.</sub>
-</p>
