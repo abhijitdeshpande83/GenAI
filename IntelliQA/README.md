@@ -2,24 +2,27 @@
 
 <p align="center">
   <b>Ask any document. Get grounded answers.</b><br/>
-  <sub>A production oriented Retrieval Augmented Generation (RAG) system that turns your PDFs, Word docs, HTML files, and more into a private, conversational knowledge base.</sub>
+  <sub>A production-oriented Retrieval-Augmented Generation (RAG) system that turns your PDFs, Word docs, HTML files, and more into a private, conversational knowledge base.</sub>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
-  <img src="https://img.shields.io/badge/Build-rag__pipeline_v3.0-blue?style=flat-square" alt="Build"/>
-  <img src="https://img.shields.io/badge/Status-Stable-success?style=flat-square" alt="Status"/>
-  <img src="https://img.shields.io/badge/Deployed-AWS_EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white" alt="Deployed"/>
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Framework-LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain"/>
+  <img src="https://img.shields.io/badge/Inference-Groq_LPU-F55036?style=for-the-badge&logo=groq&logoColor=white" alt="Groq"/>
+  <img src="https://img.shields.io/badge/Deployment-AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white" alt="AWS EC2"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"/>
 </p>
 
 ---
 
 ## 📖 Overview
 
-Large language models are powerful but they do not know your private documents and they hallucinate on topics outside their training data. **IntelliQA solves both** by retrieving the most relevant chunks from your uploaded documents and passing them to the LLM as grounded context. The model answers only from what was retrieved, making the system reliable for enterprise document Q&A.
+Large Language Models (LLMs) are incredibly powerful, but they lack access to your private, domain-specific documents and are prone to hallucinations when operating outside their training data. 
 
-> 💡 Core RAG logic is packaged in the `rag_pipeline` Python package and shipped as a **prebuilt wheel**, so anyone can install it with a single `pip install` and start asking questions.
+**IntelliQA solves both challenges.** By combining semantic search with local vector persistence, it retrieves the most contextually relevant chunks from your document library and passes them to a high-performance open-weight LLM as strict, grounded context. Operating at a deterministic `temperature=0`, the model answers *only* from verified retrieved data, creating an enterprise-grade QA engine you can trust.
+
+> [!NOTE]
+> **Production-Ready Packaging:** The core RAG logic is decoupled from developer notebooks, fully modularized within the `rag_pipeline` Python package, and compiled as a **prebuilt wheel** for instantaneous distribution and enterprise integration.
 
 ---
 
@@ -27,70 +30,70 @@ Large language models are powerful but they do not know your private documents a
 
 <table align="center">
 <tr>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>🗂️</h3>
-  <h4>Multi Format Ingestion</h4>
-  <p>Parse <b>PDF, DOCX, HTML, TXT, RTF, ODT</b> and dozens more through a single extraction layer.</p>
-  <sub><i>Apache Tika</i></sub>
+  <h4><b>Multi-Format Ingestion</b></h4>
+  <p>Parse <code>PDF</code>, <code>DOCX</code>, <code>HTML</code>, <code>TXT</code>, <code>RTF</code>, and <code>ODT</code> out-of-the-box via a unified, robust extraction layer.</p>
+  <sub><i>Powered by Apache Tika</i></sub>
 </td>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>🔁</h3>
-  <h4>Smart Deduplication</h4>
-  <p>Detects and skips already indexed content to keep the vector store clean and retrieval precise.</p>
+  <h4><b>Smart Deduplication</b></h4>
+  <p>Detects and bypasses previously indexed content automatically, preserving vector space and keeping retrieval precise.</p>
   <sub><i>Custom dedup pipeline</i></sub>
 </td>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>💬</h3>
-  <h4>Session Aware Q&A</h4>
-  <p>Maintains conversation state so follow up questions resolve correctly against earlier turns.</p>
-  <sub><i>LangChain memory</i></sub>
+  <h4><b>Session-Aware Q&A</b></h4>
+  <p>Tracks and maintains conversational state seamlessly so complex, multi-turn follow-up questions resolve correctly.</p>
+  <sub><i>LangChain Memory Window</i></sub>
 </td>
 </tr>
 <tr>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>🎯</h3>
-  <h4>Grounded Answers</h4>
-  <p>Runs at <code>temperature=0</code> and answers only from retrieved context to minimize hallucination.</p>
-  <sub><i>Deterministic output</i></sub>
+  <h4><b>Grounded Context</b></h4>
+  <p>Enforces deterministic model generation to eliminate hallucinations, guaranteeing responses strictly trace back to source text.</p>
+  <sub><i>Zero-variance inference</i></sub>
 </td>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>⚡</h3>
-  <h4>Lightning Fast LLM</h4>
-  <p>Sub second responses powered by Groq's LPU serving of <b>Llama 3.3 70B Versatile</b>.</p>
+  <h4><b>Sub-Second Inference</b></h4>
+  <p>Blazing-fast generation speeds delivered by Groq's LPU hardware architecture running <b>Llama 3.3 70B Versatile</b>.</p>
   <sub><i>Groq + Meta Llama</i></sub>
 </td>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>📦</h3>
-  <h4>Pip Installable</h4>
-  <p>Core logic shipped as a <b>prebuilt wheel</b> in <code>dist/</code> for instant installation anywhere.</p>
+  <h4><b>Pip-Installable Wheel</b></h4>
+  <p>Core pipeline logic is compiled into a standalone asset in <code>dist/</code> for drop-in use across upstream applications.</p>
   <sub><i>rag_pipeline v3.0</i></sub>
 </td>
 </tr>
 <tr>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>🐳</h3>
-  <h4>Containerized</h4>
-  <p>Fully Dockerized for consistent, reproducible runs across local machines and cloud.</p>
-  <sub><i>Docker</i></sub>
+  <h4><b>Containerized Runtime</b></h4>
+  <p>Fully Dockerized environment configuration guarantees predictable, isolated runs across local dev environments and clouds.</p>
+  <sub><i>Docker Engine</i></sub>
 </td>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>☁️</h3>
-  <h4>Cloud Deployed</h4>
-  <p>Live on AWS EC2, demonstrating real cloud deployment beyond a local laptop.</p>
-  <sub><i>AWS EC2</i></sub>
+  <h4><b>Cloud Architecture</b></h4>
+  <p>Engineered for production deployment on scalable cloud compute infrastructure, validating real-world scalability.</p>
+  <sub><i>AWS EC2 Hosting</i></sub>
 </td>
-<td align="center" width="33%">
+<td align="center" width="33%" valign="top">
   <h3>🆓</h3>
-  <h4>Open Weight Stack</h4>
-  <p>No LLM vendor lock in. Built on open weight models and open source infrastructure.</p>
-  <sub><i>Meta Llama + HF</i></sub>
+  <h4><b>Open-Weight Stack</b></h4>
+  <p>Complete infrastructural independence. Built entirely on open-weight models and transparent core libraries.</p>
+  <sub><i>Meta Llama + HuggingFace</i></sub>
 </td>
 </tr>
 </table>
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture & Pipeline Flow
 
 <p align="center">
   <img src="./RAG%20Flow.png" alt="IntelliQA RAG Flow"/>
