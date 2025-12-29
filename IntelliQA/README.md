@@ -109,6 +109,3 @@ IntelliQA/
 - **Deduplication at ingestion** prevents repeated chunks from skewing similarity scores.
 - **Core logic as a wheel** decouples the RAG engine from the notebook so it can drop into any service later.
 
-## License
-
-MIT
