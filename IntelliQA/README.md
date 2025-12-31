@@ -1,14 +1,18 @@
-<h1 align="center">IntelliQA</h1>
+cat << 'EOF' > README.md
+<h1 align="center">🤖 IntelliQA</h1>
 
 <p align="center">
-  <i>A document-grounded RAG system. Ask any document, get verified answers.</i>
+  <b>Ask any document. Get grounded answers.</b><br/>
+  <sub>A production-oriented Retrieval-Augmented Generation (RAG) system that turns your PDFs, Word docs, HTML files, and more into a private, conversational knowledge base.</sub>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Build-rag__pipeline_v3.0-blue?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Deployed-AWS_EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Framework-LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain"/>
+  <img src="https://img.shields.io/badge/Inference-Groq_LPU-F55036?style=flat-square" alt="Groq"/>
+  <img src="https://img.shields.io/badge/Build-rag__pipeline_v3.0-blue?style=flat-square" alt="Build"/>
+  <img src="https://img.shields.io/badge/Deployed-AWS_EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white" alt="Deployed"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
 </p>
 
 <p align="center">
@@ -22,16 +26,26 @@
 
 ---
 
-## Overview
+## 📖 Overview
 
-IntelliQA grounds LLM answers in your own documents using Retrieval Augmented Generation. It runs on **Llama 3.3 70B** served via **Groq**, **HuggingFace** embeddings, and a persistent **ChromaDB** store. Core logic ships as an installable Python wheel, so you can drop it into any service or notebook with a single `pip install`.
+Large language models are powerful, but they do not know your private documents and they hallucinate on topics outside their training data. **IntelliQA solves both** by retrieving the most relevant chunks from your uploaded documents and passing them to the LLM as grounded context. The model answers only from what was retrieved, making the system reliable for enterprise document Q&A.
 
-## Quickstart
+> [!NOTE]
+> Core RAG logic is packaged in the `rag_pipeline` Python package and shipped as a **prebuilt wheel**, so anyone can install it with a single `pip install` and start asking questions.
+
+---
+
+## 🚀 Quickstart
 
 ```bash
-git clone https://github.com/abhijitdeshpande83/GenAI.git
+# Clone the repository
+git clone [https://github.com/abhijitdeshpande83/GenAI.git](https://github.com/abhijitdeshpande83/GenAI.git)
 cd GenAI/IntelliQA
+
+# Install the prebuilt wheel
 pip install dist/rag_pipeline-3.0-py3-none-any.whl
+
+# Set your Groq API key
 export GROQ_API_KEY="your-key-here"
 ```
 
@@ -112,38 +126,15 @@ Running live on AWS EC2, demonstrating the system beyond a local environment.
 </tr>
 </table>
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-<p align="center">
-  <b>LLM & Inference</b><br/>
-  <img src="https://img.shields.io/badge/Llama_3.3_70B_Versatile-0467DF?style=for-the-badge&logo=meta&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Groq_LPU-F55036?style=for-the-badge&logoColor=white"/>
-</p>
-
-<p align="center">
-  <b>Embeddings</b><br/>
-  <img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black"/>
-  <img src="https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?style=for-the-badge&logoColor=white"/>
-</p>
-
-<p align="center">
-  <b>RAG Framework</b><br/>
-  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white"/>
-  <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logoColor=white"/>
-</p>
-
-<p align="center">
-  <b>Parsing & Runtime</b><br/>
-  <img src="https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Python_3.x-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"/>
-</p>
-
-<p align="center">
-  <b>Infrastructure</b><br/>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-  <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"/>
-</p>
+| Layer | Technologies & Frameworks |
+| :--- | :--- |
+| **LLM & Inference** | `Llama 3.3 70B` • `Groq LPU Engine` ![Groq](https://img.shields.io/badge/Groq-F55036?style=flat-square&logoColor=white) |
+| **Orchestration** | `LangChain` ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white) • `Python 3.x` • `Apache Tika` |
+| **Vector Index** | `ChromaDB` ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B6B?style=flat-square) • `all-MiniLM-L6-v2` (Hugging Face) |
+| **Infrastructure** | `Docker` ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) • `AWS EC2` ![AWS](https://img.shields.io/badge/AWS_EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white) |
+| **Workspace** | `Jupyter Notebooks` |
 
 ## Install from Source
 
@@ -179,17 +170,18 @@ Jupyter is exposed on port `8888`.
 
 ```
 IntelliQA/
-├── IntelliQA.ipynb                          # End-to-end demo notebook
-├── rag_pipeline/                            # Core package source
-│   ├── query_engine.py                      # Retrieval and generation
-│   ├── vector_store.py                      # Chroma setup and indexing
-│   └── utils.py                             # Parsing, chunking, dedup
-├── dist/rag_pipeline-3.0-py3-none-any.whl   # Prebuilt installable wheel
-├── chroma_db/                               # Persisted vector store
-├── RAG Flow.png                             # Architecture diagram
-├── dockerfile
-├── requirements.txt
-└── setup.py
+├── 📓 IntelliQA.ipynb                          # End-to-end interactive demo notebook
+├── 📦 rag_pipeline/                            # Modularized production core source
+│   ├── query_engine.py                         # Retrieval and generation orchestration
+│   ├── vector_store.py                         # ChromaDB schema and index management
+│   └── utils.py                                # Parsing, text chunking, and deduplication
+├── 📂 dist/
+│   └── rag_pipeline-3.0-py3-none-any.whl       # Prebuilt distributable package asset
+├── 🗃️  chroma_db/                              # Persisted vector database storage
+├── 🖼️  RAG Flow.png                            # Architecture diagram asset
+├── 🐳 dockerfile                               # Unified container engine setup
+├── 📜 requirements.txt                         # Pipeline micro-dependencies
+└── ⚙️  setup.py                                # Packaging layout properties
 ```
 
 ## Design Notes
