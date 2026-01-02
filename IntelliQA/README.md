@@ -1,144 +1,224 @@
-cat << 'EOF' > README.md
-<h1 align="center">🤖 IntelliQA</h1>
+# IntelliQA: Document-Grounded RAG System
 
-<p align="center">
-  <b>Ask any document. Get grounded answers.</b><br/>
-  <sub>A production-oriented Retrieval-Augmented Generation (RAG) system that turns your PDFs, Word docs, HTML files, and more into a private, conversational knowledge base.</sub>
-</p>
+## System Overview
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/Framework-LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain"/>
-  <img src="https://img.shields.io/badge/Inference-Groq_LPU-F55036?style=flat-square" alt="Groq"/>
-  <img src="https://img.shields.io/badge/Build-rag__pipeline_v3.0-blue?style=flat-square" alt="Build"/>
-  <img src="https://img.shields.io/badge/Deployed-AWS_EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white" alt="Deployed"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
-</p>
+IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) system** designed for grounded document question answering using a combination of:
 
-<p align="center">
-  <img src="./RAG%20Flow.png" alt="IntelliQA Architecture" width="85%"/>
-</p>
+- multi-format document parsing
+- semantic chunk retrieval over a persistent vector store
+- deterministic LLM generation bounded to retrieved context
 
-<p align="center">
-  <b>Drop in a document. Ask a question. Get an answer grounded in your own sources.</b><br/>
-  <sub>Powered by Llama 3.3 70B over a persistent vector store, packaged as an installable Python wheel.</sub>
-</p>
+The system is built to explore a key production challenge in modern GenAI:
+
+> How to make LLM answers **traceable and reliable** when working with private documents the model has never seen.
+---
+
+
+## Problem Statement
+
+Most document Q&A systems built on LLMs fail in production due to:
+
+- hallucinated answers when questions fall outside training data
+- inability to cite or trace the source of an answer
+- repeated re-indexing of the same content, degrading retrieval quality
+- one-shot Q&A with no follow-up understanding
+- monolithic notebook designs that cannot be reused as a service
+
+This leads to:
+
+- unreliable outputs that erode user trust
+- bloated vector stores filled with duplicate chunks
+- tightly coupled code that breaks when promoting from prototype to production
+
+IntelliQA is designed to address these issues using a **grounded, deduplicated, and packaged** architecture.
 
 ---
 
-## 📖 Overview
 
-Large language models are powerful, but they do not know your private documents and they hallucinate on topics outside their training data. **IntelliQA solves both** by retrieving the most relevant chunks from your uploaded documents and passing them to the LLM as grounded context. The model answers only from what was retrieved, making the system reliable for enterprise document Q&A.
+## 🧠 System Design Philosophy
 
-> [!NOTE]
-> Core RAG logic is packaged in the `rag_pipeline` Python package and shipped as a **prebuilt wheel**, so anyone can install it with a single `pip install` and start asking questions.
+IntelliQA follows a **retrieval-first GenAI architecture**:
+
+### 1. Grounded Generation Principle
+
+All answers are generated from retrieved document context only. The LLM operates with `temperature=0` and is constrained to use the retrieval payload, eliminating speculative output.
+
+### 2. Persistence Over Recomputation
+
+Documents are parsed, chunked, embedded, and indexed once. ChromaDB persists vectors to disk, so subsequent sessions reuse the existing index without re-ingestion.
+
+### 3. Package-First Distribution
+
+Core RAG logic ships as the `rag_pipeline` Python wheel, not as a notebook-only artifact. The notebook is a demo. The wheel is the product.
 
 ---
 
-## 🚀 Quickstart
+
+## 🏗️ High-Level Architecture
+
+The system follows a **three-layer design pattern**:
+
+### 1. Ingestion Layer
+
+- Apache Tika multi-format text extraction
+- chunk-level deduplication against the existing index
+- semantic chunking with overlap
+
+### 2. Storage Layer
+
+- ChromaDB persistent vector store
+- HuggingFace `all-MiniLM-L6-v2` embeddings (384 dimensional)
+
+### 3. Generation Layer
+
+- Llama 3.3 70B Versatile served via Groq LPU
+- session-aware prompt assembly
+- retrieval-bounded answer generation
+
+---
+
+
+## 🔄 Core Execution Flow
+
+1. User uploads documents in supported formats
+2. Ingestion pipeline parses, deduplicates, chunks, embeds, and indexes
+3. User submits a question via chat interface
+4. Query engine retrieves top-K chunks via cosine similarity
+5. LLM generates a grounded answer at `temperature=0`
+6. Response returned with session state preserved for follow-up questions
+
+---
+
+
+## 🧠 Design Decision: Why Open Stack Instead of Managed APIs
+
+A fully managed approach (GPT-4 + OpenAI embeddings + Pinecone) was initially considered for simplicity but introduced several production constraints:
+
+### Constraints Observed:
+
+- recurring embedding API costs at ingestion scale
+- vendor lock-in across LLM, embeddings, and vector store
+- rate limits on bulk ingestion of large document sets
+- no control over embedding model or dimensionality
+- data leaves the deployment environment
+
+### Final Decision:
+
+An **open stack architecture was adopted**:
+
+- Llama 3.3 70B (open weight) served on Groq for hosted inference
+- HuggingFace `all-MiniLM-L6-v2` for local, CPU-friendly embeddings
+- ChromaDB persisted on disk, no hosted vector database
+- Apache Tika for unified, open-source document parsing
+
+This improved:
+
+- ingestion cost (zero per-document embedding cost)
+- portability (the entire stack runs anywhere the wheel is installed)
+- control (model and dimensionality choices are explicit)
+- speed (Groq LPU inference rivals API-served closed models)
+
+---
+
+
+## 🧩 System Components
+
+### 🔹 Document Parser
+
+Engine: Apache Tika
+Function: extracts clean text from PDF, DOCX, HTML, TXT, RTF, ODT, and dozens of additional formats through a single interface
+
+---
+
+
+### 🔹 Ingestion Pipeline
+
+Module: `rag_pipeline.utils`
+Function: handles parsing, chunking, deduplication, and metadata extraction before indexing
+
+---
+
+
+### 🔹 Vector Store
+
+Engine: ChromaDB (persisted in `chroma_db/`)
+Function: cosine similarity search over 384 dimensional embeddings, with metadata filtering and disk persistence
+
+---
+
+
+### 🔹 Query Engine
+
+Module: `rag_pipeline.query_engine`
+Function: embeds questions, retrieves top-K chunks, assembles prompts, and orchestrates generation
+
+---
+
+
+### 🔹 LLM Layer
+
+Model: Llama 3.3 70B Versatile served via Groq LPU
+Function: deterministic, grounded answer generation at `temperature=0`
+
+---
+
+
+### 🔹 Infrastructure Layer
+
+- Docker
+- AWS EC2
+- Python wheel packaging (`setup.py` + `dist/rag_pipeline-3.0-py3-none-any.whl`)
+
+---
+
+
+## 🛠 Tech Stack
+
+| **LLM & Inference** | ![Llama 3.3 70B](https://img.shields.io/badge/Llama%203.3%2070B-0467DF?logo=meta&logoColor=white) ![Groq LPU](https://img.shields.io/badge/Groq%20LPU-F55036?logo=lightning&logoColor=white) |
+| --- | --- |
+| **Embeddings** | ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?logo=huggingface&logoColor=black) ![all-MiniLM-L6-v2](https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?logo=pytorch&logoColor=white) |
+| **RAG Framework** | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white) ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B6B?logo=databricks&logoColor=white) |
+| **Document Parsing** | ![Apache Tika](https://img.shields.io/badge/Apache%20Tika-D22128?logo=apache&logoColor=white) |
+| **Deployment** | ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?logo=amazonaws&logoColor=white) |
+| **Packaging** | ![setup.py + wheel](https://img.shields.io/badge/setup.py%20%2B%20wheel-3776AB?logo=pypi&logoColor=white) |
+| **Programming Language** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white) |
+
+---
+
+
+## 📊 Key System Characteristics
+
+- Grounded generation (retrieval-only context, `temperature=0`)
+- Multi-format ingestion via a single parsing layer (Apache Tika)
+- Persistent on-disk vector store (no re-indexing across sessions)
+- Chunk-level deduplication at ingestion
+- Session-aware conversational state
+- Open stack (open weight LLM + local embeddings + local vector store)
+- Pip-installable distribution (`rag_pipeline-3.0-py3-none-any.whl`)
+- Containerized via single `dockerfile`
+
+---
+
+
+## 🧪 Workflow Visualization
+
+![IntelliQA RAG Flow](./RAG%20Flow.png)
+
+---
+
+
+## 🚀 Installation & Usage
+
+### Option 1: Install the Prebuilt Wheel (Fastest)
 
 ```bash
-# Clone the repository
-git clone [https://github.com/abhijitdeshpande83/GenAI.git](https://github.com/abhijitdeshpande83/GenAI.git)
+git clone https://github.com/abhijitdeshpande83/GenAI.git
 cd GenAI/IntelliQA
-
-# Install the prebuilt wheel
 pip install dist/rag_pipeline-3.0-py3-none-any.whl
-
-# Set your Groq API key
 export GROQ_API_KEY="your-key-here"
 ```
 
-Then open `IntelliQA.ipynb` for the end-to-end demo.
-
-## In Action
-
-```text
-Q: Summarize the key risks identified in section 4 of the policy document.
-
-A: Section 4 identifies three primary risks:
-
-   1. Regulatory non-compliance from incomplete audit trails.
-   2. Data exposure in third-party integrations lacking encryption at rest.
-   3. Vendor lock-in due to proprietary API dependencies.
-
-   Source: policy_v3.pdf, pages 12 to 14.
-```
-
-## Features
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-#### Multi-format ingestion
-PDF, DOCX, HTML, TXT, RTF, ODT and dozens more, parsed through a single Apache Tika layer.
-
-</td>
-<td width="50%" valign="top">
-
-#### Smart deduplication
-Already-indexed documents and chunks are detected and skipped, keeping the vector store clean.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-#### Session-aware Q&A
-Follow-up questions resolve correctly against earlier turns in the same conversation.
-
-</td>
-<td width="50%" valign="top">
-
-#### Grounded answers
-`temperature=0` and retrieval-only context to minimize hallucination and keep responses traceable.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-#### Sub-second inference
-Llama 3.3 70B served on Groq's LPU hardware for fast, deterministic responses.
-
-</td>
-<td width="50%" valign="top">
-
-#### Pip-installable package
-The `rag_pipeline` package ships as a versioned wheel for instant installation anywhere.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-#### Containerized
-A single `dockerfile` defines a reproducible runtime for local and cloud deployment.
-
-</td>
-<td width="50%" valign="top">
-
-#### Cloud-deployed
-Running live on AWS EC2, demonstrating the system beyond a local environment.
-
-</td>
-</tr>
-</table>
-
-## 🛠️ Tech Stack
-
-| Layer | Technologies & Frameworks |
-| :--- | :--- |
-| **LLM & Inference** | `Llama 3.3 70B` • `Groq LPU Engine` ![Groq](https://img.shields.io/badge/Groq-F55036?style=flat-square&logoColor=white) |
-| **Orchestration** | `LangChain` ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white) • `Python 3.x` • `Apache Tika` |
-| **Vector Index** | `ChromaDB` ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B6B?style=flat-square) • `all-MiniLM-L6-v2` (Hugging Face) |
-| **Infrastructure** | `Docker` ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) • `AWS EC2` ![AWS](https://img.shields.io/badge/AWS_EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white) |
-| **Workspace** | `Jupyter Notebooks` |
-
-## Install from Source
-
-For development or running the demo notebook end-to-end.
+### Option 2: Install from Source (For Development)
 
 ```bash
 git clone https://github.com/abhijitdeshpande83/GenAI.git
@@ -154,7 +234,7 @@ export GROQ_API_KEY="your-key-here"
 jupyter notebook IntelliQA.ipynb
 ```
 
-## Run with Docker
+### Option 3: Run with Docker
 
 ```bash
 docker build -t intelliqa -f dockerfile .
@@ -164,70 +244,43 @@ docker run -p 8888:8888 \
   intelliqa
 ```
 
-Jupyter is exposed on port `8888`.
+---
 
-## Project Structure
 
-```
-IntelliQA/
-├── 📓 IntelliQA.ipynb                          # End-to-end interactive demo notebook
-├── 📦 rag_pipeline/                            # Modularized production core source
-│   ├── query_engine.py                         # Retrieval and generation orchestration
-│   ├── vector_store.py                         # ChromaDB schema and index management
-│   └── utils.py                                # Parsing, text chunking, and deduplication
-├── 📂 dist/
-│   └── rag_pipeline-3.0-py3-none-any.whl       # Prebuilt distributable package asset
-├── 🗃️  chroma_db/                              # Persisted vector database storage
-├── 🖼️  RAG Flow.png                            # Architecture diagram asset
-├── 🐳 dockerfile                               # Unified container engine setup
-├── 📜 requirements.txt                         # Pipeline micro-dependencies
-└── ⚙️  setup.py                                # Packaging layout properties
-```
+## 🚧 Current Status
 
-## Design Notes
+- Core RAG pipeline complete and packaged as an installable wheel
+- Multi-format ingestion via Apache Tika operational
+- ChromaDB persistence integrated
+- Llama 3.3 70B Versatile inference live on AWS EC2
+- Formal evaluation framework in progress
 
-<table>
-<tr>
-<td width="50%" valign="top">
+---
 
-**`temperature=0`**
-Deterministic, repeatable answers. Critical for document Q&A where the same question should return the same response.
 
-</td>
-<td width="50%" valign="top">
+## 🚀 Future Improvements
 
-**Local embeddings**
-`all-MiniLM-L6-v2` runs on CPU with no API cost and strong general-purpose quality.
+- RAG evaluation pipeline (faithfulness, answer relevance, context precision)
+- Cross-encoder reranking on retrieved chunks
+- Inline citations linking answers to source chunks
+- Hybrid retrieval (BM25 + dense vector)
+- Streaming responses for lower perceived latency
+- Web UI layer to replace the notebook entry point
 
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+---
 
-**ChromaDB on disk**
-Avoids the overhead and cost of a hosted vector database while supporting metadata filters and persistence.
 
-</td>
-<td width="50%" valign="top">
+## 💡 System Value
 
-**Deduplication at ingestion**
-Prevents repeated chunks from polluting the index and skewing similarity scores.
+IntelliQA demonstrates how modern RAG systems can be designed using:
 
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+- retrieval-bounded generation
+- open weight model serving
+- persistent local indexing
+- distributable Python packaging
 
-**Open weight model**
-Llama 3.3 70B avoids LLM vendor lock-in while still offering frontier-grade quality.
+It reflects real-world production constraints where **groundedness, cost control, and portability matter more than chasing the largest closed-source model**.
 
-</td>
-<td width="50%" valign="top">
+---
 
-**Core as a wheel**
-The `rag_pipeline` package decouples RAG logic from the notebook so it can drop into any future service.
-
-</td>
-</tr>
-</table>
-
+> This project focuses on **production-grade RAG system design, with an installable package as the primary artifact.**
