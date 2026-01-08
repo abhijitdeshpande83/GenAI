@@ -54,6 +54,19 @@ The system is organized into four layers:
 7. Llama 3.3 70B generates a grounded answer at `temperature=0`
 8. A daily cron job removes expired sessions, orphaned vectors, and Tika temp files
 
+## ✨ Key Features
+
+- **Multi-format ingestion**: PDF, DOCX, HTML, TXT, RTF, ODT and dozens more via a single Apache Tika layer
+- **Grounded answer generation**: `temperature=0` and retrieval-bounded context to prevent hallucination
+- **Session-aware Q&A**: follow-up questions resolve correctly against earlier turns in the same conversation
+- **Sub-second inference**: Llama 3.3 70B served on Groq's LPU hardware
+- **Persistent vector store**: ChromaDB on disk, so sessions reuse the existing index without re-ingestion
+- **Multi-tenant session isolation**: documents and queries namespaced per session, no cross-user leakage
+- **Upload quota**: hard limit of 5 documents per session to prevent abuse and storage exhaustion
+- **Scheduled cleanup**: daily cron job removes expired sessions, orphaned vectors, and Tika temp files
+- **Chunk-level deduplication**: hash-based checks at ingestion keep the index clean across re-uploads
+- **Pip-installable distribution**: shipped as a versioned wheel (`rag_pipeline-3.0`) for production use
+
 ## 🛡️ Production Safeguards
 
 | Safeguard | Mechanism |
