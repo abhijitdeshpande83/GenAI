@@ -56,16 +56,18 @@ The system is organized into four layers:
 
 ## ✨ Key Features
 
-- **Multi-format ingestion**: PDF, DOCX, HTML, TXT, RTF, ODT and dozens more via a single Apache Tika layer
-- **Grounded answer generation**: `temperature=0` and retrieval-bounded context to prevent hallucination
-- **Session-aware Q&A**: follow-up questions resolve correctly against earlier turns in the same conversation
-- **Sub-second inference**: Llama 3.3 70B served on Groq's LPU hardware
-- **Persistent vector store**: ChromaDB on disk, so sessions reuse the existing index without re-ingestion
-- **Multi-tenant session isolation**: documents and queries namespaced per session, no cross-user leakage
-- **Upload quota**: hard limit of 5 documents per session to prevent abuse and storage exhaustion
-- **Scheduled cleanup**: daily cron job removes expired sessions, orphaned vectors, and Tika temp files
-- **Chunk-level deduplication**: hash-based checks at ingestion keep the index clean across re-uploads
-- **Pip-installable distribution**: shipped as a versioned wheel (`rag_pipeline-3.0`) for production use
+| Feature | Description |
+| --- | --- |
+| 🗂️ &nbsp;**Multi-format ingestion** | PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more via a single Apache Tika layer |
+| 🎯 &nbsp;**Grounded generation** | `temperature=0` and retrieval-bounded context to eliminate hallucination |
+| 💬 &nbsp;**Session-aware Q&A** | Follow-up questions resolve correctly against earlier turns in the conversation |
+| ⚡ &nbsp;**Sub-second inference** | Llama 3.3 70B Versatile served on Groq's LPU hardware |
+| 💾 &nbsp;**Persistent vector store** | ChromaDB on disk, so sessions reuse the existing index without re-ingestion |
+| 🛡️ &nbsp;**Multi-tenant isolation** | Documents and queries namespaced per session, no cross-user leakage |
+| 📊 &nbsp;**Upload quota** | Hard cap of 5 documents per session to prevent abuse and storage exhaustion |
+| 🧹 &nbsp;**Scheduled cleanup** | Daily cron job removes expired sessions, orphaned vectors, and Tika temp files |
+| 🔁 &nbsp;**Chunk deduplication** | Hash-based checks at ingestion prevent index pollution across re-uploads |
+| 📦 &nbsp;**Pip-installable** | Shipped as a versioned wheel (`rag_pipeline-3.0`) for direct production use |
 
 ## 🛡️ Production Safeguards
 
