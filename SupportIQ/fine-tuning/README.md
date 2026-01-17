@@ -30,6 +30,18 @@
   </tr>
 </table>
 
+---
+
+## 🏗️ System Process & Architecture
+
+### 🔄 Process Flow
+
+![SupportIQ Multi-Domain Conversational Process Flow](docs/SupportIQ%20Multi-Domain%20Conversational%20AI%20Architecture%20-%20visual%20selection.png)
+
+### 🌐 High-Level Architecture
+
+![Architecture Diagram](docs/Architecture%20Diagram.png)
+
 
 **Implementation:**
 - Fine-tuned RoBERTa-large with LoRA for efficient, domain-specific intent classification.
