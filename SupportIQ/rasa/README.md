@@ -49,6 +49,36 @@
 
 ---
 
+## Docker Training Instructions
+
+### Overview
+
+This guide walks you through the process of training a Rasa model inside a Docker container. 
+
+**Note:** Models trained on MacOS aren't compatible with Linux Docker containers, so it's crucial to train inside the Docker container to avoid compatibility issues later on.
+
+### Prerequisites
+
+Before you start, make sure you have the following:
+
+- **Docker** installed and running on your machine.
+- A **Rasa custom image** (named `rasa-custom-image` in this case) with Rasa installed.
+- **Training data** located inside the `/app/data` directory inside the container.
+- A local directory on your host machine to store the trained models.
+
+### Train the Model in Docker
+
+To train your Rasa model inside the Docker container, use the following command:
+
+```bash
+docker run --rm -v $(pwd)/models:/app/models rasa-custom-image train --data /app/data
+```
+After training, update the symlink so Rasa can find the latest model:
+```bash
+ln -sf <new_model_file>.tar.gz latest.tar.gz
+```
+Need of Symlink: Inside a Docker container, in this case when copy or mount models manually, the symlink may not get created. If the symlink isn’t there, Rasa looks for latest.tar.gz and fails with “No valid model found”. That’s why explicitly create or update it after training in the container to mimic the local behavior.
+
 ## Future Enhancements
 
 - **Multi-Intent Handling:** Extend the chatbot to manage multiple intents in a single conversation (e.g., nearby attractions along with movie queries).  
