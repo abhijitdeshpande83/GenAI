@@ -47,10 +47,10 @@ This approach helps **resolve customer problems faster**, **reduce unnecessary e
 ## Workflow Visualization
 
 ### Visual Narration
-<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraphvisual%20naraction.png" alt="Visual Narration" width="300" height="300"></p>
+<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraphvisual%20naraction.png" alt="Visual Narration" width="400" height="450"></p>
 
 ### Workflow Diagram
-<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraph%20workflow.png" alt="Workflow Diagram" width="300" height="500"></p>
+<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraph%20workflow.png" alt="Workflow Diagram" width="400" height="650"></p>
 
 
 
@@ -81,17 +81,6 @@ This single decision point controls the entire flow of the system.
 |--------|-----------------------------|-------------------------|-------------------------------------|
 | **Objective** | Reduce customer churn by proactively identifying risk and offering retention incentives. | Provide fast and accurate answers to customer queries. | Ensure customer complaints are tracked and handled reliably. |
 | **Planned Approach** | - Use an ML model to assess churn risk based on customer behavior and message context<br>- Evaluate customer loyalty or historical engagement<br>- Generate personalized retention offers or rewards<br>- Deliver a tailored response aimed at retaining the customer | - Retrieve relevant information from a knowledge base<br>- Use a Retrieval-Augmented Generation (RAG) approach<br>- Generate clear, context-aware responses<br>- Return the answer directly to the customer without escalation | - Automatically create a support ticket for complaint-related messages<br>- Raise the ticket to backend systems or support teams<br>- Send a confirmation (with ticket reference) back to the customer |
-
----
-
-## 🏗️ System Design Principles
-
-- **Single Intent Entry Point** – Simplifies control flow and decision-making
-- **Agentic Architecture** – Specialized agents handle specific responsibilities
-- **Modular Workflows** – Each intent has an isolated, extensible pipeline
-- **Business-First Design** – Focus on customer outcomes, not just model outputs
-- **UI-Level Resolution** – Aim to resolve issues early before backend escalation
-- **Future-Proof Architecture** – Easy to add new intents, agents, or workflows
 
 ---
 
