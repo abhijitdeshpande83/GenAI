@@ -44,6 +44,15 @@ This approach helps **resolve customer problems faster**, **reduce unnecessary e
 
 ---
 
+## Workflow Visualization
+
+### Visual Narration
+![Visual Narration](docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraphvisual%20naraction.png)
+
+### Workflow Diagram
+![Workflow Diagram](docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraph%20workflow.png)
+
+
 ## Intent Identification
 
 The **Intent Identification step** is the foundation of the system.
