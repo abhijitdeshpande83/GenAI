@@ -47,10 +47,11 @@ This approach helps **resolve customer problems faster**, **reduce unnecessary e
 ## Workflow Visualization
 
 ### Visual Narration
-![Visual Narration](docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraphvisual%20naraction.png)
+<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraphvisual%20naraction.png" alt="Visual Narration" width="300" height="300"></p>
 
 ### Workflow Diagram
-![Workflow Diagram](docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraph%20workflow.png)
+<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraph%20workflow.png" alt="Workflow Diagram" width="300" height="500"></p>
+
 
 
 ## Intent Identification
@@ -74,45 +75,12 @@ By distinguishing between *complaints* and *churn-risk scenarios*, the system ca
 This single decision point controls the entire flow of the system.
 
 ---
+## Customer Support Workflows
 
-## Churn Detection & Retention Workflow:
-
-**Objective:** Reduce customer churn by proactively identifying risk and offering retention incentives.
-
-Planned strategy:
-- Use an ML model to assess churn risk based on customer behavior and message context
-- Evaluate customer loyalty or historical engagement
-- Generate personalized retention offers or rewards
-- Deliver a tailored response aimed at retaining the customer
-
-This flow highlights how predictive ML can be combined with conversational AI for business impact.
-
----
-
-## Question & Answer (RAG) Workflow:
-
-**Objective:** Provide fast and accurate answers to customer queries.
-
-Planned strategy:
-- Retrieve relevant information from a knowledge base
-- Use a Retrieval-Augmented Generation (RAG) approach
-- Generate clear, context-aware responses
-- Return the answer directly to the customer without escalation
-
-This flow focuses on **self-service and scalability**.
-
----
-
-## Complaint Handling & Ticket Creation Workflow:
-
-**Objective:** Ensure customer complaints are tracked and handled reliably.
-
-Planned strategy:
-- Automatically create a support ticket for complaint-related messages
-- Raise the ticket to backend systems or support teams
-- Send a confirmation (with ticket reference) back to the customer
-
-This flow ensures accountability and smooth escalation for critical issues.
+| Aspect | Churn Detection & Retention | Question & Answer (RAG) | Complaint Handling & Ticket Creation |
+|--------|-----------------------------|-------------------------|-------------------------------------|
+| **Objective** | Reduce customer churn by proactively identifying risk and offering retention incentives. | Provide fast and accurate answers to customer queries. | Ensure customer complaints are tracked and handled reliably. |
+| **Planned Approach** | - Use an ML model to assess churn risk based on customer behavior and message context<br>- Evaluate customer loyalty or historical engagement<br>- Generate personalized retention offers or rewards<br>- Deliver a tailored response aimed at retaining the customer | - Retrieve relevant information from a knowledge base<br>- Use a Retrieval-Augmented Generation (RAG) approach<br>- Generate clear, context-aware responses<br>- Return the answer directly to the customer without escalation | - Automatically create a support ticket for complaint-related messages<br>- Raise the ticket to backend systems or support teams<br>- Send a confirmation (with ticket reference) back to the customer |
 
 ---
 
