@@ -21,6 +21,17 @@ Document Q&A systems built on LLMs face well-known production failure modes:
 
 IntelliQA is a packaged RAG backend that directly addresses each of the failure modes above. Sessions are **isolated** (no cross-user leakage), capped at **5 uploads** (abuse prevention), content is **deduplicated** at ingestion, and a **scheduled cron job** manages disk space. Generation runs on **Llama 3.3 70B via Groq** against a persistent **ChromaDB** store. Shipped as the `rag_pipeline` Python wheel and currently powering document Q&A on [theanalyticmind.com](https://theanalyticmind.com).
 
+## 🛠️ Tech Stack
+
+| **LLM & Inference** | ![Llama 3.3 70B](https://img.shields.io/badge/Llama%203.3%2070B-0467DF?logo=meta&logoColor=white) ![Groq LPU](https://img.shields.io/badge/Groq%20LPU-F55036?logo=lightning&logoColor=white) |
+| --- | --- |
+| **Embeddings** | ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?logo=huggingface&logoColor=black) ![all-MiniLM-L6-v2](https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?logo=pytorch&logoColor=white) |
+| **RAG Framework** | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white) ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B6B?logo=databricks&logoColor=white) |
+| **Document Parsing** | ![Apache Tika](https://img.shields.io/badge/Apache%20Tika-D22128?logo=apache&logoColor=white) |
+| **Deployment** | ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?logo=amazonaws&logoColor=white) |
+| **Packaging** | ![Wheel](https://img.shields.io/badge/setup.py%20%2B%20wheel-3776AB?logo=pypi&logoColor=white) |
+| **Programming Language** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white) |
+
 ## 🧠 System Design Philosophy
 
 **1. Grounded Generation.** LLM runs at `temperature=0` and answers only from retrieved chunks. No speculation.
@@ -47,43 +58,66 @@ The system is organized into four layers:
 
 ## ✨ Key Features
 
-### Core Capabilities
-
-| Feature | Description |
-| --- | --- |
-| **Multi-format ingestion** | PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more via Apache Tika |
-| **Grounded generation** | `temperature=0` retrieval-bounded answers, no hallucination |
-| **Session-aware Q&A** | Follow-up questions resolve against earlier conversation turns |
-| **Sub-second inference** | Llama 3.3 70B served on Groq's LPU hardware |
-| **Persistent vector store** | ChromaDB on disk, sessions reuse the existing index without re-ingestion |
-
-### Production Hardening
-
-| Feature | Description |
-| --- | --- |
-| **Multi-tenant isolation** | Documents and queries namespaced per session, no cross-user leakage |
-| **Upload quota** | Hard cap of 5 documents per session to prevent abuse |
-| **Scheduled cleanup** | Daily cron job removes expired sessions, orphaned vectors, and Tika temp files |
-| **Chunk deduplication** | Hash-based checks at ingestion prevent index pollution |
-
-### Distribution
-
-| Feature | Description |
-| --- | --- |
-| **Pip-installable wheel** | Shipped as `rag_pipeline-3.0-py3-none-any.whl` for direct production use |
-
-## 🛡️ Production Safeguards
-
-IntelliQA's operational features are designed to mitigate specific production risks, each enforced at the pipeline level.
-
-| Safeguard | What It Prevents | Mechanism |
-| --- | --- | --- |
-| **Session Isolation** | Cross-tenant document leakage | Session-scoped namespacing in ChromaDB; retrieval cannot reach other sessions |
-| **Upload Quota** | Abuse and storage exhaustion | Hard cap of 5 documents per session, enforced before parsing |
-| **Scheduled Cleanup** | Disk space drift over time | Daily cron job purges expired sessions, orphaned vectors, and Tika temp files |
-| **Chunk Deduplication** | Vector store pollution from re-uploads | Hash-based identity checks skip duplicate chunks at ingestion |
-| **Deterministic Generation** | Inconsistent answers for the same question | `temperature=0` removes sampling randomness |
-| **Grounded Retrieval** | Hallucination from training data bleed | LLM prompt restricted to retrieved context only |
+<table>
+<tr>
+<td align="center" width="33%" valign="top">
+<br/>
+<img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="56" height="56"/>
+<br/><br/>
+<b>Universal Ingestion</b>
+<br/><br/>
+<sub>PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more, parsed through a single Apache Tika layer.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%" valign="top">
+<br/>
+<img src="https://api.iconify.design/lucide:shield-check.svg?color=%232563EB" width="56" height="56"/>
+<br/><br/>
+<b>Tenant-Safe by Design</b>
+<br/><br/>
+<sub>Per-session ChromaDB namespacing. Zero cross-user data leakage, enforced at retrieval.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%" valign="top">
+<br/>
+<img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="56" height="56"/>
+<br/><br/>
+<b>Abuse-Proof Uploads</b>
+<br/><br/>
+<sub>Hard cap of 5 documents per session. Storage exhaustion blocked at the source.</sub>
+<br/><br/>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%" valign="top">
+<br/>
+<img src="https://api.iconify.design/lucide:sparkles.svg?color=%2310B981" width="56" height="56"/>
+<br/><br/>
+<b>Self-Cleaning Storage</b>
+<br/><br/>
+<sub>Daily cron job purges expired sessions, orphaned vectors, and Tika temp files.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%" valign="top">
+<br/>
+<img src="https://api.iconify.design/lucide:fingerprint.svg?color=%237C3AED" width="56" height="56"/>
+<br/><br/>
+<b>Smart Deduplication</b>
+<br/><br/>
+<sub>Hash-based ingestion checks. The same content is never indexed twice.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%" valign="top">
+<br/>
+<img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="56" height="56"/>
+<br/><br/>
+<b>One Pip Install</b>
+<br/><br/>
+<sub>Shipped as <code>rag_pipeline-3.0</code>. Drop it into any application as a backend.</sub>
+<br/><br/>
+</td>
+</tr>
+</table>
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
@@ -111,17 +145,6 @@ A managed approach (GPT-4 + OpenAI embeddings + Pinecone) was rejected for sever
 | **LLM Layer** | Llama 3.3 70B (Groq LPU) | Deterministic, grounded generation at `temperature=0` |
 | **Storage Manager** | Cron + cleanup scripts | Daily removal of expired sessions, orphaned vectors, temp files |
 | **Infrastructure** | Docker + AWS EC2 | Reproducible runtime, cloud deployment |
-
-## 🛠️ Tech Stack
-
-| **LLM & Inference** | ![Llama 3.3 70B](https://img.shields.io/badge/Llama%203.3%2070B-0467DF?logo=meta&logoColor=white) ![Groq LPU](https://img.shields.io/badge/Groq%20LPU-F55036?logo=lightning&logoColor=white) |
-| --- | --- |
-| **Embeddings** | ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?logo=huggingface&logoColor=black) ![all-MiniLM-L6-v2](https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?logo=pytorch&logoColor=white) |
-| **RAG Framework** | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white) ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B6B?logo=databricks&logoColor=white) |
-| **Document Parsing** | ![Apache Tika](https://img.shields.io/badge/Apache%20Tika-D22128?logo=apache&logoColor=white) |
-| **Deployment** | ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?logo=amazonaws&logoColor=white) |
-| **Packaging** | ![Wheel](https://img.shields.io/badge/setup.py%20%2B%20wheel-3776AB?logo=pypi&logoColor=white) |
-| **Programming Language** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white) |
 
 ## 🚀 Installation & Usage
 
