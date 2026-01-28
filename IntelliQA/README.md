@@ -71,9 +71,9 @@ The system is organized into four layers:
 </td>
 <td align="center" width="33%" valign="top">
 <br/>
-<img src="https://api.iconify.design/lucide:shield-check.svg?color=%232563EB" width="56" height="56"/>
+<img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="56" height="56"/>
 <br/><br/>
-<b>Tenant-Safe by Design</b>
+<b>Session Isolation</b>
 <br/><br/>
 <sub>Per-session ChromaDB namespacing. Zero cross-user data leakage, enforced at retrieval.</sub>
 <br/><br/>
@@ -91,7 +91,7 @@ The system is organized into four layers:
 <tr>
 <td align="center" width="33%" valign="top">
 <br/>
-<img src="https://api.iconify.design/lucide:sparkles.svg?color=%2310B981" width="56" height="56"/>
+<img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="56" height="56"/>
 <br/><br/>
 <b>Self-Cleaning Storage</b>
 <br/><br/>
@@ -100,7 +100,7 @@ The system is organized into four layers:
 </td>
 <td align="center" width="33%" valign="top">
 <br/>
-<img src="https://api.iconify.design/lucide:fingerprint.svg?color=%237C3AED" width="56" height="56"/>
+<img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="56" height="56"/>
 <br/><br/>
 <b>Smart Deduplication</b>
 <br/><br/>
