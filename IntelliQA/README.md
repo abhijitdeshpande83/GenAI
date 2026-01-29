@@ -34,10 +34,45 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 
 ## ✨ Key Features
 
-| Ingestion | Multi-Tenant Safety | Operations |
-| :---: | :---: | :---: |
-| <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="56" height="56"/><br/><br/>**Universal Ingestion**<br/><br/><sub>PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more, parsed through a single Apache Tika layer.</sub> | <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="56" height="56"/><br/><br/>**Session Isolation**<br/><br/><sub>Per-session ChromaDB namespacing. Zero cross-user data leakage, enforced at retrieval.</sub> | <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="56" height="56"/><br/><br/>**Self-Cleaning Storage**<br/><br/><sub>Daily cron job purges expired sessions, orphaned vectors, and Tika temp files.</sub> |
-| <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="56" height="56"/><br/><br/>**Smart Deduplication**<br/><br/><sub>Hash-based ingestion checks. The same content is never indexed twice.</sub> | <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="56" height="56"/><br/><br/>**Abuse-Proof Uploads**<br/><br/><sub>Hard cap of 5 documents per session. Storage exhaustion blocked at the source.</sub> | <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="56" height="56"/><br/><br/>**One Pip Install**<br/><br/><sub>Shipped as <code>rag_pipeline-3.0</code>. Drop it into any application as a backend.</sub> |
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+    <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="48"/>
+    <h3>Universal Ingestion</h3>
+    <p>PDF, DOCX, HTML, TXT, RTF, ODT, and more via Apache Tika.</p>
+  </div>
+
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+    <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="48"/>
+    <h3>Session Isolation</h3>
+    <p>Per-session ChromaDB namespacing prevents cross-user leakage.</p>
+  </div>
+
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+    <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="48"/>
+    <h3>Self-Cleaning Storage</h3>
+    <p>Automatic cleanup of expired sessions and temp files.</p>
+  </div>
+
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+    <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="48"/>
+    <h3>Smart Deduplication</h3>
+    <p>Hash-based checks prevent duplicate indexing.</p>
+  </div>
+
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+    <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="48"/>
+    <h3>Abuse-Proof Uploads</h3>
+    <p>Hard cap of 5 documents per session.</p>
+  </div>
+
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+    <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="48"/>
+    <h3>One Pip Install</h3>
+    <p>Installable as <code>rag_pipeline-3.0</code>.</p>
+  </div>
+
+</div>
 
 ## 🧠 System Design Philosophy
 
