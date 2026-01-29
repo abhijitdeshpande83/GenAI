@@ -32,6 +32,13 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 | **Packaging** | ![Wheel](https://img.shields.io/badge/setup.py%20%2B%20wheel-3776AB?logo=pypi&logoColor=white) |
 | **Programming Language** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white) |
 
+## ✨ Key Features
+
+| Ingestion | Multi-Tenant Safety | Operations |
+| :---: | :---: | :---: |
+| <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="56" height="56"/><br/><br/>**Universal Ingestion**<br/><br/><sub>PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more, parsed through a single Apache Tika layer.</sub> | <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="56" height="56"/><br/><br/>**Session Isolation**<br/><br/><sub>Per-session ChromaDB namespacing. Zero cross-user data leakage, enforced at retrieval.</sub> | <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="56" height="56"/><br/><br/>**Self-Cleaning Storage**<br/><br/><sub>Daily cron job purges expired sessions, orphaned vectors, and Tika temp files.</sub> |
+| <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="56" height="56"/><br/><br/>**Smart Deduplication**<br/><br/><sub>Hash-based ingestion checks. The same content is never indexed twice.</sub> | <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="56" height="56"/><br/><br/>**Abuse-Proof Uploads**<br/><br/><sub>Hard cap of 5 documents per session. Storage exhaustion blocked at the source.</sub> | <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="56" height="56"/><br/><br/>**One Pip Install**<br/><br/><sub>Shipped as <code>rag_pipeline-3.0</code>. Drop it into any application as a backend.</sub> |
+
 ## 🧠 System Design Philosophy
 
 **1. Grounded Generation.** LLM runs at `temperature=0` and answers only from retrieved chunks. No speculation.
@@ -55,69 +62,6 @@ The system is organized into four layers:
 **Operations** &nbsp;·&nbsp; Session lifecycle, per-session upload quotas, and a daily cron job for cleanup.
 
 ![IntelliQA RAG Flow](./RAG%20Flow.png)
-
-## ✨ Key Features
-
-<table>
-<tr>
-<td align="center" width="33%" valign="top">
-<br/>
-<img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="56" height="56"/>
-<br/><br/>
-<b>Universal Ingestion</b>
-<br/><br/>
-<sub>PDF, DOCX, HTML, TXT, RTF, ODT, and dozens more, parsed through a single Apache Tika layer.</sub>
-<br/><br/>
-</td>
-<td align="center" width="33%" valign="top">
-<br/>
-<img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="56" height="56"/>
-<br/><br/>
-<b>Session Isolation</b>
-<br/><br/>
-<sub>Per-session ChromaDB namespacing. Zero cross-user data leakage, enforced at retrieval.</sub>
-<br/><br/>
-</td>
-<td align="center" width="33%" valign="top">
-<br/>
-<img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="56" height="56"/>
-<br/><br/>
-<b>Abuse-Proof Uploads</b>
-<br/><br/>
-<sub>Hard cap of 5 documents per session. Storage exhaustion blocked at the source.</sub>
-<br/><br/>
-</td>
-</tr>
-<tr>
-<td align="center" width="33%" valign="top">
-<br/>
-<img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="56" height="56"/>
-<br/><br/>
-<b>Self-Cleaning Storage</b>
-<br/><br/>
-<sub>Daily cron job purges expired sessions, orphaned vectors, and Tika temp files.</sub>
-<br/><br/>
-</td>
-<td align="center" width="33%" valign="top">
-<br/>
-<img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="56" height="56"/>
-<br/><br/>
-<b>Smart Deduplication</b>
-<br/><br/>
-<sub>Hash-based ingestion checks. The same content is never indexed twice.</sub>
-<br/><br/>
-</td>
-<td align="center" width="33%" valign="top">
-<br/>
-<img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="56" height="56"/>
-<br/><br/>
-<b>One Pip Install</b>
-<br/><br/>
-<sub>Shipped as <code>rag_pipeline-3.0</code>. Drop it into any application as a backend.</sub>
-<br/><br/>
-</td>
-</tr>
-</table>
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
