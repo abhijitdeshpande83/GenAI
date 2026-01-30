@@ -37,99 +37,116 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 <div style="
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:16px;
-  align-items:stretch;
-  font-family:system-ui, sans-serif;
+  gap:18px;
+  font-family:system-ui, -apple-system, sans-serif;
 ">
 
   <div style="
+    background:#fff;
     border:1px solid #eee;
-    border-radius:12px;
-    padding:16px;
-    box-sizing:border-box;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
     display:flex;
     flex-direction:column;
     gap:10px;
-    min-height:160px;
+    min-height:170px;
   ">
-    <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="48"/>
-    <h3 style="margin:0;">Universal Ingestion</h3>
-    <p style="margin:0;">PDF, DOCX, HTML, TXT, RTF, ODT, and more via Apache Tika.</p>
+    <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="44"/>
+    <h3 style="margin:0;font-size:16px;">Universal Ingestion</h3>
+    <p style="margin:0;color:#555;font-size:14px;line-height:1.4;">
+      PDF, DOCX, HTML, TXT, RTF, ODT, and more via Apache Tika.
+    </p>
   </div>
 
   <div style="
+    background:#fff;
     border:1px solid #eee;
-    border-radius:12px;
-    padding:16px;
-    box-sizing:border-box;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
     display:flex;
     flex-direction:column;
     gap:10px;
-    min-height:160px;
+    min-height:170px;
   ">
-    <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="48"/>
-    <h3 style="margin:0;">Session Isolation</h3>
-    <p style="margin:0;">Per-session ChromaDB namespacing prevents cross-user leakage.</p>
+    <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="44"/>
+    <h3 style="margin:0;font-size:16px;">Session Isolation</h3>
+    <p style="margin:0;color:#555;font-size:14px;line-height:1.4;">
+      Per-session ChromaDB namespacing prevents cross-user data leakage.
+    </p>
   </div>
 
   <div style="
+    background:#fff;
     border:1px solid #eee;
-    border-radius:12px;
-    padding:16px;
-    box-sizing:border-box;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
     display:flex;
     flex-direction:column;
     gap:10px;
-    min-height:160px;
+    min-height:170px;
   ">
-    <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="48"/>
-    <h3 style="margin:0;">Self-Cleaning Storage</h3>
-    <p style="margin:0;">Automatic cleanup of expired sessions and temp files.</p>
+    <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="44"/>
+    <h3 style="margin:0;font-size:16px;">Self-Cleaning Storage</h3>
+    <p style="margin:0;color:#555;font-size:14px;line-height:1.4;">
+      Automatic cleanup of expired sessions, vectors, and temp files.
+    </p>
   </div>
 
   <div style="
+    background:#fff;
     border:1px solid #eee;
-    border-radius:12px;
-    padding:16px;
-    box-sizing:border-box;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
     display:flex;
     flex-direction:column;
     gap:10px;
-    min-height:160px;
+    min-height:170px;
   ">
-    <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="48"/>
-    <h3 style="margin:0;">Smart Deduplication</h3>
-    <p style="margin:0;">Hash-based checks prevent duplicate indexing.</p>
+    <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="44"/>
+    <h3 style="margin:0;font-size:16px;">Smart Deduplication</h3>
+    <p style="margin:0;color:#555;font-size:14px;line-height:1.4;">
+      Hash-based ingestion ensures identical content is never indexed twice.
+    </p>
   </div>
 
   <div style="
+    background:#fff;
     border:1px solid #eee;
-    border-radius:12px;
-    padding:16px;
-    box-sizing:border-box;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
     display:flex;
     flex-direction:column;
     gap:10px;
-    min-height:160px;
+    min-height:170px;
   ">
-    <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="48"/>
-    <h3 style="margin:0;">Abuse-Proof Uploads</h3>
-    <p style="margin:0;">Hard cap of 5 documents per session.</p>
+    <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="44"/>
+    <h3 style="margin:0;font-size:16px;">Abuse-Proof Uploads</h3>
+    <p style="margin:0;color:#555;font-size:14px;line-height:1.4;">
+      Hard cap of 5 documents per session prevents storage abuse.
+    </p>
   </div>
 
   <div style="
+    background:#fff;
     border:1px solid #eee;
-    border-radius:12px;
-    padding:16px;
-    box-sizing:border-box;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
     display:flex;
     flex-direction:column;
     gap:10px;
-    min-height:160px;
+    min-height:170px;
   ">
-    <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="48"/>
-    <h3 style="margin:0;">One Pip Install</h3>
-    <p style="margin:0;">Installable as <code>rag_pipeline-3.0</code>.</p>
+    <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="44"/>
+    <h3 style="margin:0;font-size:16px;">One Pip Install</h3>
+    <p style="margin:0;color:#555;font-size:14px;line-height:1.4;">
+      Installable as <code>rag_pipeline-3.0</code> and drop into any backend.
+    </p>
   </div>
 
 </div>
