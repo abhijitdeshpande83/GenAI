@@ -34,42 +34,102 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 
 ## ✨ Key Features
 
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+<div style="
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:16px;
+  align-items:stretch;
+  font-family:system-ui, sans-serif;
+">
 
-  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+  <div style="
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:16px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:160px;
+  ">
     <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="48"/>
-    <h3>Universal Ingestion</h3>
-    <p>PDF, DOCX, HTML, TXT, RTF, ODT, and more via Apache Tika.</p>
+    <h3 style="margin:0;">Universal Ingestion</h3>
+    <p style="margin:0;">PDF, DOCX, HTML, TXT, RTF, ODT, and more via Apache Tika.</p>
   </div>
 
-  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+  <div style="
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:16px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:160px;
+  ">
     <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="48"/>
-    <h3>Session Isolation</h3>
-    <p>Per-session ChromaDB namespacing prevents cross-user leakage.</p>
+    <h3 style="margin:0;">Session Isolation</h3>
+    <p style="margin:0;">Per-session ChromaDB namespacing prevents cross-user leakage.</p>
   </div>
 
-  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+  <div style="
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:16px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:160px;
+  ">
     <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="48"/>
-    <h3>Self-Cleaning Storage</h3>
-    <p>Automatic cleanup of expired sessions and temp files.</p>
+    <h3 style="margin:0;">Self-Cleaning Storage</h3>
+    <p style="margin:0;">Automatic cleanup of expired sessions and temp files.</p>
   </div>
 
-  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+  <div style="
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:16px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:160px;
+  ">
     <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="48"/>
-    <h3>Smart Deduplication</h3>
-    <p>Hash-based checks prevent duplicate indexing.</p>
+    <h3 style="margin:0;">Smart Deduplication</h3>
+    <p style="margin:0;">Hash-based checks prevent duplicate indexing.</p>
   </div>
 
-  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+  <div style="
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:16px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:160px;
+  ">
     <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="48"/>
-    <h3>Abuse-Proof Uploads</h3>
-    <p>Hard cap of 5 documents per session.</p>
+    <h3 style="margin:0;">Abuse-Proof Uploads</h3>
+    <p style="margin:0;">Hard cap of 5 documents per session.</p>
   </div>
 
-  <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+  <div style="
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:16px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:160px;
+  ">
     <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="48"/>
-    <h3>One Pip Install</h3>
-    <p>Installable as <code>rag_pipeline-3.0</code>.</p>
+    <h3 style="margin:0;">One Pip Install</h3>
+    <p style="margin:0;">Installable as <code>rag_pipeline-3.0</code>.</p>
   </div>
 
 </div>
