@@ -35,175 +35,164 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 ## ✨ Key Features
 
 <div style="
-  font-family: system-ui, -apple-system, sans-serif;
-  background: radial-gradient(circle at top, #0b1220 0%, #060a14 100%);
-  padding: 48px;
-  border-radius: 24px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+  padding: 56px 48px;
+  border-radius: 12px;
   max-width: 1000px;
   margin: 0 auto;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid #334155;
   box-sizing: border-box;
-  color: #e5e7eb;
+  color: #e2e8f0;
 ">
 
-  <!-- HEADER -->
-  <div style="text-align:center;margin-bottom:42px;">
-    <div style="
-      display:inline-block;
-      background: rgba(99,102,241,0.15);
-      color:#a5b4fc;
-      padding:6px 14px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:1px;
-      text-transform:uppercase;
-    ">
-      Now Available
-    </div>
+  <div style="text-align: center; margin-bottom: 48px;">
+    <span style="
+      background: rgba(56, 189, 248, 0.1); 
+      color: #38bdf8; 
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 6px 16px; 
+      border-radius: 4px; 
+      font-size: 12px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 1.5px;
+    ">rag_pipeline-3.0</span>
     <h2 style="
-      margin:18px 0 10px;
-      font-size:38px;
-      font-weight:800;
-      color:#f9fafb;
-      letter-spacing:-0.5px;
-    ">
-      The Ultimate RAG Engine.
-    </h2>
+      margin: 24px 0 16px 0; 
+      font-size: 36px; 
+      font-weight: 800; 
+      color: #ffffff; 
+      letter-spacing: -0.5px;
+    ">The Ultimate RAG Engine.</h2>
     <p style="
-      margin:0 auto;
-      max-width:640px;
-      color:#94a3b8;
-      font-size:15px;
-      line-height:1.6;
+      margin: 0 auto; 
+      color: #94a3b8; 
+      font-size: 16px; 
+      line-height: 1.6; 
+      max-width: 600px;
     ">
-      Build secure, self-cleaning, deduplicated AI pipelines in seconds. Production-ready from day one.
+      Drop it into any backend and watch your vector storage manage itself. Secure, self-cleaning, and infinitely scalable.
     </p>
   </div>
 
-  <!-- GRID -->
-  <table role="presentation" style="
-    width:100%;
-    border-collapse:separate;
-    border-spacing:18px;
-    table-layout:fixed;
+  <div style="
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    box-sizing: border-box;
   ">
 
-  <tr>
-    <td>
-      <div style="
-        background: rgba(255,255,255,0.03);
-        border:1px solid rgba(255,255,255,0.08);
-        border-radius:18px;
-        padding:24px;
-        height:180px;
-        backdrop-filter: blur(10px);
-      ">
-        <img src="https://api.iconify.design/lucide:files.svg?color=%23ef4444" width="34"/>
-        <h3 style="margin:12px 0 8px;font-size:16px;font-weight:700;color:#f9fafb;">
-          Universal Ingestion
-        </h3>
-        <p style="margin:0;color:#cbd5f5;font-size:13px;line-height:1.5;">
-          PDF, DOCX, HTML, TXT, RTF, ODT via Apache Tika.
-        </p>
-      </div>
-    </td>
-    <td>
-      <div style="
-        background: rgba(255,255,255,0.03);
-        border:1px solid rgba(255,255,255,0.08);
-        border-radius:18px;
-        padding:24px;
-        height:180px;
-        backdrop-filter: blur(10px);
-      ">
-        <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%236366f1" width="34"/>
-        <h3 style="margin:12px 0 8px;font-size:16px;font-weight:700;color:#f9fafb;">
-          Session Isolation
-        </h3>
-        <p style="margin:0;color:#cbd5f5;font-size:13px;line-height:1.5;">
-          Per-session namespacing ensures zero cross-user leakage.
-        </p>
-      </div>
-    </td>
-    <td>
-      <div style="
-        background: rgba(255,255,255,0.03);
-        border:1px solid rgba(255,255,255,0.08);
-        border-radius:18px;
-        padding:24px;
-        height:180px;
-        backdrop-filter: blur(10px);
-      ">
-        <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310b981" width="34"/>
-        <h3 style="margin:12px 0 8px;font-size:16px;font-weight:700;color:#f9fafb;">
-          Self-Cleaning Storage
-        </h3>
-        <p style="margin:0;color:#cbd5f5;font-size:13px;line-height:1.5;">
-          Automatic cleanup of expired sessions and vectors.
-        </p>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div style="
-        background: rgba(255,255,255,0.03);
-        border:1px solid rgba(255,255,255,0.08);
-        border-radius:18px;
-        padding:24px;
-        height:180px;
-        backdrop-filter: blur(10px);
-      ">
-        <img src="https://api.iconify.design/tabler:copy-off.svg?color=%23a855f7" width="34"/>
-        <h3 style="margin:12px 0 8px;font-size:16px;font-weight:700;color:#f9fafb;">
-          Smart Deduplication
-        </h3>
-        <p style="margin:0;color:#cbd5f5;font-size:13px;line-height:1.5;">
-          Hash-based indexing prevents duplicate content storage.
-        </p>
-      </div>
-    </td>
-    <td>
-      <div style="
-        background: rgba(255,255,255,0.03);
-        border:1px solid rgba(255,255,255,0.08);
-        border-radius:18px;
-        padding:24px;
-        height:180px;
-        backdrop-filter: blur(10px);
-      ">
-        <img src="https://api.iconify.design/lucide:gauge.svg?color=%23fbbf24" width="34"/>
-        <h3 style="margin:12px 0 8px;font-size:16px;font-weight:700;color:#f9fafb;">
-          Abuse-Proof Uploads
-        </h3>
-        <p style="margin:0;color:#cbd5f5;font-size:13px;line-height:1.5;">
-          Built-in limits and rate control prevent system abuse.
-        </p>
-      </div>
-    </td>
-    <td>
-      <div style="
-        background: rgba(255,255,255,0.03);
-        border:1px solid rgba(255,255,255,0.08);
-        border-radius:18px;
-        padding:24px;
-        height:180px;
-        backdrop-filter: blur(10px);
-      ">
-        <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233b82f6" width="34"/>
-        <h3 style="margin:12px 0 8px;font-size:16px;font-weight:700;color:#f9fafb;">
-          One Pip Install
-        </h3>
-        <p style="margin:0;color:#cbd5f5;font-size:13px;line-height:1.5;">
-          Install as <code style="color:#e5e7eb;">rag_pipeline-3.0</code> in seconds.
-        </p>
-      </div>
-    </td>
+  <div style="
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-top: 3px solid #D22128;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  ">
+    <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="36" style="margin-bottom: 16px;" alt="Files"/>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #ffffff;">Universal Ingestion</h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+      PDF, DOCX, HTML, TXT, RTF, ODT, and more via Apache Tika. We process it all.
+    </p>
+  </div>
 
-  </tr>
+  <div style="
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-top: 3px solid #2563EB;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  ">
+    <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="36" style="margin-bottom: 16px;" alt="Lock"/>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #ffffff;">Session Isolation</h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+      Per-session ChromaDB namespacing prevents any cross-user data leakage.
+    </p>
+  </div>
 
-  </table>
+  <div style="
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-top: 3px solid #10B981;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  ">
+    <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="36" style="margin-bottom: 16px;" alt="Auto Delete"/>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #ffffff;">Self-Cleaning Storage</h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+      Automatic background cleanup of expired sessions, vectors, and temp files.
+    </p>
+  </div>
+
+  <div style="
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-top: 3px solid #7C3AED;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  ">
+    <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="36" style="margin-bottom: 16px;" alt="Deduplication"/>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #ffffff;">Smart Deduplication</h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+      Hash-based ingestion ensures identical content is never indexed twice.
+    </p>
+  </div>
+
+  <div style="
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-top: 3px solid #F59E0B;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  ">
+    <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="36" style="margin-bottom: 16px;" alt="Gauge"/>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #ffffff;">Abuse-Proof Uploads</h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+      Intelligent hard caps and rate limits prevent storage abuse instantly.
+    </p>
+  </div>
+
+  <div style="
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-top: 3px solid #3776AB;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  ">
+    <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="32" style="margin-bottom: 16px;" alt="PyPI"/>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #ffffff;">One Pip Install</h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+      Ready to drop into any backend. Just install <code style="background: #0f172a; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #e2e8f0; border: 1px solid #334155;">rag_pipeline</code>.
+    </p>
+  </div>
+
+  </div>
 </div>
 
 ## 🧠 System Design Philosophy
