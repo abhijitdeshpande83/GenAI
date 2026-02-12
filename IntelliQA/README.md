@@ -8,14 +8,86 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 
 ## Problem Statement
 
-Document Q&A systems built on LLMs face well-known production failure modes:
+<div style="
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  padding: 40px;
+  border-radius: 16px;
+  max-width: 1000px;
+  margin: 0 auto 32px auto;
+  border: 1px solid #1e293b;
+">
+  <div style="margin-bottom: 32px;">
+    <h2 style="margin: 0 0 12px 0; font-size: 28px; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px;">
+      The Production Reality
+    </h2>
+    <p style="margin: 0; color: #94a3b8; font-size: 16px; line-height: 1.5;">
+      Document Q&A systems built on standard LLM tutorials face severe failure modes when pushed to production. IntelliQA was built to solve these exact bottlenecks.
+    </p>
+  </div>
 
-- **Hallucination** when questions reach beyond the model's training data
-- **Storage bloat** when documents get re-ingested across sessions, polluting retrieval
-- **Cross-tenant data leakage** in shared deployments without proper isolation
-- **Disk exhaustion** when uploads grow unbounded and sessions live forever
-- **Non-deterministic outputs** that make the same question yield different answers on different runs
-- **Notebook-only architectures** that work as prototypes but cannot be promoted to a service
+  <div style="
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  ">
+
+  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
+    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+      <img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%23fca5a5" width="20"/> Hallucination
+    </h4>
+    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+      Models generate ungrounded answers when questions reach beyond their training data or retrieved context.
+    </p>
+  </div>
+
+  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
+    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+      <img src="https://api.iconify.design/lucide:database-zap.svg?color=%23fca5a5" width="20"/> Storage Bloat
+    </h4>
+    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+      Identical documents get continuously re-ingested across sessions, polluting retrieval quality and eating disk space.
+    </p>
+  </div>
+
+  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
+    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+      <img src="https://api.iconify.design/lucide:shield-alert.svg?color=%23fca5a5" width="20"/> Data Leakage
+    </h4>
+    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+      Cross-tenant exposure occurs in shared deployments without strict, per-session vector isolation.
+    </p>
+  </div>
+
+  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
+    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+      <img src="https://api.iconify.design/lucide:hard-drive.svg?color=%23fca5a5" width="20"/> Disk Exhaustion
+    </h4>
+    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+      Uploads grow unbounded and dormant sessions live forever without automated garbage collection.
+    </p>
+  </div>
+
+  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
+    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+      <img src="https://api.iconify.design/lucide:dices.svg?color=%23fca5a5" width="20"/> Non-Deterministic Outputs
+    </h4>
+    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+      The same question yields wildly different answers on different runs, destroying user trust.
+    </p>
+  </div>
+
+  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
+    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+      <img src="https://api.iconify.design/lucide:laptop.svg?color=%23fca5a5" width="20"/> Prototype Purgatory
+    </h4>
+    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+      Notebook-only architectures that work perfectly as local prototypes but cannot be promoted to an API service.
+    </p>
+  </div>
+
+  </div>
+</div>
 
 ## TL;DR
 
@@ -177,17 +249,38 @@ The system is organized into four layers:
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
-A managed approach (GPT-4 + OpenAI embeddings + Pinecone) was rejected for several production reasons:
+<div style="
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 1000px;
+  margin: 0 auto 32px auto;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+">
+  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+    <div style="background: #3b82f6; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+      <img src="https://api.iconify.design/lucide:git-pull-request.svg?color=white" width="24"/>
+    </div>
+    <h3 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 700;">Design Decision: Open Stack over Managed APIs</h3>
+  </div>
+  
+  <p style="color: #94a3b8; font-size: 15px; line-height: 1.6; margin: 0 0 20px 0;">
+    A managed approach (GPT-4 + OpenAI embeddings + Pinecone) was rejected for several production reasons: recurring embedding API costs at scale, vendor lock-in, rate limits on bulk ingestion, and data leaving the deployment environment.
+  </p>
 
-- recurring embedding API costs at ingestion scale
-- vendor lock-in across LLM, embeddings, and vector store
-- rate limits on bulk ingestion
-- no control over embedding dimensionality or model behavior
-- data leaving the deployment environment
-
-**Decision** &nbsp;·&nbsp; Llama 3.3 70B (open weight, Groq LPU inference) + HuggingFace local embeddings + ChromaDB on disk + Apache Tika for parsing.
-
-**Result** &nbsp;·&nbsp; Zero per-document embedding cost, no API rate limits, full portability with the wheel, and Groq inference latency that rivals managed-LLM APIs.
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 16px; border-radius: 8px;">
+      <strong style="color: #38bdf8; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">The Decision</strong>
+      <p style="margin: 6px 0 0 0; color: #cbd5e1; font-size: 15px;">Llama 3.3 70B (open weight, Groq LPU inference) + HuggingFace local embeddings + ChromaDB on disk + Apache Tika for parsing.</p>
+    </div>
+    <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.1); padding: 16px; border-radius: 8px;">
+      <strong style="color: #10b981; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">The Result</strong>
+      <p style="margin: 6px 0 0 0; color: #cbd5e1; font-size: 15px;">Zero per-document embedding cost, no API rate limits, full portability with the wheel, and Groq inference latency that rivals managed-LLM APIs.</p>
+    </div>
+  </div>
+</div>
 
 ## 🧩 System Components
 
