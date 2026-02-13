@@ -11,82 +11,113 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 <div style="
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: #0f172a;
-  padding: 40px;
-  border-radius: 16px;
+  padding: 56px 48px;
+  border-radius: 24px;
   max-width: 1000px;
-  margin: 0 auto 32px auto;
+  margin: 0 auto 40px auto;
   border: 1px solid #1e293b;
+  box-sizing: border-box;
 ">
-  <div style="margin-bottom: 32px;">
-    <h2 style="margin: 0 0 12px 0; font-size: 28px; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="margin: 0 0 16px 0; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
       The Production Reality
     </h2>
-    <p style="margin: 0; color: #94a3b8; font-size: 16px; line-height: 1.5;">
-      Document Q&A systems built on standard LLM tutorials face severe failure modes when pushed to production. IntelliQA was built to solve these exact bottlenecks.
+    <p style="margin: 0 auto; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 650px;">
+      Document Q&A prototypes built on standard tutorials face severe failure modes when exposed to real users. Here is why they break, and exactly how IntelliQA fixes them.
     </p>
   </div>
 
-  <div style="
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+  <table role="presentation" style="
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 16px;
+    table-layout: fixed;
+    margin: -16px;
   ">
+    <tr>
+      <td style="vertical-align: top;">
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
+          <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
+            <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
+            <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Hallucination</h4>
+            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Models invent answers when questions reach beyond retrieved context.</p>
+          </div>
+          <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+            <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
+            <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Locked at <code>temperature=0</code> with strict system prompts bounding generation to chunks only.</p>
+          </div>
+        </div>
+      </td>
+      <td style="vertical-align: top;">
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
+          <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
+            <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
+            <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Storage Bloat</h4>
+            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Identical documents re-ingested across sessions pollute retrieval arrays.</p>
+          </div>
+          <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+            <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
+            <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Cryptographic hash-based parsing prevents indexing identical content twice.</p>
+          </div>
+        </div>
+      </td>
+      <td style="vertical-align: top;">
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
+          <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
+            <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
+            <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Data Leakage</h4>
+            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Users in shared deployments accidentally retrieve other users' uploads.</p>
+          </div>
+          <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+            <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
+            <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Strict, per-session ChromaDB namespacing enforces absolute vector isolation.</p>
+          </div>
+        </div>
+      </td>
+    </tr>
 
-  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
-    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-      <img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%23fca5a5" width="20"/> Hallucination
-    </h4>
-    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-      Models generate ungrounded answers when questions reach beyond their training data or retrieved context.
-    </p>
-  </div>
-
-  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
-    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-      <img src="https://api.iconify.design/lucide:database-zap.svg?color=%23fca5a5" width="20"/> Storage Bloat
-    </h4>
-    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-      Identical documents get continuously re-ingested across sessions, polluting retrieval quality and eating disk space.
-    </p>
-  </div>
-
-  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
-    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-      <img src="https://api.iconify.design/lucide:shield-alert.svg?color=%23fca5a5" width="20"/> Data Leakage
-    </h4>
-    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-      Cross-tenant exposure occurs in shared deployments without strict, per-session vector isolation.
-    </p>
-  </div>
-
-  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
-    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-      <img src="https://api.iconify.design/lucide:hard-drive.svg?color=%23fca5a5" width="20"/> Disk Exhaustion
-    </h4>
-    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-      Uploads grow unbounded and dormant sessions live forever without automated garbage collection.
-    </p>
-  </div>
-
-  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
-    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-      <img src="https://api.iconify.design/lucide:dices.svg?color=%23fca5a5" width="20"/> Non-Deterministic Outputs
-    </h4>
-    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-      The same question yields wildly different answers on different runs, destroying user trust.
-    </p>
-  </div>
-
-  <div style="background: rgba(153, 27, 27, 0.1); border-left: 3px solid #ef4444; padding: 20px; border-radius: 6px;">
-    <h4 style="margin: 0 0 8px 0; color: #fca5a5; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-      <img src="https://api.iconify.design/lucide:laptop.svg?color=%23fca5a5" width="20"/> Prototype Purgatory
-    </h4>
-    <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-      Notebook-only architectures that work perfectly as local prototypes but cannot be promoted to an API service.
-    </p>
-  </div>
-
-  </div>
+  <tr>
+    <td style="vertical-align: top;">
+      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
+        <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
+          <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
+          <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Disk Exhaustion</h4>
+          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Dormant sessions live forever, eventually crashing the host server.</p>
+        </div>
+        <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+          <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
+          <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Automated cron jobs permanently purge expired collections and temp files.</p>
+        </div>
+      </div>
+    </td>
+    <td style="vertical-align: top;">
+      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
+        <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
+          <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
+          <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Context Poisoning</h4>
+          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Users uploading massive libraries dilute the relevance of vector search.</p>
+        </div>
+        <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+          <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
+          <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Hard limits capped at 5 documents per session maintain high signal-to-noise.</p>
+        </div>
+      </div>
+    </td>
+    <td style="vertical-align: top;">
+      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
+        <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
+          <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
+          <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Prototype Purgatory</h4>
+          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Notebook-only architectures break when transitioning to a live API service.</p>
+        </div>
+        <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+          <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
+          <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Shipped entirely as a production-ready Python wheel, dropping into any backend.</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </table>
 </div>
 
 ## TL;DR
