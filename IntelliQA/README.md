@@ -263,35 +263,52 @@ The system is organized into four layers:
 
 <div style="
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(to right, #0f172a, #1e293b);
+  background: #0f172a;
   border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 32px;
+  border-radius: 16px;
+  padding: 48px;
   max-width: 1000px;
-  margin: 0 auto 32px auto;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+  margin: 0 auto 40px auto;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
 ">
-  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-    <div style="background: #3b82f6; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-      <img src="https://api.iconify.design/lucide:git-pull-request.svg?color=white" width="24"/>
-    </div>
-    <h3 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 700;">Design Decision: Open Stack over Managed APIs</h3>
+  <div style="border-bottom: 1px solid #1e293b; padding-bottom: 24px; margin-bottom: 32px;">
+    <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 24px; font-weight: 700; display: flex; align-items: center; gap: 12px;">
+      <img src="https://api.iconify.design/lucide:git-branch.svg?color=%2338bdf8" width="28"/>
+      Architecture Rationale
+    </h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 800px;">
+      Why bypass managed services like OpenAI and Pinecone? Because prototype economics rarely survive production scale. We designed IntelliQA to maintain high inference quality without the compounding costs of proprietary APIs.
+    </p>
   </div>
-  
-  <p style="color: #94a3b8; font-size: 15px; line-height: 1.6; margin: 0 0 20px 0;">
-    A managed approach (GPT-4 + OpenAI embeddings + Pinecone) was rejected for several production reasons: recurring embedding API costs at scale, vendor lock-in, rate limits on bulk ingestion, and data leaving the deployment environment.
-  </p>
 
-  <div style="display: flex; flex-direction: column; gap: 12px;">
-    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 16px; border-radius: 8px;">
-      <strong style="color: #38bdf8; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">The Decision</strong>
-      <p style="margin: 6px 0 0 0; color: #cbd5e1; font-size: 15px;">Llama 3.3 70B (open weight, Groq LPU inference) + HuggingFace local embeddings + ChromaDB on disk + Apache Tika for parsing.</p>
-    </div>
-    <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.1); padding: 16px; border-radius: 8px;">
-      <strong style="color: #10b981; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">The Result</strong>
-      <p style="margin: 6px 0 0 0; color: #cbd5e1; font-size: 15px;">Zero per-document embedding cost, no API rate limits, full portability with the wheel, and Groq inference latency that rivals managed-LLM APIs.</p>
-    </div>
-  </div>
+  <table role="presentation" style="width: 100%; border-collapse: separate; border-spacing: 24px 0; table-layout: fixed; margin: 0 -12px;">
+    <tr>
+      <td style="vertical-align: top; background: #1e293b; padding: 24px; border-radius: 12px; border: 1px solid #334155;">
+        <h4 style="margin: 0 0 16px 0; color: #fca5a5; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+          The Managed Trap
+        </h4>
+        <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 14px; line-height: 1.7;">
+          <li style="margin-bottom: 8px;"><strong>Recurring Costs:</strong> Paying per-token for embedding bulk documents destroys margins.</li>
+          <li style="margin-bottom: 8px;"><strong>Data Privacy:</strong> Sending proprietary documents to third-party endpoints violates strict compliance rules.</li>
+          <li style="margin-bottom: 8px;"><strong>Rate Limits:</strong> Bulk ingestion hits API throttling caps instantly.</li>
+          <li><strong>Vendor Lock-in:</strong> Tightly coupling your vector store to a specific embedding model makes future migrations painful.</li>
+        </ul>
+      </td>
+
+  <td style="vertical-align: top; background: #0f172a; padding: 24px; border-radius: 12px; border: 1px solid #38bdf8; position: relative;">
+    <span style="position: absolute; top: -10px; right: 24px; background: #38bdf8; color: #0f172a; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 800; text-transform: uppercase;">Our Stack</span>
+    <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+      The Open Reality
+    </h4>
+    <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 14px; line-height: 1.7;">
+      <li style="margin-bottom: 8px;"><strong>Zero-Cost Embeddings:</strong> <code>all-MiniLM-L6-v2</code> runs locally via HuggingFace, making ingestion permanently free.</li>
+      <li style="margin-bottom: 8px;"><strong>Blistering Speed:</strong> Offloading LLM generation to Groq LPUs provides inference latency that beats managed GPT APIs.</li>
+      <li style="margin-bottom: 8px;"><strong>Data Sovereignty:</strong> ChromaDB stores vectors locally on-disk. Your data never leaves your environment.</li>
+      <li><strong>Ultimate Portability:</strong> Local dependencies mean the entire RAG backend ships reliably inside a single Python wheel.</li>
+    </ul>
+  </td>
+</tr>
+  </table>
 </div>
 
 ## 🧩 System Components
