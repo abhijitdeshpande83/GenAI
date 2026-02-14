@@ -18,106 +18,87 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
   border: 1px solid #1e293b;
   box-sizing: border-box;
 ">
-  <div style="text-align: center; margin-bottom: 40px;">
-    <h2 style="margin: 0 0 16px 0; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
-      The Production Reality
+  <div style="text-align: center; margin-bottom: 48px;">
+    <span style="
+      background: rgba(239, 68, 68, 0.1); 
+      color: #ef4444; 
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      padding: 6px 16px; 
+      border-radius: 20px; 
+      font-size: 12px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 1.5px;
+    ">The Industry Bottleneck</span>
+    <h2 style="margin: 20px 0 16px 0; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
+      Why Standard RAG Fails in Production
     </h2>
-    <p style="margin: 0 auto; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 650px;">
-      Document Q&A prototypes built on standard tutorials face severe failure modes when exposed to real users. Here is why they break, and exactly how IntelliQA fixes them.
+    <p style="margin: 0 auto; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 700px;">
+      Generative AI is a powerful reasoning engine, but it is blind to your private data. While "Hello World" RAG scripts are easy to build, transitioning them into reliable, multi-tenant services exposes three critical flaws in the modern AI stack.
     </p>
   </div>
 
-  <table role="presentation" style="
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 16px;
-    table-layout: fixed;
-    margin: -16px;
+  <div style="
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   ">
-    <tr>
-      <td style="vertical-align: top;">
-        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
-          <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
-            <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
-            <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Hallucination</h4>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Models invent answers when questions reach beyond retrieved context.</p>
-          </div>
-          <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
-            <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
-            <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Locked at <code>temperature=0</code> with strict system prompts bounding generation to chunks only.</p>
-          </div>
-        </div>
-      </td>
-      <td style="vertical-align: top;">
-        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
-          <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
-            <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
-            <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Storage Bloat</h4>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Identical documents re-ingested across sessions pollute retrieval arrays.</p>
-          </div>
-          <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
-            <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
-            <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Cryptographic hash-based parsing prevents indexing identical content twice.</p>
-          </div>
-        </div>
-      </td>
-      <td style="vertical-align: top;">
-        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
-          <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
-            <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
-            <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Data Leakage</h4>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Users in shared deployments accidentally retrieve other users' uploads.</p>
-          </div>
-          <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
-            <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
-            <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Strict, per-session ChromaDB namespacing enforces absolute vector isolation.</p>
-          </div>
-        </div>
-      </td>
-    </tr>
 
-  <tr>
-    <td style="vertical-align: top;">
-      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
-        <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
-          <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
-          <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Disk Exhaustion</h4>
-          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Dormant sessions live forever, eventually crashing the host server.</p>
-        </div>
-        <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
-          <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
-          <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Automated cron jobs permanently purge expired collections and temp files.</p>
-        </div>
-      </div>
-    </td>
-    <td style="vertical-align: top;">
-      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
-        <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
-          <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
-          <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Context Poisoning</h4>
-          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Users uploading massive libraries dilute the relevance of vector search.</p>
-        </div>
-        <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
-          <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
-          <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Hard limits capped at 5 documents per session maintain high signal-to-noise.</p>
-        </div>
-      </div>
-    </td>
-    <td style="vertical-align: top;">
-      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);">
-        <div style="padding: 16px; background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid #334155; border-left: 3px solid #ef4444;">
-          <strong style="color: #fca5a5; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Problem</strong>
-          <h4 style="margin: 6px 0; color: #ffffff; font-size: 16px;">Prototype Purgatory</h4>
-          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.4;">Notebook-only architectures break when transitioning to a live API service.</p>
-        </div>
-        <div style="padding: 16px; background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
-          <strong style="color: #6ee7b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">The Solution</strong>
-          <p style="margin: 6px 0 0; color: #cbd5e1; font-size: 13px; line-height: 1.4;">Shipped entirely as a production-ready Python wheel, dropping into any backend.</p>
-        </div>
-      </div>
-    </td>
-  </tr>
-  </table>
+  <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);">
+    <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+      <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+        <img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%23ef4444" width="22"/>
+        The Knowledge Gap
+      </h3>
+      <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+        Foundation models are brilliant reasoners, but they confidently hallucinate when asked about proprietary documents, internal policies, or recent events outside their training data.
+      </p>
+    </div>
+    <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+      <strong style="color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">The IntelliQA Paradigm</strong>
+      <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+        Transforms the LLM from a creative storyteller into a strict synthesizer. IntelliQA injects your exact documents into the reasoning window, guaranteeing verifiable, grounded truth.
+      </p>
+    </div>
+  </div>
+
+  <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);">
+    <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+      <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+        <img src="https://api.iconify.design/lucide:server-crash.svg?color=%23ef4444" width="22"/>
+        The Prototype Trap
+      </h3>
+      <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+        90% of RAG projects die in Jupyter notebooks. Basic scripts lack the operational discipline required for multi-tenant environments—leading to data leakage, disk exhaustion, and state conflicts.
+      </p>
+    </div>
+    <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+      <strong style="color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">The IntelliQA Paradigm</strong>
+      <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+        Ships as a battle-tested Python wheel. It abstracts away the complex infrastructure of vector isolation, session management, and garbage collection required for a live service.
+      </p>
+    </div>
+  </div>
+
+  <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);">
+    <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+      <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+        <img src="https://api.iconify.design/lucide:coins.svg?color=%23ef4444" width="22"/>
+        The Managed API Tax
+      </h3>
+      <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
+        Scaling a RAG system through proprietary endpoints (like OpenAI and Pinecone) introduces spiraling, recurring embedding costs and violates strict data sovereignty requirements.
+      </p>
+    </div>
+    <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+      <strong style="color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">The IntelliQA Paradigm</strong>
+      <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
+        Built entirely on an open-weight stack. By using local high-dimensional embeddings and on-disk ChromaDB, IntelliQA drops bulk ingestion costs to zero while keeping data completely private.
+      </p>
+    </div>
+  </div>
+
+  </div>
 </div>
 
 ## TL;DR
