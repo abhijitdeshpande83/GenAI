@@ -11,94 +11,71 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 <div style="
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: #0f172a;
-  padding: 56px 48px;
+  padding: 48px;
   border-radius: 24px;
   max-width: 1000px;
   margin: 0 auto 40px auto;
   border: 1px solid #1e293b;
   box-sizing: border-box;
 ">
+  <!-- Header -->
   <div style="text-align: center; margin-bottom: 48px;">
-    <span style="
-      background: rgba(239, 68, 68, 0.1); 
-      color: #ef4444; 
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      padding: 6px 16px; 
-      border-radius: 20px; 
-      font-size: 12px; 
-      font-weight: 700; 
-      text-transform: uppercase; 
-      letter-spacing: 1.5px;
-    ">The Industry Bottleneck</span>
-    <h2 style="margin: 20px 0 16px 0; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
+    <h2 style="margin: 0 0 16px 0; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
       Why Standard RAG Fails in Production
     </h2>
     <p style="margin: 0 auto; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 700px;">
-      Generative AI is a powerful reasoning engine, but it is blind to your private data. While "Hello World" RAG scripts are easy to build, transitioning them into reliable, multi-tenant services exposes three critical flaws in the modern AI stack.
+      Transitioning from "Hello World" scripts to reliable, multi-tenant services exposes fundamental flaws in the modern AI stack.
     </p>
   </div>
 
-  <div style="
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  <!-- STRICT 3-COLUMN TABLE -->
+  <table role="presentation" style="
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px 0;
+    table-layout: fixed;
+    margin: 0 -20px;
   ">
-
-  <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);">
-    <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
-      <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-        <img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%23ef4444" width="22"/>
-        The Knowledge Gap
-      </h3>
-      <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
-        Foundation models are brilliant reasoners, but they confidently hallucinate when asked about proprietary documents, internal policies, or recent events outside their training data.
-      </p>
-    </div>
-    <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
-      <strong style="color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">The IntelliQA Paradigm</strong>
-      <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-        Transforms the LLM from a creative storyteller into a strict synthesizer. IntelliQA injects your exact documents into the reasoning window, guaranteeing verifiable, grounded truth.
-      </p>
-    </div>
-  </div>
-
-  <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);">
-    <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
-      <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-        <img src="https://api.iconify.design/lucide:server-crash.svg?color=%23ef4444" width="22"/>
-        The Prototype Trap
-      </h3>
-      <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
-        90% of RAG projects die in Jupyter notebooks. Basic scripts lack the operational discipline required for multi-tenant environments—leading to data leakage, disk exhaustion, and state conflicts.
-      </p>
-    </div>
-    <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
-      <strong style="color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">The IntelliQA Paradigm</strong>
-      <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-        Ships as a battle-tested Python wheel. It abstracts away the complex infrastructure of vector isolation, session management, and garbage collection required for a live service.
-      </p>
-    </div>
-  </div>
-
-  <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);">
-    <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
-      <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-        <img src="https://api.iconify.design/lucide:coins.svg?color=%23ef4444" width="22"/>
-        The Managed API Tax
-      </h3>
-      <p style="margin: 0; color: #94a3b8; font-size: 14px; line-height: 1.5;">
-        Scaling a RAG system through proprietary endpoints (like OpenAI and Pinecone) introduces spiraling, recurring embedding costs and violates strict data sovereignty requirements.
-      </p>
-    </div>
-    <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
-      <strong style="color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">The IntelliQA Paradigm</strong>
-      <p style="margin: 0; color: #cbd5e1; font-size: 14px; line-height: 1.5;">
-        Built entirely on an open-weight stack. By using local high-dimensional embeddings and on-disk ChromaDB, IntelliQA drops bulk ingestion costs to zero while keeping data completely private.
-      </p>
-    </div>
-  </div>
-
-  </div>
+    <tr>
+      <!-- Pillar 1 -->
+      <td style="vertical-align: top;">
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
+          <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700;">The Knowledge Gap</h3>
+            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Models hallucinate when questions reach beyond their fixed training data.</p>
+          </div>
+          <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+            <strong style="color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">IntelliQA Paradigm</strong>
+            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Strictly bounds generation to your retrieved document context only.</p>
+          </div>
+        </div>
+      </td>
+      <td style="vertical-align: top;">
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
+          <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700;">The Prototype Trap</h3>
+            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Notebook scripts fail under multi-tenant load and lack operational safety.</p>
+          </div>
+          <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+            <strong style="color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">IntelliQA Paradigm</strong>
+            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Ships as a robust, isolated Python wheel, production-ready by design.</p>
+          </div>
+        </div>
+      </td>
+      <td style="vertical-align: top;">
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
+          <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700;">The API Tax</h3>
+            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Proprietary embedding APIs scale costs exponentially as documents grow.</p>
+          </div>
+          <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+            <strong style="color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">IntelliQA Paradigm</strong>
+            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Leverages local open-weight models, dropping bulk ingestion costs to zero.</p>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
 
 ## TL;DR
