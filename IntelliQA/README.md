@@ -28,7 +28,7 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
     </p>
   </div>
 
-  <!-- STRICT 3-COLUMN TABLE -->
+  <!-- 3-Column Aligned Table -->
   <table role="presentation" style="
     width: 100%;
     border-collapse: separate;
@@ -37,7 +37,6 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
     margin: 0 -20px;
   ">
     <tr>
-      <!-- Pillar 1 -->
       <td style="vertical-align: top;">
         <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
           <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
@@ -50,31 +49,31 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
           </div>
         </div>
       </td>
-      <td style="vertical-align: top;">
-        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
-          <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
-            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700;">The Prototype Trap</h3>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Notebook scripts fail under multi-tenant load and lack operational safety.</p>
-          </div>
-          <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
-            <strong style="color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">IntelliQA Paradigm</strong>
-            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Ships as a robust, isolated Python wheel, production-ready by design.</p>
-          </div>
+    <td style="vertical-align: top;">
+      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
+        <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+          <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700;">The Prototype Trap</h3>
+          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Notebook scripts fail under multi-tenant load and lack operational safety.</p>
         </div>
-      </td>
-      <td style="vertical-align: top;">
-        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
-          <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
-            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700;">The API Tax</h3>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Proprietary embedding APIs scale costs exponentially as documents grow.</p>
-          </div>
-          <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
-            <strong style="color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">IntelliQA Paradigm</strong>
-            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Leverages local open-weight models, dropping bulk ingestion costs to zero.</p>
-          </div>
+        <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+          <strong style="color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">IntelliQA Paradigm</strong>
+          <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Ships as a robust, isolated Python wheel, production-ready by design.</p>
         </div>
-      </td>
-    </tr>
+      </div>
+    </td>
+    <td style="vertical-align: top;">
+      <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden;">
+        <div style="padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155;">
+          <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700;">The API Tax</h3>
+          <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Proprietary embedding APIs scale costs exponentially as documents grow.</p>
+        </div>
+        <div style="padding: 24px; background: rgba(56, 189, 248, 0.05);">
+          <strong style="color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">IntelliQA Paradigm</strong>
+          <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Leverages local open-weight models, dropping bulk ingestion costs to zero.</p>
+        </div>
+      </div>
+    </td>
+  </tr>
   </table>
 </div>
 
