@@ -1,3 +1,14 @@
+<style>
+  .rag-container { font-family: sans-serif; background: #0f172a; padding: 48px; border-radius: 24px; max-width: 1000px; margin: 0 auto; border: 1px solid #1e293b; box-sizing: border-box; }
+  .rag-grid { width: 100%; border-collapse: separate; border-spacing: 20px; table-layout: fixed; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; overflow: hidden; height: 100%; }
+  .card-header { padding: 24px; border-bottom: 1px solid #334155; background: rgba(239, 68, 68, 0.03); }
+  .card-body { padding: 24px; background: rgba(56, 189, 248, 0.05); }
+  .card-title { margin: 0 0 10px 0; font-size: 17px; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 10px; }
+  .card-text { margin: 0; font-size: 13px; line-height: 1.5; color: #94a3b8; }
+  .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #38bdf8; display: block; margin-bottom: 8px; }
+</style>
+
 # IntelliQA: Document-Grounded RAG System
 
 ## System Overview
@@ -8,17 +19,6 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 
 ## Problem Statement
 
-<div style="
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: #0f172a;
-  padding: 48px;
-  border-radius: 24px;
-  max-width: 1000px;
-  margin: 0 auto 40px auto;
-  border: 1px solid #1e293b;
-  box-sizing: border-box;
-">
-  <!-- Header -->
   <div style="text-align: center; margin-bottom: 48px;">
     <h2 style="margin: 0 0 16px 0; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">
       Why Standard RAG Fails in Production
@@ -100,18 +100,6 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 | **Programming Language** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white) |
 
 ## ✨ Key Features
-
-<div style="
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  padding: 56px 48px;
-  border-radius: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
-  border: 1px solid #334155;
-  box-sizing: border-box;
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-">
 
   <div style="text-align: center; margin-bottom: 40px;">
     <span style="
@@ -244,16 +232,7 @@ The system is organized into four layers:
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
-<div style="
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 16px;
-  padding: 48px;
-  max-width: 1000px;
-  margin: 0 auto 40px auto;
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-">
+
   <div style="border-bottom: 1px solid #1e293b; padding-bottom: 24px; margin-bottom: 32px;">
     <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 24px; font-weight: 700; display: flex; align-items: center; gap: 12px;">
       <img src="https://api.iconify.design/lucide:git-branch.svg?color=%2338bdf8" width="28"/>
