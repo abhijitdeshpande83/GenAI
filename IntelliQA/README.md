@@ -198,12 +198,13 @@ The system is organized into four layers:
 
 <div class="rag-container">
   <div style="border-bottom: 1px solid #1e293b; padding-bottom: 24px; margin-bottom: 32px;">
-    <h3 style="color: #ffffff; font-size: 24px;">Architecture Rationale</h3>
+    <h3 class="card-title" style="font-size: 24px;"><img src="https://api.iconify.design/lucide:git-branch.svg?color=%2338bdf8" width="28"/> Architecture Rationale</h3>
+    <p style="color: #94a3b8; margin: 0;">Why bypass managed services like OpenAI and Pinecone? Because prototype economics rarely survive production scale.</p>
   </div>
   <table class="rag-grid" style="border-spacing: 24px 0;">
     <tr>
-      <td style="background: #1e293b; padding: 24px; border-radius: 12px; border: 1px solid #334155;"><h4 style="color: #fca5a5; text-transform: uppercase;">The Managed Trap</h4><p class="card-text">High recurring costs and vendor lock-in.</p></td>
-      <td style="background: #0f172a; padding: 24px; border-radius: 12px; border: 1px solid #38bdf8;"><h4 style="color: #38bdf8; text-transform: uppercase;">The Open Reality</h4><p class="card-text">Zero-cost local embeddings and data sovereignty.</p></td>
+      <td class="card" style="padding: 24px; background: #1e293b;"><h4 style="color: #fca5a5; font-size: 15px; text-transform: uppercase;">The Managed Trap</h4><ul style="color: #cbd5e1; font-size: 14px; margin: 0; padding-left: 20px;"><li><strong>Recurring Costs:</strong> Paying per-token destroys margins.</li><li><strong>Data Privacy:</strong> Sending proprietary documents to third-party endpoints.</li></ul></td>
+      <td class="card" style="padding: 24px; background: #0f172a; border: 1px solid #38bdf8;"><h4 style="color: #38bdf8; font-size: 15px; text-transform: uppercase;">The Open Reality</h4><ul style="color: #cbd5e1; font-size: 14px; margin: 0; padding-left: 20px;"><li><strong>Zero-Cost Embeddings:</strong> Local models keep ingestion free.</li><li><strong>Data Sovereignty:</strong> Your data never leaves your environment.</li></ul></td>
     </tr>
   </table>
 </div>
