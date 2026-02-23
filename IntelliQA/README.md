@@ -1,28 +1,12 @@
 <style>
-  /* Base Container with Border */
-  .rag-container { 
-    font-family: 'Inter', system-ui, sans-serif; 
-    background: #0f172a; 
-    padding: 48px; 
-    border-radius: 24px; 
-    max-width: 1000px; 
-    margin: 0 auto 40px auto; 
-    border: 1px solid #1e293b; 
-    box-sizing: border-box; 
-  }
-  
-  /* Grid System */
+  .rag-container { font-family: 'Inter', system-ui, sans-serif; background: #0f172a; padding: 48px; border-radius: 24px; max-width: 1000px; margin: 0 auto 40px auto; border: 1px solid #1e293b; box-sizing: border-box; }
   .rag-grid { width: 100%; border-collapse: separate; border-spacing: 20px 0; table-layout: fixed; margin: 0 -20px; }
-  
-  /* Card Styling */
-  .card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden; }
-  .card-header { padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155; }
-  .card-body { padding: 24px; background: rgba(56, 189, 248, 0.05); }
-  
-  /* Typography */
-  .card-title { margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-  .card-text { margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5; }
-  .tag { color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; font-weight: 700; }
+  .grid-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; overflow: hidden; }
+  .pillar-header { padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155; }
+  .pillar-body { padding: 24px; background: rgba(56, 189, 248, 0.05); }
+  .feature-card { background:#ffffff; border-top: 4px solid #ccc; border-radius:16px; padding:28px 24px; height:100%; min-height:190px; box-sizing:border-box; box-shadow:0 10px 25px -5px rgba(0,0,0,0.2); }
+  .paradigm-label { color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; font-weight: 700; }
+  .card-title { margin: 0 0 10px 0; font-size:18px; font-weight:800; color:#0f172a; }
 </style>
 
 # IntelliQA: Document-Grounded RAG System
@@ -37,13 +21,14 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 
 <div class="rag-container">
   <div style="text-align: center; margin-bottom: 48px;">
-    <h2 style="margin: 0 0 16px; color: #ffffff; font-size: 32px;">Why Standard RAG Fails in Production</h2>
+    <h2 style="margin: 0 0 16px; font-size: 32px; font-weight: 800; color: #ffffff;">Why Standard RAG Fails in Production</h2>
+    <p style="color: #94a3b8; font-size: 16px; max-width: 700px; margin: 0 auto;">Transitioning from "Hello World" scripts to reliable, multi-tenant services exposes fundamental flaws in the modern AI stack.</p>
   </div>
-  <table class="rag-grid">
+  <table class="rag-grid" role="presentation">
     <tr>
-      <td><div class="card"><div class="card-header"><h3 class="card-title">The Knowledge Gap</h3><p class="card-text">Models hallucinate when questions reach beyond training data.</p></div><div class="card-body"><span class="tag">IntelliQA Paradigm</span><p class="card-text" style="color: #cbd5e1;">Strictly bounds generation to your retrieved context.</p></div></div></td>
-      <td><div class="card"><div class="card-header"><h3 class="card-title">The Prototype Trap</h3><p class="card-text">Notebook scripts fail under multi-tenant load.</p></div><div class="card-body"><span class="tag">IntelliQA Paradigm</span><p class="card-text" style="color: #cbd5e1;">Ships as an isolated, production-ready Python wheel.</p></div></div></td>
-      <td><div class="card"><div class="card-header"><h3 class="card-title">The API Tax</h3><p class="card-text">Proprietary embedding APIs scale costs exponentially.</p></div><div class="card-body"><span class="tag">IntelliQA Paradigm</span><p class="card-text" style="color: #cbd5e1;">Leverages local open-weight models for zero cost.</p></div></div></td>
+      <td><div class="grid-card"><div class="pillar-header"><h3 style="color:#fff; font-size:17px; margin:0 0 12px;"><img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%23ef4444" width="20"/> The Knowledge Gap</h3><p style="color:#94a3b8; font-size:13px; margin:0;">Models hallucinate when questions reach beyond their fixed training data.</p></div><div class="pillar-body"><span class="paradigm-label">IntelliQA Paradigm</span><p style="color:#cbd5e1; font-size:13px; margin:0;">Strictly bounds generation to your retrieved document context only.</p></div></div></td>
+      <td><div class="grid-card"><div class="pillar-header"><h3 style="color:#fff; font-size:17px; margin:0 0 12px;"><img src="https://api.iconify.design/lucide:server-crash.svg?color=%23ef4444" width="20"/> The Prototype Trap</h3><p style="color:#94a3b8; font-size:13px; margin:0;">Notebook scripts fail under multi-tenant load and lack operational safety.</p></div><div class="pillar-body"><span class="paradigm-label">IntelliQA Paradigm</span><p style="color:#cbd5e1; font-size:13px; margin:0;">Ships as a robust, isolated Python wheel, production-ready by design.</p></div></div></td>
+      <td><div class="grid-card"><div class="pillar-header"><h3 style="color:#fff; font-size:17px; margin:0 0 12px;"><img src="https://api.iconify.design/lucide:coins.svg?color=%23ef4444" width="20"/> The API Tax</h3><p style="color:#94a3b8; font-size:13px; margin:0;">Proprietary embedding APIs scale costs exponentially as documents grow.</p></div><div class="pillar-body"><span class="paradigm-label">IntelliQA Paradigm</span><p style="color:#cbd5e1; font-size:13px; margin:0;">Leverages local open-weight models, dropping bulk ingestion costs to zero.</p></div></div></td>
     </tr>
   </table>
 </div>
@@ -196,15 +181,34 @@ The system is organized into four layers:
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
-<div class="rag-container">
+<div class="rag-container" style="margin-bottom: 40px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);">
   <div style="border-bottom: 1px solid #1e293b; padding-bottom: 24px; margin-bottom: 32px;">
-    <h3 class="card-title" style="font-size: 24px;"><img src="https://api.iconify.design/lucide:git-branch.svg?color=%2338bdf8" width="28"/> Architecture Rationale</h3>
-    <p style="color: #94a3b8; margin: 0;">Why bypass managed services like OpenAI and Pinecone? Because prototype economics rarely survive production scale.</p>
+    <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 24px; font-weight: 700; display: flex; align-items: center; gap: 12px;">
+      <img src="https://api.iconify.design/lucide:git-branch.svg?color=%2338bdf8" width="28"/> Architecture Rationale
+    </h3>
+    <p style="margin: 0; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 800px;">Why bypass managed services like OpenAI and Pinecone? Because prototype economics rarely survive production scale. We designed IntelliQA to maintain high inference quality without the compounding costs of proprietary APIs.</p>
   </div>
-  <table class="rag-grid" style="border-spacing: 24px 0;">
+  <table role="presentation" style="width: 100%; border-collapse: separate; border-spacing: 24px 0; table-layout: fixed; margin: 0 -12px;">
     <tr>
-      <td class="card" style="padding: 24px; background: #1e293b;"><h4 style="color: #fca5a5; font-size: 15px; text-transform: uppercase;">The Managed Trap</h4><ul style="color: #cbd5e1; font-size: 14px; margin: 0; padding-left: 20px;"><li><strong>Recurring Costs:</strong> Paying per-token destroys margins.</li><li><strong>Data Privacy:</strong> Sending proprietary documents to third-party endpoints.</li></ul></td>
-      <td class="card" style="padding: 24px; background: #0f172a; border: 1px solid #38bdf8;"><h4 style="color: #38bdf8; font-size: 15px; text-transform: uppercase;">The Open Reality</h4><ul style="color: #cbd5e1; font-size: 14px; margin: 0; padding-left: 20px;"><li><strong>Zero-Cost Embeddings:</strong> Local models keep ingestion free.</li><li><strong>Data Sovereignty:</strong> Your data never leaves your environment.</li></ul></td>
+      <td class="grid-card" style="padding: 24px;">
+        <h4 style="margin: 0 0 16px 0; color: #fca5a5; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">The Managed Trap</h4>
+        <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 14px; line-height: 1.7;">
+          <li style="margin-bottom: 8px;"><strong>Recurring Costs:</strong> Paying per-token for embedding bulk documents destroys margins.</li>
+          <li style="margin-bottom: 8px;"><strong>Data Privacy:</strong> Sending proprietary documents to third-party endpoints violates strict compliance rules.</li>
+          <li style="margin-bottom: 8px;"><strong>Rate Limits:</strong> Bulk ingestion hits API throttling caps instantly.</li>
+          <li><strong>Vendor Lock-in:</strong> Tightly coupling your vector store to a specific embedding model makes future migrations painful.</li>
+        </ul>
+      </td>
+      <td class="grid-card" style="padding: 24px; border: 1px solid #38bdf8; position: relative;">
+        <span style="position: absolute; top: -10px; right: 24px; background: #38bdf8; color: #0f172a; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 800; text-transform: uppercase;">Our Stack</span>
+        <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">The Open Reality</h4>
+        <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 14px; line-height: 1.7;">
+          <li style="margin-bottom: 8px;"><strong>Zero-Cost Embeddings:</strong> <code>all-MiniLM-L6-v2</code> runs locally via HuggingFace, making ingestion permanently free.</li>
+          <li style="margin-bottom: 8px;"><strong>Blistering Speed:</strong> Offloading LLM generation to Groq LPUs provides inference latency that beats managed GPT APIs.</li>
+          <li style="margin-bottom: 8px;"><strong>Data Sovereignty:</strong> ChromaDB stores vectors locally on-disk. Your data never leaves your environment.</li>
+          <li><strong>Ultimate Portability:</strong> Local dependencies mean the entire RAG backend ships reliably inside a single Python wheel.</li>
+        </ul>
+      </td>
     </tr>
   </table>
 </div>
