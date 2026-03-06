@@ -10,7 +10,7 @@ agent.invoke(
 
 # Second turn: ask again
 response = agent.invoke(
-    {"messages": [HumanMessage(content="What is my name?")]},
+    {"messages": [HumanMessage(content="Who am I?")]},
     config=config
 )
 
