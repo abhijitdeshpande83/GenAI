@@ -1,17 +1,21 @@
 from graph import agent
 from langchain_core.messages import HumanMessage
 
-config = {"configurable":{"thread_id":"user-1"}}
-# First turn: tell the system who you are
-agent.invoke(
-    {"messages": [HumanMessage(content="My name is Abhijit and I am a data scientist")]},
-    config=config
-)
+def run_agent(usr_input):
 
-# Second turn: ask again
-response = agent.invoke(
-    {"messages": [HumanMessage(content="Who am I?")]},
-    config=config
-)
+    config = {"configurable":{"thread_id":"user-1"}}
 
-print(response["messages"][-1].content)
+    response = agent.invoke(
+        {"messages": [HumanMessage(content=usr_input)]},
+        config=config
+    )
+    return response["messages"][-1].content
+
+while True:
+    user_inp = input("You: ")
+
+    if user_inp.lower() == 'exit':
+        print("Goodbye!")
+        break
+    response = run_agent(user_inp)
+    print(response)
