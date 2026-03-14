@@ -4,8 +4,9 @@ WORKDIR /app
 
 #Copy required files
 COPY requirements.txt .
-COPY graph.py .
-COPY runner.py . 
+COPY src/__init__.py /app/src/
+COPY src/graph.py /app/src/
+COPY src/runner.py /app/src/
 
 #Install dependencies
 RUN pip install --upgrade pip

@@ -1,4 +1,4 @@
-from graph import agent
+from src.graph import agent
 from langchain_core.messages import HumanMessage
 
 def run_agent(usr_input):
@@ -11,11 +11,11 @@ def run_agent(usr_input):
     )
     return response["messages"][-1].content
 
-while True:
-    user_inp = input("You: ")
+# while True:
+#     user_inp = input("You: ")
 
-    if user_inp.lower() == 'exit':
-        print("Goodbye!")
-        break
-    response = run_agent(user_inp)
-    print(response)
+#     if user_inp.lower() == 'exit':
+#         print("Goodbye!")
+#         break
+#     response = run_agent(user_inp)
+#     print(response)
