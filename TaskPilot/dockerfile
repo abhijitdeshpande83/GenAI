@@ -4,16 +4,19 @@ WORKDIR /app
 
 #Copy required files
 COPY requirements.txt .
-COPY src/__init__.py /app/src/
-COPY src/graph.py /app/src/
-COPY src/runner.py /app/src/
+COPY src/ ./src/
 
 #Install dependencies
 RUN pip install --upgrade pip
+RUN pip install awslambdaric
 RUN pip install --no-cache-dir -r requirements.txt
 
+#Make script readable and execuatble
+RUN chmod -R a+rX /app
+
 #Command to run your custom application
-CMD ["python", "runner.py"]
+ENTRYPOINT ["/usr/local/bin/python", "-m", "awslambdaric"]
+CMD ["src.lambda_function.lambda_function"]
 
 
 
