@@ -4,7 +4,7 @@ import json
 def lambda_function(event, context):
 
     try:
-        body=json.load(event['body']) if 'body' in event else event
+        body=json.loads(event['body']) if 'body' in event else event
         usr_input = body.get('usr_input',None)
 
         if not usr_input:
