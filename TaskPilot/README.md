@@ -75,7 +75,7 @@ respond directly and when to invoke external tools.
 
 ## Architecture
 
-![Process flow Diagram](/docs/Taskpilot-process-flow.png)
+![Process flow Diagram](docs/Taskpilot-process-flow.png)
 
 ------------------------------------------------------------------------
 
