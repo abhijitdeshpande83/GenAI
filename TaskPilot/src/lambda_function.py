@@ -3,6 +3,19 @@ import json
 
 def lambda_function(event, context):
 
+        # Handle preflight OPTIONS
+    if event.get("httpMethod") == "OPTIONS":
+        return {
+            "statusCode": 204,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+            },
+            "body": ""
+        }
+
+
     try:
         body=json.loads(event['body']) if 'body' in event else event
         usr_input = body.get('usr_input',None)
@@ -10,13 +23,16 @@ def lambda_function(event, context):
         if not usr_input:
             raise ValueError("Input text is missing")
         
-        result = run_agent(usr_input)
+        response = run_agent(usr_input)
     
         return {
             "statusCode":200,
-            "body": json.dumps(result),
+            "body": json.dumps(response),
             "headers":
-            {
+            {    
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Methods": "*",
                 "Content-Type":"application/json"
             }
         }
@@ -27,6 +43,9 @@ def lambda_function(event, context):
             "body": json.dumps({"error":str(e)}),
             "headers":
             {
-                "Content-Type":"application/json"
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Methods": "*",
+                "Content-Type": "application/json"
             }
         }
