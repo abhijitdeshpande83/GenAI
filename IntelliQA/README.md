@@ -91,7 +91,6 @@ The same EC2 instance hosts both the portfolio site and IntelliQA. Without activ
 
 Even at `temperature=0`, the LLM would occasionally answer questions from its training data when retrieved chunks were thin or off-topic. Refining the system prompt to explicitly instruct *"answer only from the provided context; if the context does not contain the answer, say so"* reduced this behavior significantly. This is the practical experience behind the "Honest Boundaries" principle in the design philosophy.
 
-> *Note: these are based on real engineering patterns this kind of project hits. Verify each against your actual build history and remove or rewrite anything that doesn't match what you experienced.*
 
 ## 🧩 System Components
 
