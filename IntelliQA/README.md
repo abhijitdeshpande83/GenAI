@@ -77,29 +77,25 @@ A few real engineering hurdles surfaced during the IntelliQA build that shaped t
 
 ### 1. Apache Tika JVM warm-up cost
 
-Tika runs on the JVM, and spawning a fresh JVM per request added unacceptable cold-start latency to the first document upload of a session. The fix was to keep a long-lived Tika server process running on the EC2 instance and proxy parsing requests to it, reducing per-request parse latency from several seconds to milliseconds. This pattern is worth knowing about: Tika is fast once warm and slow if you treat it like a CLI tool.
+Tika runs on the JVM, and spawning a fresh JVM per request caused unacceptable cold-start latency on first document upload. The fix was to run a long-lived Tika server on EC2 and proxy requests to it, reducing parse time from seconds to milliseconds. Tika is fast when warm, but slow if treated like a CLI tool.
 
 ---
 
 ### 2. Disk pressure on shared EC2
 
-The same EC2 instance hosts both the portfolio site and IntelliQA. Without active management, ChromaDB's persistent store would grow unbounded as users uploaded documents, and Tika's temp directory would accumulate orphaned files. This pressure directly motivated the cron-based cleanup design rather than relying on hosted/managed storage. Lesson: when infrastructure is shared, lifecycle management has to be designed in, not added later.
+The same EC2 instance hosts both the portfolio site and IntelliQA. Without lifecycle management, ChromaDB storage would grow unbounded and Tika temp files would accumulate. This directly led to a cron-based cleanup approach instead of relying on managed storage. Lesson: shared infrastructure requires explicit cleanup design.
 
 ---
 
 ### 3. Embedding model trade-off
 
-`all-MiniLM-L6-v2` (384 dimensions) was chosen over larger models (e.g., `bge-large-en` at 1024 dims) despite slightly lower retrieval quality. The trade-off was deliberate: MiniLM runs comfortably on CPU, has no API cost, and produces a smaller vector store. Recall on most document Q&A tasks is "good enough" without GPU embeddings. Worth revisiting if evaluation metrics show weakness.
+`all-MiniLM-L6-v2` (384 dims) was chosen over larger models like `bge-large-en` (1024 dims) despite lower accuracy. The trade-off was CPU efficiency, no API cost, and a smaller vector store. Performance is sufficient for most Q&A tasks, but worth revisiting if retrieval quality drops.
 
 ---
 
 ### 4. Hallucination outside retrieved context
 
-Even at `temperature=0`, the LLM would occasionally answer questions from its training data when retrieved chunks were thin or off-topic. Refining the system prompt to explicitly instruct  
-<span style="color:#ff7f50;">
-answer only from the provided context; if the context does not contain the answer, say so
-</span>  
-reduced this behavior significantly. This is the practical experience behind the "Honest Boundaries" principle in the design philosophy.
+Even at temperature=0, the LLM occasionally answered from training data when retrieved context was weak. Updating the system prompt to enforce <span style="color:#ff7f50;"> answer only from the provided context; if the context does not contain the answer, say so </span> reduced this significantly. This reflects the "Honest Boundaries" design principle.
 
 
 ## 🧩 System Components
