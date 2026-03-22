@@ -4,20 +4,7 @@ WORKDIR /app
 
 #Copy required files
 COPY requirements.txt .
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 COPY src/ ./src/
-=======
->>>>>>> 0648ecc (feat: add docker file)
-=======
-COPY src/ ./src/
->>>>>>> d759b50 (feat: udpate docker file to execute lambda_function)
-=======
-COPY src/ ./src/
-=======
->>>>>>> 0648ecc (feat: add docker file)
->>>>>>> e979f2f (feat: add docker file)
 
 #Install dependencies
 RUN pip install --upgrade pip
