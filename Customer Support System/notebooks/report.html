@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monthly Document Digest - October 2025</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --blue:#1565c0;
+      --purple:#6a1b9a;
+      --green:#2e7d32;
+      --muted:#6b7280;
+      --border:#e6e9ee;
+      --shadow: 0 6px 18px rgba(14, 30, 37, 0.06);
+    }
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); margin:0; padding:28px;}
+    .container{max-width:980px; margin:0 auto;}
+    .header{display:flex;align-items:center;gap:16px;background:linear-gradient(90deg,#fff,#f8fbff);border-radius:12px;padding:18px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+    .title h1{margin:0;font-size:20px;color:#111}
+    .title p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .card{background:var(--card);border-radius:10px;padding:18px;margin-top:18px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    h2.section-title{margin:0 0 12px;font-size:16px;color:#111;display:flex;justify-content:space-between;align-items:center}
+    .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:14px}
+    /* box styles */
+    .box{border-radius:10px;padding:16px;box-shadow:0 6px 14px rgba(14,30,37,0.04);transition:transform .12s ease}
+    .box:hover{transform:translateY(-6px)}
+    /* theme variants */
+    .theme-blue{background:#e8f4ff;border-left:6px solid var(--blue);color:var(--blue)}
+    .theme-teal{background:#e6f7f2;border-left:6px solid #0f9d8e;color:#0b6b5a}
+    .theme-purple{background:#f6e9fb;border-left:6px solid var(--purple);color:var(--purple)}
+    .theme-green{background:#eaf6ea;border-left:6px solid var(--green);color:var(--green)}
+    .box h3{margin:0 0 8px;font-size:16px}
+    .box p{margin:0;color:#222;line-height:1.55}
+    .box ul{margin:8px 0 0 18px;color:#222}
+    .muted{color:var(--muted);font-size:13px}
+    .footer{margin-top:14px;border-top:1px dashed var(--border);padding-top:12px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}
+    @media (min-width:900px){
+      .grid{grid-template-columns:1fr}
+    }
+    @media (max-width:680px){
+      .header{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">BF</div>
+      <div class="title">
+        <h1>BuyFlow — Monthly Document Digest</h1>
+        <p class="muted">October 2025 • Documentation & platform highlights</p>
+      </div>
+    </div>
+
+    <!-- Bulletin (short highlights) -->
+    <div class="card">
+      <h2 class="section-title">🗞️ News Bulletin <span class="muted"></span></h2>
+      <div class="grid" style="margin-top:12px">
+        <div class="box theme-blue">
+          <h3>Redis Cluster POC</h3>
+          <p>Redis cluster Proof-of-Concept completed for <strong>MTG</strong> and <strong>RP2</strong>. Timeline being discussed with Mahima's team.</p>
+        </div>
+
+        <div class="box theme-blue">
+          <h3>GitGuardian / BCL</h3>
+          <p>GitGuardian is flagging old/obsolete AWS keys for BCL. Platform & Jaya/Aaron coordinating removal.</p>
+        </div>
+
+        <div class="box theme-blue">
+          <h3>RHEL 7.0 EOL</h3>
+          <p>CSS, GPD, LUI and SOM move to Rocky on-prem; remaining apps migrate to AWS.</p>
+        </div>
+
+        <div class="box theme-blue">
+          <h3>App Migrations & Timelines</h3>
+          <p>OTG & SALI targeted to move to AWS within ~2 months. SmartSheet path changes and staging/prod builds under Platform support.</p>
+        </div>
+
+        <div class="box theme-blue">
+          <h3>Spec Payment / Payment UI</h3>
+          <p>Migration approved to CSP (PCI scope). DEV environment provisioning to start; Seamless Entertainment changes scheduled for 10/23.</p>
+        </div>
+
+        <div class="box theme-blue">
+          <h3>CAS / Phantom</h3>
+          <p>Traffic shifted; monitoring ongoing. Phantom decommission timing planned for later this month.</p>
+        </div>
+
+        <div class="box theme-blue">
+          <h3>3rd Party & Deliveries</h3>
+          <p>My Utilities live (10/7). SARAH Plus intermediary work with DirecTV mid-Nov (tentative). Red Ventures dev for My Moves UI in progress.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deliverables & Platform updates -->
+    <div class="card" style="margin-top:18px">
+      <h2 class="section-title">🚀 Deliverables & Platform Updates <span class="muted"></span></h2>
+      <div class="grid" style="margin-top:12px">
+        <div class="box theme-teal">
+          <h3>AMI & Tableau</h3>
+          <p>Delivered AMI partition and Tableau dashboards to the Service Activation team.</p>
+        </div>
+
+        <div class="box theme-teal">
+          <h3>CSP Day-1 Dashboards</h3>
+          <p>CSP dashboards delivered for Day-1 reporting. KIP and QIM integration work is underway.</p>
+        </div>
+
+        <div class="box theme-teal">
+          <h3>BFS & PDR Enhancements</h3>
+          <p>Added certificate tracking in AMI tool and enabled Cherwell change ticket approvals from the PDR application.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documentation (detailed) -->
+    <div class="card" style="margin-top:18px">
+      <h2 class="section-title">📚 Documentation Updates <span class="muted"></span></h2>
+
+      <div class="grid" style="margin-top:12px">
+        <div class="box theme-purple">
+          <h3>Self-Healing Architecture (LLM token generation)</h3>
+          <p>Created comprehensive documentation that describes the automation flow for LLM token generation, including validation logic and alerting procedures for production readiness. The document covers expected failure modes, remediation steps, and monitoring touchpoints to support operational teams.</p>
+        </div>
+
+        <div class="box theme-purple">
+          <h3>SOM Backend Server Management (HAProxy)</h3>
+          <p>Documented the CloudBees job that manages HAProxy backend server states across NCE/NCW. The documentation includes retry logic, parallel execution flow, SSH-based remote commands, and Webex alerting integration — providing clear runbook steps for on-call and platform engineers.</p>
+        </div>
+
+        <div class="box theme-purple">
+          <h3>PiNXT Call Identification</h3>
+          <p>Finalized PiNXT call mappings for ATTOS, CSS, and C3PO. The findings clarify direct call flows (including C3PO → SLBOS) and are captured to improve dependency tracking and troubleshooting procedures across BuyFlow services.</p>
+        </div>
+
+        <div class="box theme-purple">
+          <h3>LLE Mapping & Phoenix Endpoints</h3>
+          <p>Completed LLE mapping for 16 applications and documented Phoenix endpoint references to strengthen environment alignment and speed up triage and incident response processes.</p>
+        </div>
+
+        <div class="box theme-purple">
+          <h3>Data Classification</h3>
+          <p>Completed classification for CSP and Puppet. Documentation confirms these systems only transmit application logs (no sensitive data), and includes data handling notes aligned to governance standards.</p>
+        </div>
+
+        <div class="box theme-purple">
+          <h3>Incident Response Process</h3>
+          <p>Authored and finalized the Incident Response Process that defines escalation paths, mitigation actions, and validation checks to standardize platform incident handling and verification workflows.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <div>Prepared by: <strong>BuyFlow Operational Services Team</strong></div>
+      </div>
+    </div>
+
