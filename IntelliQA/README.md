@@ -15,7 +15,7 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 ## Problem Statement
 
 <p align="center">
-  <img src="./docs/problem-statement.svg" alt="Why Standard RAG Fails in Production: three pillars covering hallucination, prototype fragility, and vendor lock-in" width="100%"/>
+  <img src="./assets/problem-statement.svg" alt="Why Standard RAG Fails in Production: three pillars covering hallucination, prototype fragility, and vendor lock-in" width="100%"/>
 </p>
 
 ## TL;DR
@@ -36,7 +36,7 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 ## ✨ Key Features
 
 <p align="center">
-  <img src="./docs/key-features.svg" alt="Six production-ready features: universal ingestion, session isolation, self-cleaning storage, smart deduplication, abuse-proof uploads, one pip install" width="100%"/>
+  <img src="./assets/key-features.svg" alt="Six production-ready features: universal ingestion, session isolation, self-cleaning storage, smart deduplication, abuse-proof uploads, one pip install" width="100%"/>
 </p>
 
 ## 🧠 System Design Philosophy
@@ -68,7 +68,7 @@ The system is organized into four layers:
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
 <p align="center">
-  <img src="./docs/design-decision.svg" alt="Architecture Rationale: comparison between managed-API trap and open-stack reality across cost, privacy, rate limits, and portability" width="100%"/>
+  <img src="./assets/design-decision.svg" alt="Architecture Rationale: comparison between managed-API trap and open-stack reality across cost, privacy, rate limits, and portability" width="100%"/>
 </p>
 
 ## 🛠️ Challenges & Lessons Learned
@@ -95,22 +95,7 @@ The same EC2 instance hosts both the portfolio site and IntelliQA. Without lifec
 
 ### 4. Hallucination outside retrieved context
 
-Even at temperature=0, the LLM occasionally answered from training data when retrieved context was weak. Updating the system prompt to enforce <span style="color:#ff7f50;"> answer only from the provided context; if the context does not contain the answer, say so </span> reduced this significantly. This reflects the "Honest Boundaries" design principle.
-
-
-## 🧩 System Components
-
-| Component | Engine / Module | Function |
-| --- | --- | --- |
-| **Document Parser** | Apache Tika | Extracts text from PDF, DOCX, HTML, TXT, RTF, ODT, and dozens of additional formats |
-| **Ingestion Pipeline** | `rag_pipeline.utils` | Parsing, chunking, deduplication, metadata extraction |
-| **Session Manager** | `rag_pipeline` (custom logic) | Namespaces documents by session, enforces 5-file upload quota |
-| **Vector Store** | ChromaDB | Cosine similarity search over 384-dim embeddings, disk-persisted |
-| **Query Engine** | `rag_pipeline.query_engine` | Embeds questions, retrieves top-K chunks, orchestrates generation |
-| **System Prompt** | `rag_pipeline.query_engine` | Constrains LLM to retrieved context, instructs graceful "I don't know" behavior |
-| **LLM Layer** | Llama 3.3 70B (Groq LPU) | Deterministic, grounded generation at `temperature=0` |
-| **Storage Manager** | Cron + cleanup scripts | Daily removal of expired sessions, orphaned vectors, temp files |
-| **Infrastructure** | Docker + AWS EC2 | Reproducible runtime, cloud deployment |
+Even at temperature=0, the LLM occasionally answered from training data when retrieved context was weak. Updating the system prompt to enforce <span style="color:#ff7f50;"> answer only from the provided context; if the context does not contain the answer, say so </span> reduced this significantly. This reflects the _Honest Boundaries_ design principle.
 
 ## 🚀 Installation & Usage
 
@@ -128,8 +113,15 @@ Import and use anywhere:
 
 ```python
 from rag_pipeline import query_engine, vector_store, utils
-# See IntelliQA.ipynb for end-to-end usage examples
 ```
+
+The package exposes three modules:
+
+- `rag_pipeline.utils`: parsing, chunking, deduplication
+- `rag_pipeline.vector_store`: Chroma setup and indexing
+- `rag_pipeline.query_engine`: retrieval, prompt assembly, generation
+
+See `IntelliQA.ipynb` for end-to-end usage examples.
 
 ### Option 2: Install from Source
 *Use this if you want to read, modify, or extend the core RAG logic.* The editable install (`pip install -e .`) picks up source changes immediately without reinstalling.
