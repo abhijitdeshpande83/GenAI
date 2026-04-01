@@ -164,7 +164,6 @@ A few capabilities are explicitly **not** part of IntelliQA's design. These are 
 
 - **User authentication.** Sessions are isolated by ID; authentication and user-account management are the responsibility of the calling application. IntelliQA is a backend, not a SaaS product.
 - **Long-term knowledge accumulation.** Each session is ephemeral. IntelliQA does not build a persistent knowledge base across users or across time. Documents are scoped to the session that uploaded them and are subject to scheduled cleanup.
-- **Per-document-type custom chunking.** All documents are split using recursive character splitting with consistent parameters. Format-aware chunking (e.g., respecting code blocks in markdown or tables in PDFs) is not implemented.
 - **Document editing or partial updates.** Modifying an indexed document requires re-uploading it. There is no in-place edit path.
 
 ## 🚀 Future Improvements
