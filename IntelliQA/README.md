@@ -15,7 +15,7 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 ## Problem Statement
 
 <p align="center">
-  <img src="./assets/problem-statement.svg" alt="Why Standard RAG Fails in Production: three pillars covering hallucination, prototype fragility, and vendor lock-in" width="100%"/>
+  <img src="./docs/problem-statement.svg" alt="Why Standard RAG Fails in Production: three pillars covering hallucination, prototype fragility, and vendor lock-in" width="100%"/>
 </p>
 
 ## TL;DR
@@ -36,7 +36,7 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 ## ✨ Key Features
 
 <p align="center">
-  <img src="./assets/key-features.svg" alt="Six production-ready features: universal ingestion, session isolation, self-cleaning storage, smart deduplication, abuse-proof uploads, one pip install" width="100%"/>
+  <img src="./docs/key-features.svg" alt="Six production-ready features: universal ingestion, session isolation, self-cleaning storage, smart deduplication, abuse-proof uploads, one pip install" width="100%"/>
 </p>
 
 ## 🧠 System Design Philosophy
@@ -68,7 +68,7 @@ The system is organized into four layers:
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
 <p align="center">
-  <img src="./assets/design-decision.svg" alt="Architecture Rationale: comparison between managed-API trap and open-stack reality across cost, privacy, rate limits, and portability" width="100%"/>
+  <img src="./docs/design-decision.svg" alt="Architecture Rationale: comparison between managed-API trap and open-stack reality across cost, privacy, rate limits, and portability" width="100%"/>
 </p>
 
 ## 🛠️ Challenges & Lessons Learned
