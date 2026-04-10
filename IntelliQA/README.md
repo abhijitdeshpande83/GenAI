@@ -63,7 +63,7 @@ The system is organized into four layers:
 
 **Operations** &nbsp;·&nbsp; Session lifecycle, per-session upload quotas, and a daily cron job for cleanup.
 
-![IntelliQA RAG Flow](./RAG%20Flow.png)
+![IntelliQA RAG Flow](./docs/RAG%20Flow.png)
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
@@ -172,7 +172,6 @@ A few capabilities are explicitly **not** part of IntelliQA's design. These are 
 - Inline citations linking answers back to source chunks
 - Hybrid retrieval (BM25 + dense vector)
 - Streaming responses for lower perceived latency
-- Pluggable embedding models for users who want to swap MiniLM for a larger model
 
 ## 💡 System Value
 
