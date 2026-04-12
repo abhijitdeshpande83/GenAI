@@ -190,7 +190,12 @@ complaint_graph = build_complaint_graph()
 def complaint_flow(state:SupervisorState)->SupervisorState:
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     return complaint_graph.invoke(state)
 =======
     return complaint_graph.invoke(state)
 >>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
+=======
+    results = complaint_graph.invoke(state)
+    return {**results, "active_flow": None}
+>>>>>>> ff55703 (feat: implement active_flow flag for state-aware subgraph persistence)
