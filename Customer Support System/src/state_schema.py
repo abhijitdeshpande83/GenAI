@@ -1,4 +1,4 @@
-from typing import Annotated, Dict
+from typing import Annotated, Dict, Optional
 from operator import add
 from langgraph.graph import MessagesState
 
@@ -25,5 +25,5 @@ class SupervisorState(MessagesState):
     
     complaint_data: Annotated[dict, merge_dicts]
     missing_info: list
-    next: str
+    active_flow: Optional[str]=None
     customer_profile: Dict

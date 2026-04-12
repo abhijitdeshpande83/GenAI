@@ -111,4 +111,5 @@ complaint_graph = build_complaint_graph()
 
 def complaint_flow(state:SupervisorState)->SupervisorState:
     
-    return complaint_graph.invoke(state)
+    results = complaint_graph.invoke(state)
+    return {**results, "active_flow": None}
