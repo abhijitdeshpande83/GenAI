@@ -36,5 +36,9 @@ inquiry_graph = build_inquiry_node()
 
 def inquiry_flow(state:SupervisorState)->SupervisorState:
     
+<<<<<<< HEAD
     results = inquiry_graph.invoke(state)
     return {**results, "active_flow": None}
+=======
+    return inquiry_graph.invoke(state)
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)

@@ -19,9 +19,16 @@ def greeting_flow(state:SupervisorState)->dict:
     You are a helpful and empathetic Customer Success Assistant.
     Greet the user warmly based on their input: "{user_input}".
     """
+<<<<<<< HEAD
     response = llm.invoke([SystemMessage(content=prompt)])
     
     return {"messages": [response.content], "active_flow": None}
+=======
+    res = llm.invoke([SystemMessage(content=prompt)])
+    print(res)
+    
+    return {"messages": [res.content]}
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
 
 def clarification_flow(state: SupervisorState) -> dict:
     """Refines vague input into a specific intent (Complaint, Retention, or Inquiry)."""
@@ -47,4 +54,8 @@ def clarification_flow(state: SupervisorState) -> dict:
     ])
     
     # Returning the response to update the message state
+<<<<<<< HEAD
     return {"messages": [response.content], "active_flow": None}
+=======
+    return {"messages": [response.content]}
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)

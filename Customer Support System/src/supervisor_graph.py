@@ -8,6 +8,7 @@ def supervisor_node(state:SupervisorState)->SupervisorState:
     history = state.get("observations", [])
     user_input = state.get("user_input")
     current_intent = state.get("user_intent", "unknown")
+<<<<<<< HEAD
     active_flow = state.get("active_flow", [])
     print("active_flow -->", active_flow)
     if active_flow:
@@ -22,6 +23,15 @@ def supervisor_node(state:SupervisorState)->SupervisorState:
                        )
     else:
         print("Going for Clarification flow")
+=======
+
+    label, score = classify_dialogue_act(user_input)
+
+    print(score)
+    if score>=0.4:
+        return Command(goto=label)
+    else:
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
         return Command(goto="clarification_flow")
     
     

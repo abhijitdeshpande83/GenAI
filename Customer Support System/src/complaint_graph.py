@@ -5,12 +5,16 @@ from langchain_groq import ChatGroq
 from langgraph.graph import StateGraph, START, END, MessagesState
 from langgraph.types import Command
 from langchain_core.messages import HumanMessage,SystemMessage
+<<<<<<< HEAD
 # from gliner import GLiNER
+=======
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
 from dotenv import load_dotenv
 from src.supervisor_graph import SupervisorState
 load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 
+<<<<<<< HEAD
 llm = ChatGroq(model="openai/gpt-oss-20b")
 
 # ner_model = GLiNER.from_pretrained("gliner-community/gliner_medium-v2.5")
@@ -34,6 +38,9 @@ llm = ChatGroq(model="openai/gpt-oss-20b")
 #         product_data[msg['label']] = msg['text']
 
 #     return product_data
+=======
+llm = ChatGroq(model="llama-3.1-8b-instant")
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
 
 def extract_info_node(state:SupervisorState)->SupervisorState:
     """ 
@@ -41,6 +48,7 @@ def extract_info_node(state:SupervisorState)->SupervisorState:
     """
     user_input = state.get("user_input",[])
 
+<<<<<<< HEAD
     system_prompt = f"""
     You are a extractor which extract information from user input.
     Fields:
@@ -50,6 +58,21 @@ def extract_info_node(state:SupervisorState)->SupervisorState:
     Input: "{user_input}"
 
     Return ONLY JSON.
+=======
+    system_prompt=f""" You are an entity extractor. 
+    Your goal is to extract the product information, issue_type, and purchase_date 
+    from the user's input.
+    - product
+    - issue_type
+    - purchase_date
+
+    Respond ONLY with a valid JSON object in this exact format:
+    {{
+        "product": string or null,
+        "issue_type": string or null,
+        "purchase_date": MM/DD/YY or null
+    }}
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
     """
      
     res = llm.invoke([
@@ -57,6 +80,7 @@ def extract_info_node(state:SupervisorState)->SupervisorState:
             HumanMessage(content=user_input)
         ])
     
+<<<<<<< HEAD
     extracted_data = json.loads(res.content)
      
     return {"complaint_data": extracted_data}
@@ -70,6 +94,11 @@ def extract_info_node(state:SupervisorState)->SupervisorState:
 #     complaint_data = ner_function(user_input) 
      
 #     return {"complaint_data":complaint_data}
+=======
+    complaint_data = json.loads(res.content)
+     
+    return {"complaint_data":complaint_data}
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
 
 def create_ticket_node(state:SupervisorState)->SupervisorState:
     """
@@ -88,11 +117,15 @@ def create_ticket_node(state:SupervisorState)->SupervisorState:
         "status":"created",
         "details":complaint_data
     }
+<<<<<<< HEAD
     return {"messages":f"Ticket {ticket['ticket_id']} has been created.", 
             "complaint_data": {},
             "active_flow": None,
             "missing_info":None
             }
+=======
+    return {"messages":f"Ticket {ticket['ticket_id']} has been created."}
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
 
 def ask_missing_node(state:SupervisorState)->SupervisorState:
     """ 
@@ -101,11 +134,15 @@ def ask_missing_node(state:SupervisorState)->SupervisorState:
     
     complaint = state.get("complaint_data", {})
     missing_info = state.get("missing_info",{})
+<<<<<<< HEAD
     prompt = f""" 
     User: {complaint}
     Missing field: {missing_info}
     You are a support assistant. Generate ONE short clarification question to collect the missing field.
     """
+=======
+    prompt = f"The user provided: {complaint}. Politely ask for the following missing information {missing_info}."
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
     response = llm.invoke(prompt)
 
     return {"messages": [response.content],
@@ -114,7 +151,11 @@ def ask_missing_node(state:SupervisorState)->SupervisorState:
 def router(state:SupervisorState)->SupervisorState:
     
     complaint_data=state.get("complaint_data",[])
+<<<<<<< HEAD
     required_fields=["product", "issue_description"]
+=======
+    required_fields=["product", "issue_type", "purchase_date"]
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
     missing = [field for field in required_fields if not complaint_data.get(field)]
 
     if missing:
@@ -148,4 +189,8 @@ complaint_graph = build_complaint_graph()
 
 def complaint_flow(state:SupervisorState)->SupervisorState:
     
+<<<<<<< HEAD
     return complaint_graph.invoke(state)
+=======
+    return complaint_graph.invoke(state)
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)

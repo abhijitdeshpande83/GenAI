@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 from typing import Annotated, Dict, Optional
+=======
+from typing import Annotated, Dict
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
 from operator import add
 from langgraph.graph import MessagesState
 
 def merge_dicts(left:dict, right:dict)->dict:
 
+<<<<<<< HEAD
     if right=={}:
         return {}
+=======
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
     if not right: return left
     if not left: return right
 
@@ -27,5 +34,10 @@ class SupervisorState(MessagesState):
     
     complaint_data: Annotated[dict, merge_dicts]
     missing_info: list
+<<<<<<< HEAD
     active_flow: Optional[str]=None
     customer_profile: Dict
+=======
+    next: str
+    customer_profile: Dict
+>>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
