@@ -59,7 +59,7 @@ def create_ticket_node(state:SupervisorState)->SupervisorState:
         "status":"created",
         "details":complaint_data
     }
-    return {"messages":f"Ticket {ticket['ticket_id']} has been created."}
+    return {"messages":f"Ticket {ticket['ticket_id']} has been created.", "active_flow": None}
 
 def ask_missing_node(state:SupervisorState)->SupervisorState:
     """ 
@@ -111,5 +111,4 @@ complaint_graph = build_complaint_graph()
 
 def complaint_flow(state:SupervisorState)->SupervisorState:
     
-    results = complaint_graph.invoke(state)
-    return {**results, "active_flow": None}
+    return complaint_graph.invoke(state)

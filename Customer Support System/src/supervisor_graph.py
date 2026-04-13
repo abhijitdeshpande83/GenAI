@@ -15,7 +15,7 @@ def supervisor_node(state:SupervisorState)->SupervisorState:
 
     label, margin = classify_dialogue_act(user_input)
 
-    f"active_flow: {active_flow}, margin: {margin}, label: {label}"
+    print(f"active_flow: {active_flow}, margin: {margin}, label: {label}")
     if margin>=0.12:
         return Command(goto=label, 
                        update={"active_flow":label}
