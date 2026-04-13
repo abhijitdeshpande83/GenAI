@@ -20,9 +20,8 @@ def greeting_flow(state:SupervisorState)->dict:
     Greet the user warmly based on their input: "{user_input}".
     """
     res = llm.invoke([SystemMessage(content=prompt)])
-    print(res)
     
-    return {"messages": [res.content]}
+    return {"messages": [res.content], "active_flow": None}
 
 def clarification_flow(state: SupervisorState) -> dict:
     """Refines vague input into a specific intent (Complaint, Retention, or Inquiry)."""
@@ -48,4 +47,4 @@ def clarification_flow(state: SupervisorState) -> dict:
     ])
     
     # Returning the response to update the message state
-    return {"messages": [response.content]}
+    return {"messages": [response.content], "active_flow": None}

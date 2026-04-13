@@ -36,4 +36,5 @@ inquiry_graph = build_inquiry_node()
 
 def inquiry_flow(state:SupervisorState)->SupervisorState:
     
-    return inquiry_graph.invoke(state)
+    results = inquiry_graph.invoke(state)
+    return {**results, "active_flow": None}

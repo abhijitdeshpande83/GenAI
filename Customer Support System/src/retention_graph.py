@@ -115,11 +115,12 @@ def build_retention_graph():
     graph.add_edge("churn_score", "evaluate_user_value")
     graph.add_edge("evaluate_user_value", "offer_reward")
     graph.add_edge("offer_reward", END)
-    memory=MemorySaver()
-    return graph.compile(checkpointer=memory)
+
+    return graph.compile()
 
 retention_graph = build_retention_graph()
 
 def retention_flow(state:SupervisorState)->SupervisorState:
-    config= {"configurable":{"thread_id":"user_complaint_session", "recursion_limit":5}}
-    return retention_graph.invoke(state, config=config)
+    
+    results = retention_graph.invoke(state)
+    return {**results, "active_flow": None}
