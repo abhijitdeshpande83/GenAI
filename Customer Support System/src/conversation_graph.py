@@ -19,9 +19,9 @@ def greeting_flow(state:SupervisorState)->dict:
     You are a helpful and empathetic Customer Success Assistant.
     Greet the user warmly based on their input: "{user_input}".
     """
-    res = llm.invoke([SystemMessage(content=prompt)])
+    response = llm.invoke([SystemMessage(content=prompt)])
     
-    return {"messages": [res.content], "active_flow": None}
+    return {"messages": [response.content], "active_flow": None}
 
 def clarification_flow(state: SupervisorState) -> dict:
     """Refines vague input into a specific intent (Complaint, Retention, or Inquiry)."""

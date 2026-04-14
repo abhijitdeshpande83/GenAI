@@ -21,6 +21,7 @@ def supervisor_node(state:SupervisorState)->SupervisorState:
                        update={"active_flow":label}
                        )
     else:
+        print("Going for Clarification flow")
         return Command(goto="clarification_flow")
     
     
