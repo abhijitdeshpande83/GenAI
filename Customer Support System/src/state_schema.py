@@ -4,6 +4,8 @@ from langgraph.graph import MessagesState
 
 def merge_dicts(left:dict, right:dict)->dict:
 
+    if right=={}:
+        return {}
     if not right: return left
     if not left: return right
 
