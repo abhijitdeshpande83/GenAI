@@ -11,7 +11,7 @@ from src.supervisor_graph import SupervisorState
 load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 
-llm = ChatGroq(model="llama-3.1-8b-instant")
+llm = ChatGroq(model="openai/gpt-oss-20b")
 
 # ner_model = GLiNER.from_pretrained("gliner-community/gliner_medium-v2.5")
 
@@ -89,7 +89,7 @@ def create_ticket_node(state:SupervisorState)->SupervisorState:
         "details":complaint_data
     }
     return {"messages":f"Ticket {ticket['ticket_id']} has been created.", 
-            "complaint_data": {'__reset__': True},
+            "complaint_data": {},
             "active_flow": None,
             "missing_info":None
             }
@@ -101,7 +101,11 @@ def ask_missing_node(state:SupervisorState)->SupervisorState:
     
     complaint = state.get("complaint_data", {})
     missing_info = state.get("missing_info",{})
-    prompt = f"The user provided: {complaint}. Politely ask for the following missing information {missing_info}."
+    prompt = f""" 
+    User: {complaint}
+    Missing field: {missing_info}
+    You are a support assistant. Generate ONE short clarification question to collect the missing field.
+    """
     response = llm.invoke(prompt)
 
     return {"messages": [response.content],
