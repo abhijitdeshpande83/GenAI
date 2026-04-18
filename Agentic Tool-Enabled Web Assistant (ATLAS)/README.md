@@ -1,6 +1,6 @@
-# Autonomous Agent -- TaskPilot 🚀
+# Agentic Tool-Enabled Web Assistant (ATLAS) 🚀
 
-**TaskPilot** is a LangGraph-powered autonomous AI agent that performs
+**ATLAS** is a LangGraph-powered autonomous AI agent that performs
 real-time web research using Groq LLM and Tavily search.
 
 ------------------------------------------------------------------------
