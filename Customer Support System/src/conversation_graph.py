@@ -23,6 +23,7 @@ def greeting_flow(state:SupervisorState)->dict:
     
     return {"messages": [response.content], "active_flow": None}
 
+
 def clarification_flow(state: SupervisorState) -> dict:
     """Refines vague input into a specific intent (Complaint, Retention, or Inquiry)."""
     
@@ -47,4 +48,4 @@ def clarification_flow(state: SupervisorState) -> dict:
     ])
     
     # Returning the response to update the message state
-    return {"messages": [response.content], "active_flow": None}
+    return {"messages": [response.content]}
