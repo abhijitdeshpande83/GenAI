@@ -5,6 +5,7 @@ WORKDIR /app
 #COPY required files
 COPY requirements.txt .
 COPY src/ ./src/
+COPY models/ /app/models
 
 #Install requirements
 RUN pip install --upgrade pip
