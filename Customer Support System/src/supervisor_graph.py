@@ -8,26 +8,7 @@ def supervisor_node(state:SupervisorState)->SupervisorState:
     history = state.get("observations", [])
     user_input = state.get("user_input")
     current_intent = state.get("user_intent", "unknown")
-<<<<<<< HEAD
-<<<<<<< HEAD
-    active_flow = state.get("active_flow", [])
-    print("active_flow -->", active_flow)
-    if active_flow:
-        return Command(goto=active_flow)
-
-    label, margin = classify_dialogue_act(user_input)
-
-    print(f"active_flow: {active_flow}, margin: {margin}, label: {label}")
-    if margin>=0.12:
-        return Command(goto=label, 
-                       update={"active_flow":label}
-                       )
-    else:
-        print("Going for Clarification flow")
-=======
-=======
     active_flow = state.egt("active_flow", [])
->>>>>>> ff55703 (feat: implement active_flow flag for state-aware subgraph persistence)
 
     if active_flow:
         return Command(goto=active_flow)
@@ -40,7 +21,6 @@ def supervisor_node(state:SupervisorState)->SupervisorState:
                        update={"active_flow":label}
                        )
     else:
->>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
         return Command(goto="clarification_flow")
     
     
