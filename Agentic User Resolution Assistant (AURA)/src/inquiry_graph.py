@@ -17,9 +17,9 @@ def rag_node(state:SupervisorState)->SupervisorState:
     system_prompt="""
         You are a helpful support assistant. Provide clear, concise answers to the user's questions.
         """
-    res = llm.invoke([SystemMessage(system_prompt)]+[HumanMessage(user_input)])
+    response = llm.invoke([SystemMessage(system_prompt)]+[HumanMessage(user_input)])
     
-    return {'messages':res.content}
+    return {'messages':[response.content], "active_flow": None}
 
 
 def build_inquiry_node():
@@ -36,9 +36,4 @@ inquiry_graph = build_inquiry_node()
 
 def inquiry_flow(state:SupervisorState)->SupervisorState:
     
-<<<<<<< HEAD
-    results = inquiry_graph.invoke(state)
-    return {**results, "active_flow": None}
-=======
     return inquiry_graph.invoke(state)
->>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)

@@ -101,7 +101,7 @@ def reward_node(state:SupervisorState)->SupervisorState:
     response = llm.invoke([{'role':'system', 'content':system_prompt},
                            {'role':'user','content':user_context}])
     
-    return {"messages":response.content}
+    return {"messages":[response.content], "active_flow":None}
 
 def build_retention_graph():
 
@@ -115,22 +115,11 @@ def build_retention_graph():
     graph.add_edge("churn_score", "evaluate_user_value")
     graph.add_edge("evaluate_user_value", "offer_reward")
     graph.add_edge("offer_reward", END)
-<<<<<<< HEAD
-
+    
     return graph.compile()
-=======
-    memory=MemorySaver()
-    return graph.compile(checkpointer=memory)
->>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
 
 retention_graph = build_retention_graph()
 
 def retention_flow(state:SupervisorState)->SupervisorState:
-<<<<<<< HEAD
-    
-    results = retention_graph.invoke(state)
-    return {**results, "active_flow": None}
-=======
-    config= {"configurable":{"thread_id":"user_complaint_session", "recursion_limit":5}}
-    return retention_graph.invoke(state, config=config)
->>>>>>> a3ec9ed (feat: modularize agent logic into domain-specific subgraphs)
+
+    return retention_graph.invoke(state)
