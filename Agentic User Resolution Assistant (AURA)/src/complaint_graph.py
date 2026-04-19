@@ -10,7 +10,7 @@ from src.supervisor_graph import SupervisorState
 load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 
-llm = ChatGroq(model="openai/gpt-oss-20b")
+llm = ChatGroq(model="openai/gpt-oss-20b",api_key=api_key)
 
 # ner_model = GLiNER.from_pretrained("gliner-community/gliner_medium-v2.5")
 
@@ -33,11 +33,11 @@ llm = ChatGroq(model="openai/gpt-oss-20b")
 #         product_data[msg['label']] = msg['text']
 
 #     return product_data
-llm = ChatGroq(model="llama-3.1-8b-instant")
+# llm = ChatGroq(model="llama-3.1-8b-instant")
 
 def extract_info_node(state:SupervisorState)->SupervisorState:
     """ 
-    Extracts product, issue, and date from input into JSON.
+    Extracts product, issue_description from input into JSON.
     """
     user_input = state.get("user_input",[])
 
@@ -50,28 +50,13 @@ def extract_info_node(state:SupervisorState)->SupervisorState:
     Input: "{user_input}"
 
     Return ONLY JSON.
-    system_prompt=f""" You are an entity extractor. 
-    Your goal is to extract the product information, issue_type, and purchase_date 
-    from the user's input.
-    - product
-    - issue_type
-    - purchase_date
-
-    Respond ONLY with a valid JSON object in this exact format:
-    {{
-        "product": string or null,
-        "issue_type": string or null,
-        "purchase_date": MM/DD/YY or null
-    }}
-
-    """
-     
-    res = llm.invoke([
+    """      
+    response = llm.invoke([
             SystemMessage(content=system_prompt),
             HumanMessage(content=user_input)
         ])
     
-    extracted_data = json.loads(res.content)
+    extracted_data = json.loads(response.content)
      
     return {"complaint_data": extracted_data}
 
@@ -132,7 +117,7 @@ def ask_missing_node(state:SupervisorState)->SupervisorState:
 def router(state:SupervisorState)->SupervisorState:
     
     complaint_data=state.get("complaint_data",[])
-    required_fields=["product", "issue_type", "purchase_date"]
+    required_fields=["product", "issue_description"]
     missing = [field for field in required_fields if not complaint_data.get(field)]
 
     if missing:

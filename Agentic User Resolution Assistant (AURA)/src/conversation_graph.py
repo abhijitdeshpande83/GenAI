@@ -48,4 +48,4 @@ def clarification_flow(state: SupervisorState) -> dict:
     ])
     
     # Returning the response to update the message state
-    return {"messages": [response.content]}
+    return {"messages": [response.content], "active_flow": None}
