@@ -9,6 +9,8 @@
 /IntelliQA/data/
 /IntelliQA/__pycache__
 
+# AURA Project
+/Agentic User Resolution Assistant (AURA)/models/deberta-small/model.safetensors
 
 # SupportIQ Project
 **/venv*/
