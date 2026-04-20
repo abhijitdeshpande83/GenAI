@@ -19,12 +19,8 @@ class SupervisorState(MessagesState):
         State for multi-agent system
     """   
     user_input: str
-    user_intent: str
 
-    actions_taken: str
-    observations: Annotated[list, add]
-    response: Annotated[list, add]
-    
+    extracted_info: Dict
     complaint_data: Annotated[dict, merge_dicts]
     missing_info: list
     active_flow: Optional[str]=None
