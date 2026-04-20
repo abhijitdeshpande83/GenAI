@@ -89,6 +89,7 @@ def create_ticket_node(state:SupervisorState)->SupervisorState:
         "details":complaint_data
     }
     return {"messages":f"Ticket {ticket['ticket_id']} has been created.", 
+            "extracted_info": complaint_data,
             "complaint_data": {},
             "active_flow": None,
             "missing_info":None

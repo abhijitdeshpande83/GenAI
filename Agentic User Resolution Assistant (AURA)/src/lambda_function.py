@@ -11,9 +11,18 @@ def lambda_handler(event, context):
 
         response=agent(usr_input)
 
+        data = {   
+                    "message": response.get("messages")[-1].content,
+                    "extracted_info": response.get("extracted_info"),
+                    "complaint_data": response.get("complaint_data"),
+                    "missing_info": response.get("missing_info"),
+                    "active_flow": response.get("active_flow"),
+                    "customer_profile": response.get("customer_profile"),
+                }
+
         return {
             "statusCode":200,
-            "body":json.dumps(response),
+            "body":json.dumps(data),
             "headers":
             {
                 "Content-Type":"application/json"
