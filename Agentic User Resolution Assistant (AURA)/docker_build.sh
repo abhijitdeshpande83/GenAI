@@ -16,7 +16,7 @@ aws ecr get-login-password --region us-east-1 | docker login --username AWS --pa
 
 #Build and push to both registries
 docker buildx build --platform linux/amd64 --provenance=false \
-        -t $DOCKER_USER/task-pilot:$IMG_TAG -t $ECR_URI/aura:$IMG_TAG --push .
+        -t $DOCKER_USER/aura:$IMG_TAG -t $ECR_URI/aura:$IMG_TAG --push .
 
 #Dispaly message
 echo "------ Image pushed to ECR ------"

@@ -4,8 +4,7 @@ import json
 def lambda_handler(event, context):
 
     try:
-        body=json.loads(event['body']) if 'body' in event else event
-        usr_input = body.get('user_input', None)
+        usr_input=json.loads(event['body']) if 'body' in event else event
 
         if not usr_input:
             raise ValueError("Input text is missing")
