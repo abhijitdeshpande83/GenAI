@@ -21,7 +21,7 @@ def greeting_flow(state:SupervisorState)->dict:
     """
     response = llm.invoke([SystemMessage(content=prompt)])
     
-    return {"messages": [response.content], "active_flow": None}
+    return {"messages": [response.content], "active_flow": None, "extracted_info":None}
 
 
 def clarification_flow(state: SupervisorState) -> dict:
@@ -48,4 +48,4 @@ def clarification_flow(state: SupervisorState) -> dict:
     ])
     
     # Returning the response to update the message state
-    return {"messages": [response.content], "active_flow": None}
+    return {"messages": [response.content], "active_flow": None, "extracted_info":None}
