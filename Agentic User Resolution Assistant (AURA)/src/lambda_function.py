@@ -4,12 +4,15 @@ import json
 def lambda_handler(event, context):
 
     try:
-        usr_input=json.loads(event['body']) if 'body' in event else event
+        body = json.loads(event['body']) if 'body' in event else event
 
-        if not usr_input:
+        user_text = body.get("user_input")
+        session = body.get("session_id")
+
+        if not user_text:
             raise ValueError("Input text is missing")
 
-        response=agent(usr_input)
+        response=agent(user_text,session)
 
         data = {   
                     "message": response.get("messages")[-1].content,

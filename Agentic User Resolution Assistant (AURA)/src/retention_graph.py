@@ -74,26 +74,22 @@ def reward_node(state:SupervisorState)->SupervisorState:
     churn_score=state['customer_profile']['churn_score']
     loyalty_score=state['customer_profile']['loyalty_score']
 
-    system_prompt=""" 
-    You are a customer retention assistant. 
-    Generate a polite, empathetic message based on the following:
-    - The user's message
-    - Their churn risk (high, medium, low)
-    - Their loyalty score (40-1000)
-
-    Rules:
-    - If loyalty score >= 800 → emphasize strong appreciation and give a high reward (e.g., big discount, free premium month).
-    - If 500-799 → show gratitude and offer a medium reward (e.g., discount or perk).
-    - If 200-499 → acknowledge their value and give a small reward (e.g., loyalty points or small discount).
-    - If < 200 → do not give a reward, just apologize and promise to improve.
-    - If churn risk = high → always start by apologizing and showing empathy before mentioning any reward.
-    - Keep the message short, friendly, concise and natural. Do not include technical terms or scores.
+    system_prompt = """ 
+    You are a customer support agent. Write a short, friendly response to the user.
     
-    Respond with only the final concise message.
-    """
+    Guidelines:
+    - High loyalty (>=800): Give a big reward (e.g. 1 month free).
+    - Medium loyalty (500-799): Give a medium reward (e.g. 20% discount).
+    - Low loyalty (200-499): Give a small reward (e.g. loyalty points).
+    - Very low loyalty (<200): No reward, just be polite.
+    - If churn risk is 'high', start with a sincere apology.
 
+    IMPORTANT: Send only the plain text of your response. 
+    Do NOT use quotation marks, do NOT say 'Message:', and do NOT use any labels.
+    """
+    
     user_context = f"""
-        User message: {user_input}
+        User: {user_input}
         Churn risk: {churn_score}
         Loyalty score: {loyalty_score}
         """
@@ -101,7 +97,7 @@ def reward_node(state:SupervisorState)->SupervisorState:
     response = llm.invoke([{'role':'system', 'content':system_prompt},
                            {'role':'user','content':user_context}])
     
-    return {"messages":[response.content], "active_flow":None}
+    return {"messages":response, "active_flow":None, "extracted_info":None}
 
 def build_retention_graph():
 

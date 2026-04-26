@@ -19,7 +19,7 @@ def rag_node(state:SupervisorState)->SupervisorState:
         """
     response = llm.invoke([SystemMessage(system_prompt)]+[HumanMessage(user_input)])
     
-    return {'messages':[response.content], "active_flow": None}
+    return {'messages':[response.content], "active_flow": None, "extracted_info":None}
 
 
 def build_inquiry_node():

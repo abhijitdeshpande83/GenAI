@@ -1,4 +1,4 @@
-from langgraph.graph import StateGraph, START, END, MessagesState
+from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 from src.state_schema import SupervisorState
 from src.supervisor_graph import supervisor_node
@@ -27,6 +27,9 @@ def build_graph():
 
 workflow = build_graph()
 
-def agent(state:SupervisorState)->SupervisorState:
-    config = {"configurable": {"thread_id": "support_session_1"}}
-    return workflow.invoke(state,config)
+def agent(user_input: str, thread_id:str)->SupervisorState:
+    config = {"configurable": {"thread_id": thread_id}}
+    return workflow.invoke(
+        {"user_input":user_input},
+        config
+        )

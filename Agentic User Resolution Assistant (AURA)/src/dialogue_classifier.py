@@ -4,6 +4,7 @@ from transformers import pipeline
 # Point to the folder relative to your src directory
 # If your Dockerfile copies the 'models' folder into /app/models
 local_model_path = "/app/models/deberta-small"
+# local_model_path = "../models/deberta-small"
 
 dialogue_classifier = pipeline(
     "zero-shot-classification",
@@ -21,7 +22,7 @@ dialogue_classifier = pipeline(
 
 DIALOGUE_LABELS = {
     "customer reporting something is broken, not working, or malfunctioning": "complaint_flow",
-    "customer asking a question to get information or learn how to do something": "inquiry_node",
+    "customer asking a question to get information or learn how to do something": "inquiry_flow",
     "customer expressing unhappiness or requesting action like return or replacement": "retention_flow",
     "social message like a greeting, goodbye, or unrelated conversation": "greeting_flow",
     "customer describing a situation without saying what they want done": "clarification_flow" 
