@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 import os
-import boto3
+# import boto3
 
 def model_fn():
 
