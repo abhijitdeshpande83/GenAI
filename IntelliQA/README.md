@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://theanalyticmind.com/projects/IntelliQA/">
-    <img src="https://img.shields.io/badge/Live%20Demo-theanalyticmind.com%2Fprojects%2FIntelliQA-38bdf8?logo=googlechrome&logoColor=white&style=for-the-badge" alt="Live Demo"/>
+    <img src="https://img.shields.io/badge/Live%20Demo-IntelliQA-38bdf8?logo=googlechrome&logoColor=white&style=for-the-badge" alt="Live Demo"/>
   </a>
 </p>
 
