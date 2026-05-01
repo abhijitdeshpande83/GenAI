@@ -1,25 +1,15 @@
 # IntelliQA: Document-Grounded RAG System
 
-<div style="text-align: center; margin: 40px 0;">
-  <a href="https://theanalyticmind.com/projects/IntelliQA/" style="
-    display: inline-flex; 
-    align-items: center; 
-    gap: 10px; 
-    background: #38bdf8; 
-    color: #0f172a; 
-    padding: 14px 28px; 
-    border-radius: 12px; 
-    text-decoration: none; 
-    font-weight: 800; 
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.39);
-  ">
-    <img src="https://api.iconify.design/lucide:rocket.svg?color=%230f172a" width="20" alt="Launch"/>
-    Launch Live Demo
+<div align="center">
+  <br>
+  <a href="https://theanalyticmind.com/projects/IntelliQA/">
+    <img src="https://img.shields.io/badge/🚀_Launch_Live_Demo-IntelliQA-0f172a?style=for-the-badge&logo=rocket&logoColor=38bdf8&labelColor=1e293b" alt="Live Demo"/>
   </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/abhijitdeshpande83/GenAI/tree/main/IntelliQA">
+    <img src="https://img.shields.io/badge/View_Source_Code-GitHub-0f172a?style=for-the-badge&logo=github&logoColor=white&labelColor=1e293b" alt="Source Code"/>
+  </a>
+  <br><br>
 </div>
 
 ## System Overview
