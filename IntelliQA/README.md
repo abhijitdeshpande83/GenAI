@@ -1,16 +1,16 @@
 # IntelliQA: Document-Grounded RAG System
 
-<div align="center">
-  <br>
+<br>
+
+<blockquote align="center">
+  <h3>✨ Experience IntelliQA in Action</h3>
+  <p>Test the multi-tenant RAG architecture live.</p>
   <a href="https://theanalyticmind.com/projects/IntelliQA/">
-    <img src="https://img.shields.io/badge/🚀_Launch_Live_Demo-IntelliQA-0f172a?style=for-the-badge&logo=rocket&logoColor=38bdf8&labelColor=1e293b" alt="Live Demo"/>
+    <img src="https://img.shields.io/badge/Launch_Live_Demo-38bdf8?style=for-the-badge&logo=googlechrome&logoColor=0f172a&labelColor=1e293b" alt="Live Demo"/>
   </a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/abhijitdeshpande83/GenAI/tree/main/IntelliQA">
-    <img src="https://img.shields.io/badge/View_Source_Code-GitHub-0f172a?style=for-the-badge&logo=github&logoColor=white&labelColor=1e293b" alt="Source Code"/>
-  </a>
-  <br><br>
-</div>
+</blockquote>
+
+<br>
 
 ## System Overview
 
