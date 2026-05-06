@@ -166,7 +166,7 @@ responses:
 
   utter_ask_seat_number:
     - text: Please select a seat.
-      image: https://analyticnerds.com/static/project_data/movie_seats.png
+      image: https://theanalyticmind.com/static/project_data/movie_seats.png
 
   utter_goodbye:
     - text: Have a good day!
