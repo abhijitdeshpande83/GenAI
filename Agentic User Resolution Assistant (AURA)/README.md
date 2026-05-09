@@ -1,86 +1,134 @@
-# Intent-Driven Customer Support System (Work in Progress)
+# AURA: Hybrid Conversational AI Support System
 
-## Project Overview
+## System Overview
 
-This project focuses on building an **intent-driven, AI-powered customer support system** that can intelligently understand customer messages and route them through the appropriate resolution workflow.
+AURA is a **production-oriented hybrid GenAI system** designed for automated customer support using a combination of:
 
-The primary goal is to demonstrate a **clear strategy and system design** rather than a finished product. The implementation is currently **work in progress**, but this repository documents the **architecture, intent flows, and long-term vision** of the system.
+- deterministic intent routing (ML classifier)
+- graph-based orchestration
+- LLM-based tool-augmented reasoning
+
+The system is built to explore a key production challenge in modern GenAI systems:
+
+> How to balance **deterministic control** with **LLM flexibility** without sacrificing reliability.
 
 ---
 
 ## Problem Statement
 
-Customer support is a **traditional yet critical problem** for most businesses. Customers interact with support systems for many different reasons, learning about products, asking questions, searching for information, or raising concerns when something goes wrong.
+Most customer support systems today fail in production due to:
 
-Most chatbots today are limited to **simple question–answer interactions** and lack a deeper understanding of *what the customer is truly trying to achieve*. This often results in:
-- Generic responses
-- Missed churn signals
-- Poor handling of dissatisfaction
-- Problems being escalated too late
+- over-reliance on static FAQ systems  
+- uncontrolled LLM behavior (hallucination + inconsistency)  
+- lack of intent-aware routing  
+- poor separation between retrieval, reasoning, and workflow execution  
 
-This project approaches the problem differently by using an **agentic, intent-driven system** that understands *why* the customer is interacting, not just *what* they are saying.
+This leads to:
+- incorrect responses  
+- inefficient escalation pipelines  
+- poor customer retention handling  
 
----
-
-## Core Strategy
-
-This system uses an **agentic approach** to solve a traditional customer support problem.
-
-From a customer’s perspective, the chat UI acts like a familiar chatbot interface. However, behind the scenes, the system does much more than just reply to messages.
-
-Instead of treating all interactions as simple conversations, the system:
-- Understands what the customer is actually looking for
-- Identifies whether the interaction is informational, problem-driven, or risk-related
-- Selects the most appropriate resolution strategy automatically
-
-At a high level, the strategy follows a **single-entry, multi-purpose design**:
-
-1. A customer interacts with the system through a chat UI
-2. The system analyzes the message to understand customer intent
-3. The request is routed into a specialized workflow
-4. The system aims to resolve the issue directly at the UI level whenever possible
-
-This approach helps **resolve customer problems faster**, **reduce unnecessary escalations**, and **improve customer retention**.
+AURA is designed to address these issues using a **controlled hybrid architecture**.
 
 ---
 
-## Workflow Visualization
+## 🧠 System Design Philosophy
 
-### Visual Narration
-<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraphvisual%20naraction.png" alt="Visual Narration" width="400" height="450"></p>
+AURA follows a **control-first GenAI architecture**:
 
-### Workflow Diagram
-<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraph%20workflow.png" alt="Workflow Diagram" width="400" height="650"></p>
+### 1. Deterministic First Principle
+All user inputs are first routed through a **DeBERTa-based intent classifier**, ensuring predictable system behavior before any LLM is invoked.
 
+### 2. LLMs as Scoped Executors
+LLMs are used only inside bounded contexts (Inquiry Agent), not for global orchestration decisions.
 
-
-## Intent Identification
-
-The **Intent Identification step** is the foundation of the system.
-
-Customers may use the chat UI for a variety of reasons:
-- Learning about products (e.g., laptop specifications or features)
-- Searching for information
-- Asking general questions
-- Expressing dissatisfaction or frustration
-- Raising complaints about products or services
-
-The system analyzes each incoming message and classifies it into one of the following intents:
-- **Query** – Informational requests such as product details or general questions
-- **Complaint** – Issues that require formal tracking or backend intervention
-- **Churn** – Signals that indicate dissatisfaction or a high risk of customer churn
-
-By distinguishing between *complaints* and *churn-risk scenarios*, the system can decide whether the best action is to **create a ticket** or **attempt proactive retention**.
-
-This single decision point controls the entire flow of the system.
+### 3. Graph-Based Execution Control
+All workflows are executed using a **LangGraph state machine**, ensuring structured and traceable execution paths.
 
 ---
-## Customer Support Workflows
 
-| Aspect | Churn Detection & Retention | Question & Answer (RAG) | Complaint Handling & Ticket Creation |
-|--------|-----------------------------|-------------------------|-------------------------------------|
-| **Objective** | Reduce customer churn by proactively identifying risk and offering retention incentives. | Provide fast and accurate answers to customer queries. | Ensure customer complaints are tracked and handled reliably. |
-| **Planned Approach** | - Use an ML model to assess churn risk based on customer behavior and message context<br>- Evaluate customer loyalty or historical engagement<br>- Generate personalized retention offers or rewards<br>- Deliver a tailored response aimed at retaining the customer | - Retrieve relevant information from a knowledge base<br>- Use a Retrieval-Augmented Generation (RAG) approach<br>- Generate clear, context-aware responses<br>- Return the answer directly to the customer without escalation | - Automatically create a support ticket for complaint-related messages<br>- Raise the ticket to backend systems or support teams<br>- Send a confirmation (with ticket reference) back to the customer |
+## 🏗️ High-Level Architecture
+
+The system follows a **three-layer design pattern**:
+
+### 1. Control Layer (Routing)
+- Intent classification using DeBERTa  
+- Routes request into predefined system paths  
+
+### 2. Execution Layer (Workflows)
+- Complaint handling (ticket generation)  
+- Retention handling (churn mitigation logic)  
+
+### 3. Reasoning Layer (LLM Agent)
+- Inquiry agent powered by Groq LLM  
+- Tool-based dynamic information retrieval  
+
+---
+
+## 🔄 Core Execution Flow
+
+1. User sends input via chat interface  
+2. Intent classifier (DeBERTa) determines category:
+   - Query  
+   - Complaint  
+   - Churn Risk  
+3. LangGraph routes request to appropriate node:
+   - Inquiry Agent → LLM + tools  
+   - Complaint Workflow → ticket creation  
+   - Retention Workflow → churn mitigation logic  
+4. Response is generated and returned to user  
+
+---
+
+## 🧠 Design Decision: Why Hybrid Instead of Pure LLM
+
+A fully LLM-driven orchestration approach was initially tested but failed due to:
+
+### Failure Modes Observed:
+- inconsistent tool selection  
+- execution loops between tools  
+- non-deterministic workflow behavior  
+- poor production stability  
+
+### Final Decision:
+A **hybrid architecture was introduced**:
+
+- ML model handles routing (DeBERTa)  
+- LLM is restricted to bounded reasoning (Inquiry only)  
+- workflows are deterministic and traceable  
+
+This improved:
+- reliability  
+- latency stability  
+- production predictability  
+
+---
+
+## 🧩 System Components
+
+### 🔹 Intent Router
+Model: DeBERTa  
+Function: classifies user intent into structured categories  
+
+---
+
+### 🔹 Orchestration Engine
+Framework: LangGraph  
+Function: manages state transitions across workflows  
+
+---
+
+### 🔹 LLM Layer
+Model: Groq LLM  
+Function: tool-augmented reasoning for inquiry handling  
+
+---
+
+### 🔹 Infrastructure Layer
+- AWS Lambda  
+- API Gateway  
+- ECR  
+- Docker  
 
 ---
 
@@ -95,23 +143,25 @@ This single decision point controls the entire flow of the system.
     </td>
   </tr>
   <tr>
-    <td><strong>Retrieval & Knowledge</strong></td>
+    <td><strong>Large Language Models</strong></td>
     <td>
-      <img src="https://img.shields.io/badge/RAG-0F172A?logo=opensearch&logoColor=white" alt="RAG">
-      <img src="https://img.shields.io/badge/ChromaDB-FFDE57?logo=databricks&logoColor=black" alt="ChromaDB">
+      <img src="https://img.shields.io/badge/Groq%20LLM-00C7B7?logo=lightning&logoColor=white" alt="Groq LLM">
     </td>
   </tr>
   <tr>
     <td><strong>Machine Learning</strong></td>
     <td>
-      <img src="https://img.shields.io/badge/Intent%20Classification-0A66C2?logo=scikitlearn&logoColor=white" alt="Intent Classification">
+      <img src="https://img.shields.io/badge/DeBERTa%20Intent%20Classification-0A66C2?logo=scikitlearn&logoColor=white" alt="DeBERTa">
       <img src="https://img.shields.io/badge/Churn%20Prediction-701516?logo=pytorch&logoColor=white" alt="Churn Prediction">
     </td>
   </tr>
   <tr>
-    <td><strong>Large Language Models</strong></td>
+    <td><strong>Deployment</strong></td>
     <td>
-      <img src="https://img.shields.io/badge/Groq%20LLM-FF6F00?logo=lightning&logoColor=white" alt="Groq LLM">
+      <img src="https://img.shields.io/badge/AWS%20Lambda-FF9900?logo=amazonaws&logoColor=white" alt="Lambda">
+      <img src="https://img.shields.io/badge/API%20Gateway-232F3E?logo=amazonaws&logoColor=white" alt="API Gateway">
+      <img src="https://img.shields.io/badge/ECR-FF9900?logo=amazonaws&logoColor=white" alt="ECR">
+      <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker">
     </td>
   </tr>
   <tr>
@@ -124,33 +174,66 @@ This single decision point controls the entire flow of the system.
 
 ---
 
-## Project Status
+## 📊 Key System Characteristics
 
-- ✅ Architecture and strategy defined
-- 🚧 Core workflows under development
-- 🚧 Model training and integrations in progress
-
-This repository currently serves as a **design and strategy reference**, with implementation evolving iteratively.
-
----
-
-## 🔮 Future Enhancements
-
-- Human-in-the-loop escalation
-- Analytics and intent distribution dashboards
-- Feedback-driven model improvement
-- Multi-channel support (email, voice, chatbot)
+- Hybrid architecture (deterministic + LLM reasoning)  
+- Intent-first routing before LLM invocation  
+- Graph-based execution model (LangGraph)  
+- Tool-augmented LLM reasoning (bounded scope)  
+- Production-oriented design with latency constraints  
 
 ---
 
-## Value to Customers
+## 📈 Performance Highlights
 
- - Resolves customer issues faster at the chat interface
- - Distinguishes questions, complaints, and churn risk
- - Reduces unnecessary backend tickets and escalations
-
-It is intended to showcase **end-to-end thinking**, from user interaction to business outcomes.
+- 89% accuracy (3-class intent classification)  
+- Sub-800ms p95 latency  
+- Reduced LLM routing failures via deterministic control layer  
+- Eliminated tool-selection loops from initial LLM-only design  
 
 ---
 
-> **Note:** This project is actively evolving. Documentation will be updated as implementation progresses.
+## 🧪 Workflow Visualization
+
+### Visual Representation
+<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraphvisual%20naraction.png" alt="Visual Narration" width="400" height="450"></p>
+
+### Execution Graph
+<p align="center"><img src="docs/Multi‑Agent%20Customer%20Support%20System%20using%20LangGraph%20and%20LLM%20Orchestrationgraph%20workflow.png" alt="Workflow Diagram" width="400" height="650"></p>
+
+
+---
+
+## 🚧 Current Status
+
+- Core routing system complete  
+- Intent classifier integrated  
+- Inquiry agent tool system in progress  
+- Retention + complaint workflows under refinement  
+
+---
+
+## 🚀 Future Improvements
+
+- Feedback loop for intent classifier improvement  
+- LLM evaluation framework (hallucination + correctness)  
+- Multi-channel deployment (voice, email, chat)  
+- Observability layer for agent decisions  
+- Human-in-the-loop escalation system  
+
+---
+
+## 💡 System Value
+
+AURA demonstrates how modern GenAI systems can be designed using:
+
+- structured control flow  
+- selective LLM usage  
+- graph-based orchestration  
+- ML-driven routing  
+
+It reflects real-world production constraints where **reliability matters more than full autonomy**.
+
+---
+
+> This project focuses on **production-grade GenAI system design, not just model experimentation.**
