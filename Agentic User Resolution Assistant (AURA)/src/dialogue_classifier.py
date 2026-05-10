@@ -3,8 +3,8 @@ from transformers import pipeline
 
 # Point to the folder relative to your src directory
 # If your Dockerfile copies the 'models' folder into /app/models
-local_model_path = "/app/models/deberta-small"
-# local_model_path = "../models/deberta-small"
+# local_model_path = "/app/models/deberta-small"
+local_model_path = "../models/deberta-small"
 
 dialogue_classifier = pipeline(
     "zero-shot-classification",
