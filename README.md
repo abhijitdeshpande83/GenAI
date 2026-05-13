@@ -5,8 +5,19 @@
 Each project lives in its own folder with a dedicated README covering architecture, implementation choices, and trade-offs. The main goals across this portfolio: production deployment, hybrid (deterministic + LLM) design, and honest documentation of what worked and what didn’t.
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=abhijitdeshpande83&show_icons=true&theme=tokyonight&count_private=true" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=abhijitdeshpande83&theme=tokyonight" />
+  <img 
+    src="https://github-readme-stats-sigma-five.vercel.app/api?username=abhijitdeshpande83&show_icons=true&hide_border=true&border_radius=12&bg_color=050a14&title_color=38bdf8&icon_color=38bdf8&text_color=ffffff&count_private=true" 
+    alt="Abhijit's GitHub Stats" 
+    height="171" 
+    style="vertical-align: middle;"
+  />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img 
+    src="https://github-readme-streak-stats-eight.vercel.app/?user=abhijitdeshpande83&hide_border=true&border_radius=12&background=050a14&stroke=1e293b&ring=38bdf8&fire=ff6600&currStreakLabel=ffffff&sideLabels=ffffff&dates=94a3b8&currStreakNum=ffffff&sideNums=ffffff" 
+    alt="GitHub Streak" 
+    height="170" 
+    style="vertical-align: middle;"
+  />
 </p>
 
 ---
