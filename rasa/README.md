@@ -90,6 +90,6 @@ Need of Symlink: Inside a Docker container, in this case when copy or mount mode
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/abhijitdeshpande83/NLP.git
-cd NLP/SupportIQ/rasa
+git clone https://github.com/abhijitdeshpande83/GenAI.git
+cd GenAI/rasa
 ```
