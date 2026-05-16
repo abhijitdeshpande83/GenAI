@@ -11,7 +11,6 @@ Each project lives in its own folder with a dedicated README covering architectu
     height="171" 
     style="vertical-align: middle;"
   />
-  &nbsp;&nbsp;&nbsp;
   <img 
     src="https://github-readme-streak-stats-eight.vercel.app/?user=abhijitdeshpande83&hide_border=true&border_radius=12&background=050a14&stroke=1e293b&ring=38bdf8&fire=ff6600&currStreakLabel=ffffff&sideLabels=ffffff&dates=94a3b8&currStreakNum=ffffff&sideNums=ffffff" 
     alt="GitHub Streak" 
