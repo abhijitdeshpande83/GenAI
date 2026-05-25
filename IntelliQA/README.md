@@ -24,14 +24,55 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 
 ## 🛠️ Tech Stack
 
-| **LLM & Inference** | ![Llama 3.3 70B](https://img.shields.io/badge/Llama%203.3%2070B-0467DF?logo=meta&logoColor=white) ![Groq LPU](https://img.shields.io/badge/Groq%20LPU-F55036?logo=lightning&logoColor=white) |
-| --- | --- |
-| **Embeddings** | ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?logo=huggingface&logoColor=black) ![all-MiniLM-L6-v2](https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?logo=pytorch&logoColor=white) |
-| **RAG Framework** | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white) ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B6B?logo=databricks&logoColor=white) |
-| **Document Parsing** | ![Apache Tika](https://img.shields.io/badge/Apache%20Tika-D22128?logo=apache&logoColor=white) |
-| **Deployment** | ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?logo=amazonaws&logoColor=white) |
-| **Packaging** | ![Wheel](https://img.shields.io/badge/setup.py%20%2B%20wheel-3776AB?logo=pypi&logoColor=white) |
-| **Programming Language** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white) |
+<table align="center">
+<tr>
+  <td align="right"><b>LLM & Inference</b></td>
+  <td>
+    <img src="https://img.shields.io/badge/Llama_3.3_70B-0467DF?style=for-the-badge&logo=meta&logoColor=white&labelColor=0f172a"/>
+    <img src="https://img.shields.io/badge/Groq_LPU-F55036?style=for-the-badge&logo=lightning&logoColor=white&labelColor=0f172a"/>
+  </td>
+</tr>
+<tr>
+  <td align="right"><b>Embeddings</b></td>
+  <td>
+    <img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black&labelColor=0f172a"/>
+    <img src="https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?style=for-the-badge&logo=pytorch&logoColor=white&labelColor=0f172a"/>
+  </td>
+</tr>
+<tr>
+  <td align="right"><b>RAG Framework</b></td>
+  <td>
+    <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white&labelColor=0f172a"/>
+    <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logo=databricks&logoColor=white&labelColor=0f172a"/>
+  </td>
+</tr>
+<tr>
+  <td align="right"><b>Document Parsing</b></td>
+  <td>
+    <img src="https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white&labelColor=0f172a"/>
+  </td>
+</tr>
+<tr>
+  <td align="right"><b>Deployment</b></td>
+  <td>
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=0f172a"/>
+    <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white&labelColor=0f172a"/>
+  </td>
+</tr>
+<tr>
+  <td align="right"><b>Packaging</b></td>
+  <td>
+    <img src="https://img.shields.io/badge/setup.py_%2B_wheel-3776AB?style=for-the-badge&logo=pypi&logoColor=white&labelColor=0f172a"/>
+  </td>
+</tr>
+<tr>
+  <td align="right"><b>Language</b></td>
+  <td>
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=0f172a"/>
+    <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white&labelColor=0f172a"/>
+  </td>
+</tr>
+</table>
 
 ## ✨ Key Features
 
