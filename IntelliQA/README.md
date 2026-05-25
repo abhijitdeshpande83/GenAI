@@ -1,13 +1,10 @@
 # IntelliQA: Document-Grounded RAG System
 
-<div align="center">
+<p align="center">
   <a href="https://theanalyticmind.com/projects/IntelliQA/">
-    <img src="https://img.shields.io/badge/Live_Demo-IntelliQA-0f172a?style=flat-square&logo=googlechrome&logoColor=38bdf8&labelColor=1e293b" alt="Live Demo"/>
+    <img src="https://img.shields.io/badge/Live_Demo-IntelliQA-38bdf8?style=for-the-badge&logo=googlechrome&logoColor=white&labelColor=0f172a" alt="Live Demo: IntelliQA on theanalyticmind.com"/>
   </a>
-  <a href="https://github.com/abhijitdeshpande83/GenAI/tree/main/IntelliQA">
-    <img src="https://img.shields.io/badge/Source_Code-GitHub-0f172a?style=flat-square&logo=github&logoColor=white&labelColor=1e293b" alt="Source Code"/>
-  </a>
-</div>
+</p>
 
 ## System Overview
 
