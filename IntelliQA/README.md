@@ -24,55 +24,32 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 
 ## 🛠️ Tech Stack
 
-<table align="center">
-<tr>
-  <td align="right"><b>LLM & Inference</b></td>
-  <td>
-    <img src="https://img.shields.io/badge/Llama_3.3_70B-0467DF?style=for-the-badge&logo=meta&logoColor=white&labelColor=0f172a"/>
-    <img src="https://img.shields.io/badge/Groq_LPU-F55036?style=for-the-badge&logo=lightning&logoColor=white&labelColor=0f172a"/>
-  </td>
-</tr>
-<tr>
-  <td align="right"><b>Embeddings</b></td>
-  <td>
-    <img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black&labelColor=0f172a"/>
-    <img src="https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?style=for-the-badge&logo=pytorch&logoColor=white&labelColor=0f172a"/>
-  </td>
-</tr>
-<tr>
-  <td align="right"><b>RAG Framework</b></td>
-  <td>
-    <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white&labelColor=0f172a"/>
-    <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logo=databricks&logoColor=white&labelColor=0f172a"/>
-  </td>
-</tr>
-<tr>
-  <td align="right"><b>Document Parsing</b></td>
-  <td>
-    <img src="https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white&labelColor=0f172a"/>
-  </td>
-</tr>
-<tr>
-  <td align="right"><b>Deployment</b></td>
-  <td>
-    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=0f172a"/>
-    <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white&labelColor=0f172a"/>
-  </td>
-</tr>
-<tr>
-  <td align="right"><b>Packaging</b></td>
-  <td>
-    <img src="https://img.shields.io/badge/setup.py_%2B_wheel-3776AB?style=for-the-badge&logo=pypi&logoColor=white&labelColor=0f172a"/>
-  </td>
-</tr>
-<tr>
-  <td align="right"><b>Language</b></td>
-  <td>
-    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=0f172a"/>
-    <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white&labelColor=0f172a"/>
-  </td>
-</tr>
-</table>
+<p align="center">
+
+### LLM & Inference  
+<img src="https://img.shields.io/badge/Llama_3.3_70B-0467DF?style=for-the-badge&logo=meta&logoColor=white&labelColor=0f172a"/>
+<img src="https://img.shields.io/badge/Groq_LPU-F55036?style=for-the-badge&logo=lightning&logoColor=white&labelColor=0f172a"/>
+
+### Embeddings  
+<img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black&labelColor=0f172a"/>
+<img src="https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?style=for-the-badge&logo=pytorch&logoColor=white&labelColor=0f172a"/>
+
+### RAG Framework  
+<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white&labelColor=0f172a"/>
+<img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logo=databricks&logoColor=white&labelColor=0f172a"/>
+
+### Document Parsing  
+<img src="https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white&labelColor=0f172a"/>
+
+### Deployment  
+<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=0f172a"/>
+<img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white&labelColor=0f172a"/>
+
+### Language & Tools  
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=0f172a"/>
+<img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white&labelColor=0f172a"/>
+
+</p>
 
 ## ✨ Key Features
 
