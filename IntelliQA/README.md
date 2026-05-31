@@ -68,11 +68,19 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 
 **4. Package-First Distribution.** Core RAG logic ships as a Python wheel. The notebook is a demo. The wheel is the product, and it powers the live portfolio site.
 
-**5. Honest Boundaries.** The system can fail in known ways (retrieval misses, ambiguous source documents, questions outside the indexed content). Design decisions surface these failure modes rather than hide them. `temperature=0` is for reproducibility, not zero-hallucination; the prompt instructs the model to say "I don't know" when context is insufficient.
+**5. Honest Boundaries.** The system can fail in known ways: retrieval misses, ambiguous source documents, questions outside the indexed content. Design decisions surface these failure modes rather than hide them. `temperature=0` is for reproducibility, not zero hallucination; the prompt instructs the model to say "I don't know" when retrieved context is insufficient.
 
-## 🏗️ High-Level Architecture
+## 🏗️ How RAG Works in IntelliQA
 
-The system is organized into four layers:
+At a high level, IntelliQA wraps four functional stages into one installable pipeline: a parser converts documents to text, an embedder converts text to vectors, a vector store holds them for similarity search, and an LLM generates answers grounded in the retrieved chunks.
+
+<p align="center">
+  <img src="./docs/intelliQA.svg" alt="How RAG works in IntelliQA: parsing, embedding, retrieval, generation" width="100%"/>
+</p>
+
+## 🏗️ System Architecture
+
+The real system adds operational layers around the RAG core. Four layers in total:
 
 **Ingestion** &nbsp;·&nbsp; Apache Tika parses multi-format input; deduplication and chunking happen before vectors touch the store.
 
@@ -82,7 +90,9 @@ The system is organized into four layers:
 
 **Operations** &nbsp;·&nbsp; Session lifecycle, per-session upload quotas, and a daily cron job for cleanup.
 
-![IntelliQA RAG Flow](./docs/RAG%20Flow.png)
+<p align="center">
+  <img src="./docs/RAG%20Flow.png" alt="IntelliQA architecture: full system with session isolation and lifecycle management" width="100%"/>
+</p>
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
