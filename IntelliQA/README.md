@@ -75,7 +75,7 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 At a high level, IntelliQA wraps four functional stages into one installable pipeline: a parser converts documents to text, an embedder converts text to vectors, a vector store holds them for similarity search, and an LLM generates answers grounded in the retrieved chunks.
 
 <p align="center">
-  <img src="./docs/intelliQA.svg" alt="How RAG works in IntelliQA: parsing, embedding, retrieval, generation" width="100%"/>
+  <img src="./docs/IntelliQA.svg" alt="How RAG works in IntelliQA: parsing, embedding, retrieval, generation" width="100%"/>
 </p>
 
 ## 🏗️ System Architecture
