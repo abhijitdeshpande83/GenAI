@@ -121,7 +121,9 @@ The real system adds operational layers around the RAG core. Four layers in tota
 **Operations** &nbsp;·&nbsp; Session lifecycle, per-session upload quotas, and a daily cron job for cleanup.
 
 <p align="center">
-  <img src="./docs/RAG%20Flow.png" alt="IntelliQA architecture: full system with session isolation and lifecycle management" width="100%"/>
+  <img src="./docs/RAG%20Flow.png"
+       alt="IntelliQA architecture: full system with session isolation and lifecycle management"
+       style="height: 700px; width: auto;"/>
 </p>
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
