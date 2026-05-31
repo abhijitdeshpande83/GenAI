@@ -1,34 +1,4 @@
-<style>
-  /* Global Containers */
-  .rag-container { font-family: 'Inter', system-ui, sans-serif; background: #0f172a; padding: 48px; border-radius: 24px; max-width: 1000px; margin: 0 auto 40px auto; border: 1px solid #1e293b; box-sizing: border-box; }
-  .rag-container-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 56px 48px; border-radius: 24px; max-width: 1000px; margin: 0 auto; border: 1px solid #334155; box-sizing: border-box; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-  .rag-container-shadow { background: #0f172a; border: 1px solid #334155; border-radius: 16px; padding: 48px; max-width: 1000px; margin: 0 auto 40px auto; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
-  
-  /* Grid Fixes (Forces equal heights in table cells) */
-  .rag-grid { width: 100%; border-collapse: separate; border-spacing: 20px; table-layout: fixed; margin: -20px; }
-  .rag-grid td { vertical-align: stretch; height: 1px; padding: 0; } /* height:1px forces inner divs to 100% height */
-  
-  /* Problem Statement Cards */
-  .grid-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; height: 100%; min-height: 100%; display: flex; flex-direction: column; overflow: hidden; }
-  .pillar-header { padding: 24px; background: rgba(239, 68, 68, 0.03); border-bottom: 1px solid #334155; }
-  .pillar-body { padding: 24px; background: rgba(56, 189, 248, 0.05); flex-grow: 1; }
-  
-  /* Key Features Cards */
-  .feature-card { background: #ffffff; border-radius: 16px; padding: 28px 24px; height: 100%; min-height: 190px; box-sizing: border-box; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
-  
-  /* Architecture Layout & Badge Fix */
-  .arch-grid { width: 100%; border-collapse: separate; border-spacing: 24px 0; table-layout: fixed; margin: 0 -12px; }
-  .arch-grid td { vertical-align: stretch; height: 1px; padding: 0; }
-  .arch-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; height: 100%; margin-top: 15px; box-sizing: border-box; }
-  .arch-card-open { background: #0f172a; border: 1px solid #38bdf8; border-radius: 12px; padding: 24px; position: relative; height: 100%; margin-top: 15px; box-sizing: border-box; }
-  .arch-badge { position: absolute; top: -12px; right: 24px; background: #38bdf8; color: #0f172a; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
-  
-  /* Typography */
-  .paradigm-label { color: #38bdf8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; font-weight: 700; }
-  .card-title { margin: 0 0 10px 0; font-size: 18px; font-weight: 800; color: #0f172a; }
-  .section-title { margin: 0 0 16px 0; font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
-  .section-subtitle { margin: 0 auto; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 700px; }
-</style>
+# IntelliQA: Document-Grounded RAG System
 
 <p align="center">
   <a href="https://theanalyticmind.com/projects/IntelliQA/">
