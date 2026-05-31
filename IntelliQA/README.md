@@ -30,7 +30,11 @@
   .section-subtitle { margin: 0 auto; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 700px; }
 </style>
 
-# IntelliQA: Document-Grounded RAG System
+<p align="center">
+  <a href="https://theanalyticmind.com/projects/IntelliQA/">
+    <img src="https://img.shields.io/badge/Live_Demo-IntelliQA-38bdf8?style=for-the-badge&logo=googlechrome&logoColor=white&labelColor=0f172a" alt="Live Demo: IntelliQA on theanalyticmind.com"/>
+  </a>
+</p>
 
 ## System Overview
 
@@ -40,131 +44,49 @@ IntelliQA is a **production-oriented Retrieval Augmented Generation (RAG) backen
 
 ## Problem Statement
 
-<div class="rag-container">
-  <div style="text-align: center; margin-bottom: 48px;">
-    <h2 class="section-title">Why Standard RAG Fails in Production</h2>
-    <p class="section-subtitle">Transitioning from "Hello World" scripts to reliable, multi-tenant services exposes fundamental flaws in the modern AI stack.</p>
-  </div>
-  <table role="presentation" class="rag-grid">
-    <tr>
-      <td>
-        <div class="grid-card">
-          <div class="pillar-header">
-            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 10px;">
-              <img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%23ef4444" width="20"/> The Knowledge Gap
-            </h3>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Models hallucinate when questions reach beyond their fixed training data.</p>
-          </div>
-          <div class="pillar-body">
-            <strong class="paradigm-label">IntelliQA Paradigm</strong>
-            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Strictly bounds generation to your retrieved document context only.</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="grid-card">
-          <div class="pillar-header">
-            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 10px;">
-              <img src="https://api.iconify.design/lucide:server-crash.svg?color=%23ef4444" width="20"/> The Prototype Trap
-            </h3>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Notebook scripts fail under multi-tenant load and lack operational safety.</p>
-          </div>
-          <div class="pillar-body">
-            <strong class="paradigm-label">IntelliQA Paradigm</strong>
-            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Ships as a robust, isolated Python wheel, production-ready by design.</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="grid-card">
-          <div class="pillar-header">
-            <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 10px;">
-              <img src="https://api.iconify.design/lucide:coins.svg?color=%23ef4444" width="20"/> The API Tax
-            </h3>
-            <p style="margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5;">Proprietary embedding APIs scale costs exponentially as documents grow.</p>
-          </div>
-          <div class="pillar-body">
-            <strong class="paradigm-label">IntelliQA Paradigm</strong>
-            <p style="margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.5;">Leverages local open-weight models, dropping bulk ingestion costs to zero.</p>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<p align="center">
+  <img src="./docs/problem-statement.svg" alt="Why Standard RAG Fails in Production: three pillars covering hallucination, prototype fragility, and vendor lock-in" width="100%"/>
+</p>
 
 ## TL;DR
 
-IntelliQA is a packaged RAG backend that directly addresses each of the failure modes above. Sessions are **isolated** (no cross-user leakage), capped at **5 uploads** (abuse prevention), content is **deduplicated** at ingestion, and a **scheduled cron job** manages disk space. Generation runs on **Llama 3.3 70B via Groq** against a persistent **ChromaDB** store. Shipped as the `rag_pipeline` Python wheel and currently powering document Q&A on [theanalyticmind.com](https://theanalyticmind.com).
+IntelliQA is a packaged RAG backend that directly addresses each of the failure modes above. Sessions are **isolated** (no cross-user leakage), capped at **5 uploads** (abuse prevention), content is **deduplicated** at ingestion, and a **scheduled cron job** manages disk space. Generation runs on **Llama 3.3 70B via Groq** against a persistent **ChromaDB** store. Shipped as the `rag_pipeline` Python wheel and powering the live demo at [theanalyticmind.com/projects/IntelliQA](https://theanalyticmind.com/projects/IntelliQA/).
 
 ## 🛠️ Tech Stack
 
-| **LLM & Inference** | ![Llama 3.3 70B](https://img.shields.io/badge/Llama%203.3%2070B-0467DF?logo=meta&logoColor=white) ![Groq LPU](https://img.shields.io/badge/Groq%20LPU-F55036?logo=lightning&logoColor=white) |
-| --- | --- |
-| **Embeddings** | ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?logo=huggingface&logoColor=black) ![all-MiniLM-L6-v2](https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?logo=pytorch&logoColor=white) |
-| **RAG Framework** | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white) ![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B6B?logo=databricks&logoColor=white) |
-| **Document Parsing** | ![Apache Tika](https://img.shields.io/badge/Apache%20Tika-D22128?logo=apache&logoColor=white) |
-| **Deployment** | ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?logo=amazonaws&logoColor=white) |
-| **Packaging** | ![Wheel](https://img.shields.io/badge/setup.py%20%2B%20wheel-3776AB?logo=pypi&logoColor=white) |
-| **Programming Language** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white) |
+<div align="center">
+
+| | |
+|:---|:---|
+| **LLM & Inference** | ![Llama 3.3 70B][llama] ![Groq LPU][groq] |
+| **Embeddings** | ![Hugging Face][hf] ![all-MiniLM-L6-v2][minilm] |
+| **RAG Framework** | ![LangChain][langchain] ![ChromaDB][chroma] |
+| **Document Parsing** | ![Apache Tika][tika] |
+| **Deployment** | ![Docker][docker] ![AWS EC2][ec2] |
+| **Packaging** | ![setup.py + wheel][wheel] |
+| **Language** | ![Python][python] ![Jupyter][jupyter] |
+
+</div>
+
+[llama]: https://img.shields.io/badge/Llama_3.3_70B-0467DF?style=for-the-badge&logo=meta&logoColor=white
+[groq]: https://img.shields.io/badge/Groq_LPU-F55036?style=for-the-badge&logo=lightning&logoColor=white
+[hf]: https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black
+[minilm]: https://img.shields.io/badge/all--MiniLM--L6--v2-6E6E6E?style=for-the-badge&logo=pytorch&logoColor=white
+[langchain]: https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white
+[chroma]: https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logo=databricks&logoColor=white
+[tika]: https://img.shields.io/badge/Apache_Tika-D22128?style=for-the-badge&logo=apache&logoColor=white
+[docker]: https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
+[ec2]: https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white
+[wheel]: https://img.shields.io/badge/setup.py_%2B_wheel-3776AB?style=for-the-badge&logo=pypi&logoColor=white
+[python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
+[jupyter]: https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white
+
 
 ## ✨ Key Features
 
-<div class="rag-container-gradient">
-  <div style="text-align: center; margin-bottom: 40px;">
-    <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Now Available</span>
-    <h2 style="margin: 20px 0 16px 0; font-size: 38px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">The Ultimate RAG Engine.</h2>
-    <p style="margin: 0 auto; color: #94a3b8; font-size: 17px; line-height: 1.6; max-width: 600px;">Drop it into any backend and watch your vector storage manage itself. Secure, self-cleaning, and infinitely scalable.</p>
-  </div>
-  <table role="presentation" class="rag-grid">
-    <tr>
-      <td>
-        <div class="feature-card" style="border-top: 4px solid #D22128;">
-          <img src="https://api.iconify.design/lucide:files.svg?color=%23D22128" width="38" style="margin-bottom: 12px;" alt="Files"/>
-          <h3 class="card-title">Universal Ingestion</h3>
-          <p style="margin:0; color:#475569; font-size:14px; line-height:1.5;">PDF, DOCX, HTML, TXT, RTF, ODT via Apache Tika. We process it all.</p>
-        </div>
-      </td>
-      <td>
-        <div class="feature-card" style="border-top: 4px solid #2563EB;">
-          <img src="https://api.iconify.design/material-symbols:lock-person.svg?color=%232563EB" width="38" style="margin-bottom: 12px;" alt="Lock"/>
-          <h3 class="card-title">Session Isolation</h3>
-          <p style="margin:0; color:#475569; font-size:14px; line-height:1.5;">Per-session ChromaDB namespacing prevents cross-user data leakage.</p>
-        </div>
-      </td>
-      <td>
-        <div class="feature-card" style="border-top: 4px solid #10B981;">
-          <img src="https://api.iconify.design/material-symbols:auto-delete.svg?color=%2310B981" width="38" style="margin-bottom: 12px;" alt="Clean"/>
-          <h3 class="card-title">Self-Cleaning Storage</h3>
-          <p style="margin:0; color:#475569; font-size:14px; line-height:1.5;">Automatic background cleanup of expired sessions and temp vectors.</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="feature-card" style="border-top: 4px solid #7C3AED;">
-          <img src="https://api.iconify.design/tabler:copy-off.svg?color=%237C3AED" width="38" style="margin-bottom: 12px;" alt="Dedupe"/>
-          <h3 class="card-title">Smart Deduplication</h3>
-          <p style="margin:0; color:#475569; font-size:14px; line-height:1.5;">Hash-based ingestion ensures identical content is never indexed twice.</p>
-        </div>
-      </td>
-      <td>
-        <div class="feature-card" style="border-top: 4px solid #F59E0B;">
-          <img src="https://api.iconify.design/lucide:gauge.svg?color=%23F59E0B" width="38" style="margin-bottom: 12px;" alt="Limits"/>
-          <h3 class="card-title">Abuse-Proof Uploads</h3>
-          <p style="margin:0; color:#475569; font-size:14px; line-height:1.5;">Intelligent hard caps and rate limits prevent storage abuse instantly.</p>
-        </div>
-      </td>
-      <td>
-        <div class="feature-card" style="border-top: 4px solid #3776AB;">
-          <img src="https://api.iconify.design/simple-icons:pypi.svg?color=%233776AB" width="36" style="margin-bottom: 12px;" alt="PyPI"/>
-          <h3 class="card-title">One Pip Install</h3>
-          <p style="margin:0; color:#475569; font-size:14px; line-height:1.5;">Ready to plug into any backend. Install <code style="background:#f1f5f9; padding:2px 6px; border-radius:4px; font-size:13px; color:#0f172a; border:1px solid #e2e8f0; font-weight:600;">rag_pipeline-3.0</code>.</p>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<p align="center">
+  <img src="./docs/key-features.svg" alt="Six production-ready features: universal ingestion, session isolation, self-cleaning storage, smart deduplication, abuse-proof uploads, one pip install" width="100%"/>
+</p>
 
 ## 🧠 System Design Philosophy
 
@@ -176,9 +98,19 @@ IntelliQA is a packaged RAG backend that directly addresses each of the failure 
 
 **4. Package-First Distribution.** Core RAG logic ships as a Python wheel. The notebook is a demo. The wheel is the product, and it powers the live portfolio site.
 
-## 🏗️ High-Level Architecture
+**5. Honest Boundaries.** The system can fail in known ways: retrieval misses, ambiguous source documents, questions outside the indexed content. Design decisions surface these failure modes rather than hide them. `temperature=0` is for reproducibility, not zero hallucination; the prompt instructs the model to say "I don't know" when retrieved context is insufficient.
 
-The system is organized into four layers:
+## 🏗️ How RAG Works in IntelliQA
+
+At a high level, IntelliQA wraps four functional stages into one installable pipeline: a parser converts documents to text, an embedder converts text to vectors, a vector store holds them for similarity search, and an LLM generates answers grounded in the retrieved chunks.
+
+<p align="center">
+  <img src="./docs/intelliQA.svg" alt="How RAG works in IntelliQA: parsing, embedding, retrieval, generation" width="100%"/>
+</p>
+
+## 🏗️ System Architecture
+
+The real system adds operational layers around the RAG core. Four layers in total:
 
 **Ingestion** &nbsp;·&nbsp; Apache Tika parses multi-format input; deduplication and chunking happen before vectors touch the store.
 
@@ -188,59 +120,41 @@ The system is organized into four layers:
 
 **Operations** &nbsp;·&nbsp; Session lifecycle, per-session upload quotas, and a daily cron job for cleanup.
 
-![IntelliQA RAG Flow](./RAG%20Flow.png)
+<p align="center">
+  <img src="./docs/RAG%20Flow.png" alt="IntelliQA architecture: full system with session isolation and lifecycle management" width="100%"/>
+</p>
 
 ## 🧠 Design Decision: Open Stack Over Managed APIs
 
-<div class="rag-container-shadow">
-  <div style="border-bottom: 1px solid #1e293b; padding-bottom: 24px; margin-bottom: 32px;">
-    <h3 style="margin: 0 0 12px 0; color: #ffffff; font-size: 24px; font-weight: 700; display: flex; align-items: center; gap: 12px;">
-      <img src="https://api.iconify.design/lucide:git-branch.svg?color=%2338bdf8" width="28"/>
-      Architecture Rationale
-    </h3>
-    <p style="margin: 0; color: #94a3b8; font-size: 16px; line-height: 1.6; max-width: 800px;">Why bypass managed services like OpenAI and Pinecone? Because prototype economics rarely survive production scale. We designed IntelliQA to maintain high inference quality without the compounding costs of proprietary APIs.</p>
-  </div>
-  <table role="presentation" class="arch-grid">
-    <tr>
-      <td>
-        <div class="arch-card">
-          <h4 style="margin: 0 0 16px 0; color: #fca5a5; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">The Managed Trap</h4>
-          <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 14px; line-height: 1.7;">
-            <li style="margin-bottom: 8px;"><strong>Recurring Costs:</strong> Paying per-token for embedding bulk documents destroys margins.</li>
-            <li style="margin-bottom: 8px;"><strong>Data Privacy:</strong> Sending proprietary documents to third-party endpoints violates strict compliance rules.</li>
-            <li style="margin-bottom: 8px;"><strong>Rate Limits:</strong> Bulk ingestion hits API throttling caps instantly.</li>
-            <li><strong>Vendor Lock-in:</strong> Tightly coupling your vector store to a specific embedding model makes future migrations painful.</li>
-          </ul>
-        </div>
-      </td>
-      <td>
-        <div class="arch-card-open">
-          <span class="arch-badge">Our Stack</span>
-          <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">The Open Reality</h4>
-          <ul style="margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 14px; line-height: 1.7;">
-            <li style="margin-bottom: 8px;"><strong>Zero-Cost Embeddings:</strong> <code>all-MiniLM-L6-v2</code> runs locally via HuggingFace, making ingestion permanently free.</li>
-            <li style="margin-bottom: 8px;"><strong>Blistering Speed:</strong> Offloading LLM generation to Groq LPUs provides inference latency that beats managed GPT APIs.</li>
-            <li style="margin-bottom: 8px;"><strong>Data Sovereignty:</strong> ChromaDB stores vectors locally on-disk. Your data never leaves your environment.</li>
-            <li><strong>Ultimate Portability:</strong> Local dependencies mean the entire RAG backend ships reliably inside a single Python wheel.</li>
-          </ul>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<p align="center">
+  <img src="./docs/design-decision.svg" alt="Architecture Rationale: comparison between managed-API trap and open-stack reality across cost, privacy, rate limits, and portability" width="100%"/>
+</p>
 
-## 🧩 System Components
+## 🛠️ Challenges & Lessons Learned
 
-| Component | Engine / Module | Function |
-| --- | --- | --- |
-| **Document Parser** | Apache Tika | Extracts text from PDF, DOCX, HTML, TXT, RTF, ODT, and dozens of additional formats |
-| **Ingestion Pipeline** | `rag_pipeline.utils` | Parsing, chunking, deduplication, metadata extraction |
-| **Session Manager** | `rag_pipeline` (custom logic) | Namespaces documents by session, enforces 5-file upload quota |
-| **Vector Store** | ChromaDB | Cosine similarity search over 384-dim embeddings, disk-persisted |
-| **Query Engine** | `rag_pipeline.query_engine` | Embeds questions, retrieves top-K chunks, orchestrates generation |
-| **LLM Layer** | Llama 3.3 70B (Groq LPU) | Deterministic, grounded generation at `temperature=0` |
-| **Storage Manager** | Cron + cleanup scripts | Daily removal of expired sessions, orphaned vectors, temp files |
-| **Infrastructure** | Docker + AWS EC2 | Reproducible runtime, cloud deployment |
+A few real engineering hurdles surfaced during the IntelliQA build that shaped the current architecture.
+
+### 1. Apache Tika JVM warm-up cost
+
+Tika runs on the JVM, and spawning a fresh JVM per request caused unacceptable cold-start latency on first document upload. The fix was to run a long-lived Tika server on EC2 and proxy requests to it, reducing parse time from seconds to milliseconds. Tika is fast when warm, but slow if treated like a CLI tool.
+
+---
+
+### 2. Disk pressure on shared EC2
+
+The same EC2 instance hosts both the portfolio site and IntelliQA. Without lifecycle management, ChromaDB storage would grow unbounded and Tika temp files would accumulate. This directly led to a cron-based cleanup approach instead of relying on managed storage. Lesson: shared infrastructure requires explicit cleanup design.
+
+---
+
+### 3. Embedding model trade-off
+
+`all-MiniLM-L6-v2` (384 dims) was chosen over larger models like `bge-large-en` (1024 dims) despite lower accuracy. The trade-off was CPU efficiency, no API cost, and a smaller vector store. Performance is sufficient for most Q&A tasks, but worth revisiting if retrieval quality drops.
+
+---
+
+### 4. Hallucination outside retrieved context
+
+Even at temperature=0, the LLM occasionally answered from training data when retrieved context was weak. Updating the system prompt to enforce <span style="color:#ff7f50;"> answer only from the provided context; if the context does not contain the answer, say so </span> reduced this significantly. This reflects the _Honest Boundaries_ design principle.
 
 ## 🚀 Installation & Usage
 
@@ -258,8 +172,15 @@ Import and use anywhere:
 
 ```python
 from rag_pipeline import query_engine, vector_store, utils
-# See IntelliQA.ipynb for end-to-end usage examples
 ```
+
+The package exposes three modules:
+
+- `rag_pipeline.utils`: parsing, chunking, deduplication
+- `rag_pipeline.vector_store`: Chroma setup and indexing
+- `rag_pipeline.query_engine`: retrieval, prompt assembly, generation
+
+See `IntelliQA.ipynb` for end-to-end usage examples.
 
 ### Option 2: Install from Source
 *Use this if you want to read, modify, or extend the core RAG logic.* The editable install (`pip install -e .`) picks up source changes immediately without reinstalling.
@@ -283,11 +204,29 @@ jupyter notebook IntelliQA.ipynb
 |  |  |
 | --- | --- |
 | **Shipped** | Core pipeline, session isolation, upload quota, scheduled cleanup, AWS EC2 deployment, `rag_pipeline-3.0` wheel |
-| **In progress** | RAG evaluation framework (faithfulness, answer relevance, context precision) |
+| **In progress** | RAG evaluation framework (see below) |
+
+## 📏 Evaluation Approach
+
+The in-progress evaluation framework is being built around four RAG-specific metrics rather than generic LLM benchmarks:
+
+- **Faithfulness** &nbsp;·&nbsp; Does the generated answer follow from the retrieved chunks, or does the model introduce unsupported claims?
+- **Answer Relevance** &nbsp;·&nbsp; Does the response actually address the question that was asked?
+- **Context Precision** &nbsp;·&nbsp; Of the chunks retrieved, what fraction are actually relevant to the question?
+- **Context Recall** &nbsp;·&nbsp; Of the chunks that *should* have been retrieved for a question, how many were?
+
+A held-out evaluation set is being assembled from public RAG benchmarks (covering general knowledge documents) plus synthetic question-answer pairs generated against sample uploads. Once the harness is wired up, results will be tracked over time to catch regressions when components change (different chunk sizes, alternative embedding models, or future reranking experiments).
+
+## 🚫 Out of Scope
+
+A few capabilities are explicitly **not** part of IntelliQA's design. These are deliberate non-goals, not gaps:
+
+- **User authentication.** Sessions are isolated by ID; authentication and user-account management are the responsibility of the calling application. IntelliQA is a backend, not a SaaS product.
+- **Long-term knowledge accumulation.** Each session is ephemeral. IntelliQA does not build a persistent knowledge base across users or across time. Documents are scoped to the session that uploaded them and are subject to scheduled cleanup.
+- **Document editing or partial updates.** Modifying an indexed document requires re-uploading it. There is no in-place edit path.
 
 ## 🚀 Future Improvements
 
-- RAG evaluation pipeline (faithfulness, answer relevance, context precision)
 - Cross-encoder reranking on retrieved chunks
 - Inline citations linking answers back to source chunks
 - Hybrid retrieval (BM25 + dense vector)
